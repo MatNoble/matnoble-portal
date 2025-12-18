@@ -1,0 +1,130 @@
+:root {
+  /* MatNoble Brand Colors - Modern Academic Palette (Morandi/Nordic Style) */
+  --mn-red: #E05D52;    
+  --mn-yellow: #F0B94D; 
+  --mn-green: #4AA98C;  
+  --mn-blue: #4D84C4;   
+  --mn-core: #2C3E50;
+  
+  /* 字体配置 */
+  --vp-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  --vp-font-family-mono: "JetBrains Mono", source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.dark {
+  --mn-core: #ffffff;
+  --mn-red: #E57368;
+  --mn-yellow: #F5C66D;
+  --mn-green: #64C4A6;
+  --mn-blue: #6BA3E0;
+}
+
+/* =========================================
+   字体与排版
+   ========================================= */
+body {
+  font-feature-settings: "cv05", "cv08", "ss01";
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.015em;
+}
+
+/* =========================================
+   首页微交互
+   ========================================= */
+.VPFeature {
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.VPFeature:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  border-color: var(--mn-blue);
+  background-color: var(--vp-c-bg-soft);
+}
+
+.VPFeature::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--mn-red), var(--mn-yellow), var(--mn-green), var(--mn-blue));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.VPFeature:hover::before {
+  opacity: 1;
+}
+
+/* 按钮动效 */
+.VPButton.brand {
+  transition: all 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.VPButton.brand:hover {
+  background-color: var(--mn-blue);
+  box-shadow: 0 4px 15px rgba(77, 132, 196, 0.4);
+  transform: scale(1.02);
+}
+
+/* 链接下划线 */
+.vp-doc a {
+  position: relative;
+  text-decoration: none;
+  font-weight: 500;
+  color: var(--mn-blue);
+  transition: color 0.2s ease;
+}
+
+.vp-doc a:hover {
+  color: var(--mn-red);
+}
+
+.vp-doc a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--mn-red);
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.vp-doc a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* =========================================
+   布局微调
+   ========================================= */
+.VPNavBarTitle.has-sidebar {
+  padding-left: 32px;
+}
+@media (min-width: 960px) {
+  .VPNavBarTitle.has-sidebar {
+    padding-left: 0;
+  }
+}
+
+/* 404 页面样式 */
+.custom-404 h1 {
+  font-size: 6rem;
+  margin-bottom: 1rem;
+  color: var(--mn-red);
+  font-family: 'Outfit', sans-serif;
+}
+
+.custom-404 blockquote {
+  font-style: italic;
+  border-left-color: var(--mn-blue);
+}

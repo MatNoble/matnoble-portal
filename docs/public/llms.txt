@@ -1,0 +1,29 @@
+# MatNoble Personal Portal
+
+> Mathematics as the Core. Technology as the Extension.
+> 以数学为原点，构建可解释的技术世界。
+
+## Site Overview
+This is the personal portal of MatNoble, a university mathematics teacher and independent developer. The site focuses on undergraduate engineering mathematics education (Calculus, Linear Algebra) and educational technology tools.
+
+## Core Content
+
+### 1. Teaching Philosophy (大学数学教学)
+- **Goal**: To train logic and thinking models, rejecting spoon-feeding education.
+- **Key Subjects**:
+  - **Calculus**: Focus on limit thinking, differential applications, and visualization.
+  - **Linear Algebra**: Focus on geometric intuition, linear transformations, and SVD.
+- **URL**: https://matnoble.top/teaching/
+
+### 2. Tools (数学工具)
+- **Memorize**: A spaced repetition tool for math formulas with native LaTeX support.
+- **SolverHub**: A planned visualization platform for numerical verification.
+- **URL**: https://matnoble.top/tools/
+
+## About the Author
+MatNoble is a lecturer specializing in partial differential equations. He advocates for "Concept First, Calculation Second" and uses technology (Python, TypeScript) to improve learning efficiency.
+
+## Key Links
+- Home: https://matnoble.top/
+- Blog: https://blog.matnoble.top/
+- GitHub: https://github.com/matnoble

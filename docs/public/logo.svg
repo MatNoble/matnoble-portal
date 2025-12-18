@@ -1,0 +1,10 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Top Triangle (Clay Red) -->
+  <polygon points="0,0 100,0 36,48" fill="#E05D52" />
+  <!-- Right Triangle (Amber) -->
+  <polygon points="100,0 100,100 52,36" fill="#F0B94D" />
+  <!-- Bottom Triangle (Sage Teal) -->
+  <polygon points="100,100 0,100 64,52" fill="#4AA98C" />
+  <!-- Left Triangle (Steel Blue) -->
+  <polygon points="0,100 0,0 48,64" fill="#4D84C4" />
+</svg>
