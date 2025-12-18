@@ -72,7 +72,7 @@ export default defineConfig({
   head: [
     ['link', { rel: 'icon', href: '/logo.svg' }],
     // Google Search Console 验证
-    ['meta', { name: 'google-site-verification', content: 'YOUR_GSC_CODE_HERE' }],
+    ['meta', { name: 'google-site-verification', content: 'OeFbtbYCwGN3Bnb3MSOm50bnnxInp9jj_bQT5vOIBPo' }],
     // Bing Webmaster Tools 验证
     ['meta', { name: 'msvalidate.01', content: '1267ABE5F71B3CA9AF5AF169FD89E296' }],
     
