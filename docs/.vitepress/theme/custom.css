@@ -29,102 +29,120 @@ body {
 }
 
 /* =========================================
-   首页微交互
+   交互特效 (仅限支持 Hover 的设备，即 PC/Mac)
    ========================================= */
-.VPFeature {
-  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease, border-color 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
 
-.VPFeature:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
-  border-color: var(--mn-blue);
-  background-color: var(--vp-c-bg-soft);
-}
-
-.VPFeature::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: linear-gradient(90deg, var(--mn-red), var(--mn-yellow), var(--mn-green), var(--mn-blue));
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.VPFeature:hover::before {
-  opacity: 1;
-}
-
-/* 按钮动效 */
-.VPButton.brand {
+/* 通用过渡效果 */
+.VPFeature, .VPButton.brand, .vp-doc a {
   transition: all 0.3s ease;
+}
+
+/* --- 特性卡片 (Features) --- */
+.VPFeature {
+  position: relative;
   overflow: hidden;
-  position: relative;
 }
 
-.VPButton.brand:hover {
-  background-color: var(--mn-blue);
-  box-shadow: 0 4px 15px rgba(77, 132, 196, 0.4);
-  transform: scale(1.02);
-}
+/* 仅在非触摸设备上启用悬停特效，防止手机端点击后样式粘滞 */
+@media (hover: hover) {
+  .VPFeature:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    border-color: var(--mn-blue);
+    background-color: var(--vp-c-bg-soft);
+  }
 
-/* 链接下划线 */
-.vp-doc a {
-  position: relative;
-  text-decoration: none;
-  font-weight: 500;
-  color: var(--mn-blue);
-  transition: color 0.2s ease;
-}
+  .VPFeature::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--mn-red), var(--mn-yellow), var(--mn-green), var(--mn-blue));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
 
-.vp-doc a:hover {
-  color: var(--mn-red);
-}
+  .VPFeature:hover::before {
+    opacity: 1;
+  }
 
-.vp-doc a::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 1px;
-  bottom: -2px;
-  left: 0;
-  background-color: var(--mn-red);
-  transform: scaleX(0);
-  transform-origin: bottom right;
-  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
+  /* 按钮悬停增强 */
+  .VPButton.brand:hover {
+    background-color: var(--mn-blue);
+    box-shadow: 0 4px 15px rgba(77, 132, 196, 0.4);
+    transform: scale(1.02);
+  }
 
-.vp-doc a:hover::after {
-  transform: scaleX(1);
-  transform-origin: bottom left;
+  /* 链接下划线动效 */
+  .vp-doc a:hover {
+    color: var(--mn-red);
+  }
+
+  .vp-doc a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--mn-red);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+
+  .vp-doc a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
 }
 
 /* =========================================
-   布局微调
+   移动端/响应式适配
    ========================================= */
+
+/* 1. 导航栏 Logo 位置修正 */
+/* 移动端 (宽度 < 960px): 左侧有汉堡菜单，给 Logo 一点左间距，避免太拥挤 */
 .VPNavBarTitle.has-sidebar {
-  padding-left: 32px;
+  padding-left: 16px; 
 }
+
+/* 桌面端 (宽度 >= 960px): 侧边栏展开，Logo 归位 */
 @media (min-width: 960px) {
   .VPNavBarTitle.has-sidebar {
     padding-left: 0;
   }
 }
 
-/* 404 页面样式 */
+/* 2. 404 页面字体适配 */
 .custom-404 h1 {
   font-size: 6rem;
   margin-bottom: 1rem;
   color: var(--mn-red);
   font-family: 'Outfit', sans-serif;
+  line-height: 1;
 }
 
 .custom-404 blockquote {
   font-style: italic;
   border-left-color: var(--mn-blue);
+}
+
+/* 手机端缩小 404 标题 */
+@media (max-width: 768px) {
+  .custom-404 h1 {
+    font-size: 4rem; /* 6rem -> 4rem */
+  }
+}
+
+/* 3. 链接在移动端保持一定的高亮色（因为没有 hover），提升可点击感 */
+@media (hover: none) {
+  .vp-doc a {
+    color: var(--mn-blue); /* 保持品牌蓝 */
+    text-decoration: underline; /* 加上下划线提示可点击 */
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+  }
 }
