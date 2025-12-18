@@ -11,7 +11,7 @@ export default defineConfig({
   },
 
   themeConfig: {
-    logo: '/logo.svg', 
+    // logo: '/logo.svg', // 注释掉此处，防止导航栏出现双重 Logo (已通过 Logo.vue 组件自定义)
     siteTitle: false, 
     // 顶部导航
     nav: [
