@@ -71,8 +71,10 @@ export default defineConfig({
 
   head: [
     ['link', { rel: 'icon', href: '/logo.svg' }],
-    // Google Search Console 验证 (请在获取代码后替换下方 content)
+    // Google Search Console 验证
     ['meta', { name: 'google-site-verification', content: 'YOUR_GSC_CODE_HERE' }],
+    // Bing Webmaster Tools 验证
+    ['meta', { name: 'msvalidate.01', content: '1267ABE5F71B3CA9AF5AF169FD89E296' }],
     
     ['meta', { name: 'keywords', content: '大学数学,微积分,线性代数,数学教学,数学学习方法,工科数学,数学工具,数学教师,MatNoble' }],
     // 引入 Google Fonts: Outfit (几何无衬线，适合 Logo)
