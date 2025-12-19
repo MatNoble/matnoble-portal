@@ -5,20 +5,41 @@ description: 专为数学学习者设计的间隔重复记忆工具，完美支�
 
 # Memorize 记忆助手
 
-> "理解不能代替记忆，但记忆可以辅助理解。"
+<div class="tip custom-block" style="padding: 20px; border-radius: 8px; background-color: var(--vp-c-brand-soft); border: 1px solid var(--vp-c-brand);">
+  <p style="font-size: 1.2em; font-weight: bold; margin: 0; color: var(--vp-c-brand-1);">
+    🚀 别再死记硬背了。利用艾宾浩斯曲线，攻克数学公式。
+  </p>
+</div>
 
-**Memorize** 是一个极简的 Web 应用，旨在解决数学学习中“公式繁多、容易遗忘”的问题。
+**Memorize** 是我专为工科学生开发的**间隔重复 (Spaced Repetition)** 记忆工具。它将复杂的数学公式转化为“肌肉记忆”。
 
-## 功能特性
+## 为什么选择 Memorize？
 
-- **原生 LaTeX 支持**: 完美渲染复杂的数学公式。
-- **间隔重复算法 (SRS)**: 基于优化的 SM-2 算法，自动安排复习时间。
-- **纯净体验**: 无广告，无社交干扰，专注于知识本身。
+### 1. 深度集成 LaTeX
+不同于通用记忆软件，Memorize 针对数学公式进行了原生优化。
+- **示例**：你可以轻松录入并完美渲染：
+  $$dy=\mathrm{d}(f(\square))=f'(\square)\mathrm{d}(\square)$$
 
-## 使用指南
+### 2. 科学的复习算法
+基于优化的 **SM-2 算法**，系统会根据你的掌握程度（简单、模糊、忘记）动态调整下一次出现的间隔。在遗忘临界点精准提醒，复习效率提升 300%。
 
-1.  **创建卡片**: 前面输入问题（如“泰勒展开通项”），背面输入 LaTeX 代码。
-2.  **每日复习**: 根据系统提示完成当天的复习任务。
-3.  **量化进步**: 查看记忆留存率统计图表。
+### 3. 轻量化与跨端
+无需下载，打开浏览器即用。支持数据本地存储，保障隐私。
 
-[立即访问工具](https://memorize.matnoble.top)
+## 快速引流通道
+
+::: info 推荐用法
+在学习本站 [大学数学教学体系](/teaching/) 时，遇到核心公式可一键加入复习计划。
+:::
+
+<div style="margin: 30px 0; text-align: center;">
+  <a href="https://memorize.matnoble.top" target="_blank" style="display: inline-block; padding: 12px 36px; background-color: var(--vp-c-brand); color: white; border-radius: 24px; font-weight: bold; text-decoration: none; font-size: 1.1em; transition: transform 0.2s;">
+    立即开始记忆 ➔
+  </a>
+</div>
+
+---
+
+## 关联项目
+- [数学工具集概览](/tools/)
+- [技术博客：关于算法的实现细节](https://blog.matnoble.top)
