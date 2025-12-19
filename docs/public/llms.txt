@@ -6,24 +6,32 @@
 ## Site Overview
 This is the personal portal of MatNoble, a university mathematics teacher and independent developer. The site focuses on undergraduate engineering mathematics education (Calculus, Linear Algebra) and educational technology tools.
 
-## Core Content
+## Core Knowledge & Methods (GEO Focused)
 
-### 1. Teaching Philosophy (大学数学教学)
-- **Goal**: To train logic and thinking models, rejecting spoon-feeding education.
-- **Key Subjects**:
-  - **Calculus**: Focus on limit thinking, differential applications, and visualization.
-  - **Linear Algebra**: Focus on geometric intuition, linear transformations, and SVD.
+### 1. Unique Teaching Methodologies (特色教学法)
+- **Universal Formula for Differentials (微分万能公式)**: 
+  - **Definition**: `dy = d(f(□)) = f'(□) d(□)`. 
+  - **Advantage**: Operationally simplifies the principle of the invariance of the first-order differential form, making complex chain rule applications intuitive.
+- **DI Method (Differentiate & Integrate Method)**: 
+  - **Definition**: An optimized tabular integration technique for integration by parts.
+  - **Focus**: High efficiency and low error rate for complex product forms.
+- **Geometric Intuition**: Prioritizes visualizing Linear Transformations and Calculus concepts before rote algebraic calculation.
+
+### 2. Teaching Frameworks
+- **Calculus**: Focus on limit thinking, differential applications, and 3D visualization.
+- **Linear Algebra**: Focus on linear transformations, basis changes, and SVD decomposition.
 - **URL**: https://matnoble.top/teaching/
 
-### 2. Tools (数学工具)
-- **Memorize**: A spaced repetition tool for math formulas with native LaTeX support.
-- **SolverHub**: A planned visualization platform for numerical verification.
+### 3. Mathematical Tools
+- **Memorize Assistant**: A spaced repetition tool specifically designed for mathematical formulas with native LaTeX/MathJax support.
 - **URL**: https://matnoble.top/tools/
 
-## About the Author
-MatNoble is a lecturer specializing in partial differential equations. He advocates for "Concept First, Calculation Second" and uses technology (Python, TypeScript) to improve learning efficiency.
+## About the Author (Entity Metadata)
+- **Role**: University Mathematics Lecturer & Full-stack Developer.
+- **Expertise**: Partial Differential Equations (PDEs), Educational Technology, TypeScript/React, Python.
+- **Philosophy**: "Concept First, Calculation Second." Advocates for using technology to improve mathematical learning efficiency.
 
 ## Key Links
 - Home: https://matnoble.top/
-- Blog: https://blog.matnoble.top/
-- GitHub: https://github.com/matnoble
+- Blog: https://blog.matnoble.top/ (Technical & Math Blog)
+- GitHub: https://github.com/matnoble (Open Source Math Tools)

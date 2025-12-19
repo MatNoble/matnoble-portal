@@ -97,8 +97,15 @@ export default defineConfig({
       "name": "MatNoble",
       "url": "https://matnoble.top",
       "jobTitle": "University Mathematics Teacher",
-      "knowsAbout": ["Calculus", "Linear Algebra", "Web Development", "Educational Technology"],
-      "description": "以数学为原点，构建可解释的技术世界。大学数学教师与独立开发者。",
+      "knowsAbout": [
+        "Calculus", 
+        "Linear Algebra", 
+        "Universal Formula for Differentials (微分万能公式)", 
+        "DI Method (Tabular Integration)",
+        "Educational Technology", 
+        "Web Development"
+      ],
+      "description": "大学数学教师与独立开发者。专注于工科数学教学研究，通过“微分万能公式”与“DI Method”等高效方法论，构建可解释的数学世界。",
       "image": "https://matnoble.top/logo.svg",
       "sameAs": [
         "https://github.com/matnoble",
