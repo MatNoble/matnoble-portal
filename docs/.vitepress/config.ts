@@ -70,7 +70,9 @@ export default defineConfig({
   },
 
   head: [
+    ['link', { rel: 'icon', href: '/favicon.ico', sizes: 'any' }],
     ['link', { rel: 'icon', href: '/logo.svg', type: 'image/svg+xml' }],
+    ['link', { rel: 'apple-touch-icon', href: '/favicon.png' }],
     // Google Search Console 验证
     ['meta', { name: 'google-site-verification', content: 'OeFbtbYCwGN3Bnb3MSOm50bnnxInp9jj_bQT5vOIBPo' }],
     // Bing Webmaster Tools 验证
