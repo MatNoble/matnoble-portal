@@ -5,6 +5,10 @@ export default defineConfig({
   title: 'MatNoble',
   description: '大学数学教师 MatNoble 的个人门户。分享工科数学教学（微积分、线性代数）与学习方法，提供数学辅助工具。',
   
+  markdown: {
+    math: true
+  },
+
   // 关键 SEO 配置：生成 sitemap
   sitemap: {
     hostname: 'https://matnoble.top'
@@ -17,6 +21,7 @@ export default defineConfig({
     nav: [
       { text: '首页', link: '/' },
       { text: '大学数学教学', link: '/teaching/' },
+      { text: '常见问题', link: '/faq' },
       { text: '数学工具', link: '/tools/' },
       { text: '技术博客', link: 'https://blog.matnoble.top' }, // 外部链接区分门户与博客
       { text: '关于', link: '/about' }
@@ -30,7 +35,8 @@ export default defineConfig({
           items: [
             { text: '教学体系概览', link: '/teaching/' },
             { text: '工科微积分', link: '/teaching/calculus' },
-            { text: '线性代数', link: '/teaching/linear-algebra' }
+            { text: '线性代数', link: '/teaching/linear-algebra' },
+            { text: '常见问题 (FAQ)', link: '/faq' }
           ]
         }
       ],
@@ -46,7 +52,13 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/matnoble' }
+      { icon: 'github', link: 'https://github.com/matnoble' },
+      {
+        icon: {
+          svg: '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Telegram</title><path d="M12 24c6.627 0 12-5.373 12-12S18.627 0 12 0 0 5.373 0 12s5.373 12 12 12zM5.934 12.088c.492-2.103 3.033-3.146 5.357-4.144 2.872-1.233 5.486-2.353 5.486-2.353s1.102-.455 1.018.618c-.033.432-.237 1.763-.44 3.14-.306 2.072-.638 4.31-.815 5.093-.195.86-.55 1.144-.55 1.144s-.305.28-.627.05c-.322-.23-.847-.574-1.39-.932-.474-.313-1.074-.71-1.425-1.002-.27-.225-.492-.542-.144-.84.07-.06.27-.243.51-.462 1.353-1.237 2.152-1.968 2.152-1.968.21-.193.394-.525-.07-.525-.11 0-.312.04-.63.25-.43.284-3.12 2.064-4.22 2.793-.412.272-.782.406-1.11.398-.36-.008-1.047-.215-1.56-.38-.63-.203-1.132-.31-1.087-.655.023-.18.264-.366.723-.556z"/></svg>'
+        },
+        link: 'https://t.me/HUSTMatNoble'
+      }
     ],
 
     footer: {

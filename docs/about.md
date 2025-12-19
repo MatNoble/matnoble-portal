@@ -23,3 +23,10 @@ description: MatNoble 的个人简介与联系方式。
 
 - **Email**: hustmatnoble#gmail.com
 - **GitHub**: [github.com/matnoble](https://github.com/matnoble)
+- **Telegram Channel**: [HUSTMatNoble](https://t.me/HUSTMatNoble)
+- **微信公众号**: 数学思维探究社
+
+<div align="center">
+  <img src="/qrcode_for_wechat.jpg" width="200" alt="微信公众号：数学思维探究社">
+  <p>扫描上方二维码关注微信公众号</p>
+</div>
