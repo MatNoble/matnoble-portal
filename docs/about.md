@@ -1,6 +1,6 @@
 ---
 title: 关于 MatNoble
-description: MatNoble 的个人简介与联系方式。
+description: MatNoble 的个人简介与联系方式。作为高校数学教师与独立开发者，我致力于通过技术工具改善数学学习体验，分享微积分与线性代数的教学思考与实践。
 ---
 
 # 关于我

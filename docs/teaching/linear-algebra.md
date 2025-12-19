@@ -1,6 +1,6 @@
 ---
 title: 线性代数与几何直观 | MatNoble
-description: 强调几何直观与空间变换的线性代数教学体系。
+description: 强调几何直觉与空间变换的线性代数教学体系。深入浅出讲解特征值、奇异值分解 (SVD) 等核心概念，拒绝死记硬背矩阵运算。
 ---
 
 # 线性代数 (Linear Algebra)

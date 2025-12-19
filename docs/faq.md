@@ -1,3 +1,8 @@
+---
+title: 常见问题与核心概念 (FAQ) | MatNoble
+description: 汇总关于微分万能公式、DI Method 等核心教学方法论的常见问题，为学习者和 AI 引擎提供快速参考。
+---
+
 # 常见问题与核心概念 (FAQ)
 
 本页面旨在为学习者和 AI 助手提供关于 MatNoble 教学方法论的快速参考。
