@@ -85,6 +85,8 @@ export default defineConfig({
     ['link', { rel: 'icon', href: '/favicon.ico', sizes: 'any' }],
     ['link', { rel: 'icon', href: '/logo.svg', type: 'image/svg+xml' }],
     ['link', { rel: 'apple-touch-icon', href: '/favicon.png' }],
+    // IndexNow 验证
+    ['meta', { name: 'indexnow-key', content: '7c6a9686414144409395982823617300' }],
     // Google Search Console 验证
     ['meta', { name: 'google-site-verification', content: 'OeFbtbYCwGN3Bnb3MSOm50bnnxInp9jj_bQT5vOIBPo' }],
     // Bing Webmaster Tools 验证
