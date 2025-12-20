@@ -36,6 +36,7 @@ export default defineConfig({
             { text: '教学体系概览', link: '/teaching/' },
             { text: '工科微积分', link: '/teaching/calculus' },
             { text: '线性代数', link: '/teaching/linear-algebra' },
+            { text: '核心心法速查表 (CheatSheet)', link: '/teaching/cheatsheet' },
             { text: '常见问题 (FAQ)', link: '/faq' }
           ]
         }

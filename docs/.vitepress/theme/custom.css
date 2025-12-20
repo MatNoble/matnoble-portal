@@ -146,3 +146,44 @@ body {
     text-underline-offset: 2px;
   }
 }
+
+/* =========================================
+   打印模式适配 (Print Mode)
+   ========================================= */
+@media print {
+  /* 隐藏不需要的 UI 元素 */
+  .VPNav, .VPSidebar, .VPDocFooter, .VPFooter, .edit-link {
+    display: none !important;
+  }
+
+  /* 调整主内容区域 */
+  .VPContent {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .VPDoc {
+    padding: 0 !important;
+  }
+
+  .container {
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+
+  /* 移除背景色，确保打印清晰 */
+  body {
+    background-color: white !important;
+    color: black !important;
+  }
+
+  /* 强制展开所有折叠内容 (如果有) */
+  details {
+    display: block !important;
+  }
+
+  /* 保证公式清晰 */
+  .mjx-chtml {
+    font-size: 100% !important;
+  }
+}
