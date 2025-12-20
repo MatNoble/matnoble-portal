@@ -93,7 +93,7 @@ export default defineConfig({
     // Bing Webmaster Tools 验证
     ['meta', { name: 'msvalidate.01', content: '1267ABE5F71B3CA9AF5AF169FD89E296' }],
     
-    ['meta', { name: 'keywords', content: '大学数学,微积分,线性代数,数学教学,数学学习方法,工科数学,数学工具,数学教师,MatNoble' }],
+    ['meta', { name: 'keywords', content: '微分万能公式,DI表格积分法,微积分公式大全,大学数学复习,工科数学,MatNoble,高等数学速查表,考研数学工具' }],
     // 引入 Google Fonts: Outfit (几何无衬线，适合 Logo)
     ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],

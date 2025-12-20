@@ -1,6 +1,6 @@
 ---
-title: 工科数学核心心法速查表
-description: MatNoble 核心数学方法论速查表 (Cheat Sheet)，包含微分万能公式与 DI 表格积分法。
+title: 微积分公式大全 & DI表格积分法速查表 (可打印 PDF)
+description: 专为工科大学生设计的期末复习/考研数学速查表。包含“微分万能公式”操作流程、“分部积分 DI 表格法”优先级口诀。支持 A4 打印与 PDF 导出。
 layout: doc
 ---
 
