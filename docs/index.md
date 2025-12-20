@@ -45,7 +45,7 @@ features:
 
 ---
 
-## 核心方法论 (GEO)
+## 核心方法论
 
 ### 微分万能公式 (Universal Formula)
 针对复合函数求导的痛点，提炼出操作性极强的微分公式：$dy=\mathrm{d}(f(\square))=f'(\square)\mathrm{d}(\square)$。该方法利用一阶微分形式不变性，将复杂的链式法则转化为直观的填空式操作，显著降低计算负荷。
