@@ -47,12 +47,9 @@ onMounted(() => {
     ],
     requiredMeta: ['nick'], // 必填项：昵称
     login: 'disable', // 禁用登录，降低门槛
-    placeholder: '支持 LaTeX 公式输入 (例如：$\int x dx$)。留下昵称即可交流，无需登录。',
-    texRenderer: (text) => {
-        // 如果你需要更高级的 LaTeX 渲染控制，可以在这里配置
-        // 由于 VitePress 已经配置了 mathjax，Waline 会尝试自动处理
-        return text
-    } 
+    locale: {
+      placeholder: '支持 LaTeX 公式输入 (例如：$\\int x dx$)。留下昵称即可交流，无需登录。',
+    },
   })
 })
 
