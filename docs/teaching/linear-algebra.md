@@ -22,3 +22,13 @@ description: 强调几何直觉与空间变换的线性代数教学体系。深�
 ## 推荐资源
 - Gilbert Strang, *Introduction to Linear Algebra*
 - 3Blue1Brown, *Essence of Linear Algebra*
+
+<DownloadCard
+  code="0365"
+  fileUrl="/downloads/线性代数期末总复习.pdf"
+>
+  <template #default>线性代数期末总复习资料下载</template>
+  <template #description>
+    关注微信公众号「数学思维研究社」，回复“线性代数”获取四位数字下载码。
+  </template>
+</DownloadCard>

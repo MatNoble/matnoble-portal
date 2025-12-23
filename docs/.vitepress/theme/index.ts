@@ -2,6 +2,7 @@ import { h } from 'vue'
 import DefaultTheme from 'vitepress/theme'
 import Logo from './components/Logo.vue'
 import Comment from './components/Comment.vue'
+import DownloadCard from './components/DownloadCard.vue' // Import the new component
 import './custom.css'
 
 export default {
@@ -13,5 +14,8 @@ export default {
       // 在文档内容之后插入评论组件
       'doc-after': () => h(Comment)
     })
+  },
+  enhanceApp({ app }) {
+    app.component('DownloadCard', DownloadCard) // Register DownloadCard globally
   }
 }

@@ -11,10 +11,10 @@
         </div>
         <div class="wechat-text">
           <p class="wechat-title">不想公开提问？</p>
-          <p class="wechat-desc">关注公众号 <strong>MatNoble</strong>，后台发送“微积分+问题”，获取一对一解答。</p>
+          <p class="wechat-desc">关注公众号 <strong>数学思维研究社</strong>，后台发送“微积分+问题”，获取一对一解答。</p>
         </div>
         <div class="wechat-action">
-          <img src="/qrcode_for_wechat.jpg" alt="MatNoble WeChat" class="wechat-qr" />
+          <img src="/qrcode_for_wechat.jpg" alt="数学思维研究社" class="wechat-qr" />
         </div>
       </div>
     </div>
