@@ -25,7 +25,7 @@ description: 强调几何直觉与空间变换的线性代数教学体系。深�
 
 <DownloadCard
   code="0365"
-  fileUrl="/downloads/线性代数期末总复习.pdf"
+  fileUrl="/downloads/linear_algebra_final_review.pdf"
 >
   <template #default>线性代数期末总复习资料下载</template>
   <template #description>
