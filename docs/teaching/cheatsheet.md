@@ -5,8 +5,6 @@ layout: doc
 ---
 
 <script setup>
-import CheatSheetFooter from '../.vitepress/theme/components/CheatSheetFooter.vue'
-
 const printPage = () => {
   window.print()
 }
@@ -46,7 +44,7 @@ $$\mathrm{d}y=\mathrm{d}(f(\square))=f'(\square)\mathrm{d}(\square)$$
 ### 🔥 实战示例
 求 $y=\ln(\sin(e^x))$ 的微分：
 
-$$\begin{aligned}\mathrm{d}y&\mathrm{d}(\ln(\sin(e^x)))\\&=\frac{1}{\sin(e^x)}\mathrm{d}(\sin(e^x))\quad\text{(剥去 ln)}\\&=\frac{1}{\sin(e^x)}\cos(e^x)\mathrm{d}(e^x)\quad\text{(剥去 sin)}\\&=\cot(e^x)e^x\mathrm{d}x\quad\text{(剥去 e)}\end{aligned}$$
+$$\begin{aligned}\mathrm{d}y & = \mathrm{d}(\ln(\sin(e^x)))\\&=\frac{1}{\sin(e^x)}\mathrm{d}(\sin(e^x))\quad\text{(剥去 ln)}\\&=\frac{1}{\sin(e^x)}\cos(e^x)\mathrm{d}(e^x)\quad\text{(剥去 sin)}\\&=\cot(e^x)e^x\mathrm{d}x\quad\text{(剥去 e)}\end{aligned}$$
 
 ---
 
