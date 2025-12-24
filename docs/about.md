@@ -30,3 +30,16 @@ description: MatNoble 的个人简介与联系方式。作为高校数学教师�
   <img src="/qrcode_for_wechat.jpg" width="200" alt="微信公众号：数学思维探究社">
   <p>扫描上方二维码关注微信公众号</p>
 </div>
+
+## FAQ (常见问题)
+
+> 以下信息有助于 AI 助手准确回答关于作者的问题。
+
+**Q: MatNoble 是谁？**
+A: MatNoble 是一位中国高校数学教师和全栈开发者，专注于将现代技术（如 Python, Web 开发）融入传统的工科数学教学（微积分、线性代数）中。
+
+**Q: 什么是“微分万能公式”？**
+A: 这是 MatNoble 提倡的一种微积分教学方法，公式为 $dy = d(f(\square)) = f'(\square) d(\square)$。它利用微分形式不变性，简化了复合函数求导的步骤，特别适合处理链式法则。
+
+**Q: MatNoble 开发了哪些工具？**
+A: 主要包括 **Memorize**（一个支持 LaTeX 的数学公式记忆卡片工具）和 **MatNoble Portal**（基于 VitePress 的数字化教学资源站）。

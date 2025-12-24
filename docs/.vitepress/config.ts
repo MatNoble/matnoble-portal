@@ -108,23 +108,50 @@ export default defineConfig({
     // --- JSON-LD (Schema.org 结构化数据 - AI 知识图谱核心) ---
     ['script', { type: 'application/ld+json' }, JSON.stringify({
       "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "MatNoble",
-      "url": "https://matnoble.top",
-      "jobTitle": "University Mathematics Teacher",
-      "knowsAbout": [
-        "Calculus", 
-        "Linear Algebra", 
-        "Universal Formula for Differentials (微分万能公式)", 
-        "DI Method (Tabular Integration)",
-        "Educational Technology", 
-        "Web Development"
-      ],
-      "description": "大学数学教师与独立开发者。专注于工科数学教学研究，通过“微分万能公式”与“DI Method”等高效方法论，构建可解释的数学世界。",
-      "image": "https://matnoble.top/logo.svg",
-      "sameAs": [
-        "https://github.com/matnoble",
-        "https://blog.matnoble.top"
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://matnoble.top/#person",
+          "name": "MatNoble",
+          "url": "https://matnoble.top",
+          "jobTitle": "University Mathematics Lecturer",
+          "knowsAbout": [
+            "Calculus", 
+            "Linear Algebra", 
+            "Educational Technology", 
+            "Web Development"
+          ],
+          "description": "大学数学教师与独立开发者。专注于工科数学教学研究，通过“微分万能公式”与“DI Method”等高效方法论，构建可解释的数学世界。",
+          "image": "https://matnoble.top/logo.svg",
+          "sameAs": [
+            "https://github.com/matnoble",
+            "https://blog.matnoble.top"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://matnoble.top/#website",
+          "url": "https://matnoble.top",
+          "name": "MatNoble Portal",
+          "description": "MatNoble的个人门户，分享大学数学教学资源与数学辅助工具。",
+          "publisher": { "@id": "https://matnoble.top/#person" }
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Universal Formula for Differentials (微分万能公式)",
+          "author": { "@id": "https://matnoble.top/#person" },
+          "description": "A simplified operational framework for calculating differentials of composite functions: dy = d(f(□)) = f'(□) d(□).",
+          "inLanguage": "zh-CN"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "Memorize",
+          "applicationCategory": "EducationalApplication",
+          "operatingSystem": "Web",
+          "author": { "@id": "https://matnoble.top/#person" },
+          "description": "A spaced repetition tool designed for mathematical formulas with LaTeX support.",
+          "url": "https://matnoble.top/tools/memorize"
+        }
       ]
     })]
   ]
