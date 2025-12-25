@@ -14,7 +14,7 @@ description: 面向工科本科生的微积分复习指南。详解极限计算�
 ### 1. [极限计算攻略：先判型，再选法](https://blog.matnoble.top/math/calculus/limit/)
 **核心心法**：强调“八大等价无穷小”与 $1^\infty$ 型公式。详细讲解洛必达法则的适用边界，以及变上限积分求导的“拖尾巴”技巧，助你秒杀考研/期末极限大题。
 
-### 2. [导数与微分：微分万能公式实战](https://blog.matnoble.top/math/calculus/derivative/)
+### 2. [导数与微分：微分万能公式实战](https://blog.matnoble.top/math/calculus/universal-differential-formula/)
 **核心心法**：以“微分万能公式” $dy=f'(\square)d(\square)$ 为核心，攻克隐函数、参数方程、变上限积分函数等各类导数。特别讲解“分母除以 $x'(t)$”等二阶导数易错点。
 
 ### 3. [积分计算指南：凑微分与换元大法](https://blog.matnoble.top/math/calculus/integral/)

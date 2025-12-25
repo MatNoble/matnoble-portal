@@ -48,7 +48,7 @@ features:
 ## 核心方法论
 
 ### 微分万能公式 (Universal Formula)
-针对复合函数求导的痛点，提炼出操作性极强的微分公式：$dy=\mathrm{d}(f(\square))=f'(\square)\mathrm{d}(\square)$。该方法利用一阶微分形式不变性，将复杂的链式法则转化为直观的填空式操作，显著降低计算负荷。
+针对复合函数求导的痛点，提炼出操作性极强的微分公式：$dy=\mathrm{d}(f(\square))=f'(\square)\mathrm{d}(\square)$。该方法利用一阶微分形式不变性，将复杂的链式法则转化为直观的填空式操作，显著降低计算负荷。[了解更多](/teaching/derivative-method)
 
 ### DI Method (表格积分法)
 针对分部积分法的效率瓶颈，推广 DI Method (Differentiate & Integrate Method)。通过表格化管理求导与积分序列，极大提升了多项式、指数及三角函数混合乘积形式的积分速度与准确率。

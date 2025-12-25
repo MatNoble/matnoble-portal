@@ -46,6 +46,8 @@ $$\mathrm{d}y=\mathrm{d}(f(\square))=f'(\square)\mathrm{d}(\square)$$
 
 $$\begin{aligned}\mathrm{d}y & = \mathrm{d}(\ln(\sin(e^x)))\\&=\frac{1}{\sin(e^x)}\mathrm{d}(\sin(e^x))\quad\text{(剥去 ln)}\\&=\frac{1}{\sin(e^x)}\cos(e^x)\mathrm{d}(e^x)\quad\text{(剥去 sin)}\\&=\cot(e^x)e^x\mathrm{d}x\quad\text{(剥去 e)}\end{aligned}$$
 
+> 💡 **深度学习**：想要掌握隐函数、参数方程求导等更高级的技巧？查看 [**微分万能公式详解**](/teaching/derivative-method)。
+
 ---
 
 ## 2. DI Method (表格积分法)

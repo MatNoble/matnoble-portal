@@ -35,6 +35,7 @@ export default defineConfig({
           items: [
             { text: '教学体系概览', link: '/teaching/' },
             { text: '工科微积分', link: '/teaching/calculus' },
+            { text: '微分万能公式', link: '/teaching/derivative-method' },
             { text: '线性代数', link: '/teaching/linear-algebra' },
             { text: '核心心法速查表 (CheatSheet)', link: '/teaching/cheatsheet' },
             { text: '常见问题 (FAQ)', link: '/faq' }
@@ -95,7 +96,7 @@ export default defineConfig({
     // Baidu Webmaster 验证 (请替换 content 为你的百度验证代码)
     ['meta', { name: 'baidu-site-verification', content: 'codeva-K23LdbDT6i' }],
     
-    ['meta', { name: 'keywords', content: '微分万能公式,DI表格积分法,微积分公式大全,大学数学复习,工科数学,MatNoble,高等数学速查表,考研数学工具' }],
+        ['meta', { name: 'keywords', content: '微分计算, 导数计算, 微积分三大计算, 微分万能公式, DI表格积分法, 微积分公式大全, 大学数学复习, 工科数学, MatNoble, 高等数学速查表, 考研数学工具' }],
     // 引入 Google Fonts: Outfit (几何无衬线，适合 Logo)
     ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
