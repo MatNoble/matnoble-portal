@@ -3,7 +3,7 @@
     <h4><slot>课程讲义下载</slot></h4>
     <p class="description">
       <slot name="description">
-        关注微信公众号「数学思维研究社」，回复验证码关键字，获取下载码。
+        关注微信公众号「数学思维探究社」，回复验证码关键字，获取下载码。
       </slot>
     </p>
 

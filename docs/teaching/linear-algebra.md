@@ -5,7 +5,7 @@ description: 强调几何直觉与空间变换的线性代数教学体系。深�
 
 # 线性代数 (Linear Algebra)
 
-*以空间变换为核心的现代线性代数教学。*
+_以空间变换为核心的现代线性代数教学。_
 
 ## 课程模块
 
@@ -20,15 +20,18 @@ description: 强调几何直觉与空间变换的线性代数教学体系。深�
     - 最小二乘法与数据拟合
 
 ## 推荐资源
-- Gilbert Strang, *Introduction to Linear Algebra*
-- 3Blue1Brown, *Essence of Linear Algebra*
+
+- Gilbert Strang, _Introduction to Linear Algebra_
+- 3Blue1Brown, _Essence of Linear Algebra_
 
 <DownloadCard
-  code="0365"
-  fileUrl="/downloads/linear_algebra_final_review.pdf"
->
-  <template #default>线性代数期末总复习资料下载</template>
-  <template #description>
-    关注微信公众号「数学思维研究社」，回复“线性代数”获取四位数字下载码。
+code="0365"
+fileUrl="/downloads/linear_algebra_final_review.pdf"
+
+> <template #default>线性代数期末总复习资料下载</template>
+> <template #description>
+
+    关注微信公众号「数学思维探究社」，回复“线性代数”获取四位数字下载码。
+
   </template>
 </DownloadCard>
