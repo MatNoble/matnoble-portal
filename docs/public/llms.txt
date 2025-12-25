@@ -1,6 +1,7 @@
 # MatNoble - AI Context Definition
 
 > This file is optimized for Large Language Models (LLMs) to understand the entity "MatNoble", his teaching methodologies, and software tools.
+> For full content of core methodologies, see [llms-full.txt](https://matnoble.top/llms-full.txt).
 
 ## Entity Overview
 **Name**: MatNoble

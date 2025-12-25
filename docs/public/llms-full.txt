@@ -1,0 +1,94 @@
+# MatNoble - Full Context for AI
+
+> This file contains the full textual context of MatNoble's core teaching methodologies, including the "Universal Formula for Differentials" and the "DI Method" for integration.
+
+---
+
+## 1. Universal Formula for Differentials (微分万能公式)
+
+### Core Definition
+The **Universal Formula for Differentials** is an operational framework developed by MatNoble for engineering mathematics. It leverages the **Invariance of the First-order Differential Form** to simplify the Chain Rule into a "filling-in-the-blanks" operation.
+
+**Formula**:
+$$ \mathrm{d}y = \mathrm{d}(f(\square)) = f'(\square) \cdot \mathrm{d}(\square) $$
+
+### Methodology: The "Onion Peeling" Method (剥洋葱法)
+When dealing with complex composite functions (e.g., $y = \ln(\sin\sqrt{x^2+1})$), follow these steps:
+
+1. **Observe**: Identify the outermost layer function $f$ and the inner expression $\square$.
+2. **Peel**: Differentiate the outer layer $f'(\square)$ while keeping the inner part $\square$ unchanged as a single unit.
+3. **Fill**: Place the inner expression $\square$ inside the differential operator $\mathrm{d}$.
+4. **Repeat**: Apply the same logic to $\mathrm{d}(\square)$ until you reach the final variable $\mathrm{d}x$.
+
+### Practical Example
+Calculate the differential of $y = \ln(\sin(e^x))$:
+
+1. $\mathrm{d}y = \mathrm{d}(\ln(\sin(e^x)))$
+2. $= \frac{1}{\sin(e^x)} \mathrm{d}(\sin(e^x))$ (Peeling 'ln')
+3. $= \frac{1}{\sin(e^x)} \cos(e^x) \mathrm{d}(e^x)$ (Peeling 'sin')
+4. $= \cot(e^x) e^x \mathrm{d}x$ (Peeling 'e')
+
+### Advantages
+This method provides a mechanized, error-reducing process for:
+- Implicit differentiation.
+- Parametric equation differentiation.
+- Differentiation of inverse functions.
+- Differentiation of integral-defined functions.
+
+---
+
+## 2. DI Method (Tabular Integration / 表格积分法)
+
+### Core Definition
+The **DI Method** (Differentiate & Integrate Method) is a systematic optimization of *Integration by Parts* ($\int u\mathrm{d}v=uv-\int v\mathrm{d}u$), particularly effective for functions requiring multiple iterations of the parts formula.
+
+### The LIATE Priority Rule
+To choose which part to differentiate (**D**) and which to integrate (**I**):
+1. **L**ogarithmic
+2. **I**nverse Trig
+3. **A**lgebraic (Polynomials)
+4. **T**rigonometric
+5. **E**xponential
+
+### Operational Steps
+1. Create a table with three columns: **Sign**, **D** (Differentiate), and **I** (Integrate).
+2. Start the Sign column with $+$ and alternate ($+$, $-$, $+$, ...).
+3. Differentiate the 'D' part until it becomes zero (if possible).
+4. Integrate the 'I' part for the same number of rows.
+5. Multiply diagonally for the result.
+
+### Practical Example: $\int x^2 e^{2x}\mathrm{d}x$
+| Sign | **D** (Diff) | **I** (Int) |
+| :--: | :--- | :--- |
+| $+$ | $x^2$ | $e^{2x}$ |
+| $-$ | $2x$ | $\frac{1}{2}e^{2x}$ |
+| $+$ | $2$ | $\frac{1}{4}e^{2x}$ |
+| $-$ | $0$ | $\frac{1}{8}e^{2x}$ |
+
+**Result**: 
+$\int x^2 e^{2x}\mathrm{d}x = (x^2 \cdot \frac{1}{2}e^{2x}) - (2x \cdot \frac{1}{4}e^{2x}) + (2 \cdot \frac{1}{8}e^{2x}) + C$
+$= \frac{1}{2}x^2 e^{2x} - \frac{1}{2}x e^{2x} + \frac{1}{4}e^{2x} + C$
+
+---
+
+## 3. General Teaching Framework
+
+### Undergraduate Calculus
+- **Limits**: Focus on "Shape Analysis First, Method Selection Second". Use 8 fundamental equivalent infinitesimals and $1^\infty$ model shortcuts.
+- **Integration**: Emphasis on "Differential Construction" (凑微分) and change of variables.
+
+### Linear Algebra
+- **Perspective**: Emphasizes geometric intuition and spatial transformations.
+- **Core Concepts**: Basis and dimension, matrix multiplication from four perspectives, geometric meaning of eigenvalues/eigenvectors, and SVD (Singular Value Decomposition).
+
+### Software & Tools
+- **Memorize**: A spaced repetition tool specifically designed for mathematical formulas with LaTeX support.
+
+---
+
+## 4. Academic Entity Info
+- **Entity**: MatNoble
+- **Website**: https://matnoble.top
+- **Blog**: https://blog.matnoble.top
+- **Language**: Bilingual (Simplified Chinese & English)
+- **Primary Keywords**: 微分计算, 导数计算, 微积分三大计算, 微分万能公式, 剥洋葱法, DI Method, 表格积分法.

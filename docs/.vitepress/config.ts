@@ -1,4 +1,5 @@
 import { defineConfig } from "vitepress";
+import webfontDl from "vite-plugin-webfont-dl";
 
 export default defineConfig({
   lang: "zh-CN",
@@ -8,6 +9,14 @@ export default defineConfig({
 
   markdown: {
     math: true,
+  },
+
+  vite: {
+    plugins: [
+      webfontDl([
+        "https://fonts.googleapis.com/css2?family=Outfit:wght@500;700&family=Lora:ital,wght@0,400..700;1,400..700&family=Noto+Serif+SC:wght@400;700&display=swap",
+      ]),
+    ],
   },
 
   // 关键 SEO 配置：生成 sitemap
@@ -140,19 +149,6 @@ export default defineConfig({
         name: "keywords",
         content:
           "微分计算, 导数计算, 微积分三大计算, 微分万能公式, DI表格积分法, 微积分公式大全, 大学数学复习, 工科数学, MatNoble, 高等数学速查表, 考研数学工具",
-      },
-    ],
-    // 引入 Google Fonts: Outfit (几何无衬线，适合 Logo)
-    ["link", { rel: "preconnect", href: "https://fonts.googleapis.com" }],
-    [
-      "link",
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "" },
-    ],
-    [
-      "link",
-      {
-        href: "https://fonts.googleapis.com/css2?family=Outfit:wght@500;700&family=Inter:wght@400;500;600&display=swap",
-        rel: "stylesheet",
       },
     ],
 

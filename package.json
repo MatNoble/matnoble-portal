@@ -20,6 +20,7 @@
   "devDependencies": {
     "axios": "^1.6.0",
     "markdown-it-mathjax3": "^4.3.2",
+    "vite-plugin-webfont-dl": "^3.11.1",
     "vitepress": "^1.0.0",
     "vue": "^3.0.0"
   },

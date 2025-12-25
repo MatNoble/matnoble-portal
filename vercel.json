@@ -27,6 +27,15 @@
           "value": "public, max-age=31536000, immutable"
         }
       ]
+    },
+    {
+      "source": "/(favicon.ico|favicon.png|logo.svg|qrcode_.*|downloads/.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, must-revalidate"
+        }
+      ]
     }
   ],
   "rewrites": [

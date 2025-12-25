@@ -1,9 +1,8 @@
 User-agent: *
 Allow: /
 
-# 引导 AI 引擎发现结构化说明文件
-# Reference: https://llmstxt.org/
-llms-txt: https://matnoble.top/llms.txt
+# AI-Specific Instructions
+Sitemap: https://matnoble.top/llms.txt
 
 # 站点地图
 Sitemap: https://matnoble.top/sitemap.xml

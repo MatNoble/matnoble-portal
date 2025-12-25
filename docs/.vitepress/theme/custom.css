@@ -6,29 +6,34 @@
   --mn-blue: #4d84c4;
   --mn-core: #2c3e50;
 
-  /* 字体配置 */
-  --vp-font-family-base: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+/* 字体配置 */
+  --vp-font-family-base: "Lora", "Noto Serif SC", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",
     "Helvetica Neue", sans-serif;
   --vp-font-family-mono: "JetBrains Mono", source-code-pro, Menlo, Monaco,
     Consolas, "Courier New", monospace;
 }
 
-.dark {
-  --mn-core: #ffffff;
-  --mn-red: #e57368;
-  --mn-yellow: #f5c66d;
-  --mn-green: #64c4a6;
-  --mn-blue: #6ba3e0;
+/* =========================================
+   字体与排版增强
+   ========================================= */
+:root {
+  --vp-font-size-base: 17px; /* 稍微调大基础字号，宋体在 17-18px 下表现最好 */
 }
 
-/* =========================================
-   字体与排版
-   ========================================= */
 body {
   font-feature-settings: "cv05", "cv08", "ss01";
   -webkit-font-smoothing: antialiased;
-  letter-spacing: -0.015em;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  letter-spacing: 0.01em; /* 增加极微小的间距，防止笔画粘连 */
+  line-height: 1.75; /* 增加行高，让阅读更舒适 */
+}
+
+/* 针对正文段落，让宋体看起来更“扎实” */
+.vp-doc p, .vp-doc li {
+  font-weight: 450; /* 比标准的 400 稍微重一点点（如果字体支持），或者保持 400 但增加清晰度 */
+  color: var(--vp-c-text-1);
 }
 
 /* =========================================

@@ -51,21 +51,33 @@ let walineInstance = null;
 onMounted(() => {
   const serverURL = "https://matnoble-comment.vercel.app";
 
-  walineInstance = init({
-    el: "#waline",
-    serverURL: serverURL,
-    dark: "html.dark", // 自动适配暗黑模式
-    emoji: [
-      "//unpkg.com/@waline/emojis@1.2.0/weibo",
-      "//unpkg.com/@waline/emojis@1.2.0/bilibili",
-    ],
-    requiredMeta: ["nick"], // 必填项：昵称
-    login: "disable", // 禁用登录，降低门槛
-    locale: {
-      placeholder:
-        "支持 LaTeX 公式输入 (例如：$\\int x dx$)。留下昵称即可交流，无需登录。",
+  const observer = new IntersectionObserver(
+    (entries) => {
+      if (entries[0].isIntersecting) {
+        walineInstance = init({
+          el: "#waline",
+          serverURL: serverURL,
+          dark: "html.dark", // 自动适配暗黑模式
+          emoji: [
+            "//unpkg.com/@waline/emojis@1.2.0/weibo",
+            "//unpkg.com/@waline/emojis@1.2.0/bilibili",
+          ],
+          requiredMeta: ["nick"], // 必填项：昵称
+          login: "disable", // 禁用登录，降低门槛
+          locale: {
+            placeholder:
+              "支持 LaTeX 公式输入 (例如：$\\int x dx$)。留下昵称即可交流，无需登录。",
+          },
+        });
+        // 初始化后停止观察
+        observer.disconnect();
+      }
     },
-  });
+    { rootMargin: "200px" } // 提前 200px 开始加载，提升用户体验
+  );
+
+  const el = document.querySelector("#waline");
+  if (el) observer.observe(el);
 });
 
 onUnmounted(() => {
