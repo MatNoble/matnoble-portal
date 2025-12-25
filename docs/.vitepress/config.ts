@@ -206,7 +206,7 @@ export default defineConfig({
             name: "Universal Formula for Differentials (微分万能公式)",
             author: { "@id": "https://matnoble.top/#person" },
             description:
-              "A simplified operational framework for calculating differentials of composite functions: dy = d(f(□)) = f'(□) d(□).",
+              "A simplified operational framework for calculating differentials of composite functions: \mathrm{d}y = \mathrm{d}(f(□)) = f'(□) \mathrm{d}(□).",
             inLanguage: "zh-CN",
           },
           {

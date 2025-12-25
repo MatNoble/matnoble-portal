@@ -12,12 +12,15 @@ description: 面向工科本科生的微积分复习指南。详解极限计算�
 针对考试中的核心计算痛点，我在技术博客中总结了三篇全攻略，建议结合 [Memorize 记忆助手](/tools/memorize) 使用：
 
 ### 1. [极限计算攻略：先判型，再选法](https://blog.matnoble.top/math/calculus/limit/)
+
 **核心心法**：强调“八大等价无穷小”与 $1^\infty$ 型公式。详细讲解洛必达法则的适用边界，以及变上限积分求导的“拖尾巴”技巧，助你秒杀考研/期末极限大题。
 
 ### 2. [导数与微分：微分万能公式实战](https://blog.matnoble.top/math/calculus/universal-differential-formula/)
-**核心心法**：以“微分万能公式” $dy=f'(\square)d(\square)$ 为核心，攻克隐函数、参数方程、变上限积分函数等各类导数。特别讲解“分母除以 $x'(t)$”等二阶导数易错点。
+
+**核心心法**：以“微分万能公式” $\mathrm{d}y=f'(\square)\mathrm{d}(\square)$ 为核心，攻克隐函数、参数方程、变上限积分函数等各类导数。特别讲解“分母除以 $x'(t)$”等二阶导数易错点。
 
 ### 3. [积分计算指南：凑微分与换元大法](https://blog.matnoble.top/math/calculus/integral/)
+
 **核心心法**：深入拆解“凑微分”基本功，提供“三角换元去根号”、“分部积分反对幂三指”等实战模板。针对定积分，强调“换元必换限”与“利用奇偶对称性”的秒杀技巧。
 
 ---
@@ -26,8 +29,9 @@ description: 面向工科本科生的微积分复习指南。详解极限计算�
 
 ::: tip 微分万能公式 (Universal Formula)
 利用一阶微分形式不变性，将复杂的链式法则转化为直观的填空操作。
+
 - **实战练习**：[前往 Memorize 练习核心公式](/tools/memorize)
-:::
+  :::
 
 ---
 
@@ -43,5 +47,6 @@ description: 面向工科本科生的微积分复习指南。详解极限计算�
     - 场论初步（散度与旋度）
 
 ## 📖 推荐教材
+
 - 同济大学《高等数学》
-- James Stewart, *Calculus*
+- James Stewart, _Calculus_
