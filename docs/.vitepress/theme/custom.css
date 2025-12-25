@@ -1,22 +1,25 @@
 :root {
   /* MatNoble Brand Colors - Modern Academic Palette (Morandi/Nordic Style) */
-  --mn-red: #E05D52;    
-  --mn-yellow: #F0B94D; 
-  --mn-green: #4AA98C;  
-  --mn-blue: #4D84C4;   
-  --mn-core: #2C3E50;
-  
+  --mn-red: #e05d52;
+  --mn-yellow: #f0b94d;
+  --mn-green: #4aa98c;
+  --mn-blue: #4d84c4;
+  --mn-core: #2c3e50;
+
   /* 字体配置 */
-  --vp-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  --vp-font-family-mono: "JetBrains Mono", source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  --vp-font-family-base: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+  --vp-font-family-mono: "JetBrains Mono", source-code-pro, Menlo, Monaco,
+    Consolas, "Courier New", monospace;
 }
 
 .dark {
   --mn-core: #ffffff;
-  --mn-red: #E57368;
-  --mn-yellow: #F5C66D;
-  --mn-green: #64C4A6;
-  --mn-blue: #6BA3E0;
+  --mn-red: #e57368;
+  --mn-yellow: #f5c66d;
+  --mn-green: #64c4a6;
+  --mn-blue: #6ba3e0;
 }
 
 /* =========================================
@@ -33,7 +36,9 @@ body {
    ========================================= */
 
 /* 通用过渡效果 */
-.VPFeature, .VPButton.brand, .vp-doc a {
+.VPFeature,
+.VPButton.brand,
+.vp-doc a {
   transition: all 0.3s ease;
 }
 
@@ -59,7 +64,13 @@ body {
     left: 0;
     width: 100%;
     height: 3px;
-    background: linear-gradient(90deg, var(--mn-red), var(--mn-yellow), var(--mn-green), var(--mn-blue));
+    background: linear-gradient(
+      90deg,
+      var(--mn-red),
+      var(--mn-yellow),
+      var(--mn-green),
+      var(--mn-blue)
+    );
     opacity: 0;
     transition: opacity 0.3s ease;
   }
@@ -81,7 +92,7 @@ body {
   }
 
   .vp-doc a::after {
-    content: '';
+    content: "";
     position: absolute;
     width: 100%;
     height: 1px;
@@ -106,7 +117,7 @@ body {
 /* 1. 导航栏 Logo 位置修正 */
 /* 移动端 (宽度 < 960px): 左侧有汉堡菜单，给 Logo 一点左间距，避免太拥挤 */
 .VPNavBarTitle.has-sidebar {
-  padding-left: 16px; 
+  padding-left: 16px;
 }
 
 /* 桌面端 (宽度 >= 960px): 侧边栏展开，Logo 归位 */
@@ -116,12 +127,13 @@ body {
   }
 }
 
+/* 修复移动端 Logo 与默认 Site Title 重现的问题 - 已通过 siteTitle: false 解决，不再需要额外隐藏 */
 /* 2. 404 页面字体适配 */
 .custom-404 h1 {
   font-size: 6rem;
   margin-bottom: 1rem;
   color: var(--mn-red);
-  font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
   line-height: 1;
 }
 
@@ -147,12 +159,110 @@ body {
   }
 }
 
+/* 4. 数学公式与表格移动端适配 */
+/* 处理 MathJax 块级公式溢出 */
+.mjx-container[display="true"] {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+  padding: 1rem 0;
+}
+
+/* 处理 Markdown 表格溢出 */
+.vp-doc table {
+  display: block;
+  overflow-x: auto;
+}
+
+/* 移动端间距微调 */
+@media (max-width: 640px) {
+  .vp-doc h1 {
+    font-size: 1.75rem;
+  }
+  .vp-doc h2 {
+    font-size: 1.5rem;
+  }
+  .vp-doc h3 {
+    font-size: 1.25rem;
+  }
+
+  .VPHero {
+    padding: 32px 24px !important;
+  }
+
+  .VPFeature {
+    padding: 20px !important;
+  }
+
+  /* 解决首页 Hero 标题与吸顶导航栏 Logo 重叠的问题 */
+  .VPHero {
+    padding-top: 150px !important;
+  }
+}
+
+/* 5. 速查表页面页眉适配 */
+.cs-header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--mn-blue);
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+}
+
+.cs-header-title {
+  margin: 0;
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+.cs-header-subtitle {
+  margin: 0;
+  color: var(--vp-c-text-2);
+  font-size: 0.9rem;
+}
+
+.cs-header-right {
+  text-align: right;
+}
+
+.cs-header-brand {
+  font-weight: bold;
+  font-size: 1.5rem;
+  font-family: 'Outfit', sans-serif;
+}
+
+.cs-header-url {
+  font-size: 0.8rem;
+  color: var(--vp-c-text-3);
+}
+
+@media (max-width: 640px) {
+  .cs-header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .cs-header-right {
+    text-align: left;
+  }
+  
+  .cs-header-title {
+    font-size: 1.5rem;
+  }
+}
+
 /* =========================================
    打印模式适配 (Print Mode)
    ========================================= */
 @media print {
   /* 隐藏不需要的 UI 元素 */
-  .VPNav, .VPSidebar, .VPDocFooter, .VPFooter, .edit-link {
+  .VPNav,
+  .VPSidebar,
+  .VPDocFooter,
+  .VPFooter,
+  .edit-link {
     display: none !important;
   }
 

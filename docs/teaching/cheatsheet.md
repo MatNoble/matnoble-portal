@@ -11,15 +11,15 @@ const printPage = () => {
 </script>
 
 <div class="print-header">
-  <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #4D84C4; padding-bottom: 1rem; margin-bottom: 2rem;">
-    <div>
-      <h1 style="margin: 0; font-size: 2.2rem; line-height: 1.2;">核心心法速查表</h1>
-      <p style="margin: 0; color: #666; font-size: 1rem;">Engineering Math Core Methods Cheat Sheet</p>
+  <div class="cs-header-inner">
+    <div class="cs-header-left">
+      <h1 class="cs-header-title">核心心法速查表</h1>
+      <p class="cs-header-subtitle">Engineering Math Core Methods Cheat Sheet</p>
     </div>
-    <div style="text-align: right;">
-      <span style="font-weight: bold; font-size: 1.5rem; font-family: 'Outfit', sans-serif;">MatNoble</span>
+    <div class="cs-header-right">
+      <span class="cs-header-brand">MatNoble</span>
       <br>
-      <span style="font-size: 0.9rem;">matnoble.top</span>
+      <span class="cs-header-url">matnoble.top</span>
     </div>
   </div>
 </div>
@@ -37,11 +37,13 @@ $$\mathrm{d}y=\mathrm{d}(f(\square))=f'(\square)\mathrm{d}(\square)$$
 :::
 
 ### 💡 操作流程
+
 1.  **观察**：识别最外层函数 $f$ 和内层函数 $\square$。
 2.  **剥皮**：对最外层求导 $f'(\square)$，保留内层不动。
 3.  **填空**：在微分号 $\mathrm{d}$ 后填入内层函数 $\square$，继续对 $\mathrm{d}(\square)$ 重复上述步骤。
 
 ### 🔥 实战示例
+
 求 $y=\ln(\sin(e^x))$ 的微分：
 
 $$\begin{aligned}\mathrm{d}y & = \mathrm{d}(\ln(\sin(e^x)))\\&=\frac{1}{\sin(e^x)}\mathrm{d}(\sin(e^x))\quad\text{(剥去 ln)}\\&=\frac{1}{\sin(e^x)}\cos(e^x)\mathrm{d}(e^x)\quad\text{(剥去 sin)}\\&=\cot(e^x)e^x\mathrm{d}x\quad\text{(剥去 e)}\end{aligned}$$
@@ -57,7 +59,9 @@ $$\begin{aligned}\mathrm{d}y & = \mathrm{d}(\ln(\sin(e^x)))\\&=\frac{1}{\sin(e^x
 :::
 
 ### 💡 核心法则 (LIATE)
+
 选取 **D 列 (求导)** 和 **I 列 (积分)** 的优先级：
+
 1.  **L**ogarithmic (对数) $\to$ 优先 D
 2.  **I**nverse Trig (反三角) $\to$ 优先 D
 3.  **A**lgebraic (代数/多项式) $\to$ 视情况 (通常 D)
@@ -65,14 +69,15 @@ $$\begin{aligned}\mathrm{d}y & = \mathrm{d}(\ln(\sin(e^x)))\\&=\frac{1}{\sin(e^x
 5.  **E**xponential (指数) $\to$ I
 
 ### 🔥 实战示例
+
 求 $\int x^2 e^{2x}\mathrm{d}x$：
 
-| 符号 | **D** (求导) | **I** (积分) |
-| :---: | :--- | :--- |
-| $+$ | $x^2$ | $e^{2x}$ |
-| $-$ | $2x$ | $\frac{1}{2}e^{2x}$ |
-| $+$ | $2$ | $\frac{1}{4}e^{2x}$ |
-| $-$ | $0$ | $\frac{1}{8}e^{2x}$ |
+| 符号 | **D** (求导) | **I** (积分)        |
+| :--: | :----------- | :------------------ |
+| $+$  | $x^2$        | $e^{2x}$            |
+| $-$  | $2x$         | $\frac{1}{2}e^{2x}$ |
+| $+$  | $2$          | $\frac{1}{4}e^{2x}$ |
+| $-$  | $0$          | $\frac{1}{8}e^{2x}$ |
 
 **结果** (对角线相乘求和)：
 $$\int x^2 e^{2x}\mathrm{d}x=\left(x^2\cdot\frac{1}{2}e^{2x}\right)-\left(2x\cdot\frac{1}{4}e^{2x}\right)+\left(2\cdot\frac{1}{8}e^{2x}\right)+C$$

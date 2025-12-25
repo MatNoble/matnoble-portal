@@ -21,7 +21,7 @@
       <p class="success-message">验证成功！可以下载了。</p>
       <button @click="startDownload" class="download-button">立即下载</button>
     </div>
-    
+
     <p v-if="error" class="error-message">{{ error }}</p>
 
     <!-- 微信二维码弹窗 -->
@@ -36,7 +36,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref } from "vue";
 
 const props = defineProps({
   // 正确的下载码
@@ -51,23 +51,23 @@ const props = defineProps({
   },
 });
 
-const userInput = ref('');
+const userInput = ref("");
 const unlocked = ref(false);
-const error = ref('');
+const error = ref("");
 const isQROverlayVisible = ref(false);
 
 const verifyCode = () => {
   if (userInput.value.trim().toLowerCase() === props.code.toLowerCase()) {
     unlocked.value = true;
-    error.value = '';
+    error.value = "";
   } else {
-    error.value = '验证码错误，请重新输入。';
+    error.value = "验证码错误，请重新输入。";
     unlocked.value = false;
   }
 };
 
 const startDownload = () => {
-  window.open(props.fileUrl, '_blank');
+  window.open(props.fileUrl, "_blank");
 };
 
 const showQRCode = () => {
@@ -110,10 +110,12 @@ const hideQRCode = () => {
   text-decoration: underline;
 }
 
-.verify-section, .download-section {
+.verify-section,
+.download-section {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .verify-section input {
@@ -124,7 +126,8 @@ const hideQRCode = () => {
   background-color: var(--vp-c-bg-soft);
 }
 
-.verify-section button, .download-button {
+.verify-section button,
+.download-button {
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 6px;
@@ -133,7 +136,8 @@ const hideQRCode = () => {
   cursor: pointer;
   transition: background-color 0.25s;
 }
-.verify-section button:hover, .download-button:hover {
+.verify-section button:hover,
+.download-button:hover {
   background-color: var(--vp-c-brand-dark);
 }
 
@@ -173,7 +177,7 @@ const hideQRCode = () => {
   padding: 2rem;
   border-radius: 12px;
   text-align: center;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 .qr-modal img {
