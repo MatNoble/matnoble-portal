@@ -11,9 +11,9 @@ description: MatNoble 的个人简介与联系方式。作为高校数学教师�
 
 - **专业**: 数学系硕士，研究方向为偏微分方程数值解。
 - **职业**: 大学讲师，主讲《高等数学》、《线性代数》、《离散数学》等。
-- **技能**: 
-    - 数学: 分析、代数、几何
-    - 开发: Python, MatLab, LaTeX, Java, Go
+- **技能**:
+  - 数学: 分析、代数、几何
+  - 开发: Python, MatLab, LaTeX, Java, Go
 
 ## 愿景
 
@@ -30,6 +30,10 @@ description: MatNoble 的个人简介与联系方式。作为高校数学教师�
   <img src="/qrcode_for_wechat.jpg" width="200" alt="微信公众号：数学思维探究社">
   <p>扫描上方二维码关注微信公众号</p>
 </div>
+
+::: info 更多关于我
+如需了解更多生活随笔与技术折腾记录，请访问我的个人博客：[blog.matnoble.top](https://blog.matnoble.top/about/){rel="me"}
+:::
 
 ## FAQ (常见问题)
 
