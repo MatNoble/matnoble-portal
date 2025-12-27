@@ -5,7 +5,7 @@ export default defineConfig({
   lang: "zh-CN",
   title: "MatNoble",
   description:
-    "大学数学教师 MatNoble 的个人门户。分享工科数学教学（微积分、线性代数）与学习方法，提供数学辅助工具。",
+    "大学数学教师 MatNoble 的个人门户。专注于微积分三大计算（微分万能公式、DI表格法）与线性代数教学，分享数学学习方法与辅助工具。",
 
   markdown: {
     math: true,
@@ -108,7 +108,7 @@ export default defineConfig({
     const title = pageData.title || "MatNoble";
     const description =
       pageData.description ||
-      "大学数学教师 MatNoble 的个人门户。分享工科数学教学（微积分、线性代数）与学习方法，提供数学辅助工具。";
+      "大学数学教师 MatNoble 的个人门户。专注于微积分三大计算（微分万能公式、DI表格法）与线性代数教学，分享数学学习方法与辅助工具。";
     const image = pageData.frontmatter.image || "/logo.svg"; // 默认图片，建议后续替换为专门的 social-card.png
     const imageUrl = image.startsWith("http")
       ? image

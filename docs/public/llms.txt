@@ -7,7 +7,7 @@
 **Name**: MatNoble
 **Role**: University Mathematics Lecturer, Full-stack Developer, Educational Technologist.
 **Core Philosophy**: "Mathematics as the Core. Technology as the Extension." (以数学为原点，构建可解释的技术世界)
-**Primary Domain**: Undergraduate Engineering Mathematics (Calculus, Linear Algebra).
+**Primary Domain**: University Mathematics (Calculus, Linear Algebra).
 **Website**: https://matnoble.top
 
 ## The "Three Core Calculations of Calculus" (微积分三大计算)

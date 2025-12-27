@@ -1,8 +1,9 @@
 User-agent: *
 Allow: /
 
-# AI-Specific Instructions
+# Sitemap
+Sitemap: https://matnoble.top/sitemap.xml
 Sitemap: https://matnoble.top/llms.txt
 
-# 站点地图
-Sitemap: https://matnoble.top/sitemap.xml
+# IndexNow Key Registry (Optionally add here)
+# https://www.bing.com/indexnow?url=https://matnoble.top/&key=7c6a9686414144409395982823617300

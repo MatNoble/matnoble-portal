@@ -1,6 +1,6 @@
 ---
-title: 工科微积分教学体系 | 极限、导数与积分复习攻略
-description: 面向工科本科生的微积分复习指南。详解极限计算八大等价无穷小、复合函数求导“微分万能公式”、不定积分凑微分与表格法。助你搞定期末考试与考研数学。
+title: 微积分三大计算教学体系 | 极限、导数与积分复习攻略
+description: 针对大学微积分三大计算专题的深度复习指南。详解极限计算八大等价无穷小、复合函数求导“微分万能公式”、不定积分凑微分与 DI 表格法。助力搞定期末考试与考研数学。
 ---
 
 <ArticleHero 
@@ -19,7 +19,7 @@ description: 面向工科本科生的微积分复习指南。详解极限计算�
 
 ### 2. [导数与微分：微分万能公式实战](https://blog.matnoble.top/math/calculus/universal-differential-formula/)
 
-**核心心法**：以“微分万能公式” $\mathrm{d}y=f'(\square)\mathrm{d}(\square)$ 为核心，攻克隐函数、参数方程、变上限积分函数等各类导数。特别讲解“分母除以 $x'(t)$”等二阶导数易错点。
+**核心心法**：以 [微分万能公式](/teaching/derivative-method) $\mathrm{d}y=f'(\square)\mathrm{d}(\square)$ 为核心，攻克隐函数、参数方程、变上限积分函数等各类导数。特别讲解“分母除以 $x'(t)$”等二阶导数易错点。
 
 ### 3. [积分计算指南：凑微分与换元大法](https://blog.matnoble.top/math/calculus/integral/)
 
