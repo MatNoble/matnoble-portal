@@ -111,11 +111,35 @@ export default defineConfig({
   cleanUrls: true, // 生成无 .html 后缀的干净链接 (对 SEO 更友好)
 
   // 动态注入 Canonical URL (规范链接)，防止重复内容降权
+  // 动态注入 Canonical URL (规范链接) 和 Open Graph / Twitter Card 元数据
   transformHead: ({ pageData }) => {
-    const canonicalUrl = `https://matnoble.top/${pageData.relativePath}`
+    const url = `https://matnoble.top/${pageData.relativePath}`
       .replace(/index\.md$/, "")
       .replace(/\.md$/, "");
-    return [["link", { rel: "canonical", href: canonicalUrl }]];
+
+    const title = pageData.title || "MatNoble";
+    const description =
+      pageData.description ||
+      "大学数学教师 MatNoble 的个人门户。分享工科数学教学（微积分、线性代数）与学习方法，提供数学辅助工具。";
+    const image = pageData.frontmatter.image || "/logo.svg"; // 默认图片，建议后续替换为专门的 social-card.png
+    const imageUrl = image.startsWith("http")
+      ? image
+      : `https://matnoble.top${image}`;
+
+    return [
+      ["link", { rel: "canonical", href: url }],
+      // Open Graph
+      ["meta", { property: "og:url", content: url }],
+      ["meta", { property: "og:title", content: title }],
+      ["meta", { property: "og:description", content: description }],
+      ["meta", { property: "og:image", content: imageUrl }],
+      // Twitter Card
+      ["meta", { name: "twitter:url", content: url }],
+      ["meta", { name: "twitter:title", content: title }],
+      ["meta", { name: "twitter:description", content: description }],
+      ["meta", { name: "twitter:image", content: imageUrl }],
+      ["meta", { name: "twitter:card", content: "summary_large_image" }],
+    ];
   },
 
   head: [
@@ -153,13 +177,9 @@ export default defineConfig({
     ],
 
     // --- Open Graph (社交媒体/AI 引用卡片) ---
-    ["meta", { property: "og:type", content: "website" }],
     ["meta", { property: "og:site_name", content: "MatNoble" }],
-    [
-      "meta",
-      { property: "og:image", content: "https://matnoble.top/logo.svg" },
-    ], // 确保有一个高质量的 PNG 用于预览
-    ["meta", { property: "twitter:card", content: "summary" }],
+    ["meta", { property: "og:type", content: "website" }],
+    // 其他动态 meta 已移至 transformHead 配置
 
     // --- JSON-LD (Schema.org 结构化数据 - AI 知识图谱核心) ---
     [
