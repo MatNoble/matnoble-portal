@@ -30,40 +30,32 @@ export default defineConfig({
     // 顶部导航
     nav: [
       { text: "首页", link: "/" },
-      { text: "大学数学教学", link: "/teaching/" },
-      { text: "常见问题", link: "/faq" },
-      { text: "数学工具", link: "/tools/" },
-      { text: "技术博客", link: "https://blog.matnoble.top" }, // 外部链接区分门户与博客
+      {
+        text: "课程",
+        items: [
+          { text: "工科微积分", link: "/teaching/calculus" },
+          { text: "线性代数", link: "/teaching/linear-algebra" },
+          { text: "微分万能公式", link: "/teaching/derivative-method" },
+          {
+            text: "核心心法速查表 (CheatSheet)",
+            link: "/teaching/cheatsheet",
+          },
+        ],
+      },
+      {
+        text: "工具",
+        items: [
+          { text: "Memorize 助手", link: "/tools/memorize" },
+          { text: "工具集概览", link: "/tools/" },
+        ],
+      },
+      { text: "技术博客", link: "https://blog.matnoble.top" },
       { text: "关于", link: "/about" },
     ],
 
     // 侧边栏配置
     sidebar: {
-      "/teaching/": [
-        {
-          text: "大学数学教学",
-          items: [
-            { text: "教学体系概览", link: "/teaching/" },
-            { text: "工科微积分", link: "/teaching/calculus" },
-            { text: "微分万能公式", link: "/teaching/derivative-method" },
-            { text: "线性代数", link: "/teaching/linear-algebra" },
-            {
-              text: "核心心法速查表 (CheatSheet)",
-              link: "/teaching/cheatsheet",
-            },
-            { text: "常见问题 (FAQ)", link: "/faq" },
-          ],
-        },
-      ],
-      "/tools/": [
-        {
-          text: "数学工具",
-          items: [
-            { text: "工具集概览", link: "/tools/" },
-            { text: "Memorize 记忆助手", link: "/tools/memorize" },
-          ],
-        },
-      ],
+      // 全局菜单已移至顶部导航下拉框
     },
 
     socialLinks: [

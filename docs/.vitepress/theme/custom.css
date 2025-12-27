@@ -6,10 +6,10 @@
   --mn-blue: #4d84c4;
   --mn-core: #2c3e50;
 
-/* 字体配置 */
-  --vp-font-family-base: "Lora", "Noto Serif SC", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",
-    "Helvetica Neue", sans-serif;
+  /* 字体配置 */
+  --vp-font-family-base: "Lora", "Noto Serif SC", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   --vp-font-family-mono: "JetBrains Mono", source-code-pro, Menlo, Monaco,
     Consolas, "Courier New", monospace;
 }
@@ -18,7 +18,7 @@
    字体与排版增强
    ========================================= */
 :root {
-  --vp-font-size-base: 17px; /* 稍微调大基础字号，宋体在 17-18px 下表现最好 */
+  --vp-font-size-base: 17px;
 }
 
 body {
@@ -26,40 +26,74 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  letter-spacing: 0.01em; /* 增加极微小的间距，防止笔画粘连 */
-  line-height: 1.75; /* 增加行高，让阅读更舒适 */
+  letter-spacing: 0.015em; /* 稍微增加字间距 */
+  line-height: 1.8; /* 更加宽松的行高 */
 }
 
-/* 针对正文段落，让宋体看起来更“扎实” */
-.vp-doc p, .vp-doc li {
-  font-weight: 450; /* 比标准的 400 稍微重一点点（如果字体支持），或者保持 400 但增加清晰度 */
+/* 针对正文段落 */
+.vp-doc p,
+.vp-doc li {
+  font-weight: 450;
   color: var(--vp-c-text-1);
+  margin-bottom: 1.25rem;
 }
 
 /* =========================================
-   交互特效 (仅限支持 Hover 的设备，即 PC/Mac)
+   Glassmorphism (玻璃拟态) & 现代 UI
+   ========================================= */
+
+/* 导航栏玻璃效果 */
+.VPNavBar {
+  background-color: rgba(255, 255, 255, 0.75) !important;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dark .VPNavBar {
+  background-color: rgba(30, 30, 30, 0.75) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* 侧边栏玻璃效果 */
+.VPSidebar {
+  background-color: rgba(255, 255, 255, 0.6) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dark .VPSidebar {
+  background-color: rgba(30, 30, 30, 0.6) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* =========================================
+   交互特效 (仅限支持 Hover 的设备)
    ========================================= */
 
 /* 通用过渡效果 */
 .VPFeature,
 .VPButton.brand,
-.vp-doc a {
-  transition: all 0.3s ease;
+.vp-doc a,
+.VPNavBar a {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 /* --- 特性卡片 (Features) --- */
 .VPFeature {
   position: relative;
   overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  background: var(--vp-c-bg-soft);
 }
 
-/* 仅在非触摸设备上启用悬停特效，防止手机端点击后样式粘滞 */
 @media (hover: hover) {
   .VPFeature:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
     border-color: var(--mn-blue);
-    background-color: var(--vp-c-bg-soft);
+    background-color: var(--vp-c-bg);
   }
 
   .VPFeature::before {
@@ -85,13 +119,25 @@ body {
   }
 
   /* 按钮悬停增强 */
+  .VPButton.brand {
+    border-radius: 8px; /* 更圆润的按钮 */
+    font-weight: 600;
+  }
+
   .VPButton.brand:hover {
     background-color: var(--mn-blue);
-    box-shadow: 0 4px 15px rgba(77, 132, 196, 0.4);
-    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(77, 132, 196, 0.35);
+    transform: translateY(-2px);
   }
 
   /* 链接下划线动效 */
+  .vp-doc a {
+    color: var(--mn-blue);
+    text-decoration: none;
+    position: relative;
+    font-weight: 500;
+  }
+
   .vp-doc a:hover {
     color: var(--mn-red);
   }
@@ -100,7 +146,7 @@ body {
     content: "";
     position: absolute;
     width: 100%;
-    height: 1px;
+    height: 1.5px;
     bottom: -2px;
     left: 0;
     background-color: var(--mn-red);
@@ -120,19 +166,16 @@ body {
    ========================================= */
 
 /* 1. 导航栏 Logo 位置修正 */
-/* 移动端 (宽度 < 960px): 左侧有汉堡菜单，给 Logo 一点左间距，避免太拥挤 */
 .VPNavBarTitle.has-sidebar {
   padding-left: 16px;
 }
 
-/* 桌面端 (宽度 >= 960px): 侧边栏展开，Logo 归位 */
 @media (min-width: 960px) {
   .VPNavBarTitle.has-sidebar {
     padding-left: 0;
   }
 }
 
-/* 修复移动端 Logo 与默认 Site Title 重现的问题 - 已通过 siteTitle: false 解决，不再需要额外隐藏 */
 /* 2. 404 页面字体适配 */
 .custom-404 h1 {
   font-size: 6rem;
@@ -147,25 +190,23 @@ body {
   border-left-color: var(--mn-blue);
 }
 
-/* 手机端缩小 404 标题 */
 @media (max-width: 768px) {
   .custom-404 h1 {
-    font-size: 4rem; /* 6rem -> 4rem */
+    font-size: 4rem;
   }
 }
 
-/* 3. 链接在移动端保持一定的高亮色（因为没有 hover），提升可点击感 */
+/* 3. 链接在移动端保持一定的高亮色 */
 @media (hover: none) {
   .vp-doc a {
-    color: var(--mn-blue); /* 保持品牌蓝 */
-    text-decoration: underline; /* 加上下划线提示可点击 */
+    color: var(--mn-blue);
+    text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 2px;
   }
 }
 
 /* 4. 数学公式与表格移动端适配 */
-/* 处理 MathJax 块级公式溢出 */
 .mjx-container[display="true"] {
   overflow-x: auto;
   overflow-y: hidden;
@@ -173,10 +214,11 @@ body {
   padding: 1rem 0;
 }
 
-/* 处理 Markdown 表格溢出 */
 .vp-doc table {
   display: block;
   overflow-x: auto;
+  border-radius: 8px; /* 表格圆角 */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* 轻微阴影 */
 }
 
 /* 移动端间距微调 */
@@ -193,15 +235,11 @@ body {
 
   .VPHero {
     padding: 32px 24px !important;
+    padding-top: 120px !important;
   }
 
   .VPFeature {
     padding: 20px !important;
-  }
-
-  /* 解决首页 Hero 标题与吸顶导航栏 Logo 重叠的问题 */
-  .VPHero {
-    padding-top: 150px !important;
   }
 }
 
@@ -234,7 +272,7 @@ body {
 .cs-header-brand {
   font-weight: bold;
   font-size: 1.5rem;
-  font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
 }
 
 .cs-header-url {
@@ -248,11 +286,11 @@ body {
     align-items: flex-start;
     gap: 1rem;
   }
-  
+
   .cs-header-right {
     text-align: left;
   }
-  
+
   .cs-header-title {
     font-size: 1.5rem;
   }
@@ -262,7 +300,6 @@ body {
    打印模式适配 (Print Mode)
    ========================================= */
 @media print {
-  /* 隐藏不需要的 UI 元素 */
   .VPNav,
   .VPSidebar,
   .VPDocFooter,
@@ -270,34 +307,20 @@ body {
   .edit-link {
     display: none !important;
   }
-
-  /* 调整主内容区域 */
-  .VPContent {
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-
-  .VPDoc {
-    padding: 0 !important;
-  }
-
+  .VPContent,
+  .VPDoc,
   .container {
-    max-width: 100% !important;
+    padding: 0 !important;
     margin: 0 !important;
+    max-width: 100% !important;
   }
-
-  /* 移除背景色，确保打印清晰 */
   body {
     background-color: white !important;
     color: black !important;
   }
-
-  /* 强制展开所有折叠内容 (如果有) */
   details {
     display: block !important;
   }
-
-  /* 保证公式清晰 */
   .mjx-chtml {
     font-size: 100% !important;
   }
