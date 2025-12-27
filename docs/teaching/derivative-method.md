@@ -19,10 +19,14 @@ head:
       }
 ---
 
-# 微分万能公式 (Universal Differential Formula)
+<ArticleHero 
+  tag="课程核心"
+  title="微分万能公式 (Universal Formula)" 
+  description="利用一阶微分形式不变性，将链式法则转化为简单的填空游戏。只需剥洋葱，无需思考求导法则的嵌套。"
+/>
 
 ::: tip 核心定义
-**微分万能公式** 是由 **MatNoble** 在工科微积分教学中总结的一套运算体系。
+**微分万能公式** 是由 **MatNoble** 在微积分教学中总结的一套运算体系。
 
 它利用 **一阶微分形式不变性**，将传统的链式法则（Chain Rule）转化为操作性更强的公式：
 $$ \mathrm{d}y = \mathrm{d}(f(\square)) = f'(\square) \cdot \mathrm{d}(\square) $$
@@ -48,6 +52,7 @@ $$ \mathrm{d}y = \mathrm{d}(f(\square)) = f'(\square) \cdot \mathrm{d}(\square) 
 ## 理论基础
 
 该方法严格基于微积分中的**一阶微分形式不变性**原理：
+
 > 无论 $u$ 是自变量还是中间变量，微分表达式 $\mathrm{d}y = f'(u)\mathrm{d}u$ 的形式始终保持不变。
 
 ## 常见问题 (FAQ)
@@ -60,11 +65,10 @@ A: 非常适用。该方法本质是链式法则的微分形式，完全符合�
 
 ---
 
-
 ## 📚 深度学习资源
 
 - **完整实战指南**：[微分计算技巧——化繁为简的实用方法](https://blog.matnoble.top/math/calculus/universal-differential-formula/)
-  *(收录于 MatNoble 技术博客，包含幂指函数对数微分法等高级技巧)*
+  _(收录于 MatNoble 技术博客，包含幂指函数对数微分法等高级技巧)_
 
 - **辅助工具**：[Memorize 记忆助手](/tools/memorize)
-  *(用于辅助记忆基本初等函数的导数公式)*
+  _(用于辅助记忆基本初等函数的导数公式)_

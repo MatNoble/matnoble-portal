@@ -3,7 +3,7 @@ layout: home
 
 title: MatNoble
 titleTemplate: 大学数学教学与技术探索
-description: 大学数学教师MatNoble的个人门户。专注于工科数学教学研究（微积分、线性代数），分享数学学习方法，开发数学辅助工具，致力于以数学训练思维，用技术改善学习与生活。
+description: 大学数学教师MatNoble的个人门户。专注于数学教学研究（微积分、线性代数），分享数学学习方法，开发数学辅助工具，致力于以数学训练思维，用技术改善学习与生活。
 
 hero:
   name: MatNoble
@@ -19,7 +19,7 @@ hero:
 
 features:
   - title: 大学数学教学
-    details: 面向工科本科生的微积分与线性代数教学体系，包含“三大计算”全攻略，强调数学思维训练与工程应用。
+    details: 面向大学本科生的微积分与线性代数教学体系，包含“三大计算”全攻略，强调数学思维训练与工程应用。
     link: /teaching/
     linkText: 查看教学大纲
   - title: 数学辅助工具

@@ -33,22 +33,18 @@ export default defineConfig({
       {
         text: "课程",
         items: [
-          { text: "工科微积分", link: "/teaching/calculus" },
-          { text: "线性代数", link: "/teaching/linear-algebra" },
-          { text: "微分万能公式", link: "/teaching/derivative-method" },
           {
-            text: "核心心法速查表 (CheatSheet)",
-            link: "/teaching/cheatsheet",
+            text: "微积分 (Calculus)",
+            items: [
+              { text: "教学体系概览", link: "/teaching/calculus" },
+              { text: "微分万能公式", link: "/teaching/derivative-method" },
+              { text: "核心心法速查表 (CheatSheet)", link: "/teaching/cheatsheet" },
+            ],
           },
+          { text: "线性代数", link: "/teaching/linear-algebra" },
         ],
       },
-      {
-        text: "工具",
-        items: [
-          { text: "Memorize 助手", link: "/tools/memorize" },
-          { text: "工具集概览", link: "/tools/" },
-        ],
-      },
+      { text: "Memorize 助手", link: "/tools/memorize" },
       { text: "技术博客", link: "https://blog.matnoble.top" },
       { text: "关于", link: "/about" },
     ],

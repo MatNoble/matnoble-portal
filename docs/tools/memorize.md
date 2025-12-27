@@ -11,7 +11,7 @@ description: 专为数学学习者设计的间隔重复记忆工具，完美支�
   </p>
 </div>
 
-**Memorize** 是我专为工科学生开发的**间隔重复 (Spaced Repetition)** 记忆工具。它将复杂的数学公式转化为“肌肉记忆”。
+**Memorize** 是我专为大学生开发的**间隔重复 (Spaced Repetition)** 记忆工具。它将复杂的数学公式转化为“肌肉记忆”。
 
 ## 为什么选择 Memorize？
 

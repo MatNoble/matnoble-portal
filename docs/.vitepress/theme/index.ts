@@ -4,6 +4,8 @@ import Logo from "./components/Logo.vue";
 import Comment from "./components/Comment.vue";
 import DownloadCard from "./components/DownloadCard.vue"; // Import the new component
 import Share from "./components/Share.vue";
+import ReadingProgressBar from "./components/ReadingProgressBar.vue";
+import ArticleHero from "./components/ArticleHero.vue";
 import "./custom.css";
 import { inject } from "@vercel/analytics";
 
@@ -18,6 +20,7 @@ export default {
       "nav-bar-title-before": () => h(Logo),
       // 在文档内容之后插入分享组件和评论组件
       "doc-after": () => [h(Share), h(Comment)],
+      "layout-top": () => h(ReadingProgressBar),
     });
   },
   enhanceApp(ctx: EnhanceAppContext) {
@@ -25,6 +28,7 @@ export default {
     const { app } = ctx;
     app.component("DownloadCard", DownloadCard);
     app.component("CheatSheetFooter", CheatSheetFooter);
+    app.component("ArticleHero", ArticleHero);
     if (typeof window !== "undefined") {
       inject();
     }

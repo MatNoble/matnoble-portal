@@ -3,9 +3,11 @@ title: 线性代数与几何直观 | MatNoble
 description: 强调几何直觉与空间变换的线性代数教学体系。深入浅出讲解特征值、奇异值分解 (SVD) 等核心概念，拒绝死记硬背矩阵运算。
 ---
 
-# 线性代数 (Linear Algebra)
-
-_以空间变换为核心的现代线性代数教学。_
+<ArticleHero 
+  tag="教学体系"
+  title="线性代数 (Linear Algebra)" 
+  description="以空间变换为核心的现代线性代数教学。强调几何直觉，拒绝死记硬背矩阵运算。"
+/>
 
 ## 课程模块
 

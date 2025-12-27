@@ -1,6 +1,6 @@
 ---
 title: 微积分公式大全 & DI表格积分法速查表 (可打印 PDF)
-description: 专为工科大学生设计的期末复习/考研数学速查表。包含“微分万能公式”操作流程、“分部积分 DI 表格法”优先级口诀。支持 A4 打印与 PDF 导出。
+description: 专为大学生设计的期末复习/考研数学速查表。包含“微分万能公式”操作流程、“分部积分 DI 表格法”优先级口诀。支持 A4 打印与 PDF 导出。
 layout: doc
 ---
 
@@ -10,16 +10,23 @@ const printPage = () => {
 }
 </script>
 
-<div class="print-header">
-  <div class="cs-header-inner">
-    <div class="cs-header-left">
-      <h1 class="cs-header-title">核心心法速查表</h1>
-      <p class="cs-header-subtitle">Engineering Math Core Methods Cheat Sheet</p>
+<ArticleHero 
+  tag="工具速查"
+  title="核心心法速查表" 
+  description="包含微分万能公式操作流程、LIATE优先级口诀与DI表格积分法。支持 A4 打印与 PDF 导出。"
+  class="no-print"
+/>
+
+<div class="print-only" style="display: none;">
+  <div style="display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid #333; padding-bottom: 10px; margin-bottom: 20px;">
+    <div>
+      <h1 style="margin: 0; font-size: 24px;">核心心法速查表</h1>
+      <p style="margin: 5px 0 0 0; font-size: 14px; color: #666;">Math Core Methods Cheat Sheet</p>
     </div>
-    <div class="cs-header-right">
-      <span class="cs-header-brand">MatNoble</span>
+    <div style="text-align: right;">
+      <span style="font-weight: bold; font-size: 18px;">MatNoble</span>
       <br>
-      <span class="cs-header-url">matnoble.top</span>
+      <span style="font-size: 12px; color: #888;">matnoble.top</span>
     </div>
   </div>
 </div>
@@ -88,12 +95,23 @@ $$=\frac{1}{2}x^2 e^{2x}-\frac{1}{2}x e^{2x}+\frac{1}{4}e^{2x}+C$$
 <CheatSheetFooter />
 
 <style>
+@media screen {
+  .print-only {
+    display: none !important;
+  }
+}
 @media print {
   .no-print {
     display: none !important;
   }
+  .print-only {
+    display: block !important;
+  }
   @page {
     margin: 1cm;
+  }
+  .vp-doc {
+    padding: 0 !important;
   }
 }
 </style>
