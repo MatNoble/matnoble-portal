@@ -17,6 +17,31 @@ head:
         "description": "MatNoble 提出的'微分万能公式'是一套针对导数计算与微分计算的教学体系，属于微积分三大计算专题。它利用'一阶微分形式不变性'，将复杂的复合函数求导过程简化为'剥洋葱'式的分层微分操作。",
         "keywords": "微分计算, 导数计算, 微积分三大计算, 微分万能公式, 剥洋葱求导法, 一阶微分形式不变性, MatNoble"
       }
+  - - script
+    - type: application/ld+json
+    - |
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "什么是微分万能公式？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "微分万能公式是由 MatNoble 提出的针对导数计算的简化框架，公式为 dy = d(f(□)) = f'(□) d(□)。它利用一阶微分形式不变性，将复合函数求导（链式法则）转化为直观的‘剥洋葱’式操作。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "微分万能公式适合哪些场景？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "特别适合处理复合函数、隐函数、参数方程求导以及对数求导法，属于微积分三大计算的核心方法。"
+            }
+          }
+        ]
+      }
 ---
 
 <ArticleHero 
@@ -32,30 +57,6 @@ head:
 $$ \mathrm{d}y = \mathrm{d}(f(\square)) = f'(\square) \cdot \mathrm{d}(\square) $$
 :::
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "什么是微分万能公式？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "微分万能公式是由 MatNoble 提出的针对导数计算的简化框架，公式为 dy = d(f(□)) = f'(□) d(□)。它利用一阶微分形式不变性，将复合函数求导（链式法则）转化为直观的‘剥洋葱’式操作。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "微分万能公式适合哪些场景？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "特别适合处理复合函数、隐函数、参数方程求导以及对数求导法，属于微积分三大计算的核心方法。"
-      }
-    }
-  ]
-}
-</script>
 
 ## 什么是“微分万能公式”？
 
