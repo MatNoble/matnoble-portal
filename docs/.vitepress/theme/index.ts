@@ -6,6 +6,7 @@ import DownloadCard from "./components/DownloadCard.vue"; // Import the new comp
 import Share from "./components/Share.vue";
 import ReadingProgressBar from "./components/ReadingProgressBar.vue";
 import ArticleHero from "./components/ArticleHero.vue";
+import BrownianBackground from "./components/BrownianBackground.vue";
 import "./custom.css";
 import { inject } from "@vercel/analytics";
 
@@ -21,6 +22,7 @@ export default {
       // 在文档内容之后插入分享组件和评论组件
       "doc-after": () => [h(Share), h(Comment)],
       "layout-top": () => h(ReadingProgressBar),
+      "layout-bottom": () => h(BrownianBackground),
     });
   },
   enhanceApp(ctx: EnhanceAppContext) {
