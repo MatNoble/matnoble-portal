@@ -41,7 +41,9 @@ head:
 
 <br/>
 
-<TimeFlow />
+<ClientOnly>
+  <TimeFlow />
+</ClientOnly>
 
 <br/>
 
