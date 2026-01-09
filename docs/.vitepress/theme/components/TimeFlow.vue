@@ -96,6 +96,12 @@ const startInterval = () => {
 const toggleFullscreen = async () => {
   if (!containerRef.value) return
 
+  // Handle "Fake Fullscreen" exit (e.g. iOS) where native fullscreen isn't active but our state is true
+  if (isFullscreen.value && !document.fullscreenElement) {
+    isFullscreen.value = false
+    return
+  }
+
   if (!document.fullscreenElement) {
     try {
       await containerRef.value.requestFullscreen()

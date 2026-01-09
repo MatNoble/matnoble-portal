@@ -16,6 +16,17 @@
         </svg>
       </a>
       <a
+        :href="fbShareUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="share-btn facebook"
+        title="分享至 Facebook"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="icon">
+          <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+        </svg>
+      </a>
+      <a
         :href="linkedinShareUrl"
         target="_blank"
         rel="noopener noreferrer"
@@ -36,6 +47,14 @@
           <path
             d="M0 6.826c0 1.455.781 2.765 2.001 3.656a.385.385 0 0 1 .143.439l-.161.6-.1.373a.5.5 0 0 0-.032.14.19.19 0 0 0 .193.193q.06 0 .111-.029l1.268-.733a.6.6 0 0 1 .308-.088q.088 0 .171.025a6.8 6.8 0 0 0 1.625.26 4.5 4.5 0 0 1-.177-1.251c0-2.936 2.785-5.02 5.824-5.02l.15.002C10.587 3.429 8.392 2 5.796 2 2.596 2 0 4.16 0 6.826m4.632-1.555a.77.77 0 1 1-1.54 0 .77.77 0 0 1 1.54 0m3.875 0a.77.77 0 1 1-1.54 0 .77.77 0 0 1 1.54 0"
           />
+        </svg>
+      </button>
+      <button class="share-btn copy" @click="copyLink" :title="showCopied ? '已复制！' : '复制链接'">
+        <svg v-if="!showCopied" viewBox="0 0 24 24" aria-hidden="true" class="icon">
+           <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+        </svg>
+        <svg v-else viewBox="0 0 24 24" aria-hidden="true" class="icon success">
+           <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
         </svg>
       </button>
     </div>
@@ -82,11 +101,31 @@ const xShareUrl = computed(() => {
   return `https://twitter.com/intent/tweet?url=${url}&text=${text}`;
 });
 
+// Facebook Share URL
+const fbShareUrl = computed(() => {
+  const url = encodeURIComponent(currentUrl.value);
+  return `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+});
+
 // LinkedIn Share URL
 const linkedinShareUrl = computed(() => {
   const url = encodeURIComponent(currentUrl.value);
   return `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
 });
+
+// Copy Link Logic
+const showCopied = ref(false);
+const copyLink = async () => {
+  try {
+    await navigator.clipboard.writeText(currentUrl.value);
+    showCopied.value = true;
+    setTimeout(() => {
+      showCopied.value = false;
+    }, 2000);
+  } catch (err) {
+    console.error('Failed to copy:', err);
+  }
+};
 
 // WeChat QR Code Logic
 const showWeChat = ref(false);
@@ -160,8 +199,16 @@ const closeWeChat = () => {
   background-color: #000;
 }
 
+.share-btn.facebook:hover {
+  background-color: #1877f2;
+}
+
 .share-btn.linkedin:hover {
   background-color: #0077b5;
+}
+
+.share-btn.copy:hover {
+  background-color: var(--vp-c-brand);
 }
 
 .share-btn.wechat:hover {
@@ -172,6 +219,10 @@ const closeWeChat = () => {
   width: 18px;
   height: 18px;
   fill: currentColor;
+}
+
+.icon.success {
+  color: #10b981;
 }
 
 /* Modal Styles */
