@@ -44,7 +44,13 @@ export default defineConfig({
           { text: "线性代数", link: "/teaching/linear-algebra" },
         ],
       },
-      { text: "Memorize 助手", link: "/tools/memorize" },
+      {
+        text: "在线工具",
+        items: [
+          { text: "TimeFlow (专注时钟)", link: "/tools/timer" },
+          { text: "Memorize 助手", link: "/tools/memorize" },
+        ],
+      },
       { text: "技术博客", link: "https://blog.matnoble.top" },
       { text: "关于", link: "/about" },
     ],

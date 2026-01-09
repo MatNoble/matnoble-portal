@@ -68,6 +68,26 @@ matnoble-portal/
 └── package.json
 ```
 
+## 📄 Page Overview
+
+The portal is organized into several key sections:
+
+### 🏠 Core Pages
+- **[Home](docs/index.md)** (`/`): Introduction to MatNoble and core teaching philosophy.
+- **[About](docs/about.md)** (`/about`): Biography, academic background, and social links.
+- **[FAQ](docs/faq.md)** (`/faq`): Frequently asked questions about teaching methods and tools.
+
+### 📚 Teaching & Courses
+- **Calculus (微积分)**:
+  - **[Curriculum Overview](docs/teaching/calculus.md)** (`/teaching/calculus`): The "Calculus Trio" teaching system.
+  - **[Universal Formula for Differentials](docs/teaching/derivative-method.md)** (`/teaching/derivative-method`): A simplified framework for differentiation.
+  - **[Core CheatSheet](docs/teaching/cheatsheet.md)** (`/teaching/cheatsheet`): Essential formulas and techniques.
+- **Linear Algebra (线性代数)**:
+  - **[Course Content](docs/teaching/linear-algebra.md)** (`/teaching/linear-algebra`): Syllabus and key concepts.
+
+### 🛠️ Educational Tools
+- **[Memorize Assistant](docs/tools/memorize.md)** (`/tools/memorize`): A spaced-repetition tool tailored for mathematical formulas.
+
 ## ☁️ Deployment
 
 This project is optimized for **Vercel**.
