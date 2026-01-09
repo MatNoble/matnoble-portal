@@ -99,28 +99,27 @@ const toggleFullscreen = async () => {
   if (!document.fullscreenElement) {
     try {
       await containerRef.value.requestFullscreen()
-      // State update is handled by the event listener
     } catch (err) {
-      console.error(err)
+      // Fallback for iOS which often doesn't support requestFullscreen on div
+      isFullscreen.value = true 
     }
   } else {
     try {
       await document.exitFullscreen()
-      // State update is handled by the event listener
     } catch (err) {
-      console.error(err)
+      isFullscreen.value = false
     }
   }
 }
 
-const handleMouseMove = () => {
-  if (!isFullscreen.value) return // Only handle idle logic in fullscreen
+const handleActivity = () => {
+  if (!isFullscreen.value) return 
   
   isIdle.value = false
   if (idleTimer.value) clearTimeout(idleTimer.value)
   
   idleTimer.value = setTimeout(() => {
-    if (isFullscreen.value) { // Double check
+    if (isFullscreen.value) {
       isIdle.value = true
     }
   }, 3000)
@@ -202,7 +201,9 @@ const tabNames: Record<string, string> = {
     ref="containerRef" 
     class="timeflow-container" 
     :class="{ 'fullscreen-mode': isFullscreen, 'ui-idle': isIdle }"
-    @mousemove="handleMouseMove"
+    @mousemove="handleActivity"
+    @touchstart="handleActivity"
+    @click="handleActivity"
   >
     <!-- Background for Zen Mode -->
     <div v-if="isFullscreen" class="zen-background"></div>
@@ -314,7 +315,10 @@ const tabNames: Record<string, string> = {
 </template>
 
 <style scoped>
-/* Apple Design System Inspired Variables */
+/* 
+  Apple Design System Inspired Variables with Semantic Naming 
+  Using CSS Variables for robust Dark Mode support
+*/
 .timeflow-container {
   display: flex;
   justify-content: center;
@@ -322,32 +326,57 @@ const tabNames: Record<string, string> = {
   padding: 40px 20px;
   font-family: 'Outfit', sans-serif;
   transition: all 0.5s ease;
+
+  /* Default Light Mode Colors */
+  --tf-card-bg: rgba(255, 255, 255, 0.7);
+  --tf-card-border: rgba(255, 255, 255, 0.4);
+  --tf-card-shadow: rgba(0, 0, 0, 0.05);
+  --tf-tab-bg: rgba(0, 0, 0, 0.05);
+  --tf-tab-active-bg: #ffffff;
+  --tf-tab-active-shadow: rgba(0,0,0,0.08);
+  --tf-text-main: var(--vp-c-text-1);
+  --tf-text-dim: var(--vp-c-text-2);
+  --tf-input-bg: rgba(0, 0, 0, 0.05);
+  --tf-input-color: var(--vp-c-text-1);
+}
+
+/* Dark Mode Overrides - Applied via global .dark class */
+:global(.dark) .timeflow-container {
+  /* Dark Mode Colors - Obsidian Style */
+  --tf-card-bg: rgba(0, 0, 0, 0.75); /* Pure black base */
+  --tf-card-border: rgba(255, 255, 255, 0.08); /* Very subtle highlight */
+  --tf-card-shadow: rgba(0, 0, 0, 0.8);
+  
+  /* Critical change: Use black transparency for inner elements, NOT white */
+  --tf-tab-bg: rgba(0, 0, 0, 0.5); 
+  --tf-tab-active-bg: rgba(255, 255, 255, 0.1);
+  --tf-tab-active-shadow: rgba(0,0,0,0.5);
+  
+  --tf-input-bg: rgba(0, 0, 0, 0.5);
+  
+  /* Ensure text pops against black */
+  --tf-text-main: #ffffff;
+  --tf-text-dim: rgba(255, 255, 255, 0.6);
+  --tf-input-color: #ffffff;
 }
 
 .glass-card {
   width: 100%;
   max-width: 480px;
   min-height: 400px;
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--tf-card-bg); /* Use variable */
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-radius: 32px;
   box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.05),
-    0 1px 2px rgba(255, 255, 255, 0.5) inset;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+    0 20px 40px var(--tf-card-shadow),
+    0 1px 2px rgba(255, 255, 255, 0.1) inset; /* Subtle top highlight */
+  border: 1px solid var(--tf-card-border); /* Use variable */
   padding: 24px;
   display: flex;
   flex-direction: column;
   position: relative;
   transition: all 0.5s ease;
-}
-
-/* Dark mode support */
-:global(.dark) .glass-card {
-  background: rgba(30, 30, 30, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 /* Toolbar */
@@ -372,15 +401,15 @@ const tabNames: Record<string, string> = {
   cursor: pointer;
   padding: 8px;
   border-radius: 50%;
-  color: var(--vp-c-text-2);
+  color: var(--tf-text-dim);
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.2s;
 }
 .icon-btn:hover {
-  background: var(--vp-c-bg-alt);
-  color: var(--vp-c-text-1);
+  background: var(--tf-tab-bg);
+  color: var(--tf-text-main);
 }
 .icon-btn svg {
   width: 20px;
@@ -398,33 +427,32 @@ const tabNames: Record<string, string> = {
 
 .tabs {
   display: flex;
-  background: rgba(0, 0, 0, 0.05);
+  background: var(--tf-tab-bg); /* Use variable */
   padding: 4px;
   border-radius: 16px;
   margin-bottom: 32px;
   transition: all 0.5s;
-}
-:global(.dark) .tabs {
-  background: rgba(255, 255, 255, 0.05);
 }
 
 .tab-btn {
   flex: 1;
   border: none;
   background: transparent;
-  padding: 8px;
+  padding: 8px 16px; /* Increased side padding */
   border-radius: 12px;
   font-weight: 600;
   font-size: 14px;
-  color: var(--vp-c-text-2);
+  color: var(--tf-text-dim);
   cursor: pointer;
   transition: all 0.2s ease;
+  white-space: nowrap; /* Prevent text wrapping */
+  min-width: 80px; /* Ensure enough width for 3 characters */
 }
 
 .tab-btn.active {
-  background: var(--vp-c-bg);
-  color: var(--vp-c-text-1);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  background: var(--tf-tab-active-bg); /* Use variable */
+  color: var(--tf-text-main);
+  box-shadow: 0 2px 8px var(--tf-tab-active-shadow);
 }
 
 .content {
@@ -445,14 +473,12 @@ const tabNames: Record<string, string> = {
   font-weight: 700;
   font-variant-numeric: tabular-nums;
   letter-spacing: -1px;
-  background: linear-gradient(135deg, var(--vp-c-text-1), var(--vp-c-text-2));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--tf-text-main);
   transition: all 0.5s;
 }
 .date-display {
   font-size: 18px;
-  color: var(--vp-c-text-2);
+  color: var(--tf-text-dim);
   margin-top: 8px;
   transition: all 0.5s;
 }
@@ -490,6 +516,7 @@ const tabNames: Record<string, string> = {
   font-variant-numeric: tabular-nums;
   letter-spacing: -2px;
   transition: all 0.5s;
+  color: var(--tf-text-main);
 }
 svg {
   transform: rotate(-90deg);
@@ -519,23 +546,24 @@ svg {
   margin: 24px 0;
   font-variant-numeric: tabular-nums;
   transition: all 0.5s;
+  color: var(--tf-text-main);
 }
 .input-group {
   display: flex;
   align-items: center;
   gap: 12px;
   font-size: 14px;
-  color: var(--vp-c-text-2);
+  color: var(--tf-text-dim);
   transition: all 0.5s;
 }
 .input-group input {
-  background: var(--vp-c-bg-alt);
+  background: var(--tf-input-bg);
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
   padding: 4px 8px;
   width: 60px;
   text-align: center;
-  color: var(--vp-c-text-1);
+  color: var(--tf-input-color);
 }
 
 /* Controls */
@@ -562,9 +590,13 @@ svg {
   box-shadow: 0 4px 12px rgba(var(--vp-c-brand-rgb), 0.3);
 }
 .action-btn.secondary {
-  background: var(--vp-c-bg-alt);
-  color: var(--vp-c-text-1);
+  background: var(--tf-input-bg);
+  color: var(--tf-text-main);
   border: 1px solid var(--vp-c-divider);
+}
+.action-btn.secondary:hover {
+  border-color: var(--vp-c-brand);
+  color: var(--vp-c-brand);
 }
 
 /* Transitions */
@@ -588,6 +620,7 @@ svg {
   height: 100vh;
   z-index: 10000;
   background: var(--vp-c-bg); /* Clean background */
+  color: var(--tf-text-main);
   padding: 0;
   margin: 0;
 }
@@ -598,7 +631,7 @@ svg {
   left: 0;
   width: 100%;
   height: 100%;
-  /* Subtle Gradient */
+  /* Subtle Gradient using VitePress variables for auto dark mode support */
   background: radial-gradient(circle at center, var(--vp-c-bg-alt), var(--vp-c-bg));
   z-index: -1;
 }
@@ -615,29 +648,51 @@ svg {
   justify-content: center;
 }
 
-/* Scale up elements in Zen Mode */
+/* Scale up elements in Zen Mode - Responsive for Mobile */
 .fullscreen-mode .time-display {
-  font-size: 12vw; /* Huge clock */
-  letter-spacing: -4px;
+  font-size: 20vmin; /* Large and responsive */
+  letter-spacing: -2px;
+  color: var(--tf-text-main);
 }
+@media (min-width: 768px) {
+  .fullscreen-mode .time-display {
+    font-size: 15vw;
+    letter-spacing: -4px;
+  }
+}
+
 .fullscreen-mode .date-display {
-  font-size: 2rem;
-  margin-top: 2rem;
+  font-size: 5vmin;
+  margin-top: 2vmin;
   opacity: 0.8;
+  color: var(--tf-text-dim);
+}
+@media (min-width: 768px) {
+  .fullscreen-mode .date-display {
+    font-size: 2rem;
+    margin-top: 2rem;
+  }
 }
 
 .fullscreen-mode .timer-circle {
-  width: 40vw; /* Responsive huge circle */
-  height: 40vw;
+  width: 70vmin; /* Responsive huge circle on mobile */
+  height: 70vmin;
   max-width: 500px;
   max-height: 500px;
 }
 .fullscreen-mode .timer-text {
-  font-size: 8rem;
+  font-size: 15vmin;
+  color: var(--tf-text-main);
+}
+@media (min-width: 768px) {
+  .fullscreen-mode .timer-text {
+    font-size: 8rem;
+  }
 }
 
 .fullscreen-mode .digital-display {
-  font-size: 15vw;
+  font-size: 25vmin;
+  color: var(--tf-text-main);
 }
 
 /* Hide non-essentials in Idle Mode */
@@ -652,16 +707,28 @@ svg {
 
 .fullscreen-mode .toolbar {
   position: absolute;
-  top: 20px;
+  top: env(safe-area-inset-top, 20px);
   right: 20px;
   width: auto;
-  gap: 20px;
-  z-index: 20; /* Ensure toolbar is above everything */
+  gap: 12px;
+  z-index: 20; 
 }
 
 .fullscreen-mode .tabs {
   position: absolute;
-  bottom: 40px;
+  bottom: calc(env(safe-area-inset-bottom, 20px) + 20px);
   margin-bottom: 0;
+  width: auto;
+  max-width: 95vw;
+  z-index: 20; /* Ensure tabs are clickable */
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 480px) {
+  .fullscreen-mode .tab-btn {
+    padding: 6px 4px;
+    font-size: 12px;
+  }
 }
 </style>
