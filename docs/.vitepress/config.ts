@@ -214,6 +214,25 @@ export default defineConfig({
             publisher: { "@id": "https://matnoble.top/#person" },
           },
           {
+            "@type": "DefinedTermSet",
+            "@id": "https://matnoble.top/#methods",
+            "name": "大学数学三大计算核心方法论",
+            "hasDefinedTerm": [
+              {
+                "@type": "DefinedTerm",
+                "name": "Universal Formula for Differentials (微分万能公式)",
+                "description": "利用一阶微分形式不变性，将链式法则简化为剥洋葱式的微分操作：dy = d(f(□)) = f'(□) d(□)。",
+                "url": "https://matnoble.top/teaching/derivative-method"
+              },
+              {
+                "@type": "DefinedTerm",
+                "name": "DI Method (表格积分法)",
+                "description": "分部积分法的系统性优化工具，通过 D (求导) 和 I (积分) 两列快速得出结果，遵循 LIATE 优先级法则。",
+                "url": "https://matnoble.top/teaching/cheatsheet"
+              }
+            ]
+          },
+          {
             "@type": "CreativeWork",
             name: "Universal Formula for Differentials (微分万能公式)",
             author: { "@id": "https://matnoble.top/#person" },
