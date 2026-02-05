@@ -8,28 +8,28 @@ description: 大学数学教师MatNoble的个人门户。专注于数学教学�
 hero:
   name: MatNoble
   text: Mathematics as the Core.
-  tagline: 以数学为原点，构建可解释的技术世界。
+  tagline: 以数学为原点，用代码重构可解释的世界。
   actions:
     - theme: brand
-      text: 探索数学教学体系
+      text: 🚀 探索教学体系
       link: /teaching/
     - theme: alt
-      text: 访问技术博客
+      text: 📝 访问技术博客
       link: https://blog.matnoble.top
 
 features:
-  - title: 大学数学与考研复习
-    details: 面向本科生与考研党的微积分与线性代数教学体系。囊括“三大计算”技巧、极限判型、微分万能公式等实战攻略，助你搞定期末与考研数学。
+  - title: 📐 大学数学与考研实战
+    details: 专为应试与思维训练设计。深度解析 <b>微积分三大计算</b>，深耕 <b>“微分万能公式”</b> 与 <b>“DI 表格法”</b>。提供高分 <b>CheatSheet</b> 与线性代数几何直觉构建，助你从期末到考研一路通关。
     link: /teaching/
-    linkText: 查看教学大纲
-  - title: 数学辅助工具
-    details: 开发 Memorize 等辅助工具，结合间隔重复算法（Spaced Repetition），用技术手段提升公式记忆效率与解题速度。
+    linkText: 获取核心解题法
+  - title: ⚡ 数学辅助工具箱
+    details: 用代码重塑学习体验。推出 <b>Memorize 记忆助手</b>，基于 <b>Anki 同款间隔重复算法</b>，完美支持 <b>LaTeX 公式</b>渲染。无论是碎片时间刷题还是系统性复习，让技术成为你的外脑。
     link: /tools/
-    linkText: 试用工具
-  - title: 关于作者
-    details: 高校数学教师，拥有数学专业背景与全栈开发能力。探索教育技术（EdTech）在高等数学、大学生数学竞赛教学中的深度应用。
+    linkText: 免费试用工具
+  - title: 👨‍💻 关于 MatNoble
+    details: 高校讲师 / 独立开发者。致力于 <b>数字化教学</b> 探索，将抽象的数学概念转化为可交互的代码与可视化模型。不只教解题，更分享如何像工程师一样思考数学。
     link: /about
-    linkText: 了解更多
+    linkText: 认识作者
 ---
 
 ## 核心理念

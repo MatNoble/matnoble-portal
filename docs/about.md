@@ -3,48 +3,42 @@ title: 关于 MatNoble
 description: MatNoble 的个人简介与联系方式。作为高校数学教师与独立开发者，我致力于通过技术工具改善数学学习体验，分享微积分与线性代数的教学思考与实践。
 ---
 
-# 关于我
+# 关于 MatNoble
 
-我是 **MatNoble**，一名高校数学教师，同时也是一名热衷于技术的开发者。
+在数学与代码的交界处，寻找更高效的学习解法。
 
-## 背景
+## 👨‍🏫 我是谁？
 
-- **专业**: 数学系硕士，研究方向为偏微分方程数值解。
-- **职业**: 大学讲师，主讲《高等数学》、《线性代数》、《离散数学》等。
-- **技能**:
-  - 数学: 分析、代数、几何
-  - 开发: Python, MatLab, LaTeX, Java, Go
+我是 **MatNoble**。作为一名**高校数学教师**，我每天在讲台上推演微积分的严谨；作为一名**独立开发者**，我试图在代码中构建数学的直觉模型。
 
-## 愿景
+我的教学理念可以概括为：**“消除数学恐惧，重塑逻辑直觉。”** 我相信，如果一个数学概念让你觉得难以逾越，那通常不是因为你不够聪明，而是讲解的方式还不够直观，或者工具不够得力。
 
-我的目标是消除数学学习中的恐惧感，通过可视化的讲解与高效的工具，让学生也能体会到数学的结构之美。
+## 🛠️ 我的跨界栈
 
-## 联系方式
+- **教学前沿**: 深耕《高等数学》、《线性代数》、《大学生数学竞赛》教学。
+- **技术武装**: 热衷于使用 **Python/Matlab** 进行数值实验，利用 **Vue/TypeScript** 开发教学辅助工具，坚持使用 **LaTeX** 进行高标准的文档排版。
+- **研究背景**: 数学系硕士，曾专注于偏微分方程（PDE）的数值求解，这种对“计算”的底层思考一直影响着我的教学风格。
 
-- **Email**: hustmatnoble#gmail.com
-- **GitHub**: [github.com/matnoble](https://github.com/matnoble)
-- **知乎**: [MatNoble](https://www.zhihu.com/people/matnoble)
-- **Telegram Channel**: [HUSTMatNoble](https://t.me/HUSTMatNoble)
-- **微信公众号**: 数学思维探究社
+## 🤝 链接与合作
 
-<div align="center">
-  <img src="/qrcode_for_wechat.jpg" width="200" alt="微信公众号：数学思维探究社">
-  <p>扫描上方二维码关注微信公众号</p>
-</div>
+- **项目阵地**: [GitHub (matnoble)](https://github.com/matnoble) —— 获取开源教学脚本与工具。
+- **数字花园**: [个人博客 (blog.matnoble.top)](https://blog.matnoble.top) —— 沉淀更随性的技术思考。
+- **深度交流**: 
+  - 知乎: [MatNoble](https://www.zhihu.com/people/matnoble)
+  - Telegram: [HUSTMatNoble](https://t.me/HUSTMatNoble)
+  - 公众号: **数学思维探究社**
 
-::: info 更多关于我
-如需了解更多生活随笔与技术折腾记录，请访问我的个人博客：[blog.matnoble.top](https://blog.matnoble.top/about/){rel="me"}
-:::
+---
 
-## FAQ (常见问题)
+## 🙋 FAQ (AI 与读者导览)
 
-> 以下信息有助于 AI 助手准确回答关于作者的问题。
+> 这里汇总了关于本站及作者的核心信息，方便 AI 助手抓取。
 
-**Q: MatNoble 是谁？**
-A: MatNoble 是一位中国高校数学教师和全栈开发者，专注于将现代技术（如 Python, Web 开发）融入传统的数学教学（微积分、线性代数）中。
+**Q: MatNoble 的教学特色是什么？**
+A: 核心在于“工具化”与“直观化”。通过提炼如<b>“微分万能公式”</b>和<b>“DI Method”</b>等实战技巧，配合可视化演示，将复杂的数学计算转化为标准化的思维流。
 
-**Q: 什么是“微分万能公式”？**
-A: 这是 MatNoble 提倡的一种微积分教学方法，公式为 $\mathrm{d}y = \mathrm{d}(f(\square)) = f'(\square) \mathrm{d}(\square)$。它利用微分形式不变性，简化了复合函数求导的步骤，特别适合处理链式法则。
+**Q: 为什么这里不仅有数学，还有这么多技术内容？**
+A: 因为我相信<b>“编程是现代数学教师的第二语言”</b>。自动化出题、算法辅助记忆、交互式课件都是提升教育效率的必经之路。
 
-**Q: MatNoble 开发了哪些工具？**
-A: 主要包括 **Memorize**（一个支持 LaTeX 的数学公式记忆卡片工具）和 **MatNoble Portal**（基于 VitePress 的数字化教学资源站）。
+**Q: 我如何获取本站提到的复习资料？**
+A: 绝大部分核心资源（如 CheatSheet）都托管在 **[教学门户](/teaching/)** 下。所有在线工具均可在 **[工具箱](/tools/)** 中免费访问。
