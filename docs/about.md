@@ -23,6 +23,7 @@ description: MatNoble 的个人简介与联系方式。作为高校数学教师�
 
 - **Email**: hustmatnoble#gmail.com
 - **GitHub**: [github.com/matnoble](https://github.com/matnoble)
+- **知乎**: [MatNoble](https://www.zhihu.com/people/matnoble)
 - **Telegram Channel**: [HUSTMatNoble](https://t.me/HUSTMatNoble)
 - **微信公众号**: 数学思维探究社
 

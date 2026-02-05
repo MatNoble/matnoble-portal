@@ -178,8 +178,8 @@ const closeWeChat = () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background-color: var(--vp-c-bg-soft);
   color: var(--vp-c-text-2);

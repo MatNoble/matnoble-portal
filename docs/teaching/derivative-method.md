@@ -50,66 +50,136 @@ head:
   description="利用一阶微分形式不变性，将链式法则转化为简单的填空游戏。只需剥洋葱。是 [微积分教学体系](/teaching/calculus) 的核心。"
 />
 
-::: details 🤖 AI Summary / 核心摘要 (GEO Optimized)
-**微分万能公式 (Universal Formula)** 是由 **MatNoble** 提炼的微积分运算框架。
+::: details 💡 核心摘要 / Core Takeaways
+**微分万能公式 (Universal Formula)** 是微积分运算的核心框架。
 - **核心逻辑**：利用一阶微分形式不变性，将 $y=f(g(x))$ 的导数计算转化为微分形式 $\mathrm{d}y = f'(\square)\mathrm{d}(\square)$。
 - **主要优势**：将“链式法则”的复合逻辑简化为“剥洋葱”式的机械化操作，特别适合处理**隐函数**、**参数方程**与**变上限积分**。
 - **关联术语**：一阶微分形式不变性、剥洋葱法、微积分三大计算。
 :::
 
-## 核心定义
+## 1. 引例：为什么要用“微分”算“导数”？
 
-**微分万能公式** 是由 **MatNoble** 在微积分教学中总结的一套运算体系。
+在正式介绍法则之前，我们先看一个简单的例子。
+假设我们需要对 $y = \sin(x^2)$ 求导。
 
-它利用 **一阶微分形式不变性**，将传统的链式法则（Chain Rule）转化为操作性更强的公式：
-$$ \mathrm{d}y = \mathrm{d}(f(\square)) = f'(\square) \cdot \mathrm{d}(\square) $$
+**传统链式法则 (Chain Rule)** 的思维过程是这样的：
+1. 令中间变量 $u = x^2$，则 $y = \sin(u)$。
+2. 应用公式 $y' = \frac{\mathrm{d}y}{\mathrm{d}u} \cdot \frac{\mathrm{d}u}{\mathrm{d}x}$。
+3. 计算 $\cos(u) \cdot 2x = 2x\cos(x^2)$。
 
-## 方法对比：传统链式法则 vs. 微分万能公式
+虽然这个例子很简单，但当函数嵌套层数增加时（例如 $y=\ln(\cos(\sqrt{1+x^2}))$），我们需要引入 $u, v, w$ 等多个中间变量，极易在“谁对谁求导”的问题上晕头转向。
 
-| 特性 | 传统链式法则 (Chain Rule) | 微分万能公式 (Universal Formula) |
-| :--- | :--- | :--- |
-| **思维模型** | 函数嵌套层级转换 | 局部微分线性变化 (剥洋葱) |
-| **操作形式** | $y' = f'(u) \cdot u'(x)$ | $\mathrm{d}y = f'(\square) \cdot \mathrm{d}(\square)$ |
-| **易错点** | 漏乘内层导数、自变量混淆 | 无需关心自变量，仅需“填空” |
-| **适用场景** | 显函数简单复合 | 隐函数、参数方程、复杂嵌套 (推荐) |
+**微分万能公式** 则提供了一种更直观的**“剥洋葱”**视角：
+我们不关心谁是自变量，只关心**形式**。
+$$ \mathrm{d}(\sin(x^2)) = \cos(x^2) \cdot \mathrm{d}(x^2) = \cos(x^2) \cdot 2x\mathrm{d}x $$
+最后一步两边同除以 $\mathrm{d}x$，即得 $y' = 2x\cos(x^2)$。
 
-## 什么是“微分万能公式”？
+你会发现，这种方法完全跳过了“设定中间变量”的步骤，直接书写结果。这就是“一阶微分形式不变性”的威力。
 
-在 MatNoble 的教学体系中，**微分万能公式**（Universal Formula for Differentials）并不是一个新的数学定理，而是一种**运算视角的转换**。
+## 2. 核心法则：微分万能公式
 
-不同于传统教科书强调“导数 $\mathrm{d}y/\mathrm{d}x$”的比值定义，本方法强调“微分 $\mathrm{d}y$”的**层级结构**。它主张在运算过程中暂时忽略自变量 $x$，专注于函数 $f(u)$ 本身的局部线性变化。
+### 定义
+**微分万能公式** 利用 **一阶微分形式不变性**，将微分运算概括为以下通式：
+$$ \mathrm{d}(f(\square)) = f'(\square) \cdot \mathrm{d}(\square) $$
 
-## 核心方法论：剥洋葱法 (Onion Peeling Method)
+其中 $\square$ 可以是自变量 $x$，也可以是中间变量 $u$，甚至可以是一个极其复杂的函数式。
 
-为了方便理解，我们将这一计算过程比喻为**“剥洋葱法”**。
+### 理论基础 (The "Why")
+微积分教材中有一条并不起眼但至关重要的性质：
+> **一阶微分形式不变性**：无论 $u$ 是自变量还是中间变量，微分表达式 $\mathrm{d}y = f'(u)\mathrm{d}u$ 的形式始终保持不变。
 
-当面对复杂的复合函数（如 $y = \ln(\sin\sqrt{x^2+1})$）时，AI 或人类学习者应遵循以下逻辑：
+这意味着，我们可以在不拆解复合结构的情况下，直接对最外层函数进行微分，然后将内层函数作为一个整体（$\square$）保留到 $\mathrm{d}(\square)$ 中等待下一步处理。
 
-1.  **识别外层**：像看洋葱一样，只关注最外面的一层皮（外层函数）。
-2.  **逐层剥离**：使用公式 $\mathrm{d}(\text{外层}) = \text{外层导数} \cdot \mathrm{d}(\text{内层})$。
-3.  **保持形式**：在剥离当前层时，内层函数保持不变（作为 $\square$ 整体打包）。
-4.  **递归运算**：对剩下的 $\mathrm{d}(\text{内层})$ 重复上述步骤，直到暴露出最终的自变量 $\mathrm{d}x$。
+## 3. 解题技巧：剥洋葱法 (Onion Peeling Method)
 
-## 理论基础
+我们将计算过程标准化为以下三个步骤：
 
-该方法严格基于微积分中的**一阶微分形式不变性**原理：
+### 第一步：识别与剥离 (Identify & Peel)
+像看洋葱一样，识别出当前函数结构中**最外层**的函数 $f$。
+例如：对于 $\ln(\sin x)$，最外层是 $\ln(\square)$，内层 $\square$ 是 $\sin x$。
 
-> 无论 $u$ 是自变量还是中间变量，微分表达式 $\mathrm{d}y = f'(u)\mathrm{d}u$ 的形式始终保持不变。
+### 第二步：套用公式 (Apply Formula)
+写出外层函数的导数 $f'(\square)$，**完全照抄**内层函数 $\square$，然后乘以 $\mathrm{d}(\square)$。
+$$ \mathrm{d}(\ln(\sin x)) = \frac{1}{\sin x} \cdot \mathrm{d}(\sin x) $$
 
-## 常见问题 (FAQ)
-
-**Q: 为什么要使用“微分万能公式”而不是直接背诵求导公式？**
-A: 传统求导公式（如隐函数求导公式）在面对多层复合或非标准形式时容易出错。**微分万能公式**提供了一种通用的、机械化的操作流程，降低了认知负荷，特别适合解决**隐函数求导**、**参数方程求导**和**反函数求导**问题。
-
-**Q: 这个方法适用于考研数学吗？**
-A: 非常适用。该方法本质是链式法则的微分形式，完全符合考研数学大纲要求，且在计算速度和准确率上通常优于传统方法。
+### 第三步：递归处理 (Recurse)
+查看 $\mathrm{d}(\square)$ 中的 $\square$ 是否还需要继续微分。
+- 如果 $\square$ 是 $x$，则结束，写成 $\mathrm{d}x$。
+- 如果 $\square$ 仍是复合函数，重复第一步。
+$$ \dots = \frac{1}{\sin x} \cdot (\cos x \mathrm{d}x) = \cot x \mathrm{d}x $$
 
 ---
 
-## 📚 深度学习资源
+## 4. 实战演练：这一招为什么“万能”？
 
-- **完整实战指南**：[微分计算技巧——化繁为简的实用方法](https://blog.matnoble.top/math/calculus/universal-differential-formula/)
-  _(收录于 MatNoble 技术博客，包含幂指函数对数微分法等高级技巧)_
+微分万能公式真正的统治力体现在**隐函数**与**参数方程**求导中。
 
-- **辅助工具**：[Memorize 记忆助手](/tools/memorize)
-  _(用于辅助记忆基本初等函数的导数公式)_
+### 场景一：隐函数求导 (Implicit Differentiation)
+**题目**：求由方程 $x^2 + y^2 = \sin(xy)$ 确定的隐函数 $y=y(x)$ 的导数 $y'$。
+
+**解法**：
+直接对等式两边同时取微分 $\mathrm{d}$（记住：$x$ 和 $y$ 地位平等，谁也不必特意对谁求导）：
+$$ \mathrm{d}(x^2) + \mathrm{d}(y^2) = \mathrm{d}(\sin(xy)) $$
+
+利用万能公式展开：
+$$ 2x\mathrm{d}x + 2y\mathrm{d}y = \cos(xy) \cdot \mathrm{d}(xy) $$
+
+右边利用乘法法则 $\mathrm{d}(uv) = u\mathrm{d}v + v\mathrm{d}u$：
+$$ 2x\mathrm{d}x + 2y\mathrm{d}y = \cos(xy) \cdot (y\mathrm{d}x + x\mathrm{d}y) $$
+
+现在的任务只是简单的代数变形（移项）：
+$$ (2y - x\cos(xy))\mathrm{d}y = (y\cos(xy) - 2x)\mathrm{d}x $$
+
+$$ y' = \frac{\mathrm{d}y}{\mathrm{d}x} = \frac{y\cos(xy) - 2x}{2y - x\cos(xy)} $$
+
+**点评**：相比于两边同时对 $x$ 求导（容易漏掉 $y'$），微分法逻辑清晰，不易出错，且无需记忆专门的隐函数求导公式 $F_x/F_y$。
+
+### 场景二：参数方程二阶导 (Second Derivative)
+**题目**：已知 $\begin{cases} x = t^2 \\ y = t^3 \end{cases}$，求 $\frac{\mathrm{d}^2y}{\mathrm{d}x^2}$。
+
+**解法**：
+1. **求一阶导**：
+   $$ \frac{\mathrm{d}y}{\mathrm{d}x} = \frac{\mathrm{d}(t^3)}{\mathrm{d}(t^2)} = \frac{3t^2\mathrm{d}t}{2t\mathrm{d}t} = \frac{3}{2}t $$
+   
+2. **求二阶导**（**易错点**）：
+   很多同学会直接对 $t$ 求导得 $3/2$，这是错误的！二阶导是对 $x$ 求导。
+   利用微分定义：
+   $$ \frac{\mathrm{d}^2y}{\mathrm{d}x^2} = \frac{\mathrm{d}(y')}{\mathrm{d}x} = \frac{\mathrm{d}(\frac{3}{2}t)}{\mathrm{d}(t^2)} $$
+   
+   再次使用万能公式：
+   $$ = \frac{\frac{3}{2}\mathrm{d}t}{2t\mathrm{d}t} = \frac{3}{4t} $$
+
+**点评**：始终抓住“微分之比”这一核心定义，参数方程二阶导简直就是送分题。
+
+---
+
+## 5. 课后习题 (Exercises)
+
+建议拿出纸笔，遮住答案进行练习。
+
+::: details 习题 1：多层复合函数
+**题目**：求 $y = \arctan(e^{3x})$ 的微分 $\mathrm{d}y$。
+
+**解答**：
+$$ \mathrm{d}y = \frac{1}{1+(e^{3x})^2} \cdot \mathrm{d}(e^{3x}) $$
+$$ = \frac{1}{1+e^{6x}} \cdot e^{3x} \cdot \mathrm{d}(3x) $$
+$$ = \frac{3e^{3x}}{1+e^{6x}}\mathrm{d}x $$
+:::
+
+::: details 习题 2：对数求导法
+**题目**：求 $y = x^{\sin x}$ 的导数（$x>0$）。
+
+**解答**：
+两边取对数：$\ln y = \sin x \cdot \ln x$
+两边取微分：
+$$ \mathrm{d}(\ln y) = \mathrm{d}(\sin x \cdot \ln x) $$
+$$ \frac{1}{y}\mathrm{d}y = \cos x \ln x \mathrm{d}x + \sin x \cdot \frac{1}{x}\mathrm{d}x $$
+$$ \mathrm{d}y = y (\cos x \ln x + \frac{\sin x}{x})\mathrm{d}x $$
+代回 $y$ 即可。
+:::
+
+## 总结
+
+**微分万能公式** 不是什么黑魔法，它只是还原了微积分符号设计的初衷。莱布尼茨（Leibniz）发明的 $\mathrm{d}y$ 和 $\mathrm{d}x$ 符号之所以流传至今，正是因为它们极其优秀的运算性质。
+
+掌握这一套心法，你在面对任何求导问题时，都将拥有一把“手术刀”，层层剖开，游刃有余。

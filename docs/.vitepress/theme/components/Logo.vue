@@ -30,8 +30,8 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="logo" ref="logoRef" :class="{ 'is-active': isVisible }">
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <div class="logo" ref="logoRef" :class="{ 'is-active': isVisible }" role="img" aria-label="MatNoble Logo">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <!-- 
         Initial state: Triangles are slightly exploded outwards.
         Active state: Triangles converge to form the square.

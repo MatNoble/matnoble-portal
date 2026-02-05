@@ -1,0 +1,27 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8f9fa;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e9ecef;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grad)"/>
+  
+  <!-- Geometric Accents -->
+  <polygon points="1000,0 1200,0 1200,200" fill="#3451b2" opacity="0.1"/>
+  <circle cx="100" cy="530" r="150" fill="#3451b2" opacity="0.05"/>
+
+  <!-- Logo Shapes -->
+  <g transform="translate(150, 180) scale(1.5)">
+      <polygon points="0,0 100,0 36,48" fill="#dd5145" />
+      <polygon points="100,0 100,100 52,36" fill="#ffcd42" />
+      <polygon points="100,100 0,100 64,52" fill="#1fa463" />
+      <polygon points="0,100 0,0 48,64" fill="#4d84c4" />
+  </g>
+
+  <!-- Text -->
+  <text x="350" y="260" font-family="Arial, sans-serif" font-weight="bold" font-size="100" fill="#333">MatNoble</text>
+  <text x="355" y="340" font-family="Arial, sans-serif" font-size="40" fill="#666">Mathematics &amp; Technology</text>
+  
+  <text x="355" y="450" font-family="Arial, sans-serif" font-size="30" fill="#3451b2">matnoble.top</text>
+</svg>

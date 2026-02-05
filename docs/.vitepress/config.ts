@@ -47,7 +47,6 @@ export default defineConfig({
       {
         text: "在线工具",
         items: [
-          { text: "TimeFlow (专注时钟)", link: "/tools/timer" },
           { text: "Memorize 助手", link: "/tools/memorize" },
         ],
       },
@@ -72,7 +71,7 @@ export default defineConfig({
 
     footer: {
       message: "以数学训练思维，用技术改善学习与生活。",
-      copyright: "Copyright © 2025 MatNoble",
+      copyright: "Copyright © 2025-2026 MatNoble",
     },
 
     // --- 汉化配置 ---
@@ -111,14 +110,58 @@ export default defineConfig({
       .replace(/index\.md$/, "")
       .replace(/\.md$/, "");
 
-    const title = pageData.title || "MatNoble";
+    const siteTitle = "MatNoble";
+    const pageTitle = pageData.title;
+    const title = pageTitle ? `${pageTitle} | ${siteTitle}` : siteTitle;
+    
     const description =
       pageData.description ||
       "大学数学教师 MatNoble 的个人门户。专注于微积分三大计算（微分万能公式、DI表格法）与线性代数教学，分享数学学习方法与辅助工具。";
-    const image = pageData.frontmatter.image || "/logo.svg"; // 默认图片，建议后续替换为专门的 social-card.png
+    
+    const image = pageData.frontmatter.image || "/social-card.svg"; 
     const imageUrl = image.startsWith("http")
       ? image
       : `https://matnoble.top${image}`;
+
+    // Generate Breadcrumbs JSON-LD
+    const breadcrumbs = [];
+    breadcrumbs.push({
+      "@type": "ListItem",
+      "position": 1,
+      "name": "首页",
+      "item": "https://matnoble.top/"
+    });
+
+    const pathSegments = pageData.relativePath.split('/');
+    // Remove file extension for the last segment
+    if (pathSegments.length > 0 && pathSegments[0] !== 'index.md') {
+       // Simple breadcrumb logic: Home > Section > Page
+       // Note: This is a simplified generation. For complex nesting, you might need a mapping.
+       let cumulativePath = "https://matnoble.top/";
+       
+       pathSegments.forEach((segment, index) => {
+          const cleanSegment = segment.replace('.md', '');
+          if (cleanSegment === 'index') return;
+          
+          cumulativePath += cleanSegment + '/';
+          
+          // Try to derive a readable name (fallback to capitalized segment)
+          const name = cleanSegment.charAt(0).toUpperCase() + cleanSegment.slice(1);
+          
+          breadcrumbs.push({
+            "@type": "ListItem",
+            "position": index + 2, // 1 is Home
+            "name": name,
+            "item": cumulativePath.replace(/\/$/, "") // remove trailing slash for item URL
+          });
+       });
+    }
+
+    const breadcrumbSchema = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": breadcrumbs
+    };
 
     return [
       ["link", { rel: "canonical", href: url }],
@@ -135,6 +178,8 @@ export default defineConfig({
       ["meta", { name: "twitter:card", content: "summary_large_image" }],
       ["meta", { name: "twitter:site", content: "@MatNoble" }],
       ["meta", { name: "twitter:creator", content: "@MatNoble" }],
+      // JSON-LD Breadcrumbs
+      ["script", { type: "application/ld+json" }, JSON.stringify(breadcrumbSchema)]
     ];
   },
 

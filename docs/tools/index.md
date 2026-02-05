@@ -1,6 +1,6 @@
 ---
 title: 数学辅助工具 | MatNoble
-description: MatNoble 开发的数学学习辅助工具集，包含 Memorize 记忆卡片与 SolverHub 解题辅助。
+description: MatNoble 开发的数学学习辅助工具集，包含专注于公式记忆的 Memorize 助手。
 ---
 
 # 数学辅助工具
@@ -14,11 +14,6 @@ description: MatNoble 开发的数学学习辅助工具集，包含 Memorize 记
 - **状态**: ✅ 已上线 (v1.0)
 - **核心功能**: 艾宾浩斯遗忘曲线复习、LaTeX 公式原生支持。
 - **适用场景**: 考研数学公式记忆、常用定义背诵。
-
-### SolverHub (规划中)
-面向大学数学的数值验证与可视化平台。
-- **状态**: 🚧 开发中
-- **目标**: 提供微积分与线性代数的交互式可视化组件。
 
 ## 开源项目
 

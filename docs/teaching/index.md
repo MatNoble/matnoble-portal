@@ -23,8 +23,8 @@ description: MatNoble 的大学数学教学大纲与方法论，涵盖微积分�
 
 1.  **直观化 (Visualization)**: 坚持“能画图的绝不只推公式”，通过几何直觉降低认知门槛。
 2.  **工具化 (Tooling)**: 鼓励使用现代计算工具（Mathematica, Python, LaTeX）来验证猜想和辅助学习。
-3.  **结构化 (Structure)**: 建立知识图谱，通过 [微分万能公式](./derivative-method) 等提炼，将知识点串联成网。
-4.  **实战化 (Practical)**: 提供 [核心心法速查表](./cheatsheet)，针对期末考试与考研数学进行精准复习指导。
+3.  **结构化 (Structure)**: 建立知识图谱，通过 **[微分万能公式](./derivative-method)** (考研数学高效求导方法) 等提炼，将知识点串联成网。
+4.  **实战化 (Practical)**: 提供 **[核心心法速查表](./cheatsheet)** (大一高数期末复习工具)，针对期末考试与考研数学进行精准复习指导。
 
 ## 学习资源
 

@@ -18,16 +18,16 @@ hero:
       link: https://blog.matnoble.top
 
 features:
-  - title: 大学数学教学
-    details: 面向大学本科生的微积分与线性代数教学体系，包含“三大计算”全攻略，强调数学思维训练与工程应用。
+  - title: 大学数学与考研复习
+    details: 面向本科生与考研党的微积分与线性代数教学体系。囊括“三大计算”技巧、极限判型、微分万能公式等实战攻略，助你搞定期末与考研数学。
     link: /teaching/
     linkText: 查看教学大纲
   - title: 数学辅助工具
-    details: 开发 Memorize、SolverHub 等辅助工具，通过技术手段提升数学概念记忆效率与解题能力，赋能自主学习。
+    details: 开发 Memorize 等辅助工具，结合间隔重复算法（Spaced Repetition），用技术手段提升公式记忆效率与解题速度。
     link: /tools/
     linkText: 试用工具
   - title: 关于作者
-    details: 高校数学教师，拥有数学专业背景与全栈开发能力。探索教育技术（EdTech）在高等数学教学中的深度应用。
+    details: 高校数学教师，拥有数学专业背景与全栈开发能力。探索教育技术（EdTech）在高等数学、大学生数学竞赛教学中的深度应用。
     link: /about
     linkText: 了解更多
 ---
@@ -45,13 +45,13 @@ features:
 
 ---
 
-## 核心方法论
+## 核心方法论 (Core Methodologies)
 
 ### 微分万能公式 (Universal Formula)
-针对复合函数求导的痛点，提炼出操作性极强的微分公式：$dy=\mathrm{d}(f(\square))=f'(\square)\mathrm{d}(\square)$。该方法利用一阶微分形式不变性，将复杂的链式法则转化为直观的填空式操作，显著降低计算负荷。[了解更多](/teaching/derivative-method)
+针对复合函数求导的痛点，提炼出操作性极强的微分公式：$dy=\mathrm{d}(f(\square))=f'(\square)\mathrm{d}(\square)$。该方法利用一阶微分形式不变性，将复杂的链式法则转化为直观的填空式操作，在 **隐函数求导**、**参数方程求导** 及 **反函数求导** 中具有碾压性的效率优势。[了解更多](/teaching/derivative-method)
 
 ### DI Method (表格积分法)
-针对分部积分法的效率瓶颈，推广 DI Method (Differentiate & Integrate Method)。通过表格化管理求导与积分序列，极大提升了多项式、指数及三角函数混合乘积形式的积分速度与准确率。
+针对分部积分法的效率瓶颈，推广 DI Method (Differentiate & Integrate Method)。通过表格化管理求导与积分序列，极大提升了多项式、指数及三角函数混合乘积形式的积分速度与准确率，是考研数学中“秒杀”计算题的利器。
 
 ### 概念直觉优先
 在线性代数教学中，坚持“几何直觉先行，矩阵计算在后”。强调从线性变换、基变换、SVD 等核心概念出发，构建完整的数学图景，拒绝死记硬背。

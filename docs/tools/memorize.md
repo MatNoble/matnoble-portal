@@ -1,6 +1,32 @@
 ---
 title: Memorize - 数学公式记忆工具 | MatNoble
 description: 专为数学学习者设计的间隔重复记忆工具，完美支持 LaTeX 公式渲染。
+head:
+  - - script
+    - type: application/ld+json
+    - |
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Memorize 支持 LaTeX 数学公式吗？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "是的，Memorize 深度集成了 LaTeX 渲染引擎，允许你直接录入复杂的数学公式，并保证在任何设备上都能完美显示。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Memorize 是免费的吗？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "是的，Memorize 是一个完全免费的 Web 应用，无需下载安装，打开浏览器即可使用，旨在帮助学生更高效地掌握数学知识。"
+            }
+          }
+        ]
+      }
 ---
 
 # Memorize 记忆助手
