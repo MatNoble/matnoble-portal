@@ -9,8 +9,9 @@ const SITEMAP_PATH = path.resolve('docs/.vitepress/dist/sitemap.xml');
 async function notifyIndexNow() {
   try {
     if (!fs.existsSync(SITEMAP_PATH)) {
-      console.error('Sitemap not found at:', SITEMAP_PATH);
-      process.exit(1);
+      console.warn('⚠️  Sitemap not found at:', SITEMAP_PATH);
+      console.warn('   Skipping IndexNow submission. This is normal if the site has not been built yet.');
+      process.exit(0); // Exit gracefully
     }
 
     const sitemapContent = fs.readFileSync(SITEMAP_PATH, 'utf-8');

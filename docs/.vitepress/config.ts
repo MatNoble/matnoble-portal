@@ -205,8 +205,6 @@ export default defineConfig({
       "meta",
       { name: "msvalidate.01", content: "1267ABE5F71B3CA9AF5AF169FD89E296" },
     ],
-    // Baidu Webmaster 验证 (请替换 content 为你的百度验证代码)
-    ["meta", { name: "baidu-site-verification", content: "codeva-K23LdbDT6i" }],
 
     [
       "meta",

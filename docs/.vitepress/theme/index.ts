@@ -3,7 +3,6 @@ import DefaultTheme from "vitepress/theme";
 import Logo from "./components/Logo.vue";
 import Comment from "./components/Comment.vue";
 import DownloadCard from "./components/DownloadCard.vue"; // Import the new component
-import TimeFlow from "./components/TimeFlow.vue";
 import Share from "./components/Share.vue";
 import ReadingProgressBar from "./components/ReadingProgressBar.vue";
 import ArticleHero from "./components/ArticleHero.vue";
@@ -30,7 +29,6 @@ export default {
     DefaultTheme.enhanceApp(ctx);
     const { app } = ctx;
     app.component("DownloadCard", DownloadCard);
-    app.component("TimeFlow", TimeFlow);
     app.component("CheatSheetFooter", CheatSheetFooter);
     app.component("ArticleHero", ArticleHero);
     if (typeof window !== "undefined") {

@@ -6,7 +6,7 @@ const canvasRef = ref<HTMLCanvasElement | null>(null);
 let ctx: CanvasRenderingContext2D | null = null;
 let animationFrameId: number;
 let particles: Particle[] = [];
-const particleCount = 60;
+let particleCount = 60; // Default for desktop
 const mouse = { x: -1000, y: -1000, active: false };
 
 class Particle {
@@ -72,6 +72,15 @@ class Particle {
 
 const init = () => {
   if (!canvasRef.value) return;
+  
+  // Performance Check: Reduced Motion
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) return;
+
+  // Performance Check: Mobile Device Adjustment
+  const isMobile = window.innerWidth < 768;
+  particleCount = isMobile ? 15 : 60; // Reduce particles significantly on mobile
+
   const canvas = canvasRef.value;
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
@@ -80,6 +89,11 @@ const init = () => {
   particles = [];
   for (let i = 0; i < particleCount; i++) {
     particles.push(new Particle(canvas.width, canvas.height));
+  }
+
+  // Only start animation loop if not already running to avoid duplicates on resize
+  if (!animationFrameId) {
+    animate();
   }
 };
 
@@ -94,6 +108,7 @@ const animate = () => {
   });
 
   // Draw lines between close particles for a "neural" look
+  // Optimization: Lower opacity and connection distance on mobile if needed
   ctx.lineWidth = 0.5;
   for (let i = 0; i < particles.length; i++) {
     for (let j = i + 1; j < particles.length; j++) {
@@ -114,8 +129,14 @@ const animate = () => {
   animationFrameId = requestAnimationFrame(animate);
 };
 
+// Debounce resize to prevent excessive re-initialization
+let resizeTimeout: any;
 const handleResize = () => {
-  init();
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(() => {
+    // If context exists, it means we initialized. Re-init to adjust canvas size.
+    if (ctx) init(); 
+  }, 200);
 };
 
 const handleMouseMove = (e: MouseEvent) => {
@@ -129,7 +150,6 @@ const handleMouseLeave = () => {
 };
 
 const handleClick = () => {
-  // Burst effect: temporarily increase speed of nearby particles
   particles.forEach(p => {
     const dx = mouse.x - p.x;
     const dy = mouse.y - p.y;
@@ -143,7 +163,6 @@ const handleClick = () => {
 
 onMounted(() => {
   init();
-  animate();
   window.addEventListener('resize', handleResize);
   window.addEventListener('mousemove', handleMouseMove);
   window.addEventListener('mouseleave', handleMouseLeave);
@@ -151,7 +170,9 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-  cancelAnimationFrame(animationFrameId);
+  if (animationFrameId) {
+    cancelAnimationFrame(animationFrameId);
+  }
   window.removeEventListener('resize', handleResize);
   window.removeEventListener('mousemove', handleMouseMove);
   window.removeEventListener('mouseleave', handleMouseLeave);
