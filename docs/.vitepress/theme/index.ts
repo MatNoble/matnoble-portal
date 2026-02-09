@@ -1,4 +1,5 @@
-import { h } from "vue";
+import { h, onMounted, watch, nextTick } from "vue";
+import { useRoute } from "vitepress";
 import DefaultTheme from "vitepress/theme";
 import Logo from "./components/Logo.vue";
 import Comment from "./components/Comment.vue";
@@ -9,6 +10,7 @@ import ArticleHero from "./components/ArticleHero.vue";
 import BrownianBackground from "./components/BrownianBackground.vue";
 import "./custom.css";
 import { inject } from "@vercel/analytics";
+import mediumZoom from "medium-zoom";
 
 import type { EnhanceAppContext } from "vitepress";
 import CheatSheetFooter from "./components/CheatSheetFooter.vue";
@@ -25,6 +27,20 @@ export default {
       "layout-top": () => h(ReadingProgressBar),
       "layout-bottom": () => h(BrownianBackground),
     });
+  },
+  setup() {
+    const route = useRoute();
+    const initZoom = () => {
+      // mediumZoom('[data-zoomable]')
+      mediumZoom(".main img", { background: "var(--vp-c-bg)" });
+    };
+    onMounted(() => {
+      initZoom();
+    });
+    watch(
+      () => route.path,
+      () => nextTick(() => initZoom())
+    );
   },
   enhanceApp(ctx: EnhanceAppContext) {
     DefaultTheme.enhanceApp(ctx);

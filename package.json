@@ -33,6 +33,7 @@
     "@vercel/analytics": "^1.6.1",
     "@waline/client": "^3.8.0",
     "katex": "^0.16.28",
+    "medium-zoom": "^1.1.0",
     "qrcode": "^1.5.4"
   }
 }
