@@ -23,9 +23,11 @@
     "axios": "^1.6.0",
     "feed": "^5.2.0",
     "markdown-it-mathjax3": "^4.3.2",
+    "vite-plugin-pwa": "^1.2.0",
     "vite-plugin-webfont-dl": "^3.11.1",
     "vitepress": "^1.0.0",
-    "vue": "^3.0.0"
+    "vue": "^3.0.0",
+    "workbox-window": "^7.4.0"
   },
   "dependencies": {
     "@vercel/analytics": "^1.6.1",

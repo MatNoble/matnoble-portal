@@ -1,6 +1,7 @@
 import { defineConfig } from "vitepress";
 import webfontDl from "vite-plugin-webfont-dl";
 import { genFeed } from "./genFeed";
+import { VitePWA } from "vite-plugin-pwa";
 
 export default defineConfig({
   lang: "zh-CN",
@@ -19,6 +20,68 @@ export default defineConfig({
       webfontDl([
         "https://fonts.googleapis.com/css2?family=Outfit:wght@500;700&family=Lora:ital,wght@0,400..700;1,400..700&family=Noto+Serif+SC:wght@400;700&display=swap",
       ]),
+      VitePWA({
+        outDir: ".vitepress/dist",
+        registerType: "autoUpdate",
+        includeAssets: ["favicon.ico", "logo.svg", "apple-touch-icon.png"],
+        manifest: {
+          name: "MatNoble",
+          short_name: "MatNoble",
+          description: "大学数学教师 MatNoble 的个人门户",
+          theme_color: "#ffffff",
+          icons: [
+            {
+              src: "favicon.png",
+              sizes: "192x192",
+              type: "image/png",
+            },
+            {
+              src: "favicon.png",
+              sizes: "512x512",
+              type: "image/png",
+            },
+            {
+              src: "favicon.png",
+              sizes: "512x512",
+              type: "image/png",
+              purpose: "any maskable",
+            },
+          ],
+        },
+        workbox: {
+          globPatterns: ["**/*.{css,js,html,svg,png,ico,txt,woff2}"],
+          runtimeCaching: [
+            {
+              urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
+              handler: "CacheFirst",
+              options: {
+                cacheName: "google-fonts-cache",
+                expiration: {
+                  maxEntries: 10,
+                  maxAgeSeconds: 60 * 60 * 24 * 365, // <== 365 days
+                },
+                cacheableResponse: {
+                  statuses: [0, 200],
+                },
+              },
+            },
+            {
+              urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
+              handler: "CacheFirst",
+              options: {
+                cacheName: "gstatic-fonts-cache",
+                expiration: {
+                  maxEntries: 10,
+                  maxAgeSeconds: 60 * 60 * 24 * 365, // <== 365 days
+                },
+                cacheableResponse: {
+                  statuses: [0, 200],
+                },
+              },
+            },
+          ],
+        },
+      }),
     ],
   },
 
@@ -330,7 +393,10 @@ export default defineConfig({
       "meta",
       { name: "msvalidate.01", content: "1267ABE5F71B3CA9AF5AF169FD89E296" },
     ],
-
+    ["link", { rel: "manifest", href: "/manifest.webmanifest" }],
+    ["meta", { name: "theme-color", content: "#ffffff" }],
+    ["meta", { name: "apple-mobile-web-app-capable", content: "yes" }],
+    ["meta", { name: "apple-mobile-web-app-status-bar-style", content: "default" }],
     [
       "meta",
       {
