@@ -201,106 +201,110 @@ body {
 }
 
 /* =========================================
-   移动端/响应式适配
+   移动端/响应式适配 (Mobile Reading Experience)
    ========================================= */
 
-/* 1. 导航栏布局与交互优化 (Mobile UX) */
+/* 1. 全局容器与间距优化 */
+@media (max-width: 640px) {
+  :root {
+    --vp-font-size-base: 16px; /* 移动端基准字号略微缩小 */
+  }
+
+  /* 减少文档两侧留白，增加屏效比 */
+  .VPDoc {
+    padding: 16px 20px 64px !important;
+  }
+
+  .vp-doc p,
+  .vp-doc li {
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+    text-align: justify; /* 两端对齐，适合中文长文 */
+  }
+
+  /* 标题梯度微调，防止长标题过度换行 */
+  .vp-doc h1 { font-size: 1.75rem; letter-spacing: -0.01em; margin-top: 1rem; }
+  .vp-doc h2 { font-size: 1.45rem; margin-top: 2.5rem !important; padding-top: 1.5rem; }
+  .vp-doc h3 { font-size: 1.25rem; margin-top: 2rem !important; }
+
+  /* 引用块优化：减少缩进，增加左边栏辨识度 */
+  .vp-doc blockquote {
+    margin: 1.5rem 0;
+    padding: 0.8rem 1rem;
+    border-left-width: 4px;
+    background-color: var(--vp-c-bg-soft);
+    font-size: 0.95rem;
+  }
+
+  /* 列表项点击热区优化 */
+  .vp-doc li {
+    margin-bottom: 0.75rem;
+    padding-left: 0.2rem;
+  }
+}
+
+/* 2. 导航栏布局与交互优化 (Mobile UX) */
 .VPNavBarAppearance {
   display: flex !important;
-  order: -1; /* 将切换按钮移动到右侧容器的最左侧 */
+  order: -1;
   margin-right: 12px;
 }
 
 @media (max-width: 768px) {
-  .VPNavBarAppearance {
-    margin-right: 8px;
-  }
-
-  /* 调整搜索框与切换按钮的布局，确保互不干扰 */
-  .VPNavBarSearch {
-    order: 0;
-  }
-}
-
-/* 2. 导航栏 Logo 位置修正 */
-.VPNavBarTitle.has-sidebar {
-  padding-left: 16px;
-}
-
-@media (min-width: 960px) {
-  .VPNavBarTitle.has-sidebar {
-    padding-left: 0;
+  .VPNavBarAppearance { margin-right: 8px; }
+  .VPNavBarSearch { order: 0; }
+  
+  /* 隐藏移动端导航栏多余的边框，减少视觉干扰 */
+  .VPNavBar.has-sidebar {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
   }
 }
 
-/* 2. 404 页面字体适配 */
-.custom-404 h1 {
-  font-size: 6rem;
-  margin-bottom: 1rem;
-  color: var(--mn-red);
-  font-family: "Outfit", sans-serif;
-  line-height: 1;
-}
+/* 3. 内容组件适配 (ArticleHero, Math, Tables) */
+@media (max-width: 640px) {
+  /* Hero 区域紧凑化 */
+  .VPHero {
+    padding: 80px 24px 32px !important;
+  }
 
-.custom-404 blockquote {
-  font-style: italic;
-  border-left-color: var(--mn-blue);
-}
+  /* 公式块适配：增加提示感 */
+  .mjx-container[display="true"] {
+    padding: 1.2rem 0.5rem !important;
+    margin: 1.5rem 0 !important;
+    border-radius: 8px;
+    font-size: 95% !important; /* 公式在窄屏略微缩小 */
+  }
 
-@media (max-width: 768px) {
-  .custom-404 h1 {
-    font-size: 4rem;
+  /* 表格滚动条美化 */
+  .vp-doc table {
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+  }
+  .vp-doc table::-webkit-scrollbar {
+    height: 4px;
+  }
+  .vp-doc table::-webkit-scrollbar-thumb {
+    background: var(--vp-c-divider);
+    border-radius: 4px;
   }
 }
 
-/* 3. 链接在移动端保持一定的高亮色 */
+/* 4. 链接触控反馈 */
 @media (hover: none) {
   .vp-doc a {
     color: var(--mn-blue);
     text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 2px;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+    transition: background-color 0.2s ease;
+  }
+  .vp-doc a:active {
+    background-color: rgba(77, 132, 196, 0.1);
+    border-radius: 4px;
   }
 }
 
-/* 4. 数学公式与表格移动端适配 */
-.mjx-container[display="true"] {
-  overflow-x: auto;
-  overflow-y: hidden;
-  max-width: 100%;
-  padding: 1rem 0;
-}
-
-.vp-doc table {
-  display: block;
-  overflow-x: auto;
-  border-radius: 8px; /* 表格圆角 */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* 轻微阴影 */
-}
-
-/* 移动端间距微调 */
-@media (max-width: 640px) {
-  .vp-doc h1 {
-    font-size: 1.75rem;
-  }
-  .vp-doc h2 {
-    font-size: 1.5rem;
-  }
-  .vp-doc h3 {
-    font-size: 1.25rem;
-  }
-
-  .VPHero {
-    padding: 32px 24px !important;
-    padding-top: 120px !important;
-  }
-
-  .VPFeature {
-    padding: 20px !important;
-  }
-}
-
-/* 5. 速查表页面页眉适配 */
+/* 5. 导航栏 Logo 位置修正 */
 .cs-header-inner {
   display: flex;
   justify-content: space-between;
