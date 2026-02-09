@@ -3,14 +3,14 @@
     <div class="cs-footer-container">
       <!-- 网站二维码 -->
       <div class="cs-qr-box">
-        <img src="/qrcode_website.png" class="cs-qr-img" />
+        <img src="/qrcode_website.png" class="cs-qr-img" alt="网站二维码" />
         <span class="cs-qr-title">扫码访问网站</span>
         <span class="cs-qr-desc">matnoble.top</span>
       </div>
 
       <!-- 微信公众号二维码 -->
       <div class="cs-qr-box">
-        <img src="/qrcode_for_wechat.jpg" class="cs-qr-img" />
+        <img src="/qrcode_for_wechat.jpg" class="cs-qr-img" alt="微信公众号二维码" />
         <span class="cs-qr-title">关注微信公众号</span>
         <span class="cs-qr-desc">获取最新教学动态</span>
       </div>

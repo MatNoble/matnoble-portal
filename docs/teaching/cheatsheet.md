@@ -20,7 +20,7 @@ const printPage = () => {
 <div class="print-only" style="display: none;">
   <div style="display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid #333; padding-bottom: 10px; margin-bottom: 20px;">
     <div>
-      <h1 style="margin: 0; font-size: 24px;">核心心法速查表</h1>
+      <div style="margin: 0; font-size: 24px; font-weight: bold;">核心心法速查表</div>
       <p style="margin: 5px 0 0 0; font-size: 14px; color: #666;">Math Core Methods Cheat Sheet</p>
     </div>
     <div style="text-align: right;">
