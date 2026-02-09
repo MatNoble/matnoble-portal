@@ -1,5 +1,6 @@
 import { defineConfig } from "vitepress";
 import webfontDl from "vite-plugin-webfont-dl";
+import { genFeed } from "./genFeed";
 
 export default defineConfig({
   lang: "zh-CN",
@@ -10,6 +11,8 @@ export default defineConfig({
   markdown: {
     math: true,
   },
+
+  buildEnd: genFeed,
 
   vite: {
     plugins: [
@@ -67,6 +70,12 @@ export default defineConfig({
           svg: '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Telegram</title><path d="M12 24c6.627 0 12-5.373 12-12S18.627 0 12 0 0 5.373 0 12s5.373 12 12 12zM5.934 12.088c.492-2.103 3.033-3.146 5.357-4.144 2.872-1.233 5.486-2.353 5.486-2.353s1.102-.455 1.018.618c-.033.432-.237 1.763-.44 3.14-.306 2.072-.638 4.31-.815 5.093-.195.86-.55 1.144-.55 1.144s-.305.28-.627.05c-.322-.23-.847-.574-1.39-.932-.474-.313-1.074-.71-1.425-1.002-.27-.225-.492-.542-.144-.84.07-.06.27-.243.51-.462 1.353-1.237 2.152-1.968 2.152-1.968.21-.193.394-.525-.07-.525-.11 0-.312.04-.63.25-.43.284-3.12 2.064-4.22 2.793-.412.272-.782.406-1.11.398-.36-.008-1.047-.215-1.56-.38-.63-.203-1.132-.31-1.087-.655.023-.18.264-.366.723-.556z"/></svg>',
         },
         link: "https://t.me/HUSTMatNoble",
+      },
+      {
+        icon: {
+          svg: '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>RSS</title><path d="M19.199 24C19.199 13.467 10.533 4.8 0 4.8V0c13.265 0 24 10.735 24 24h-4.801zM3.291 17.415c1.814 0 3.293 1.479 3.293 3.295 0 1.813-1.485 3.29-3.301 3.29C1.47 24 0 22.515 0 20.71s1.47-3.295 3.291-3.295zM15.909 24h-4.665c0-6.169-5.004-11.167-11.244-11.167V8.167c8.744 0 15.91 7.161 15.91 15.833z"/></svg>',
+        },
+        link: "/feed.xml",
       },
     ],
 
@@ -272,6 +281,24 @@ export default defineConfig({
       {
         async: "",
         src: "https://www.googletagmanager.com/gtag/js?id=G-491EPRZ1LY",
+      },
+    ],
+    [
+      "link",
+      {
+        rel: "alternate",
+        type: "application/rss+xml",
+        title: "RSS Feed for MatNoble",
+        href: "/feed.xml",
+      },
+    ],
+    [
+      "link",
+      {
+        rel: "alternate",
+        type: "application/atom+xml",
+        title: "Atom Feed for MatNoble",
+        href: "/atom.xml",
       },
     ],
     [
