@@ -91,6 +91,21 @@ export default defineConfig({
   // 关键 SEO 配置：生成 sitemap
   sitemap: {
     hostname: "https://matnoble.top",
+    lastmodDateOnly: true,
+    xmlns: {
+      news: false,
+      video: false,
+      image: false,
+      xhtml: false,
+    },
+    transformItems: (items) => {
+      return items
+        .filter((item) => !item.url.endsWith("404") && !item.url.endsWith("404.html"))
+        .map((item) => ({
+          ...item,
+          url: item.url.replace(/\/$/, ""),
+        }));
+    },
   },
 
   themeConfig: {
@@ -209,7 +224,8 @@ export default defineConfig({
   transformHead: ({ pageData }) => {
     const url = `https://matnoble.top/${pageData.relativePath}`
       .replace(/index\.md$/, "")
-      .replace(/\.md$/, "");
+      .replace(/\.md$/, "")
+      .replace(/\/$/, "");
 
     const siteTitle = "MatNoble";
     const pageTitle = pageData.title;

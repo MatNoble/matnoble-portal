@@ -48,6 +48,9 @@ export async function genFeed(config: SiteConfig) {
       }
     }
 
+    // 规范化为日期精度 (当天零点)
+    postDate.setHours(0, 0, 0, 0)
+
     feed.addItem({
       title: frontmatter.title || '无题',
       id: `${baseUrl}${url}`,
