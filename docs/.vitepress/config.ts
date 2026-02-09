@@ -31,22 +31,25 @@ export default defineConfig({
           theme_color: "#ffffff",
           icons: [
             {
-              src: "favicon.png",
-              sizes: "192x192",
+              src: "/favicon.png",
+              sizes: "32x32",
               type: "image/png",
             },
             {
-              src: "favicon.png",
-              sizes: "512x512",
-              type: "image/png",
+              src: "/logo.svg",
+              sizes: "any",
+              type: "image/svg+xml",
             },
             {
-              src: "favicon.png",
+              src: "/logo.svg",
               sizes: "512x512",
-              type: "image/png",
+              type: "image/svg+xml",
               purpose: "any maskable",
             },
           ],
+        },
+        devOptions: {
+          enabled: true,
         },
         workbox: {
           globPatterns: ["**/*.{css,js,html,svg,png,ico,txt,woff2}"],
@@ -399,31 +402,29 @@ export default defineConfig({
     ],
     ["link", { rel: "icon", href: "/favicon.ico", sizes: "any" }],
     ["link", { rel: "icon", href: "/logo.svg", type: "image/svg+xml" }],
-    ["link", { rel: "apple-touch-icon", href: "/favicon.png" }],
+    ["link", { rel: "apple-touch-icon", href: "/apple-touch-icon.png" }],
     // IndexNow 验证
-    [
-      "meta",
-      { name: "indexnow-key", content: "7c6a9686414144409395982823617300" },
-    ],
-    // Google Search Console 验证
-    [
-      "meta",
-      {
-        name: "google-site-verification",
-        content: "OeFbtbYCwGN3Bnb3MSOm50bnnxInp9jj_bQT5vOIBPo",
-      },
-    ],
-    // Bing Webmaster Tools 验证
-    [
-      "meta",
-      { name: "msvalidate.01", content: "1267ABE5F71B3CA9AF5AF169FD89E296" },
-    ],
-    ["link", { rel: "manifest", href: "/manifest.webmanifest" }],
-    ["meta", { name: "theme-color", content: "#ffffff" }],
-    ["meta", { name: "apple-mobile-web-app-capable", content: "yes" }],
-    ["meta", { name: "apple-mobile-web-app-status-bar-style", content: "default" }],
-    [
-      "meta",
+        ["meta", { name: "indexnow-key", content: "7c6a9686414144409395982823617300" },],
+        // Google Search Console 验证
+        [
+          "meta",
+          {
+            name: "google-site-verification",
+            content: "OeFbtbYCwGN3Bnb3MSOm50bnnxInp9jj_bQT5vOIBPo",
+          },
+        ],
+        // Bing Webmaster Tools 验证
+        [
+          "meta",
+          { name: "msvalidate.01", content: "1267ABE5F71B3CA9AF5AF169FD89E296" },
+        ],
+        ["link", { rel: "manifest", href: "/manifest.webmanifest" }],
+        ["meta", { name: "theme-color", content: "#ffffff" }],
+        ["meta", { name: "mobile-web-app-capable", content: "yes" }],
+        ["meta", { name: "apple-mobile-web-app-status-bar-style", content: "default" }],
+        [
+          "meta",
+    
       {
         name: "keywords",
         content:

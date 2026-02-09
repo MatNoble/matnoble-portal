@@ -9,6 +9,7 @@ import RelatedPosts from "./components/RelatedPosts.vue";
 import ReadingProgressBar from "./components/ReadingProgressBar.vue";
 import ArticleHero from "./components/ArticleHero.vue";
 import BrownianBackground from "./components/BrownianBackground.vue";
+import PwaPrompt from "./components/PwaPrompt.vue";
 import "./custom.css";
 import { inject } from "@vercel/analytics";
 import mediumZoom from "medium-zoom";
@@ -26,7 +27,7 @@ export default {
       // 在文档内容之后插入分享组件和评论组件
       "doc-after": () => [h(RelatedPosts), h(Share), h(Comment)],
       "layout-top": () => h(ReadingProgressBar),
-      "layout-bottom": () => h(BrownianBackground),
+      "layout-bottom": () => [h(BrownianBackground), h(PwaPrompt)],
     });
   },
   setup() {
@@ -44,7 +45,6 @@ export default {
     );
   },
   enhanceApp(ctx: EnhanceAppContext) {
-    DefaultTheme.enhanceApp(ctx);
     const { app } = ctx;
     app.component("DownloadCard", DownloadCard);
     app.component("CheatSheetFooter", CheatSheetFooter);
