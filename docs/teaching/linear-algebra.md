@@ -1,32 +1,16 @@
 ---
 title: 线性代数与几何直观 | 空间变换视角下的核心概念
 description: 强调几何直觉与空间变换的线性代数教学体系。深入浅出讲解特征值、奇异值分解 (SVD) 等核心概念，助你理解矩阵运算背后的几何本质。
-head:
-  - - script
-    - type: application/ld+json
-    - |
-      {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "为什么要学习线性代数？",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "线性代数不仅是处理数据的工具，更是理解多维空间的语言。通过掌握矩阵作为线性变换的几何本质，你将能更直观地理解现代科学与工程中的复杂系统。"
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "什么是奇异值分解 (SVD)？",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "奇异值分解 (SVD) 是线性代数中的核心定理，它揭示了任何矩阵变换都可以分解为旋转、缩放和再次旋转三个步骤。SVD 在图像压缩、数据降维和推荐系统中有着广泛应用。"
-            }
-          }
-        ]
-      }
+structuredData:
+  course:
+    name: "线性代数与几何直观 (Linear Algebra & Geometric Intuition)"
+    description: "以空间变换为核心的现代线性代数课程。强调几何直觉，拒绝死记硬背矩阵运算。"
+    provider: "MatNoble"
+  faq:
+    - question: "为什么要学习线性代数？"
+      answer: "线性代数不仅是处理数据的工具，更是理解多维空间的语言。通过掌握矩阵作为线性变换的几何本质，你将能更直观地理解现代科学与工程中的复杂系统。"
+    - question: "什么是奇异值分解 (SVD)？"
+      answer: "奇异值分解 (SVD) 是线性代数中的核心定理，它揭示了任何矩阵变换都可以分解为旋转、缩放和再次旋转三个步骤。SVD 在图像压缩、数据降维和推荐系统中有着广泛应用。"
 ---
 
 <ArticleHero 

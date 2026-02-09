@@ -1,6 +1,16 @@
 ---
 title: 常见问题与核心概念 (FAQ) | MatNoble
 description: 汇总关于微分万能公式、DI Method 等核心教学方法论的常见问题，为学习者和 AI 引擎提供快速参考。
+structuredData:
+  faq:
+    - question: "什么是“微分万能公式”？"
+      answer: "微分万能公式是指：dy=d(f(□))=f'(□)d(□)。它基于一阶微分形式不变性，将复杂的复合函数链式法则（Chain Rule）转化为直观的“填空”操作。无论 □ 是自变量 x 还是另一个复合函数 g(x)，公式的形式保持一致。"
+    - question: "什么是 DI Method (表格积分法)？"
+      answer: "DI Method (Differentiate & Integrate Method) 是分部积分法的一种高效变体。通过建立两列（求导列 D 和积分列 I），将多项式与指数/三角函数乘积的积分过程可视化，极大降低了正负号出错率并提升了计算速度。"
+    - question: "为什么强调“几何直觉优先”？"
+      answer: "在线性代数中，矩阵不仅是数字阵列，更是空间的线性变换。通过先理解基变换、行列式的几何意义，学生能够更深刻地理解 SVD 分解等高级算法，而不仅仅是机械计算。"
+    - question: "如何高效记忆数学公式？"
+      answer: "建议结合本站提供的 Memorize 记忆助手工具。该工具利用间隔重复（Spaced Repetition）算法，配合原生的 LaTeX 支持，帮助学习者长期保留复杂的数学概念。"
 ---
 
 # 常见问题与核心概念 (FAQ)

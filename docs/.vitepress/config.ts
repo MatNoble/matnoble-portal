@@ -47,6 +47,7 @@ export default defineConfig({
       {
         text: "在线工具",
         items: [
+          { text: "DI 表格法演示", link: "/tools/di-method" },
           { text: "Memorize 助手", link: "/tools/memorize" },
         ],
       },
@@ -123,7 +124,9 @@ export default defineConfig({
       ? image
       : `https://matnoble.top${image}`;
 
-    // Generate Breadcrumbs JSON-LD
+    const schemas: any[] = [];
+
+    // 1. BreadcrumbList Schema
     const breadcrumbs = [];
     breadcrumbs.push({
       "@type": "ListItem",
@@ -132,36 +135,116 @@ export default defineConfig({
       "item": "https://matnoble.top/"
     });
 
-    const pathSegments = pageData.relativePath.split('/');
-    // Remove file extension for the last segment
-    if (pathSegments.length > 0 && pathSegments[0] !== 'index.md') {
-       // Simple breadcrumb logic: Home > Section > Page
-       // Note: This is a simplified generation. For complex nesting, you might need a mapping.
+    const pathSegments = pageData.relativePath.split('/').filter(s => s !== 'index.md');
+    if (pathSegments.length > 0) {
        let cumulativePath = "https://matnoble.top/";
-       
        pathSegments.forEach((segment, index) => {
           const cleanSegment = segment.replace('.md', '');
-          if (cleanSegment === 'index') return;
-          
           cumulativePath += cleanSegment + '/';
-          
-          // Try to derive a readable name (fallback to capitalized segment)
-          const name = cleanSegment.charAt(0).toUpperCase() + cleanSegment.slice(1);
-          
+          const name = pageData.frontmatter.breadcrumb || cleanSegment.charAt(0).toUpperCase() + cleanSegment.slice(1);
           breadcrumbs.push({
             "@type": "ListItem",
-            "position": index + 2, // 1 is Home
+            "position": index + 2,
             "name": name,
-            "item": cumulativePath.replace(/\/$/, "") // remove trailing slash for item URL
+            "item": cumulativePath.replace(/\/$/, "")
           });
        });
     }
-
-    const breadcrumbSchema = {
+    schemas.push({
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": breadcrumbs
-    };
+    });
+
+    // 2. FAQPage Schema
+    if (pageData.frontmatter.structuredData?.faq) {
+      schemas.push({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": pageData.frontmatter.structuredData.faq.map((item: any) => ({
+          "@type": "Question",
+          "name": item.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": item.answer
+          }
+        }))
+      });
+    }
+
+    // 3. MathSolver Schema
+    if (pageData.frontmatter.structuredData?.mathSolver) {
+      const ms = pageData.frontmatter.structuredData.mathSolver;
+      schemas.push({
+        "@context": "https://schema.org",
+        "@type": "MathSolver",
+        "name": ms.name,
+        "description": ms.description,
+        "potentialAction": ms.potentialAction.map((action: any) => ({
+          "@type": action.type,
+          "target": action.target,
+          "mathExpression": action.mathExpression
+        }))
+      });
+    }
+
+    // 4. Course Schema
+    if (pageData.frontmatter.structuredData?.course) {
+      const course = pageData.frontmatter.structuredData.course;
+      schemas.push({
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": course.name,
+        "description": course.description,
+        "provider": {
+          "@type": "Organization",
+          "name": course.provider,
+          "sameAs": "https://matnoble.top"
+        }
+      });
+    }
+
+    // 5. SoftwareApplication Schema
+    if (pageData.frontmatter.structuredData?.softwareApp) {
+      const app = pageData.frontmatter.structuredData.softwareApp;
+      schemas.push({
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": app.name,
+        "applicationCategory": app.category,
+        "description": app.description,
+        "operatingSystem": "Web",
+        "author": { "@id": "https://matnoble.top/#person" }
+      });
+    }
+
+    // 6. ProfilePage Schema
+    if (pageData.frontmatter.structuredData?.profile) {
+      schemas.push({
+        "@context": "https://schema.org",
+        "@type": "ProfilePage",
+        "mainEntity": { "@id": "https://matnoble.top/#person" }
+      });
+    }
+
+    // 7. Article Schema (for teaching content)
+    if (pageData.relativePath.startsWith('teaching/') && pageData.relativePath !== 'teaching/index.md') {
+      schemas.push({
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": title,
+        "description": description,
+        "image": imageUrl,
+        "author": { "@id": "https://matnoble.top/#person" },
+        "publisher": { "@id": "https://matnoble.top/#person" },
+        "datePublished": new Date(pageData.lastUpdated || Date.now()).toISOString(),
+        "dateModified": new Date(pageData.lastUpdated || Date.now()).toISOString(),
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": url
+        }
+      });
+    }
 
     return [
       ["link", { rel: "canonical", href: url }],
@@ -178,9 +261,9 @@ export default defineConfig({
       ["meta", { name: "twitter:card", content: "summary_large_image" }],
       ["meta", { name: "twitter:site", content: "@MatNoble" }],
       ["meta", { name: "twitter:creator", content: "@MatNoble" }],
-      // JSON-LD Breadcrumbs
-      ["script", { type: "application/ld+json" }, JSON.stringify(breadcrumbSchema)]
-    ];
+      // JSON-LD Scripts
+      ...schemas.map(schema => ["script", { type: "application/ld+json" }, JSON.stringify(schema)])
+    ] as any;
   },
 
   head: [

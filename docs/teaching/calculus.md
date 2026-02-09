@@ -1,6 +1,11 @@
 ---
 title: 微积分三大计算教学体系 | 极限、导数与积分复习攻略
 description: 针对大学微积分三大计算专题的深度复习指南。详解极限计算八大等价无穷小、复合函数求导“微分万能公式”、不定积分凑微分与 DI 表格法。助力搞定期末考试与考研数学。
+structuredData:
+  course:
+    name: "微积分三大计算教学体系 (Calculus Calculation Framework)"
+    description: "涵盖极限、导数与积分三大核心计算的系统性复习指南，结合微分万能公式与 DI 表格法等高效工具。"
+    provider: "MatNoble"
 ---
 
 <ArticleHero 

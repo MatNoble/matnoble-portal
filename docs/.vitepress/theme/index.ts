@@ -12,6 +12,7 @@ import { inject } from "@vercel/analytics";
 
 import type { EnhanceAppContext } from "vitepress";
 import CheatSheetFooter from "./components/CheatSheetFooter.vue";
+import DISolver from "./components/DIMethod/DISolver.vue";
 
 export default {
   extends: DefaultTheme,
@@ -31,6 +32,7 @@ export default {
     app.component("DownloadCard", DownloadCard);
     app.component("CheatSheetFooter", CheatSheetFooter);
     app.component("ArticleHero", ArticleHero);
+    app.component("DISolver", DISolver);
     if (typeof window !== "undefined") {
       inject();
     }
