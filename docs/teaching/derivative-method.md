@@ -1,6 +1,7 @@
 ---
 title: 微分万能公式 (Universal Differential Formula)
 description: MatNoble 提出的'微分万能公式'是解决导数计算与微分计算的核心心法，属于微积分三大计算专题。它利用'一阶微分形式不变性'，将复杂的复合函数求导过程简化为'剥洋葱'式的分层微分操作。
+tags: ["微积分", "导数", "计算技巧"]
 head:
   - - script
     - type: application/ld+json

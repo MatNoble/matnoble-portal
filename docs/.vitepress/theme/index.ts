@@ -5,6 +5,7 @@ import Logo from "./components/Logo.vue";
 import Comment from "./components/Comment.vue";
 import DownloadCard from "./components/DownloadCard.vue"; // Import the new component
 import Share from "./components/Share.vue";
+import RelatedPosts from "./components/RelatedPosts.vue";
 import ReadingProgressBar from "./components/ReadingProgressBar.vue";
 import ArticleHero from "./components/ArticleHero.vue";
 import BrownianBackground from "./components/BrownianBackground.vue";
@@ -23,7 +24,7 @@ export default {
       // 使用 nav-bar-title-before 插槽插入自定义 Logo
       "nav-bar-title-before": () => h(Logo),
       // 在文档内容之后插入分享组件和评论组件
-      "doc-after": () => [h(Share), h(Comment)],
+      "doc-after": () => [h(RelatedPosts), h(Share), h(Comment)],
       "layout-top": () => h(ReadingProgressBar),
       "layout-bottom": () => h(BrownianBackground),
     });
