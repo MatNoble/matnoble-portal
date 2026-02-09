@@ -204,7 +204,25 @@ body {
    移动端/响应式适配
    ========================================= */
 
-/* 1. 导航栏 Logo 位置修正 */
+/* 1. 导航栏布局与交互优化 (Mobile UX) */
+.VPNavBarAppearance {
+  display: flex !important;
+  order: -1; /* 将切换按钮移动到右侧容器的最左侧 */
+  margin-right: 12px;
+}
+
+@media (max-width: 768px) {
+  .VPNavBarAppearance {
+    margin-right: 8px;
+  }
+
+  /* 调整搜索框与切换按钮的布局，确保互不干扰 */
+  .VPNavBarSearch {
+    order: 0;
+  }
+}
+
+/* 2. 导航栏 Logo 位置修正 */
 .VPNavBarTitle.has-sidebar {
   padding-left: 16px;
 }
