@@ -219,10 +219,10 @@ export default defineConfig({
       pageData.description ||
       "大学数学教师 MatNoble 的个人门户。专注于微积分三大计算（微分万能公式、DI表格法）与线性代数教学，分享数学学习方法与辅助工具。";
     
-    const image = pageData.frontmatter.image || "/social-card.svg"; 
+    const image = pageData.frontmatter.image || "/social-card.png"; 
     const imageUrl = image.startsWith("http")
       ? image
-      : `https://matnoble.top${image}`;
+      : `https://matnoble.top${image.startsWith('/') ? '' : '/'}${image}`;
 
     const schemas: any[] = [];
 
@@ -353,6 +353,9 @@ export default defineConfig({
       ["meta", { property: "og:title", content: title }],
       ["meta", { property: "og:description", content: description }],
       ["meta", { property: "og:image", content: imageUrl }],
+      ["meta", { property: "og:image:width", content: "1200" }],
+      ["meta", { property: "og:image:height", content: "630" }],
+      ["meta", { property: "og:image:type", content: "image/png" }],
       // Twitter Card
       ["meta", { name: "twitter:url", content: url }],
       ["meta", { name: "twitter:title", content: title }],
