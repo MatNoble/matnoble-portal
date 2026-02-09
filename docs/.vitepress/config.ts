@@ -6,8 +6,9 @@ import { VitePWA } from "vite-plugin-pwa";
 export default defineConfig({
   lang: "zh-CN",
   title: "MatNoble",
+  titleTemplate: ":title | MatNoble", // 统一标题模板，防止重复
   description:
-    "大学数学教师 MatNoble 的个人门户。专注于微积分三大计算（微分万能公式、DI表格法）与线性代数教学，分享数学学习方法与辅助工具。",
+    "大学数学教师 MatNoble 的个人门户。致力于数学与计算机科学的交叉探索，分享微积分、线性代数的高效方法论及数学辅助工具开发。为热爱数学与编程的探索者提供深度内容。",
 
   markdown: {
     math: true,
@@ -161,7 +162,7 @@ export default defineConfig({
     ],
 
     footer: {
-      message: "以数学训练思维，用技术改善学习与生活。",
+      message: "以数学构建逻辑，用技术驱动学习。",
       copyright: "Copyright © 2025-2026 MatNoble",
     },
 
@@ -443,13 +444,11 @@ export default defineConfig({
         ["meta", { name: "apple-mobile-web-app-status-bar-style", content: "default" }],
         [
           "meta",
-    
-      {
-        name: "keywords",
-        content:
-          "微分计算, 导数计算, 微积分三大计算, 微分万能公式, DI表格积分法, 微积分公式大全, 大学数学复习, 工科数学, MatNoble, 高等数学速查表, 考研数学工具",
-      },
-    ],
+          {
+            name: "keywords",
+            content: "计算数学, 算法思维, 微积分, 线性代数, 微分万能公式, DI表格积分法, 数学建模, 开发者工具, MatNoble, 高等数学速查表, CS与数学",
+          },
+        ],
 
     // --- Open Graph (社交媒体/AI 引用卡片) ---
     ["meta", { property: "og:site_name", content: "MatNoble" }],
@@ -472,11 +471,12 @@ export default defineConfig({
             knowsAbout: [
               "Calculus",
               "Linear Algebra",
+              "Computer Science",
               "Educational Technology",
               "Web Development",
             ],
             description:
-              "大学数学教师与独立开发者。专注于工科数学教学研究，通过“微分万能公式”与“DI Method”等高效方法论，构建可解释的数学世界。",
+              "大学数学教师与独立开发者。致力于数学与计算机科学的交叉探索，通过“微分万能公式”与“DI Method”等高效方法论，构建可解释的数学与代码世界。",
             image: "https://matnoble.top/logo.svg",
             sameAs: [
               "https://github.com/matnoble",
