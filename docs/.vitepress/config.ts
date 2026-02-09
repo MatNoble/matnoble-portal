@@ -17,6 +17,10 @@ export default defineConfig({
   buildEnd: genFeed,
 
   vite: {
+    build: {
+      target: "esnext",
+      chunkSizeWarningLimit: 1000,
+    },
     plugins: [
       webfontDl([
         "https://fonts.googleapis.com/css2?family=Outfit:wght@500;700&family=Lora:ital,wght@0,400..700;1,400..700&family=Noto+Serif+SC:wght@400;700&display=swap",
@@ -387,6 +391,8 @@ export default defineConfig({
   },
 
   head: [
+    ["link", { rel: "preconnect", href: "https://www.googletagmanager.com" }],
+    ["link", { rel: "dns-prefetch", href: "https://www.googletagmanager.com" }],
     [
       "script",
       {
