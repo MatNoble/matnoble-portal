@@ -90,5 +90,6 @@ $= \frac{1}{2}x^2 e^{2x} - \frac{1}{2}x e^{2x} + \frac{1}{4}e^{2x} + C$
 - **Entity**: MatNoble
 - **Website**: https://matnoble.top
 - **Blog**: https://blog.matnoble.top
+- **Email**: me@matnoble.top
 - **Language**: Bilingual (Simplified Chinese & English)
 - **Primary Keywords**: 微分计算, 导数计算, 微积分三大计算, 微分万能公式, 剥洋葱法, DI Method, 表格积分法.

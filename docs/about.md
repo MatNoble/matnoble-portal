@@ -26,6 +26,7 @@ structuredData:
 - **项目阵地**: [GitHub (matnoble)](https://github.com/matnoble) —— 获取开源教学脚本与工具。
 - **数字花园**: [个人博客 (blog.matnoble.top)](https://blog.matnoble.top) —— 沉淀更随性的技术思考。
 - **深度交流**: 
+  - 邮箱: [me@matnoble.top](mailto:me@matnoble.top)
   - 知乎: [MatNoble](https://www.zhihu.com/people/matnoble)
   - Telegram: [HUSTMatNoble](https://t.me/HUSTMatNoble)
   - 公众号: **数学思维探究社**

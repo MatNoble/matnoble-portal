@@ -100,6 +100,12 @@ This project is optimized for **Vercel**.
    - **Output Directory**: `docs/.vitepress/dist`
 4. Add custom domain (`matnoble.top`).
 
+## ✉️ Contact
+
+- **Email**: [me@matnoble.top](mailto:me@matnoble.top)
+- **GitHub**: [matnoble](https://github.com/matnoble)
+- **Website**: [matnoble.top](https://matnoble.top)
+
 ## 📄 License
 
 MIT © [MatNoble](https://github.com/matnoble)

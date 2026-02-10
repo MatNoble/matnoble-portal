@@ -55,3 +55,12 @@ features:
 
 ### 概念直觉优先
 在线性代数教学中，坚持“几何直觉先行，矩阵计算在后”。强调从线性变换、基变换、SVD 等核心概念出发，构建完整的数学图景，拒绝死记硬背。
+
+## 📬 联系方式
+
+如果你对本站内容有任何建议、合作意向或学术探讨，欢迎通过以下方式联系我：
+
+- **Email**: [me@matnoble.top](mailto:me@matnoble.top)
+- **GitHub**: [matnoble](https://github.com/matnoble)
+- **Telegram**: [HUSTMatNoble](https://t.me/HUSTMatNoble)
+
