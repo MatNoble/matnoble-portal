@@ -151,6 +151,7 @@ export default defineConfig({
 
     socialLinks: [
       { icon: "github", link: "https://github.com/matnoble" },
+      { icon: "youtube", link: "https://www.youtube.com/@RossMatNoble" },
       {
         icon: {
           svg: '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Email</title><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>',
@@ -169,11 +170,10 @@ export default defineConfig({
         },
         link: "/atom.xml",
       },
-      { icon: "youtube", link: "https://www.youtube.com/@RossMatNoble" },
     ],
 
     footer: {
-      message: '以数学构建逻辑，用技术驱动学习。 | <a href="mailto:me@matnoble.top">me@matnoble.top</a>',
+      message: '以数学构建逻辑，用技术驱动学习。',
       copyright: "Copyright © 2025-2026 MatNoble",
     },
 
