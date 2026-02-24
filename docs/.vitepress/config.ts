@@ -320,7 +320,8 @@ export default defineConfig({
             "@type": "EntryPoint",
             "urlTemplate": action.target + "?q={math_expression}"
           },
-          "mathExpression-input": "required name=math_expression"
+          "mathExpression-input": "required name=math_expression",
+          "eduQuestionType": "Integration"
         }))
       });
     }
