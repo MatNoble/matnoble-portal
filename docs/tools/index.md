@@ -1,5 +1,5 @@
 ---
-title: 数学辅助工具 | MatNoble
+title: 数学辅助工具
 description: MatNoble 开发的数学学习辅助工具集，包含专注于公式记忆的 Memorize 助手。
 ---
 

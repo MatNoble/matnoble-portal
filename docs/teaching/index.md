@@ -1,5 +1,5 @@
 ---
-title: 大学数学教学体系 | MatNoble
+title: 大学数学教学体系
 description: MatNoble 的大学数学教学大纲与方法论，涵盖微积分、线性代数教学规划，强调数学直觉与应用。
 ---
 

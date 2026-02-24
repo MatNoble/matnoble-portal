@@ -1,5 +1,5 @@
 ---
-title: Memorize - 数学公式记忆工具 | MatNoble
+title: Memorize - 数学公式记忆工具
 description: 专为数学学习者设计的间隔重复记忆工具，完美支持 LaTeX 公式渲染。
 head:
   - - script
