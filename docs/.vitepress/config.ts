@@ -306,10 +306,12 @@ export default defineConfig({
       const ms = pageData.frontmatter.structuredData.mathSolver;
       schemas.push({
         "@context": "https://schema.org",
-        "@type": "MathSolver",
+        "@type": ["MathSolver", "LearningResource"],
         "name": ms.name,
         "url": url,
         "inLanguage": "zh-CN",
+        "learningResourceType": "Math Solver",
+        "eduQuestionType": "Integration",
         "usageInfo": "https://matnoble.top/about",
         "description": ms.description,
         "potentialAction": ms.potentialAction.map((action: any) => ({
