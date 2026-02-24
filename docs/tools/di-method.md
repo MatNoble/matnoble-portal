@@ -1,14 +1,13 @@
 ---
-title: DI 表格法交互演示 | MatNoble
+title: DI 表格法交互演示
 description: 交互式学习分部积分法的系统性优化工具 —— DI Method。通过逐步推演，掌握表格积分法的核心逻辑。
 structuredData:
   mathSolver:
     name: "DI Method Integration Solver"
     description: "Step-by-step solver for integration by parts using the DI Method."
     potentialAction:
-      - type: "SolveAction"
+      - type: "SolveMathAction"
         target: "https://matnoble.top/tools/di-method"
-        mathExpression: "integral of x*exp(x) dx"
   softwareApp:
     name: "DI Method Interactive Solver"
     category: "EducationalApplication"

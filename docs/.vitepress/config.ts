@@ -243,12 +243,12 @@ export default defineConfig({
     const siteTitle = "MatNoble";
     const pageTitle = pageData.title;
     const title = pageTitle ? `${pageTitle} | ${siteTitle}` : siteTitle;
-    
+
     const description =
       pageData.description ||
       "大学数学教师 MatNoble 的个人门户。专注于微积分三大计算（微分万能公式、DI表格法）与线性代数教学，分享数学学习方法与辅助工具。";
-    
-    const image = pageData.frontmatter.image || "/social-card.png"; 
+
+    const image = pageData.frontmatter.image || "/social-card.png";
     const imageUrl = image.startsWith("http")
       ? image
       : `https://matnoble.top${image.startsWith('/') ? '' : '/'}${image}`;
@@ -266,18 +266,18 @@ export default defineConfig({
 
     const pathSegments = pageData.relativePath.split('/').filter(s => s !== 'index.md');
     if (pathSegments.length > 0) {
-       let cumulativePath = "https://matnoble.top/";
-       pathSegments.forEach((segment, index) => {
-          const cleanSegment = segment.replace('.md', '');
-          cumulativePath += cleanSegment + '/';
-          const name = pageData.frontmatter.breadcrumb || cleanSegment.charAt(0).toUpperCase() + cleanSegment.slice(1);
-          breadcrumbs.push({
-            "@type": "ListItem",
-            "position": index + 2,
-            "name": name,
-            "item": cumulativePath.replace(/\/$/, "")
-          });
-       });
+      let cumulativePath = "https://matnoble.top/";
+      pathSegments.forEach((segment, index) => {
+        const cleanSegment = segment.replace('.md', '');
+        cumulativePath += cleanSegment + '/';
+        const name = pageData.frontmatter.breadcrumb || cleanSegment.charAt(0).toUpperCase() + cleanSegment.slice(1);
+        breadcrumbs.push({
+          "@type": "ListItem",
+          "position": index + 2,
+          "name": name,
+          "item": cumulativePath.replace(/\/$/, "")
+        });
+      });
     }
     schemas.push({
       "@context": "https://schema.org",
@@ -308,11 +308,17 @@ export default defineConfig({
         "@context": "https://schema.org",
         "@type": "MathSolver",
         "name": ms.name,
+        "url": url,
+        "inLanguage": "zh-CN",
+        "usageInfo": "https://matnoble.top/about",
         "description": ms.description,
         "potentialAction": ms.potentialAction.map((action: any) => ({
-          "@type": action.type,
-          "target": action.target,
-          "mathExpression": action.mathExpression
+          "@type": action.type === "SolveAction" ? "SolveMathAction" : action.type,
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": action.target + "?q={math_expression}"
+          },
+          "mathExpression-input": "required name=math_expression"
         }))
       });
     }
@@ -438,31 +444,31 @@ export default defineConfig({
     ["link", { rel: "icon", href: "/logo.svg", type: "image/svg+xml" }],
     ["link", { rel: "apple-touch-icon", href: "/apple-touch-icon.png" }],
     // IndexNow 验证
-        ["meta", { name: "indexnow-key", content: "7c6a9686414144409395982823617300" },],
-        // Google Search Console 验证
-        [
-          "meta",
-          {
-            name: "google-site-verification",
-            content: "OeFbtbYCwGN3Bnb3MSOm50bnnxInp9jj_bQT5vOIBPo",
-          },
-        ],
-        // Bing Webmaster Tools 验证
-        [
-          "meta",
-          { name: "msvalidate.01", content: "1267ABE5F71B3CA9AF5AF169FD89E296" },
-        ],
-        ["link", { rel: "manifest", href: "/manifest.webmanifest" }],
-        ["meta", { name: "theme-color", content: "#ffffff" }],
-        ["meta", { name: "mobile-web-app-capable", content: "yes" }],
-        ["meta", { name: "apple-mobile-web-app-status-bar-style", content: "default" }],
-        [
-          "meta",
-          {
-            name: "keywords",
-            content: "计算数学, 算法思维, 微积分, 线性代数, 微分万能公式, DI表格积分法, 数学建模, 开发者工具, MatNoble, 高等数学速查表, CS与数学",
-          },
-        ],
+    ["meta", { name: "indexnow-key", content: "7c6a9686414144409395982823617300" },],
+    // Google Search Console 验证
+    [
+      "meta",
+      {
+        name: "google-site-verification",
+        content: "OeFbtbYCwGN3Bnb3MSOm50bnnxInp9jj_bQT5vOIBPo",
+      },
+    ],
+    // Bing Webmaster Tools 验证
+    [
+      "meta",
+      { name: "msvalidate.01", content: "1267ABE5F71B3CA9AF5AF169FD89E296" },
+    ],
+    ["link", { rel: "manifest", href: "/manifest.webmanifest" }],
+    ["meta", { name: "theme-color", content: "#ffffff" }],
+    ["meta", { name: "mobile-web-app-capable", content: "yes" }],
+    ["meta", { name: "apple-mobile-web-app-status-bar-style", content: "default" }],
+    [
+      "meta",
+      {
+        name: "keywords",
+        content: "计算数学, 算法思维, 微积分, 线性代数, 微分万能公式, DI表格积分法, 数学建模, 开发者工具, MatNoble, 高等数学速查表, CS与数学",
+      },
+    ],
 
     // --- Open Graph (社交媒体/AI 引用卡片) ---
     ["meta", { property: "og:site_name", content: "MatNoble" }],
