@@ -141,6 +141,7 @@ export default defineConfig({
         ],
       },
       { text: "技术博客", link: "https://blog.matnoble.top" },
+      { text: "在线相册", link: "https://album.matnoble.top/" },
       { text: "关于", link: "/about" },
     ],
 
