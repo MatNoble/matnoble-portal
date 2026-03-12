@@ -105,7 +105,10 @@ export default defineConfig({
     },
     transformItems: (items) => {
       return items
-        .filter((item) => !item.url.endsWith("404") && !item.url.endsWith("404.html"))
+        .filter((item) => {
+          const is404 = item.url.includes('404') || item.url.endsWith('404.html');
+          return !is404;
+        })
         .map((item) => ({
           ...item,
           url: item.url.replace(/\/$/, ""),
