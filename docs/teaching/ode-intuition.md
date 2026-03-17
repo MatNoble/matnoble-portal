@@ -4,6 +4,16 @@ description: "从第一性原理出发，使用动态长文图解微积分与线
 layout: doc
 ---
 
+<style>
+/* 针对当前页面打破 VitePress 默认的窄版限制 */
+.vp-doc {
+  max-width: 1200px !important;
+}
+.vp-doc .container {
+  max-width: 1200px !important;
+}
+</style>
+
 <ArticleHero
   tag="互动教学"
   title="二阶微分方程的灵魂拆解"

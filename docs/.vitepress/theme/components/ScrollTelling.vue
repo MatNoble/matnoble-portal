@@ -68,37 +68,43 @@ onUnmounted(() => {
 <style scoped>
 .scroll-telling-container {
   display: flex;
-  gap: 2rem;
-  margin: 2rem 0;
+  gap: 3rem; /* 增大间距 */
+  margin: 3rem 0;
   position: relative;
   align-items: flex-start;
+  width: 100%; /* 强制满宽 */
 }
 
 .scrolly-text {
-  flex: 1;
+  flex: 1; /* 文字占 1 份 */
   padding-bottom: 50vh;
+  z-index: 2; /* 确保文字在顶层 */
 }
 
 .step-box {
-  min-height: 50vh;
-  margin-bottom: 2rem;
-  padding: 1.5rem;
+  min-height: 60vh; /* 增加触发区域高度，让滚动更从容 */
+  margin-bottom: 3rem;
+  padding: 2rem;
   border-left: 4px solid var(--vp-c-divider);
-  transition: all 0.3s ease;
-  opacity: 0.5;
+  transition: all 0.4s ease;
+  opacity: 0.3; /* 非激活状态更暗，突出焦点 */
+  transform: translateX(-10px); /* 增加一点微动效 */
 }
 
 .step-box.active {
   border-left-color: var(--vp-c-brand);
   opacity: 1;
   background: var(--vp-c-bg-soft);
+  transform: translateX(0);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* 添加轻微阴影突出浮层感 */
+  border-radius: 0 8px 8px 0;
 }
 
 .scrolly-visual {
-  flex: 1;
+  flex: 1.2; /* 图片区域占 1.2 份，给视觉留足空间 */
   position: sticky;
-  top: 100px;
-  height: calc(100vh - 120px);
+  top: 120px; /* 避开顶部导航栏 */
+  height: calc(100vh - 160px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -107,45 +113,56 @@ onUnmounted(() => {
 .sticky-container {
   width: 100%;
   height: 100%;
-  border-radius: 12px;
+  border-radius: 16px; /* 更圆润的边角 */
   overflow: hidden;
-  background: #000;
+  background: var(--vp-c-bg-alt); /* 适配主题的背景色，而非死黑 */
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15); /* 加深立体阴影 */
+  border: 1px solid var(--vp-c-divider); /* 增加微妙的边框界定 */
 }
 
 .sticky-container img {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+  transition: transform 0.3s ease; /* 图片出现时的微动效 */
 }
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.4s ease;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.fade-enter-from,
+.fade-enter-from {
+  opacity: 0;
+  transform: scale(0.95) translateY(10px);
+}
 .fade-leave-to {
   opacity: 0;
+  transform: scale(1.05) translateY(-10px);
 }
 
 @media (max-width: 768px) {
   .scroll-telling-container {
     flex-direction: column;
+    gap: 1rem;
   }
   .scrolly-visual {
     position: sticky;
     top: 60px;
-    height: 40vh;
+    height: 45vh;
     z-index: 10;
     background: var(--vp-c-bg);
     padding-bottom: 1rem;
-    border-bottom: 1px solid var(--vp-c-divider);
+    width: 100%;
+  }
+  .scrolly-text {
+    width: 100%;
   }
   .step-box {
     min-height: auto;
+    padding: 1rem;
   }
 }
 </style>
