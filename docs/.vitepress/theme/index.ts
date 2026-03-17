@@ -17,6 +17,7 @@ import mediumZoom from "medium-zoom";
 import type { EnhanceAppContext } from "vitepress";
 import CheatSheetFooter from "./components/CheatSheetFooter.vue";
 import DISolver from "./components/DIMethod/DISolver.vue";
+import ScrollTelling from "./components/ScrollTelling.vue"; // Import the new component
 
 export default {
   extends: DefaultTheme,
@@ -50,6 +51,7 @@ export default {
     app.component("CheatSheetFooter", CheatSheetFooter);
     app.component("ArticleHero", ArticleHero);
     app.component("DISolver", DISolver);
+    app.component("ScrollTelling", ScrollTelling);
     if (typeof window !== "undefined") {
       inject();
     }

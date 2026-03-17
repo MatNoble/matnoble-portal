@@ -11,11 +11,11 @@ hero:
   tagline: 以数学为原点，用代码重构可解释的世界。
   actions:
     - theme: brand
-      text: 🚀 探索教学体系
-      link: /teaching/
+      text: 🔥 获取微积分 CheatSheet
+      link: /teaching/cheatsheet
     - theme: alt
-      text: 📝 访问技术博客
-      link: https://blog.matnoble.top
+      text: 🚀 学习微分万能公式
+      link: /teaching/derivative-method
 
 features:
   - title: 📐 大学数学与考研实战
@@ -30,6 +30,34 @@ features:
     details: 高校讲师 / 独立开发者。致力于 <b>数字化教学</b> 探索，将抽象的数学概念转化为可交互的代码与可视化模型。不只教解题，更分享如何像工程师一样思考数学。
     link: /about
     linkText: 认识作者
+---
+
+## 🗺️ 知识图谱与学习路径 (Learning Path)
+
+::: tip 学习指南
+顺着图谱的分支，从基础公理爬向工程巅峰。建议从 **微积分底座** 开始。
+:::
+
+- **核心底座：微积分 (Calculus)**
+  - ├── [等价无穷小与极限速解](/teaching/calculus) —— *收割分数的入场券*
+  - ├── [微分万能公式](/teaching/derivative-method) —— *链式法则的终结者*
+  - └── [DI 表格积分法](/teaching/cheatsheet#_2-di-method-表格积分法) —— *从繁琐计算中解脱*
+- **进阶骨架：线性代数 (Linear Algebra)**
+  - ├── [几何直观：矩阵即变换](/teaching/linear-algebra) —— *建立高维直觉*
+  - └── [SVD 奇异值分解](/teaching/linear-algebra) —— *AI 降维打击的本质*
+- **实战武器：工具箱 (Tools)**
+  - ├── [Memorize 记忆助手](https://memorize.matnoble.top) —— *对抗遗忘的 SM-2 算法*
+  - └── [DI Method 交互演示](/tools/di-method) —— *看清表格每一步*
+
+---
+
+## 🔥 高能干货 (Highlights)
+
+- 🧙‍♂️ [**二阶微分方程灵魂拆解 (交互长文示例)**](/teaching/ode-intuition) —— 滚动鼠标，体验从直觉到算法的动态数学“暴力美学”。
+- 📐 [**线性代数与几何直观**](/teaching/linear-algebra) —— 强调从线性变换、基变换、SVD 等核心概念出发，构建完整的数学图景，拒绝死记硬背。
+- 🚀 [**微积分三大计算攻略**](/teaching/calculus) —— 从直观几何到严格定义，详解“微分万能公式”与极限速算法。
+- ⚡ [**DI Method 表格积分法**](/teaching/cheatsheet#_2-di-method-表格积分法) —— 专为应试与思维训练设计的积分速算心法，极大提升混合函数的积分效率。
+
 ---
 
 ## 核心理念

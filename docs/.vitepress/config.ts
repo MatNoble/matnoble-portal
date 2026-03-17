@@ -130,17 +130,17 @@ export default defineConfig({
             items: [
               { text: "教学体系概览", link: "/teaching/calculus" },
               { text: "微分万能公式", link: "/teaching/derivative-method" },
-              { text: "核心心法速查表 (CheatSheet)", link: "/teaching/cheatsheet" },
             ],
           },
           { text: "线性代数", link: "/teaching/linear-algebra" },
         ],
       },
       {
-        text: "在线工具",
+        text: "🛠️ 武器库",
         items: [
-          { text: "DI 表格法演示", link: "/tools/di-method" },
-          { text: "Memorize 助手", link: "/tools/memorize" },
+          { text: "📜 核心心法速查表 (CheatSheet)", link: "/teaching/cheatsheet" },
+          { text: "📊 DI 表格法交互演示", link: "/tools/di-method" },
+          { text: "🧠 Memorize 记忆助手", link: "/tools/memorize" },
         ],
       },
       { text: "技术博客", link: "https://blog.matnoble.top" },
