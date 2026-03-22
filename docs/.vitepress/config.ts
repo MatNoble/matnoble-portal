@@ -135,6 +135,7 @@ export default defineConfig({
           { text: "线性代数", link: "/teaching/linear-algebra" },
         ],
       },
+      { text: "🚀 开源项目", link: "/projects/" },
       {
         text: "🛠️ 武器库",
         items: [
