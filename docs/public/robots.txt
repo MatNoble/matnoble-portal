@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 
+# AI Crawlers Explicit Authorization
 User-agent: GPTBot
 Allow: /
 User-agent: GoogleOther
@@ -13,10 +14,16 @@ User-agent: anthropic-ai
 Allow: /
 User-agent: Claude-Web
 Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
 
 # Sitemap
 Sitemap: https://matnoble.top/sitemap.xml
 Sitemap: https://matnoble.top/llms.txt
 
-# IndexNow Key Registry (Optionally add here)
+# IndexNow Key Registry
 # https://www.bing.com/indexnow?url=https://matnoble.top/&key=7c6a9686414144409395982823617300

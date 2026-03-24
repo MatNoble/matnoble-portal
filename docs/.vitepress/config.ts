@@ -178,7 +178,7 @@ export default defineConfig({
     ],
 
     footer: {
-      message: '以数学构建逻辑，用技术驱动学习。',
+      message: '以数学构建逻辑，用技术驱动学习。 | <a href="/privacy">隐私政策</a> | <a href="/terms">服务条款</a>',
       copyright: "Copyright © 2025-2026 MatNoble",
     },
 
@@ -469,6 +469,10 @@ export default defineConfig({
     ["meta", { name: "theme-color", content: "#ffffff" }],
     ["meta", { name: "mobile-web-app-capable", content: "yes" }],
     ["meta", { name: "apple-mobile-web-app-status-bar-style", content: "default" }],
+    // Security Headers
+    ['meta', { 'http-equiv': 'X-Content-Type-Options', content: 'nosniff' }],
+    ['meta', { 'http-equiv': 'X-Frame-Options', content: 'DENY' }],
+    ['meta', { name: 'referrer', content: 'strict-origin-when-cross-origin' }],
     [
       "meta",
       {
@@ -518,6 +522,21 @@ export default defineConfig({
             description:
               "MatNoble的个人门户，分享大学数学教学资源与数学辅助工具。",
             publisher: { "@id": "https://matnoble.top/#person" },
+          },
+          {
+            "@type": "Organization",
+            "name": "MatNoble数学教育",
+            "url": "https://matnoble.top",
+            "description": "专注于高等数学教育的创新教学平台",
+            "logo": "https://matnoble.top/logo.svg",
+            "founder": {
+              "@type": "Person",
+              "name": "MatNoble"
+            },
+            "sameAs": [
+              "https://github.com/matnoble",
+              "https://blog.matnoble.top"
+            ]
           },
           {
             "@type": "DefinedTermSet",
