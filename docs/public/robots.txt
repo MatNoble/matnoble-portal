@@ -1,6 +1,19 @@
 User-agent: *
 Allow: /
 
+User-agent: GPTBot
+Allow: /
+User-agent: GoogleOther
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: CCbot
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+User-agent: Claude-Web
+Allow: /
+
 # Sitemap
 Sitemap: https://matnoble.top/sitemap.xml
 Sitemap: https://matnoble.top/llms.txt
