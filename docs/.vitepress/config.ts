@@ -123,29 +123,30 @@ export default defineConfig({
     nav: [
       { text: "首页", link: "/" },
       {
-        text: "课程",
+        text: "教学",
         items: [
-          {
-            text: "微积分 (Calculus)",
-            items: [
-              { text: "教学体系概览", link: "/teaching/calculus" },
-              { text: "微分万能公式", link: "/teaching/derivative-method" },
-            ],
-          },
-          { text: "线性代数", link: "/teaching/linear-algebra" },
+          { text: "教学体系概览", link: "/teaching/calculus" },
+          { text: "微分万能公式", link: "/teaching/derivative-method" },
+          { text: "线性代数几何直观", link: "/teaching/linear-algebra" },
+          { text: "核心心法速查表 (CheatSheet)", link: "/teaching/cheatsheet" },
         ],
       },
-      { text: "🚀 开源项目", link: "/projects/" },
       {
-        text: "🛠️ 武器库",
+        text: "项目",
         items: [
-          { text: "📜 核心心法速查表 (CheatSheet)", link: "/teaching/cheatsheet" },
-          { text: "📊 DI 表格法交互演示", link: "/tools/di-method" },
+          { text: "🚀 开源项目", link: "/projects/" },
+          { text: "📊 DI 表格法演示", link: "/tools/di-method" },
           { text: "🧠 Memorize 记忆助手", link: "/tools/memorize" },
+          { text: "⏱️ 沉浸式计时器", link: "/tools/countdown" },
         ],
       },
-      { text: "技术博客", link: "https://blog.matnoble.top" },
-      { text: "在线相册", link: "https://album.matnoble.top/" },
+      {
+        text: "发现",
+        items: [
+          { text: "技术博客", link: "https://blog.matnoble.top" },
+          { text: "在线相册", link: "https://album.matnoble.top/" },
+        ],
+      },
       { text: "关于", link: "/about" },
     ],
 

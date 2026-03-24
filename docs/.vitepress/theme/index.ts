@@ -17,7 +17,9 @@ import mediumZoom from "medium-zoom";
 import type { EnhanceAppContext } from "vitepress";
 import CheatSheetFooter from "./components/CheatSheetFooter.vue";
 import DISolver from "./components/DIMethod/DISolver.vue";
-import ScrollTelling from "./components/ScrollTelling.vue"; // Import the new component
+import ScrollTelling from "./components/ScrollTelling.vue";
+import MatCountdown from "./components/MatCountdown.vue";
+import FloatingTimerIcon from "./components/FloatingTimerIcon.vue";
 
 export default {
   extends: DefaultTheme,
@@ -28,7 +30,7 @@ export default {
       // 在文档内容之后插入分享组件和评论组件
       "doc-after": () => [h(RelatedPosts), h(Share), h(Comment)],
       "layout-top": () => h(ReadingProgressBar),
-      "layout-bottom": () => [h(BrownianBackground), h(PwaPrompt)],
+      "layout-bottom": () => [h(BrownianBackground), h(PwaPrompt), h(FloatingTimerIcon)],
     });
   },
   setup() {
@@ -52,6 +54,8 @@ export default {
     app.component("ArticleHero", ArticleHero);
     app.component("DISolver", DISolver);
     app.component("ScrollTelling", ScrollTelling);
+    app.component("MatCountdown", MatCountdown);
+    app.component("FloatingTimerIcon", FloatingTimerIcon);
     if (typeof window !== "undefined") {
       inject();
     }
