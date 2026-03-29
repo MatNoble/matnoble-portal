@@ -46,5 +46,5 @@ structuredData:
     *   **循环型**：D 和 I 的乘积出现初始形式（或易于处理的形式）时停止。
 
 4.  **组装答案**：
-    *   按照**对角线**方向相乘：$(Row_1, D) 	imes (Row_2, I)$，带上 $Row_1$ 的符号。
-    *   如果有水平残余项，则作为积分处理：$\pm \int (LastRow, D 	imes I) dx$。
+    *   按照**对角线**方向相乘：$(Row_1, D) \times (Row_2, I)$，带上 $Row_1$ 的符号。
+    *   如果有水平残余项，则作为积分处理：$\pm \int (\text{LastRow}, D \times I) \mathrm{d}{x}$。

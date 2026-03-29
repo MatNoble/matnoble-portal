@@ -32,8 +32,8 @@ const printPage = () => {
 </div>
 
 <div class="no-print" style="margin-bottom: 2rem; padding: 1rem; background-color: var(--vp-c-bg-soft); border-radius: 8px; border: 1px solid var(--vp-c-divider);">
-  <p style="margin: 0 0 1rem 0;">💡 <b>说明：</b>此页面专为打印设计（支持导出为 A4 PDF）。点击下方按钮或使用浏览器打印功能 (Ctrl+P)。</p>
-  <button @click="printPage" style="background-color: var(--vp-c-brand); color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; font-weight: bold;">🖨️ 打印 / 另存为 PDF</button>
+  <p style="margin: 0 0 1rem 0;">说明：此页面专为打印设计（支持导出为 A4 PDF）。点击下方按钮或使用浏览器打印功能 (Ctrl+P)。</p>
+  <button @click="printPage" style="background-color: var(--mn-primary); color: white; border: none; padding: 0.6rem 1.6rem; border-radius: 12px; cursor: pointer; font-weight: 600; box-shadow: 0 4px 12px var(--mn-primary-soft); transition: all 0.2s ease;">打印 / 另存为 PDF</button>
 </div>
 
 ## 1. 微分万能公式 (Universal Formula)
@@ -43,7 +43,7 @@ const printPage = () => {
 $$\mathrm{d}y=\mathrm{d}(f(\square))=f'(\square)\mathrm{d}(\square)$$
 :::
 
-### 💡 操作流程
+### 操作流程
 
 1.  **观察**：识别最外层函数 $f$ 和内层函数 $\square$。
 2.  **剥皮**：对最外层求导 $f'(\square)$，保留内层不动。
@@ -65,7 +65,7 @@ $$\begin{aligned}\mathrm{d}y & = \mathrm{d}(\ln(\sin(e^x)))\\&=\frac{1}{\sin(e^x
 分部积分法 $\int u\mathrm{d}v=uv-\int v\mathrm{d}u$ 的**表格化**版本，特别适用于多次分部积分。
 :::
 
-### 💡 核心法则 (LIATE)
+### 核心法则 (LIATE)
 
 选取 **D 列 (求导)** 和 **I 列 (积分)** 的优先级：
 

@@ -1,5 +1,7 @@
 ---
 title: 空间解析几何 3D 实验室 - 数学交互式教学工具 | MatNoble
+breadcrumb: 3D 实验室
+titleTemplate: 空间几何专题
 description: 基于 Stewart Calculus 标准，利用 WebGL 交互式演示高等数学空间曲面（旋转面、椭球面）与空间曲线及其投影的几何本质。
 sidebar: false
 layout: doc
@@ -54,7 +56,7 @@ import SpaceGeometryLab from '../components/SpaceGeometryLab.vue'
 
 <br/>
 
-## 🏛️ 理论基石与几何直观
+## 理论基石与几何直观
 
 在 **James Stewart** 的微积分体系中，三维空间的曲面被视为多变量函数 $\mathbf{F}(x, y, z) = 0$ 的集合解释。本实验室特别强化了以下核心概念：
 
@@ -68,13 +70,13 @@ import SpaceGeometryLab from '../components/SpaceGeometryLab.vue'
 ### 3. 投射柱面 (Projection Cylinders)
 这是计算空间曲线投影最易混淆的环节。实验室通过展示“投射柱面”这堵垂直于平面的辅助墙，解释了“消去 $z$ 得到 $xy$ 面投影”这一算子背后的几何实质。
 
-## 🍎 操作指南
+## 操作指南
 
 - **多维交互**：直接在画板内点击拖拽以进行旋转，滚动滚轮进行缩放。
 - **数学同步面板**：点击右侧悬浮面板，观察实时渲染的代数方程。建议配合 Stewart 教材中的相应章节进行对照实验。
 - **沉浸式教学**：点击右下角 **「⛶ 教学展示」** 按钮，系统将自动调整为沉浸式全屏视角，并提供**视角复位**功能以切换回标准黑板投影位。
 
-## ❓ 常见问题 (FAQ)
+## 常见问题 (FAQ)
 
 **Q: 为什么我消去 $z$ 得到的方程 $x^2 + y^2 = 2$ 在空间中不是一个圆？**  
 **A:** 在三维空间中，二元方程代表的是一个**柱面**（Cylinder）。要表达空间投影曲线，必须将方程与投影平面方程联立，即 $\begin{cases} x^2+y^2=2 \\ z=0 \end{cases}$。
@@ -85,7 +87,7 @@ import SpaceGeometryLab from '../components/SpaceGeometryLab.vue'
 
 <br/>
 
-## 🔗 扩展探索
+## 扩展探索
 
 除了微积分基础，空间解析几何与线性代数有着深刻的内在联系。您可以进一步探索：
 - [**线性代数：几何直觉重构**](./linear-algebra)：建立向量空间与线性变换的直观理解。

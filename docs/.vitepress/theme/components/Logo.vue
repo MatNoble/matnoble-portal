@@ -31,27 +31,29 @@ onUnmounted(() => {
 
 <template>
   <div class="logo" ref="logoRef" :class="{ 'is-active': isVisible }" role="img" aria-label="MatNoble Logo">
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <!-- 
-        Initial state: Triangles are slightly exploded outwards.
-        Active state: Triangles converge to form the square.
-      -->
+    <svg viewBox="0 -10 100 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="3" result="blur" />
+          <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+      </defs>
       <g class="shapes">
-        <!-- Top (Red) -->
+        <!-- Top (Classic Red) -->
         <g class="piece top">
-          <polygon points="0,0 100,0 36,48" class="red" />
+          <polygon points="0,0 100,0 36,48" class="accent-red" />
         </g>
-        <!-- Right (Yellow) -->
+        <!-- Right (Classic Yellow) -->
         <g class="piece right">
-          <polygon points="100,0 100,100 52,36" class="yellow" />
+          <polygon points="100,0 100,100 52,36" class="accent-yellow" />
         </g>
-        <!-- Bottom (Green) -->
+        <!-- Bottom (Classic Green) -->
         <g class="piece bottom">
-          <polygon points="100,100 0,100 64,52" class="green" />
+          <polygon points="100,100 0,100 64,52" class="accent-green" />
         </g>
-        <!-- Left (Blue) -->
+        <!-- Left (Classic Blue) -->
         <g class="piece left">
-          <polygon points="0,100 0,0 48,64" class="blue" />
+          <polygon points="0,100 0,0 48,64" class="accent-blue" />
         </g>
       </g>
     </svg>
@@ -86,19 +88,19 @@ svg {
   overflow: visible; /* 允许微小的溢出位移 */
 }
 
-/* 颜色定义 (继承自 custom.css) */
-.red { fill: var(--mn-red); }
-.yellow { fill: var(--mn-yellow); }
-.green { fill: var(--mn-green); }
-.blue { fill: var(--mn-blue); }
+/* 经典莫兰迪配色 (Google Tribute) */
+.accent-red    { fill: #e05d52; filter: drop-shadow(0 0 4px rgba(224, 93, 82, 0.4)); }
+.accent-yellow { fill: #f0b94d; }
+.accent-green  { fill: #4aa98c; }
+.accent-blue   { fill: #4d84c4; }
 
 /* 文字样式 */
 .logo-text {
-  font-family: 'Outfit', sans-serif; /* 应用几何字体 */
+  font-family: 'Jost', sans-serif;
   font-weight: 700;
-  font-size: 1.35rem;
-  letter-spacing: -0.02em; /* 紧凑一点更显现代 */
-  color: var(--vp-c-text-1);
+  font-size: 1.4rem;
+  letter-spacing: -0.01em;
+  color: var(--mn-text);
   line-height: 1;
 }
 

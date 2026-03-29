@@ -23,7 +23,7 @@ export default defineConfig({
     },
     plugins: [
       webfontDl([
-        "https://fonts.googleapis.com/css2?family=Outfit:wght@500;700&family=Lora:ital,wght@0,400..700;1,400..700&family=Noto+Serif+SC:wght@400;700&display=swap",
+        "https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=EB+Garamond:wght@400;500;600;700;800&family=Jost:wght@400;500;600&display=swap",
       ]),
       VitePWA({
         outDir: ".vitepress/dist",
@@ -135,10 +135,10 @@ export default defineConfig({
       {
         text: "项目",
         items: [
-          { text: "🚀 开源项目", link: "/projects/" },
-          { text: "📊 DI 表格法演示", link: "/tools/di-method" },
-          { text: "🧠 Memorize 记忆助手", link: "/tools/memorize" },
-          { text: "⏱️ 沉浸式计时器", link: "/tools/countdown" },
+          { text: "开源项目", link: "/projects/" },
+          { text: "DI 表格法演示", link: "/tools/di-method" },
+          { text: "Memorize 记忆助手", link: "/tools/memorize" },
+          { text: "沉浸式计时器", link: "/tools/countdown" },
         ],
       },
       {
@@ -151,9 +151,36 @@ export default defineConfig({
       { text: "关于", link: "/about" },
     ],
 
-    // 侧边栏配置
+    // 侧边栏结构化配置 (Pro Max 学者风)
     sidebar: {
-      // 全局菜单已移至顶部导航下拉框
+      "/teaching/": [
+        {
+          text: "核心导读 (Core Methodologies)",
+          items: [
+            { text: "序：微积分概览", link: "/teaching/calculus" },
+            { text: "微分万能公式", link: "/teaching/derivative-method" },
+            { text: "线性代数与直觉", link: "/teaching/linear-algebra" },
+            { text: "二阶常微分方程解析", link: "/teaching/ode-intuition" },
+          ],
+        },
+        {
+          text: "研学套件 (Toolkits & Labs)",
+          items: [
+            { text: "考研级速查表 (CheatSheet)", link: "/teaching/cheatsheet" },
+            { text: "空间几何 3D 实验室", link: "/teaching/space-geometry-lab" },
+          ],
+        },
+      ],
+      "/tools/": [
+        {
+          text: "效率与计算 (Productivity)",
+          items: [
+            { text: "DI 表格法动态演示", link: "/tools/di-method" },
+            { text: "Memorize: 核心卡片", link: "/tools/memorize" },
+            { text: "沉浸式计时器", link: "/tools/countdown" },
+          ],
+        },
+      ],
     },
 
     socialLinks: [
@@ -414,6 +441,30 @@ export default defineConfig({
   },
 
   head: [
+    /* MathJax 学术级渲染 — 放大 10%，继承衬线字体，居中 display 公式 */
+    [
+      "script",
+      {},
+      `window.MathJax = {
+        options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] },
+        loader: { load: ['[tex]/physics'] },
+        chtml: {
+          scale: 1.15,
+          minScale: 0.9,
+          mtextInheritFont: true,
+          merrorInheritFont: true,
+          displayAlign: 'center',
+          displayIndent: '0',
+          fontURL: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/stix2'
+        },
+        tex: {
+          packages: {'[+]': ['physics']},
+          inlineMath: [['$','$']],
+          displayMath: [['$$','$$']],
+          processEscapes: true
+        }
+      };`,
+    ],
     ["link", { rel: "preconnect", href: "https://www.googletagmanager.com" }],
     ["link", { rel: "dns-prefetch", href: "https://www.googletagmanager.com" }],
     [

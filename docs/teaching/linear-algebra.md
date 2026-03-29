@@ -1,5 +1,7 @@
 ---
 title: 线性代数与几何直观 | 空间变换视角下的核心概念
+breadcrumb: 线性代数
+titleTemplate: 几何直观专题
 description: 强调几何直觉与空间变换的线性代数教学体系。深入浅出讲解特征值、奇异值分解 (SVD) 等核心概念，助你理解矩阵运算背后的几何本质。
 structuredData:
   course:

@@ -10,6 +10,8 @@ import ReadingProgressBar from "./components/ReadingProgressBar.vue";
 import ArticleHero from "./components/ArticleHero.vue";
 import BrownianBackground from "./components/BrownianBackground.vue";
 import PwaPrompt from "./components/PwaPrompt.vue";
+import HighFidelityHero from "./components/HighFidelityHero.vue";
+import ScholarlyFeatures from "./components/ScholarlyFeatures.vue";
 import "./custom.css";
 import { inject } from "@vercel/analytics";
 import { injectSpeedInsights } from "@vercel/speed-insights";
@@ -57,6 +59,8 @@ export default {
     app.component("ScrollTelling", ScrollTelling);
     app.component("MatCountdown", MatCountdown);
     app.component("FloatingTimerIcon", FloatingTimerIcon);
+    app.component("HighFidelityHero", HighFidelityHero);
+    app.component("ScholarlyFeatures", ScholarlyFeatures);
     if (typeof window !== "undefined") {
       inject();
       injectSpeedInsights();

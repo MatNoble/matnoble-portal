@@ -1,388 +1,686 @@
-:root {
-  /* MatNoble Brand Colors - Modern Academic Palette (Morandi/Nordic Style) */
-  --mn-red: #e05d52;
-  --mn-yellow: #f0b94d;
-  --mn-green: #4aa98c;
-  --mn-blue: #4d84c4;
-  --mn-core: #2c3e50;
+/* ============================================================
+   MatNoble Portal — Pro Max Design System (custom.css)
+   Compliant with MASTER.md + ui-ux-pro-max skill
+   ============================================================ */
 
-  /* 字体配置 */
-  --vp-font-family-base: "Lora", "Noto Serif SC", -apple-system,
-    BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
-    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  --vp-font-family-mono: "JetBrains Mono", source-code-pro, Menlo, Monaco,
-    Consolas, "Courier New", monospace;
+/* ===========================================
+   § 1. Design Tokens (Root Variables)
+   =========================================== */
+
+:root {
+  /* --- Brand Colors --- */
+  --mn-primary:      #2563EB;
+  --mn-primary-soft: rgba(37, 99, 235, 0.10);
+  --mn-primary-ring: rgba(37, 99, 235, 0.35);
+  --mn-secondary:    #3B82F6;
+  --mn-accent:       #F97316;
+  --mn-accent-soft:  rgba(249, 115, 22, 0.15);
+  --mn-accent-ring:  rgba(249, 115, 22, 0.35);
+  --mn-bg:           #F8FAFC;
+  --mn-text:         #1E293B;
+  --mn-text-soft:    #475569;
+  --mn-text-muted:   #94A3B8;
+
+  /* --- Spacing Scale (4pt/8pt System) --- */
+  --space-xs:  4px;
+  --space-sm:  8px;
+  --space-md:  16px;
+  --space-lg:  24px;
+  --space-xl:  32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+
+  /* --- Shadow Depths --- */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 6px  rgba(0,0,0,0.08);
+  --shadow-lg: 0 10px 20px rgba(0,0,0,0.10);
+  --shadow-xl: 0 20px 35px rgba(0,0,0,0.14);
+
+  /* --- Radii --- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  /* --- Z-Index Scale --- */
+  --z-navbar:  100;
+  --z-sidebar: 50;
+  --z-modal:   200;
+  --z-toast:   300;
+
+  /* --- Motion --- */
+  --duration-fast:   150ms;
+  --duration-base:   250ms;
+  --duration-slow:   350ms;
+  --ease-out:        cubic-bezier(0.0, 0.0, 0.2, 1.0);
+  --ease-in-out:     cubic-bezier(0.4, 0.0, 0.2, 1.0);
+
+  /* --- VitePress Font Override --- */
+  --vp-font-family-base:    "Crimson Text", "Noto Serif SC", "PingFang SC", serif;
+  --vp-font-family-heading: "EB Garamond", serif;
+  --vp-font-family-mono:    "JetBrains Mono", "Fira Code", source-code-pro, monospace;
+  --vp-font-size-base: 18px;
 }
 
-/* =========================================
-   字体与排版增强
-   ========================================= */
-:root {
-  --vp-font-size-base: 17px;
+/* Dark Mode Overrides */
+.dark {
+  --mn-bg:        #020617;
+  --mn-text:      #F1F5F9;
+  --mn-text-soft: #94A3B8;
+  --mn-text-muted: #64748B;
+
+  --vp-c-bg:      #020617;
+  --vp-c-bg-soft: #0F172A;
+  --vp-c-bg-mute: #1E293B;
+
+  --vp-c-brand-1: #3B82F6;
+  --vp-c-brand-2: #2563EB;
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.30);
+  --shadow-md: 0 4px 6px  rgba(0,0,0,0.45);
+  --shadow-lg: 0 10px 20px rgba(0,0,0,0.55);
+  --shadow-xl: 0 20px 35px rgba(0,0,0,0.65);
 }
+
+
+/* ===========================================
+   § 2. Global Reset & Base
+   =========================================== */
+
+/* Reduced Motion — WCAG / MASTER.md required */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Touch optimization */
+* { -webkit-tap-highlight-color: transparent; }
+html { touch-action: manipulation; }
+
+/* --- Code Blocks (Scholarly Polish) --- */
+code {
+  font-family: var(--vp-font-family-mono);
+  font-size: 0.9em;
+  font-variant-ligatures: common-ligatures;
+}
+
+:not(pre) > code {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+  color: #DC2626 !important; /* Scholarly red for inline code codes */
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  vertical-align: 0.05em;
+}
+
+.dark :not(pre) > code {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  color: #FDA4AF !important;
+}
+
+.vp-doc [class*='language-'] {
+  border-radius: 12px !important;
+  margin: var(--space-lg) 0 !important;
+  border: 1px solid rgba(0,0,0,0.04) !important;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.dark .vp-doc [class*='language-'] {
+  border-color: rgba(255,255,255,0.04) !important;
+  background-color: #0F172A !important;
+}
+
+/* Focus visible (WCAG 2.1 §4 — CRITICAL) */
+:focus-visible {
+  outline: 2px solid var(--mn-primary);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* Cursor pointer — All interactive elements (MASTER.md required) */
+a, button, [role="button"],
+.VPNavBarMenuLink, .VPNavBarMenuGroup,
+.VPFeature, .VPButton, .VPLink,
+.VPSocialLink, .VPMenuLink, .VPSidebarItem .link,
+summary, label[for], [tabindex="0"] {
+  cursor: pointer;
+}
+
+
+/* ===========================================
+   § 3. Typography & Scholarly Rhythm
+   =========================================== */
 
 body {
-  font-feature-settings: "cv05", "cv08", "ss01";
+  font-feature-settings: "cv05", "cv08", "ss01", "onum";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  letter-spacing: 0.015em; /* 稍微增加字间距 */
-  line-height: 1.8; /* 更加宽松的行高 */
+  line-height: 1.75;
+  background-color: var(--mn-bg);
+  color: var(--mn-text);
 }
 
-/* 针对正文段落 */
-.vp-doc p,
-.vp-doc li {
-  font-weight: 450;
-  color: var(--vp-c-text-1);
-  margin-bottom: 1.5rem; /* 增加段落间距 */
-  max-width: 75ch; /* 优化阅读行宽 */
-  margin-left: auto;
-  margin-right: auto;
+.vp-doc h1, .vp-doc h2, .vp-doc h3, .vp-doc h4 {
+  font-family: var(--vp-font-family-heading);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
 }
 
-/* 标题间距与节奏 */
-.vp-doc h2 {
-  margin-top: 4rem !important;
-  margin-bottom: 1.5rem !important;
-  border-top: 1px solid var(--vp-c-divider);
-  padding-top: 2rem;
-  letter-spacing: -0.02em;
+.vp-doc p, .vp-doc li {
+  max-width: 72ch;
+  line-height: 1.85;
 }
 
-.vp-doc h3 {
-  margin-top: 2.5rem !important;
-  margin-bottom: 1rem !important;
+/* Link style */
+.vp-doc a {
+  color: var(--mn-primary);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+  font-weight: 500;
+  transition: text-decoration-color var(--duration-fast) ease;
+}
+.vp-doc a:hover {
+  text-decoration-color: currentColor;
 }
 
-/* 数学公式展示 (Exhibit Style) */
-.mjx-container[display="true"] {
-  background: var(--vp-c-bg-soft);
-  border-radius: 12px;
-  padding: 2rem !important;
-  margin: 2rem 0 !important;
-  border: 1px solid rgba(0, 0, 0, 0.03);
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
 
-.dark .mjx-container[display="true"] {
-  background: rgba(255, 255, 255, 0.02);
-  border-color: rgba(255, 255, 255, 0.05);
-}
+/* ===========================================
+   § 4. Navbar (Glassmorphism)
+   =========================================== */
 
-.mjx-container[display="true"]:hover {
-  transform: scale(1.01);
-}
-
-/* =========================================
-   Glassmorphism (玻璃拟态) & 现代 UI
-   ========================================= */
-
-/* 导航栏玻璃效果 */
 .VPNavBar {
-  background-color: rgba(255, 255, 255, 0.75) !important;
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  z-index: 101 !important;
+  background-color: rgba(248, 250, 252, 0.80) !important;
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+  transition: background-color var(--duration-base) ease;
+  z-index: var(--z-navbar);
 }
 
 .dark .VPNavBar {
-  background-color: rgba(30, 30, 30, 0.75) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: rgba(2, 6, 23, 0.80) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
 }
 
-/* 侧边栏玻璃效果 */
+/* Nav Links — plain text, no pill */
+.VPNavBarMenuLink {
+  font-family: "Jost", var(--vp-font-family-base) !important;
+  font-size: 0.95rem !important;
+  font-weight: 500 !important;
+  transition: color var(--duration-fast) ease !important;
+  min-height: 44px;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+.VPNavBarMenuLink:hover,
+.VPNavBarMenuLink.active {
+  color: var(--mn-primary) !important;
+  background: transparent !important;
+}
+
+/* Nav Group button — strip pill shape */
+.VPNavBarMenuGroup .button,
+.VPNavBar .VPFlyout .button {
+  background-color: transparent !important;
+  background:       transparent !important;
+  border:     none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  min-height: 44px !important;
+}
+
+.VPNavBarMenuGroup .button:hover,
+.VPNavBarMenuGroup.active .button,
+.VPNavBar .VPFlyout .button:hover {
+  background-color: transparent !important;
+  background:       transparent !important;
+}
+
+/* Nav Group text */
+.VPNavBarMenuGroup .text {
+  font-family: "Jost", sans-serif !important;
+  font-size: 0.95rem !important;
+  font-weight: 500 !important;
+  transition: color var(--duration-fast) ease !important;
+}
+
+.VPNavBarMenuGroup:hover .text,
+.VPNavBarMenuGroup.active .text {
+  color: var(--mn-primary) !important;
+}
+
+/* NavBar container — remove inner wrapper bg */
+.VPNavBar .VPFlyout {
+  background: transparent !important;
+  border:     none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+/* Dropdown menu — Scholarly single-layer glassmorphism */
+.VPFlyout .menu {
+  background-color: var(--vp-c-bg-soft) !important;
+  backdrop-filter: blur(20px) !important;
+  border-radius: var(--radius-md) !important;
+  border: 1px solid var(--vp-c-divider) !important;
+  box-shadow: var(--shadow-lg) !important;
+  padding: 6px 0 !important; /* Tighter padding for monograph feel */
+  overflow: hidden !important;
+}
+
+/* Remove nested styling from inner VitePress component */
+.VPNavBarMenu .VPMenu {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  padding: 0 !important;
+}
+
+.VPMenuLink {
+  font-family: var(--vp-font-family-base) !important;
+  font-size: 0.92rem !important;
+  padding: 10px 20px !important;
+  min-height: 44px !important;
+  display: flex !important;
+  align-items: center !important;
+  transition: all var(--duration-fast) ease !important;
+  border-radius: 0 !important;
+}
+
+.VPMenuLink:hover {
+  background-color: var(--mn-primary-soft) !important;
+  color: var(--mn-primary) !important;
+}
+
+.VPMenuLink:hover {
+  background: var(--mn-primary-soft) !important;
+  color: var(--mn-primary) !important;
+}
+
+/* Social Links */
+.VPNavBarSocialLinks { margin-right: var(--space-sm); }
+
+.VPSocialLink {
+  min-width: 44px !important;
+  min-height: 44px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  opacity: 0.65;
+  transition: opacity var(--duration-fast) ease, transform var(--duration-fast) ease !important;
+}
+.VPSocialLink:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+  color: var(--mn-primary) !important;
+}
+
+/* Theme Toggle separator */
+.VPNavBarAppearance {
+  margin-left: var(--space-md);
+  padding-left: var(--space-md);
+  border-left: 1px solid var(--vp-c-divider);
+}
+
+
+/* ===========================================
+   § 5. Sidebar
+   =========================================== */
+
+/* Light mode sidebar */
 .VPSidebar {
-  background-color: rgba(255, 255, 255, 0.6) !important;
+  background-color: rgba(248, 250, 252, 0.90) !important;
   backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-right: 1px solid rgba(0, 0, 0, 0.05);
+  border-right: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .dark .VPSidebar {
-  background-color: rgba(30, 30, 30, 0.6) !important;
-  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: rgba(2, 6, 23, 0.85) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.04);
 }
 
-/* =========================================
-   交互特效 (Spring Animations)
-   ========================================= */
-
-/* 通用过渡效果 */
-.VPFeature,
-.VPButton.brand,
-.vp-doc a,
-.VPNavBar a {
-  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); /* Spring effect */
-}
-
-/* --- 特性卡片 (Features) --- */
-.VPFeature {
-  position: relative;
-  overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  background: var(--vp-c-bg-soft);
-  border-radius: 16px;
-}
-
-@media (hover: hover) {
-  .VPFeature:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
-    border-color: var(--mn-blue);
-    background-color: var(--vp-c-bg);
-  }
-
-  .VPFeature::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(
-      90deg,
-      var(--mn-red),
-      var(--mn-yellow),
-      var(--mn-green),
-      var(--mn-blue)
-    );
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .VPFeature:hover::before {
-    opacity: 1;
-  }
-
-  /* 按钮悬停增强 */
-  .VPButton.brand {
-    border-radius: 8px; /* 更圆润的按钮 */
-    font-weight: 600;
-  }
-
-  .VPButton.brand:hover {
-    background-color: var(--mn-blue);
-    box-shadow: 0 8px 20px rgba(77, 132, 196, 0.35);
-    transform: translateY(-2px);
-  }
-
-  /* 链接下划线动效 */
-  .vp-doc a {
-    color: var(--mn-blue);
-    text-decoration: none;
-    position: relative;
-    font-weight: 500;
-  }
-
-  .vp-doc a:hover {
-    color: var(--mn-red);
-  }
-
-  .vp-doc a::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 1.5px;
-    bottom: -2px;
-    left: 0;
-    background-color: var(--mn-red);
-    transform: scaleX(0);
-    transform-origin: bottom right;
-    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  }
-
-  .vp-doc a:hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-  }
-}
-
-/* =========================================
-   移动端/响应式适配 (Mobile Reading Experience)
-   ========================================= */
-
-/* 1. 全局容器与间距优化 */
-@media (max-width: 640px) {
-  :root {
-    --vp-font-size-base: 16px; /* 移动端基准字号略微缩小 */
-  }
-
-  /* 减少文档两侧留白，增加屏效比 */
-  .VPDoc {
-    padding: 16px 20px 64px !important;
-  }
-
-  .vp-doc p,
-  .vp-doc li {
-    line-height: 1.75;
-    margin-bottom: 1.25rem;
-    text-align: justify; /* 两端对齐，适合中文长文 */
-  }
-
-  /* 标题梯度微调，防止长标题过度换行 */
-  .vp-doc h1 { font-size: 1.75rem; letter-spacing: -0.01em; margin-top: 1rem; }
-  .vp-doc h2 { font-size: 1.45rem; margin-top: 2.5rem !important; padding-top: 1.5rem; }
-  .vp-doc h3 { font-size: 1.25rem; margin-top: 2rem !important; }
-
-  /* 引用块优化：减少缩进，增加左边栏辨识度 */
-  .vp-doc blockquote {
-    margin: 1.5rem 0;
-    padding: 0.8rem 1rem;
-    border-left-width: 4px;
-    background-color: var(--vp-c-bg-soft);
-    font-size: 0.95rem;
-  }
-
-  /* 列表项点击热区优化 */
-  .vp-doc li {
-    margin-bottom: 0.75rem;
-    padding-left: 0.2rem;
-  }
-}
-
-/* 2. 导航栏布局与交互优化 (Mobile UX) */
-.VPNavBarAppearance {
-  display: flex !important;
-  order: -1;
-  margin-right: 12px;
-}
-
-@media (max-width: 768px) {
-  .VPNavBarAppearance { margin-right: 8px; }
-  .VPNavBarSearch { order: 0; }
-  
-  /* 隐藏移动端导航栏多余的边框，减少视觉干扰 */
-  .VPNavBar.has-sidebar {
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
-  }
-}
-
-/* 3. 内容组件适配 (ArticleHero, Math, Tables) */
-@media (max-width: 640px) {
-  /* Hero 区域紧凑化 */
-  .VPHero {
-    padding: 80px 24px 32px !important;
-  }
-
-  /* 公式块适配：增加提示感 */
-  .mjx-container[display="true"] {
-    padding: 1.2rem 0.5rem !important;
-    margin: 1.5rem 0 !important;
-    border-radius: 8px;
-    font-size: 95% !important; /* 公式在窄屏略微缩小 */
-  }
-
-  /* 表格滚动条美化 */
-  .vp-doc table {
-    margin: 1.5rem 0;
-    font-size: 0.9rem;
-  }
-  .vp-doc table::-webkit-scrollbar {
-    height: 4px;
-  }
-  .vp-doc table::-webkit-scrollbar-thumb {
-    background: var(--vp-c-divider);
-    border-radius: 4px;
-  }
-}
-
-/* 4. 链接触控反馈 */
-@media (hover: none) {
-  .vp-doc a {
-    color: var(--mn-blue);
-    text-decoration: underline;
-    text-decoration-thickness: 1.5px;
-    text-underline-offset: 3px;
-    transition: background-color 0.2s ease;
-  }
-  .vp-doc a:active {
-    background-color: rgba(77, 132, 196, 0.1);
-    border-radius: 4px;
-  }
-}
-
-/* 5. 导航栏 Logo 位置修正 */
-.cs-header-inner {
+/* Sidebar item links */
+.VPSidebarItem .link {
+  min-height: 40px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid var(--mn-blue);
-  padding-bottom: 1rem;
-  margin-bottom: 2rem;
-}
-
-.cs-header-title {
-  margin: 0;
-  font-size: 2rem;
-  line-height: 1.2;
-}
-
-.cs-header-subtitle {
-  margin: 0;
-  color: var(--vp-c-text-2);
+  padding: 6px var(--space-md);
+  border-radius: var(--radius-sm);
   font-size: 0.9rem;
+  transition: background var(--duration-fast) ease, color var(--duration-fast) ease;
 }
 
-.cs-header-right {
-  text-align: right;
+.VPSidebarItem .link:hover {
+  background: var(--mn-primary-soft);
+  color: var(--mn-primary);
 }
 
-.cs-header-brand {
-  font-weight: bold;
-  font-size: 1.5rem;
-  font-family: "Outfit", sans-serif;
+.VPSidebarItem .link.active {
+  background: var(--mn-primary-soft);
+  color: var(--mn-primary);
+  font-weight: 600;
 }
 
-.cs-header-url {
-  font-size: 0.8rem;
-  color: var(--vp-c-text-3);
+/* Sidebar group title */
+.VPSidebarItem.level-0 > .item > .text {
+  font-family: var(--vp-font-family-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--mn-text-soft);
+  text-transform: uppercase;
 }
 
+
+/* ===========================================
+   § 6. Doc Content — Math & Article Polish
+   =========================================== */
+
+.VPDoc {
+  padding-top: var(--space-2xl) !important;
+}
+
+.vp-doc .custom-block {
+  border-radius: var(--radius-md);
+}
+
+/* ─── Display Math ($$...$$) — Academic Monograph Style ─── */
+/* MathJax 3 CHTML 输出元素为 <mjx-container display="true"> */
+mjx-container[display="true"],
+mjx-container[display] {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+
+  display: block !important;
+  text-align: center !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin: 2.2rem auto !important;
+  max-width: 100%;
+}
+
+/* 深色模式 — 印刷白，高对比度 */
+.dark mjx-container[display="true"],
+.dark mjx-container[display] {
+  color: #E8EDF4 !important;
+}
+
+/* ─── Inline Math ($...$) ─── */
+mjx-container:not([display]) {
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  display: inline !important;
+  vertical-align: -0.1em;
+}
+
+.dark mjx-container:not([display]) {
+  color: #E8EDF4 !important;
+}
+
+/* 移动端：长公式水平滚动保护 */
 @media (max-width: 640px) {
-  .cs-header-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-  }
-
-  .cs-header-right {
-    text-align: left;
-  }
-
-  .cs-header-title {
-    font-size: 1.5rem;
+  mjx-container[display="true"],
+  mjx-container[display] {
+    margin: 1.6rem 0 !important;
+    font-size: 0.92em !important;
   }
 }
 
-/* =========================================
-   打印模式适配 (Print Mode)
-   ========================================= */
+/* TOC aside (right-side) */
+.VPDocAside .outline-link {
+  font-size: 0.85rem;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  transition: color var(--duration-fast) ease;
+}
+
+.VPDocAside .outline-link:hover {
+  color: var(--mn-primary);
+}
+
+.VPDocAside .outline-link.active {
+  color: var(--mn-primary);
+  font-weight: 600;
+}
+
+
+/* ===========================================
+   § 7. Feature Cards (Glassmorphism)
+   =========================================== */
+
+.VPFeatures {
+  padding: var(--space-2xl) 0 !important;
+}
+
+.VPFeature {
+  background: rgba(255, 255, 255, 0.45) !important;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  border-radius: var(--radius-lg) !important;
+  transition: transform var(--duration-base) var(--ease-out),
+              box-shadow var(--duration-base) var(--ease-out),
+              border-color var(--duration-fast) ease !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+.dark .VPFeature {
+  background: rgba(15, 23, 42, 0.50) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+.VPFeature:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl) !important;
+  border-color: rgba(37, 99, 235, 0.30) !important;
+}
+
+/* Feature icon container — high-contrast in dark mode */
+.VPFeature .icon {
+  background: var(--mn-primary-soft) !important;
+  border-radius: var(--radius-md) !important;
+  width: 52px !important;
+  height: 52px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 1.6rem !important;
+  margin-bottom: var(--space-md) !important;
+}
+
+.dark .VPFeature .icon {
+  background: rgba(37, 99, 235, 0.15) !important;
+}
+
+/* Feature text */
+.VPFeature .title {
+  font-family: var(--vp-font-family-heading) !important;
+  font-size: 1.2rem !important;
+  font-weight: 600 !important;
+}
+
+.VPFeature .details {
+  font-size: 0.95rem !important;
+  line-height: 1.7 !important;
+  color: var(--mn-text-soft) !important;
+}
+
+
+/* ===========================================
+   § 8. CTA Buttons
+   =========================================== */
+
+.VPButton {
+  min-height: 44px;
+  padding: 0 var(--space-lg) !important;
+  font-weight: 600 !important;
+  border-radius: var(--radius-md) !important;
+  transition: all var(--duration-fast) var(--ease-out) !important;
+}
+
+.VPButton.brand {
+  background-color: var(--mn-accent) !important;
+  box-shadow: 0 4px 14px 0 var(--mn-accent-soft) !important;
+}
+
+.VPButton.brand:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(249, 115, 22, 0.40) !important;
+  background-color: #EA580C !important;
+}
+
+.VPButton.alt {
+  border: 1.5px solid var(--mn-primary) !important;
+  color: var(--mn-primary) !important;
+  background: transparent !important;
+}
+
+.VPButton.alt:hover {
+  background: var(--mn-primary-soft) !important;
+  transform: translateY(-1px);
+}
+
+
+/* ===========================================
+   § 9. Home Page Layout
+   =========================================== */
+
+.VPHome {
+  padding-bottom: var(--space-3xl) !important;
+}
+
+/* Hero */
+.VPHero .name {
+  font-family: var(--vp-font-family-heading) !important;
+  font-size: clamp(2.4rem, 5vw, 4rem) !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.02em !important;
+}
+
+.VPHero .tagline {
+  font-family: var(--vp-font-family-heading) !important;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem) !important;
+  color: var(--mn-text-soft) !important;
+  letter-spacing: -0.01em !important;
+}
+
+.VPHero .text {
+  font-size: clamp(0.95rem, 2vw, 1.1rem) !important;
+  color: var(--mn-text-muted) !important;
+  max-width: 56ch !important;
+}
+
+/* Hero actions — wrap properly on mobile */
+.VPHero .actions {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: var(--space-md) !important;
+  justify-content: center !important;
+}
+
+
+/* ===========================================
+   § 10. Responsive Breakpoints
+   Mobile-first: 375 → 640 → 768 → 1024 → 1440
+   =========================================== */
+
+/* --- 375px: Small mobile base --- */
+@media (max-width: 480px) {
+  :root { --vp-font-size-base: 17px; }
+
+  .VPHero .name { font-size: 2.2rem !important; }
+  .VPHero .tagline { font-size: 1.1rem !important; }
+
+  .VPHero .actions {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  .VPHero .actions .VPButton {
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  /* Math blocks — reduce padding */
+  .mjx-container[display="true"] {
+    padding: var(--space-md) !important;
+    font-size: 0.9em !important;
+  }
+
+  /* Doc padding */
+  .VPDoc { padding: var(--space-xl) var(--space-md) !important; }
+
+  /* Reduce card hover lift on mobile (no hover on touch) */
+  .VPFeature:hover { transform: none; }
+}
+
+/* --- 640px: Small tablet / large mobile --- */
+@media (max-width: 640px) {
+  .vp-doc h1 { font-size: 2.0rem; }
+  .vp-doc h2 { font-size: 1.6rem; border-top: none; padding-top: 0; }
+  .vp-doc h3 { font-size: 1.3rem; }
+
+  .VPFeatures .items {
+    grid-template-columns: 1fr !important;
+  }
+
+  .VPHero .actions {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+}
+
+/* --- 1024px: Desktop base --- */
+@media (min-width: 1024px) {
+  .VPDoc { padding: var(--space-3xl) var(--space-2xl) !important; }
+  .VPHero .name { font-size: 5rem !important; }
+  .VPHero .tagline { font-size: 1.6rem !important; }
+
+  .VPFeatures .items {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+/* --- 1440px: Ultra-wide / Pro Max --- */
+@media (min-width: 1440px) {
+  .VPDoc { max-width: 1152px !important; margin: 0 auto; }
+  .VPNavBar { padding: 0 48px !important; }
+
+  .vp-doc p, .vp-doc li {
+    max-width: 78ch; /* Academic reading width */
+  }
+}
+
+
+/* ===========================================
+   § 11. Print Mode
+   =========================================== */
+
 @media print {
-  .VPNav,
-  .VPSidebar,
-  .VPDocFooter,
-  .VPFooter,
-  .edit-link {
+  .VPNav, .VPSidebar, .VPDocFooter, .VPFooter, .edit-link {
     display: none !important;
   }
-  .VPContent,
-  .VPDoc,
-  .container {
+  .VPContent, .VPDoc, .container {
     padding: 0 !important;
     margin: 0 !important;
     max-width: 100% !important;
   }
   body {
-    background-color: white !important;
+    background: white !important;
     color: black !important;
   }
-  details {
-    display: block !important;
-  }
-  .mjx-chtml {
-    font-size: 100% !important;
-  }
+  .mjx-chtml { font-size: 100% !important; }
 }
