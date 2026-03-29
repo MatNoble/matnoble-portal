@@ -129,6 +129,7 @@ export default defineConfig({
           { text: "微分万能公式", link: "/teaching/derivative-method" },
           { text: "线性代数几何直观", link: "/teaching/linear-algebra" },
           { text: "核心心法速查表 (CheatSheet)", link: "/teaching/cheatsheet" },
+          { text: "空间几何 3D 实验室", link: "/teaching/space-geometry-lab" },
         ],
       },
       {

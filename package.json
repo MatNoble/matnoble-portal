@@ -30,10 +30,13 @@
     "workbox-window": "^7.4.0"
   },
   "dependencies": {
+    "@types/three": "^0.183.1",
     "@vercel/analytics": "^1.6.1",
     "@waline/client": "^3.8.0",
     "katex": "^0.16.28",
     "medium-zoom": "^1.1.0",
-    "qrcode": "^1.5.4"
+    "qrcode": "^1.5.4",
+    "three": "^0.183.2",
+    "vercel": "^50.37.3"
   }
 }
