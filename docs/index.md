@@ -39,12 +39,13 @@ features:
 :::
 
 - **核心底座：微积分 (Calculus)**
-  - ├── [等价无穷小与极限速解](/teaching/calculus) —— *收割分数的入场券*
-  - ├── [微分万能公式](/teaching/derivative-method) —— *链式法则的终结者*
-  - └── [DI 表格积分法](/teaching/cheatsheet#_2-di-method-表格积分法) —— *从繁琐计算中解脱*
-- **进阶骨架：线性代数 (Linear Algebra)**
-  - ├── [几何直观：矩阵即变换](/teaching/linear-algebra) —— *建立高维直觉*
-  - └── [SVD 奇异值分解](/teaching/linear-algebra) —— *AI 降维打击的本质*
+  - ├── [微积分三大计算](/teaching/calculus) —— *极限、导数与积分的系统复习攻略*
+  - ├── [微分万能公式](/teaching/derivative-method) —— *复合函数求导的简化处理方案*
+  - └── [DI 表格积分法](/teaching/cheatsheet#_2-di-method-表格积分法) —— *分部积分法的系统性优化工具*
+- **进阶骨架：线性代数与解析几何 (Algebra & Geometry)**
+  - ├── [几何直观：矩阵即变换](/teaching/linear-algebra) —— *建立高维空间直觉*
+  - ├── [空间解析几何 3D 实验室](/teaching/space-geometry-lab) —— *可视化探究曲面与曲线*
+  - └── [SVD 奇异值分解](/teaching/linear-algebra) —— *多维数据降维的几何本质*
 - **实战武器：工具箱 (Tools)**
   - ├── [Memorize 记忆助手](https://memorize.matnoble.top) —— *对抗遗忘的 SM-2 算法*
   - └── [DI Method 交互演示](/tools/di-method) —— *看清表格每一步*
