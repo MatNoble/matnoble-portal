@@ -5,16 +5,7 @@
       ref="containerRef"
       :class="{ 'fullscreen': isFullscreen }"
     >
-      <Transition name="fade-ui">
-        <div v-show="isFullscreen" class="right-panels-container">
-          <div class="glass-panel math-panel" v-if="currentData">
-            <h3 class="panel-title">{{ currentData.title }}</h3>
-            <div class="equation" v-html="renderedEquation"></div>
-            <div class="desc" v-html="renderedDesc"></div>
-          </div>
-        </div>
-      </Transition>
-
+      <!-- 页面顶部页签 (桌面端靠左，移动端置顶) -->
       <Transition name="fade-ui">
         <div v-show="isFullscreen" class="glass-panel tabs">
           <button 
@@ -31,8 +22,38 @@
       </Transition>
 
       <Transition name="fade-ui">
+        <div v-show="isFullscreen && isMathPanelVisible" class="panels-stack right-panels-container">
+          <div class="glass-panel math-panel" v-if="currentData">
+            <div class="panel-header">
+              <h3 class="panel-title">{{ currentData.title }}</h3>
+              <!-- 移动端关闭按钮 -->
+              <button v-show="isMobile" class="close-btn" @click="isMathPanelVisible = false">✕</button>
+            </div>
+            <div class="panel-content">
+              <div class="equation" v-html="renderedEquation"></div>
+              <div class="desc" v-html="renderedDesc"></div>
+            </div>
+          </div>
+        </div>
+      </Transition>
+
+      <!-- 移动端侧边呼出图标 -->
+      <Transition name="fade-ui">
+        <button 
+          v-show="isFullscreen && !isMathPanelVisible && isMobile" 
+          class="glass-panel info-toggle-btn"
+          @click="isMathPanelVisible = true"
+        >
+          <span>ℹ️</span>
+        </button>
+      </Transition>
+
+      <Transition name="fade-ui">
         <div v-show="isFullscreen" class="glass-panel controls">
-        <div v-show="currentTopic === 'surfaces'" class="controls-layout">
+          <!-- 移动端抽屉拉手指示 -->
+          <div v-show="isMobile" class="drawer-handle"></div>
+          
+          <div v-show="currentTopic === 'surfaces'" class="controls-layout">
           <div class="control-section">
             <span class="sub-category-title">概念引入</span>
             <div class="btn-group">
@@ -83,15 +104,15 @@
       </Transition>
       
       <Transition name="fade-ui">
-        <div v-show="isFullscreen" class="glass-panel bottom-right-controls">
-          <button class="btn-tool" @click="resetCamera" title="恢复高数黑板标准视角">
-            🔄 视角复位
+        <div v-show="isFullscreen" class="glass-panel bottom-right-controls tools-stack">
+          <button class="btn-tool" @click="resetCamera" title="视角复位">
+            <span class="icon">🔄</span> <span class="label">复位</span>
           </button>
-          <button class="btn-tool" @click="toggleCamera" :title="isOrthographic ? '当前：无畸变正交投影' : '当前：接近人眼真实的透视投影'">
-            {{ isOrthographic ? '👁️ 切换近大远小(透视)' : '📐 切换绝对平面(正交)' }}
+          <button class="btn-tool" @click="toggleCamera" :title="isOrthographic ? '切换透视' : '切换正交'">
+            <span class="icon">{{ isOrthographic ? '👁️' : '📐' }}</span> <span class="label">{{ isOrthographic ? '透视' : '正交' }}</span>
           </button>
-          <button class="btn-tool" @click="toggleFullscreen">
-            ⛶ 退出投屏
+          <button class="btn-tool exit-btn" @click="toggleFullscreen">
+            <span class="icon">⛶</span> <span class="label">退出</span>
           </button>
         </div>
       </Transition>
@@ -129,6 +150,8 @@ const currentTopic = ref('surfaces');
 const currentType = ref('rotation');
 const isFullscreen = ref(false);
 const isOrthographic = ref(false);
+const isMathPanelVisible = ref(true); // 新增：公式面板可见性
+const isMobile = ref(false); // 新增：是否为移动端环境
 
 const resetCamera = () => {
     if (!camera || !controls) return;
@@ -228,6 +251,13 @@ const onResize = () => {
   const height = containerRef.value.clientHeight;
   const aspect = width / height;
   
+  isMobile.value = width < 768; // 同步移动端状态
+  if (isMobile.value) {
+      isMathPanelVisible.value = false; // 初始进入小屏默认收起
+  } else {
+      isMathPanelVisible.value = true;
+  }
+  
   if (isOrthographic.value) {
       const frustumHeight = camera.top - camera.bottom;
       camera.left = -frustumHeight * aspect / 2;
@@ -238,6 +268,11 @@ const onResize = () => {
   
   camera.updateProjectionMatrix();
   renderer.setSize(width, height);
+};
+
+// 暴露给外部或内部使用的重置函数
+const refreshState = () => {
+    onResize();
 };
 
 const toggleCamera = () => {
@@ -287,6 +322,7 @@ onMounted(async () => {
     ParametricGeometry_local = ParametricGeometry;
 
     init(THREE_local, OrbitControls);
+    onResize(); // 确保初始状态（如 mobile 适配）同步
     window.addEventListener('resize', onResize);
 });
 
@@ -735,24 +771,11 @@ function animate() {
 }
 
 /* 进出场动画 */
-.fade-ui-enter-active,
-.fade-ui-leave-active {
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-.fade-ui-enter-from,
-.fade-ui-leave-to {
-    opacity: 0;
-    transform: scale(0.96);
-}
+.fade-ui-enter-active, .fade-ui-leave-active { transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+.fade-ui-enter-from, .fade-ui-leave-to { opacity: 0; transform: translateY(10px); }
 
-.fade-overlay-enter-active,
-.fade-overlay-leave-active {
-    transition: opacity 0.4s ease;
-}
-.fade-overlay-enter-from,
-.fade-overlay-leave-to {
-    opacity: 0;
-}
+.fade-overlay-enter-active, .fade-overlay-leave-active { transition: opacity 0.4s ease; }
+.fade-overlay-enter-from, .fade-overlay-leave-to { opacity: 0; }
 
 /* ======================================= */
 
@@ -761,13 +784,22 @@ function animate() {
     width: 100%;
     aspect-ratio: 16 / 9;
     background: #F8FAFC;
-    border-radius: 16px;
+    border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 20px 40px -10px rgba(0,0,0,0.08);
     font-family: 'Jost', system-ui, sans-serif;
     color: #1E293B;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     border: 1px solid rgba(255,255,255,0.8);
+    user-select: none;
+}
+
+/* 响应式宽高比：移动端 portrait 更高 */
+@media (max-width: 640px) {
+    .geometry-lab-container {
+        aspect-ratio: 1 / 1.25;
+        border-radius: 12px;
+    }
 }
 
 .geometry-lab-container.fullscreen {
@@ -781,35 +813,29 @@ function animate() {
     border-radius: 0;
 }
 
+/* --- 通用面板样式 (毛玻璃) --- */
 .glass-panel {
-    background: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
-    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 16px;
 }
 
+/* --- 信息面板 / 公式 --- */
 .right-panels-container {
     position: absolute;
     top: 24px;
     right: 24px;
+    max-width: 320px;
     display: flex;
     flex-direction: column;
     gap: 16px;
-    z-index: 20;
-    max-width: 340px;
+    z-index: 30;
+    transition: all 0.4s ease;
 }
 
-@media (max-width: 768px) {
-    .right-panels-container {
-        max-width: 260px;
-    }
-}
-
-.math-panel {
-    padding: 20px;
-}
+.math-panel { padding: 20px; }
 
 .panel-title {
     margin: 0 0 12px;
@@ -817,59 +843,24 @@ function animate() {
     font-family: 'Bodoni Moda', serif;
     font-weight: 600;
     color: #2563EB;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
+    border-bottom: 1px solid rgba(37, 99, 235, 0.1);
     padding-bottom: 8px;
 }
 
-.equation {
-    margin: 4px 0;
-    text-align: center;
-    color: #1E293B;
-}
+.equation { margin: 4px 0; text-align: center; color: #1E293B; }
+.equation :deep(.katex-display) { margin: 0.2em 0; }
+.equation :deep(.katex) { font-size: 1.05em; }
+.desc { font-size: 0.85rem; color: #475569; line-height: 1.5; }
 
-.equation :deep(.katex-display) {
-    margin: 0.2em 0;
-}
-
-.equation :deep(.katex) {
-    font-size: 1.05em;
-}
-
-.desc {
-    font-size: 0.85rem;
-    color: #475569;
-    line-height: 1.5;
-}
-
-.legend-panel {
-    padding: 12px 16px;
-    font-size: 0.8rem;
-}
-
-.legend-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 6px;
-}
-.legend-item:last-child { margin-bottom: 0; }
-
-.color-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    margin-right: 8px;
-}
-.bg-entity { background: #2563EB; }
-.bg-projection { background: rgba(37,99,235,0.4); }
-.bg-generatrix { background: #F97316; }
-
+/* --- 顶部页签 --- */
 .tabs {
     position: absolute;
     top: 24px;
     left: 24px;
     display: flex;
     padding: 4px;
-    z-index: 10;
+    z-index: 40;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
 }
 
 .tab-btn {
@@ -879,33 +870,25 @@ function animate() {
     color: #64748B;
     font-size: 0.9rem;
     font-weight: 500;
-    font-family: inherit;
     cursor: pointer;
     border-radius: 8px;
     transition: all 0.3s ease;
 }
-
 .tab-btn:hover { color: #2563EB; }
-.tab-btn.active {
-    background: #fff;
-    color: #2563EB;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
+.tab-btn.active { background: #fff; color: #2563EB; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
 
+/* --- 底部场景切换 (桌面端) --- */
 .controls {
     position: absolute;
     bottom: 24px;
     left: 24px;
     padding: 10px 16px 14px 16px;
-    z-index: 10;
+    z-index: 40;
+    transition: all 0.4s ease;
+    max-width: calc(100% - 240px);
 }
 
-.controls-layout {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0;
-    row-gap: 12px;
-}
+.controls-layout { display: flex; flex-wrap: wrap; gap: 0; row-gap: 12px; }
 
 .control-section {
     display: flex;
@@ -914,15 +897,8 @@ function animate() {
     padding: 0 16px;
     border-right: 1px solid rgba(30, 41, 59, 0.1);
 }
-
-.control-section:first-child {
-    padding-left: 0;
-}
-
-.control-section:last-child {
-    padding-right: 0;
-    border-right: none;
-}
+.control-section:first-child { padding-left: 0; }
+.control-section:last-child { border-right: none; }
 
 .sub-category-title {
     font-size: 0.75rem;
@@ -932,11 +908,7 @@ function animate() {
     padding-left: 2px;
 }
 
-.btn-group {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-}
+.btn-group { display: flex; gap: 8px; flex-wrap: wrap; }
 
 .scene-btn {
     padding: 8px 16px;
@@ -946,22 +918,13 @@ function animate() {
     color: #475569;
     cursor: pointer;
     font-size: 0.9rem;
-    font-family: inherit;
     transition: all 0.3s ease;
+    white-space: nowrap;
 }
+.scene-btn:hover { background: rgba(255,255,255,0.9); border-color: #93C5FD; }
+.scene-btn.active { background: #2563EB; color: white; border-color: #2563EB; box-shadow: 0 4px 12px rgba(37,99,235,0.2); }
 
-.scene-btn:hover {
-    background: rgba(255,255,255,0.9);
-    border-color: #93C5FD;
-}
-
-.scene-btn.active {
-    background: #2563EB;
-    color: white;
-    border-color: #2563EB;
-    box-shadow: 0 4px 12px rgba(37,99,235,0.2);
-}
-
+/* --- 视角工具栏 (桌面端) --- */
 .bottom-right-controls {
     position: absolute;
     bottom: 24px;
@@ -969,7 +932,8 @@ function animate() {
     display: flex;
     gap: 4px;
     padding: 6px;
-    z-index: 20;
+    z-index: 50;
+    transition: all 0.4s ease;
 }
 
 .btn-tool {
@@ -985,10 +949,87 @@ function animate() {
     transition: all 0.3s ease;
     padding: 8px 12px;
     border-radius: 8px;
+    -webkit-tap-highlight-color: transparent;
 }
-.btn-tool:hover {
-    background: #fff;
-    color: #2563EB;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+.btn-tool:hover { background: #fff; color: #2563EB; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+
+/* --- 响应式适配 --- */
+
+@media (max-width: 1024px) {
+    .right-panels-container { top: 20px; right: 20px; max-width: 280px; }
+    .controls { bottom: 20px; left: 20px; }
 }
+
+@media (max-width: 768px) {
+    .geometry-lab-container { aspect-ratio: 1 / 1.25; border-radius: 12px; }
+
+    /* 顶部导航层级 */
+    .tabs { top: 16px; left: 50%; transform: translateX(-50%); width: max-content; }
+    .bottom-right-controls {
+        top: 16px; right: 12px; bottom: auto;
+        flex-direction: row; gap: 8px; padding: 4px;
+        background: rgba(255, 255, 255, 0.85); border-radius: 12px;
+    }
+    .btn-tool { flex-direction: column; padding: 6px 8px !important; gap: 2px !important; }
+    .btn-tool .label { font-size: 10px; opacity: 0.8; }
+
+    /* 中间信息提示层级 */
+    .right-panels-container { top: 80px; right: 12px; max-width: 220px; }
+    .panel-title { font-size: 0.95rem !important; }
+    .desc { font-size: 0.75rem !important; }
+
+    /* 底部场景切换匣 (Pro Max UX) */
+    .controls {
+        bottom: 0 !important; left: 0 !important; right: 0 !important;
+        max-width: none !important; border-radius: 24px 24px 0 0 !important;
+        padding: 10px 0 32px 0 !important; background: rgba(255, 255, 255, 0.82) !important;
+        box-shadow: 0 -12px 40px rgba(0,0,0,0.06) !important;
+        overflow-x: auto;
+    }
+    .controls-layout { display: flex !important; flex-wrap: nowrap !important; padding: 0 20px; gap: 24px !important; }
+    .controls-layout::-webkit-scrollbar { display: none; }
+    .control-section { border-right: none !important; padding: 0 !important; min-width: max-content; }
+    .sub-category-title { font-size: 0.7rem !important; text-transform: uppercase; margin-bottom: 8px; display: block; color: #94A3B8; }
+    .btn-group { gap: 10px !important; }
+    .scene-btn { padding: 8px 18px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.4); }
+    
+    .drawer-handle {
+        width: 32px; height: 4px; background: rgba(0, 0, 0, 0.1);
+        border-radius: 2px; margin: 0 auto 16px auto; display: block;
+    }
+    
+    .info-toggle-btn { top: 80px; right: 12px; }
+}
+
+@media (max-width: 480px) {
+    .bottom-right-controls { top: 12px; right: 8px; }
+    .btn-tool .label { display: none; }
+    .btn-tool { padding: 8px !important; }
+    
+    .right-panels-container { top: 72px; right: 8px; max-width: 160px; }
+    .math-panel { padding: 12px !important; }
+    .info-toggle-btn { top: 72px; right: 8px; width: 38px; height: 38px; font-size: 1.1rem; }
+
+    .controls { padding: 8px 0 24px 0 !important; }
+    .scene-btn { padding: 6px 14px !important; font-size: 0.8rem !important; }
+    .tab-btn { padding: 6px 12px !important; font-size: 0.8rem !important; }
+}
+
+/* --- 面板控制组件 --- */
+.panel-header { display: flex; justify-content: space-between; align-items: flex-start; }
+.close-btn {
+    border: none; background: rgba(0,0,0,0.05); width: 24px; height: 24px;
+    border-radius: 60px; display: flex; align-items: center; justify-content: center;
+    font-size: 10px; cursor: pointer; color: #64748B; transition: all 0.2s;
+}
+.close-btn:hover { background: rgba(0,0,0,0.1); color: #ef4444; }
+
+.info-toggle-btn {
+    position: absolute; display: flex; align-items: center; justify-content: center;
+    width: 44px; height: 44px; font-size: 1.25rem; cursor: pointer; border-radius: 50%;
+    z-index: 45; background: rgba(255, 255, 255, 0.9); border: 1px solid rgba(37, 99, 235, 0.2);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.panels-stack { pointer-events: auto; }
 </style>
