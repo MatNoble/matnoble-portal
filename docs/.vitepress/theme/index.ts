@@ -12,6 +12,7 @@ import BrownianBackground from "./components/BrownianBackground.vue";
 import PwaPrompt from "./components/PwaPrompt.vue";
 import "./custom.css";
 import { inject } from "@vercel/analytics";
+import { injectSpeedInsights } from "@vercel/speed-insights";
 import mediumZoom from "medium-zoom";
 
 import type { EnhanceAppContext } from "vitepress";
@@ -58,6 +59,7 @@ export default {
     app.component("FloatingTimerIcon", FloatingTimerIcon);
     if (typeof window !== "undefined") {
       inject();
+      injectSpeedInsights();
     }
   },
 };
