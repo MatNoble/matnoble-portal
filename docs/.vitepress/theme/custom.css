@@ -56,11 +56,14 @@
   --ease-in-out:     cubic-bezier(0.4, 0.0, 0.2, 1.0);
 
   /* --- VitePress Font Override --- */
-  --vp-font-family-base:    "Crimson Text", "Noto Serif SC", "PingFang SC", serif;
-  --vp-font-family-heading: "EB Garamond", serif;
+  --vp-font-family-base:    "Space Grotesk", "Noto Serif SC", "PingFang SC", sans-serif;
+  --vp-font-family-heading: "Archivo", sans-serif;
   --vp-font-family-mono:    "JetBrains Mono", "Fira Code", source-code-pro, monospace;
   --vp-font-size-base: 18px;
 }
+
+/* --- Import Fonts (Archivo & Space Grotesk) --- */
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 /* Dark Mode Overrides */
 .dark {

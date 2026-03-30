@@ -1,7 +1,21 @@
 ---
-title: 微积分公式大全 & DI表格积分法速查表 (可打印 PDF)
-description: 专为大学生设计的期末复习/考研数学速查表。包含“微分万能公式”操作流程、“分部积分 DI 表格法”优先级口诀。支持 A4 打印与 PDF 导出。
+title: 微积分公式大全与 DI 表格积分法速查表 (PDF 打印版)
+description: 专为大学生设计的期末复习与考研数学速查指南。集成微分万能公式操作流程、LIATE 优先级口诀及 DI 表格法实战示例。支持 A4 高清打印与 PDF 导出。
 layout: doc
+head:
+  - - script
+    - type: application/ld+json
+    - |
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "核心心法速查表 (微积分公式与 DI 表格法)",
+        "description": "包含微分万能公式、LIATE 优先级口诀与 DI 表格积分法的系统性复习工具。",
+        "author": {
+          "@type": "Person",
+          "name": "MatNoble"
+        }
+      }
 ---
 
 <script setup>
@@ -13,7 +27,7 @@ const printPage = () => {
 <ArticleHero 
   tag="工具速查"
   title="核心心法速查表" 
-  description="包含微分万能公式操作流程、LIATE优先级口诀与DI表格积分法。支持 A4 打印与 PDF 导出。"
+  description="包含微分万能公式操作流程、LIATE 优先级口诀与 DI 表格积分法。支持 A4 打印与 PDF 导出。"
   class="no-print"
 />
 
@@ -49,7 +63,7 @@ $$\mathrm{d}y=\mathrm{d}(f(\square))=f'(\square)\mathrm{d}(\square)$$
 2.  **剥皮**：对最外层求导 $f'(\square)$，保留内层不动。
 3.  **填空**：在微分号 $\mathrm{d}$ 后填入内层函数 $\square$，继续对 $\mathrm{d}(\square)$ 重复上述步骤。
 
-### 🔥 实战示例
+### 实战示例
 
 求 $y=\ln(\sin(e^x))$ 的微分：
 
@@ -75,7 +89,7 @@ $$\begin{aligned}\mathrm{d}y & = \mathrm{d}(\ln(\sin(e^x)))\\&=\frac{1}{\sin(e^x
 4.  **T**rigonometric (三角) $\to$ I
 5.  **E**xponential (指数) $\to$ I
 
-### 🔥 实战示例
+### 实战示例
 
 求 $\int x^2 e^{2x}\mathrm{d}x$：
 

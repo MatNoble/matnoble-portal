@@ -58,6 +58,7 @@ defineProps<Props>()
   text-align: center;
   overflow: hidden;
   background: radial-gradient(circle at 50% -20%, var(--mn-primary-soft) 0%, transparent 70%);
+  background-color: var(--mn-bg);
 }
 
 .hf-hero-container {
@@ -72,7 +73,7 @@ defineProps<Props>()
   font-size: clamp(2.4rem, 8vw, 5rem);
   font-weight: 800;
   line-height: 1.1;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
   letter-spacing: -0.02em;
 }
 
@@ -81,23 +82,29 @@ defineProps<Props>()
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  border-bottom: none;
+  padding-bottom: 0;
+  text-transform: none;
 }
 
 .hf-hero-text {
   font-family: var(--vp-font-family-heading);
   font-size: clamp(1.8rem, 5vw, 3.5rem);
-  font-weight: 700;
-  color: var(--mn-text);
+  font-weight: 600;
+  color: var(--mn-primary);
   line-height: 1.1;
   margin-bottom: 24px;
+  letter-spacing: -0.02em;
 }
 
 .hf-hero-tagline {
-  font-size: clamp(1rem, 3vw, 1.5rem);
+  font-family: var(--vp-font-family-base);
+  font-size: clamp(1rem, 3vw, 1.25rem);
   color: var(--mn-text-soft);
   max-width: 600px;
   margin: 0 auto 48px;
   line-height: 1.6;
+  font-weight: 400;
 }
 
 .hf-hero-actions {
