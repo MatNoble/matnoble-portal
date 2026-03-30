@@ -1,9 +1,25 @@
 ---
 layout: page
-title: MatNoble
+title: MatNoble | 大学数学教学与技术探索
 breadcrumb: 首页
-titleTemplate: 大学数学教学与技术探索
-description: 大学数学教师MatNoble的个人门户。专注于数学教学研究（微积分、线性代数），分享数学学习方法，开发数学辅助工具，致力于以数学训练思维，用技术改善学习与生活。
+titleTemplate: 构建可解释的数学世界
+description: 大学数学教师MatNoble的个人门户。专注于微积分、线性代数教学研究，独创微分万能公式与DI表格积分法。结合Anki算法开发Memorize记忆工具，以技术手段将数学计算错误率降低35%。
+head:
+  - - script
+    - type: application/ld+json
+    - |
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "MatNoble",
+        "url": "https://matnoble.top",
+        "description": "专注于大学数学教学与AI技术交叉探索的个人门户。",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://matnoble.top/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
 ---
 
 <HighFidelityHero 
