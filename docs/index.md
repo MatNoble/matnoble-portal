@@ -115,7 +115,7 @@ head:
     <p>如果您有教学合作、演讲邀请或工具定制需求，欢迎随时联系。</p>
     <div class="cta-actions">
       <a href="/about" class="btn-primary">联系作者</a>
-      <a href="https://github.com/matnoble" target="_blank" class="btn-secondary">GitHub 仓库</a>
+      <a href="https://github.com/matnoble" target="_blank" rel="noopener noreferrer" class="btn-secondary">GitHub 仓库</a>
     </div>
   </div>
 </section>
