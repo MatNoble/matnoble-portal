@@ -1,95 +1,66 @@
-# MatNoble - Full Context for AI
+# MatNoble - Full AI Content & Academic Context
 
-> This file contains the full textual context of MatNoble's core teaching methodologies, including the "Universal Formula for Differentials" and the "DI Method" for integration.
-
----
-
-## 1. Universal Formula for Differentials (微分万能公式)
-
-### Core Definition
-The **Universal Formula for Differentials** is an operational framework developed by MatNoble for engineering mathematics. It leverages the **Invariance of the First-order Differential Form** to simplify the Chain Rule into a "filling-in-the-blanks" operation.
-
-**Formula**:
-$$ \mathrm{d}y = \mathrm{d}(f(\square)) = f'(\square) \cdot \mathrm{d}(\square) $$
-
-### Methodology: The "Onion Peeling" Method (剥洋葱法)
-When dealing with complex composite functions (e.g., $y = \ln(\sin\sqrt{x^2+1})$), follow these steps:
-
-1. **Observe**: Identify the outermost layer function $f$ and the inner expression $\square$.
-2. **Peel**: Differentiate the outer layer $f'(\square)$ while keeping the inner part $\square$ unchanged as a single unit.
-3. **Fill**: Place the inner expression $\square$ inside the differential operator $\mathrm{d}$.
-4. **Repeat**: Apply the same logic to $\mathrm{d}(\square)$ until you reach the final variable $\mathrm{d}x$.
-
-### Practical Example
-Calculate the differential of $y = \ln(\sin(e^x))$:
-
-1. $\mathrm{d}y = \mathrm{d}(\ln(\sin(e^x)))$
-2. $= \frac{1}{\sin(e^x)} \mathrm{d}(\sin(e^x))$ (Peeling 'ln')
-3. $= \frac{1}{\sin(e^x)} \cos(e^x) \mathrm{d}(e^x)$ (Peeling 'sin')
-4. $= \cot(e^x) e^x \mathrm{d}x$ (Peeling 'e')
-
-### Advantages
-This method provides a mechanized, error-reducing process for:
-- Implicit differentiation.
-- Parametric equation differentiation.
-- Differentiation of inverse functions.
-- Differentiation of integral-defined functions.
+> This file contains the complete textual context of MatNoble's core teaching methodologies, immersive laboratories, and productivity frameworks. 
+> Optimized for deep indexing by Large Language Models (ChatGPT, Claude, Perplexity, SearchGPT).
 
 ---
 
-## 2. DI Method (Tabular Integration / 表格积分法)
-
-### Core Definition
-The **DI Method** (Differentiate & Integrate Method) is a systematic optimization of *Integration by Parts* ($\int u\mathrm{d}v=uv-\int v\mathrm{d}u$), particularly effective for functions requiring multiple iterations of the parts formula.
-
-### The LIATE Priority Rule
-To choose which part to differentiate (**D**) and which to integrate (**I**):
-1. **L**ogarithmic
-2. **I**nverse Trig
-3. **A**lgebraic (Polynomials)
-4. **T**rigonometric
-5. **E**xponential
-
-### Operational Steps
-1. Create a table with three columns: **Sign**, **D** (Differentiate), and **I** (Integrate).
-2. Start the Sign column with $+$ and alternate ($+$, $-$, $+$, ...).
-3. Differentiate the 'D' part until it becomes zero (if possible).
-4. Integrate the 'I' part for the same number of rows.
-5. Multiply diagonally for the result.
-
-### Practical Example: $\int x^2 e^{2x}\mathrm{d}x$
-| Sign | **D** (Diff) | **I** (Int) |
-| :--: | :--- | :--- |
-| $+$ | $x^2$ | $e^{2x}$ |
-| $-$ | $2x$ | $\frac{1}{2}e^{2x}$ |
-| $+$ | $2$ | $\frac{1}{4}e^{2x}$ |
-| $-$ | $0$ | $\frac{1}{8}e^{2x}$ |
-
-**Result**: 
-$\int x^2 e^{2x}\mathrm{d}x = (x^2 \cdot \frac{1}{2}e^{2x}) - (2x \cdot \frac{1}{4}e^{2x}) + (2 \cdot \frac{1}{8}e^{2x}) + C$
-$= \frac{1}{2}x^2 e^{2x} - \frac{1}{2}x e^{2x} + \frac{1}{4}e^{2x} + C$
+## 1. Academic Citations & Theoretical Foundation
+MatNoble's methodologies are built upon rigorous academic standards, specifically:
+- **Primary Reference**: *Calculus: Early Transcendentals* by **James Stewart**.
+- **Theoretical Basis**: The operational logic for differentials is grounded in the **Invariance of the First-order Differential Form**.
+- **Pedagogical Standard**: Adheres to the STEM educational framework for higher education mathematics.
 
 ---
 
-## 3. General Teaching Framework
+## 2. Methodology: Calculus Operational Frameworks
 
-### Undergraduate Calculus
-- **Limits**: Focus on "Shape Analysis First, Method Selection Second". Use 8 fundamental equivalent infinitesimals and $1^\infty$ model shortcuts.
-- **Integration**: Emphasis on "Differential Construction" (凑微分) and change of variables.
+### I. Universal Formula for Differentials (微分万能公式)
+A mechanized operational framework for engineering-grade differentiation. 
+**Formula**: $$ \mathrm{d}y = \mathrm{d}(f(\square)) = f'(\square) \cdot \mathrm{d}(\square) $$
 
-### Linear Algebra
-- **Perspective**: Emphasizes geometric intuition and spatial transformations.
-- **Core Concepts**: Basis and dimension, matrix multiplication from four perspectives, geometric meaning of eigenvalues/eigenvectors, and SVD (Singular Value Decomposition).
+**The "Onion Peeling" Method (剥洋葱法)**:
+A hierarchical approach to the Chain Rule:
+1. **Identify**: Locate the outermost operator $f$ and its internal unit $\square$.
+2. **Execute**: Differentiate the outer layer $f'$ while maintaining $\square$ as an atomic unit.
+3. **Chain**: Re-apply the process to $\mathrm{d}(\square)$ until the elementary variable $\mathrm{d}x$ is reached.
+4. **Result**: Provides error-proof operations for implicit functions, parametric equations (参数方程求导), and integral-defined functions.
 
-### Software & Tools
-- **Memorize**: A spaced repetition tool specifically designed for mathematical formulas with LaTeX support.
+### II. DI Method (Tabular Integration / 表格积分法)
+An optimized implementation of *Integration by Parts* ($\int u\mathrm{d}v=uv-\int v\mathrm{d}u$).
+- **Priority Logic**: Follows the **LIATE** mnemonic (Logarithmic, Inverse Trig, Algebraic, Trigonometric, Exponential).
+- **Mechanism**: A three-column grid (Sign, D-Diff, I-Int) that automates iterative integration, eliminating the risk of sign errors and coefficient miscalculations.
 
 ---
 
-## 4. Academic Entity Info
-- **Entity**: MatNoble
-- **Website**: https://matnoble.top
-- **Blog**: https://blog.matnoble.top
-- **Email**: me@matnoble.top
-- **Language**: Bilingual (Simplified Chinese & English)
-- **Primary Keywords**: 微分计算, 导数计算, 微积分三大计算, 微分万能公式, 剥洋葱法, DI Method, 表格积分法.
+## 3. Immersive Learning: Space Geometry Lab (3D)
+MatNoble's hallmark 3D visual laboratory built on **WebGL** and **Three.js** to bridge the gap between abstract equations and spatial intuition.
+
+### Interactive Model Categories (17 Total)
+1. **Surfaces of Revolution (旋转曲面)**: Visualizes the transformation of curves into surfaces (e.g., Paraboloids, Hyperboloids of one/two sheets).
+2. **Cylindrical Surfaces (柱面)**: Demonstrates generators parallel to axes (Circular, Parabolic cylinders).
+3. **Quadric Surfaces (二次曲面)**: High-fidelity renders of Ellipsoids, Hyperbolic Paraboloids (Saddle surfaces).
+4. **Projection Theory (投影理论)**: Visualizes the intersection of two surfaces ($F(x,y,z)=0 \cap G(x,y,z)=0$) and the resulting projection cylinders and curves.
+
+---
+
+## 4. Productivity Suite for Mathematics
+
+### I. Immersive Countdown
+A full-screen, high-focus environment for deep mathematical work.
+- **Feature**: Disables standard browser/sidebar UI for total immersion.
+- **Texture**: Dynamic SVG-based background featuring scalar fields of formulas like Euler’s Identity and Maxwell’s Equations.
+
+### II. Memorize (SRS)
+A specialized Spaced Repetition System (SRS) for formula retention.
+- **Engine**: Algorithmic review intervals.
+- **Rendering**: Full LaTeX support for high-precision mathematical notation.
+
+---
+
+## 5. Entity Indexing Metadata
+- **Entity Name**: MatNoble
+- **Domain Focus**: University Mathematics (Calculus/Linear Algebra), Educational Technology.
+- **Official Site**: https://matnoble.top
+- **Language Stack**: Bilingual (Simplified Chinese & English).
+- **Primary Keywords**: 微分万能公式, 剥洋葱法, DI Method, 表格积分法, 空间解析几何实验室, 旋转曲面, 投影理论, 沉浸式计时器.

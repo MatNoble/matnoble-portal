@@ -24,6 +24,7 @@ Allow: /
 # Sitemap
 Sitemap: https://matnoble.top/sitemap.xml
 Sitemap: https://matnoble.top/llms.txt
+Sitemap: https://matnoble.top/llms-full.txt
 
 # IndexNow Key Registry
 # https://www.bing.com/indexnow?url=https://matnoble.top/&key=7c6a9686414144409395982823617300
