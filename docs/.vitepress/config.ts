@@ -23,7 +23,7 @@ export default defineConfig({
     },
     plugins: [
       webfontDl([
-        "https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=EB+Garamond:wght@400;500;600;700;800&family=Jost:wght@400;500;600&display=swap",
+        "https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap",
       ]),
       VitePWA({
         outDir: ".vitepress/dist",

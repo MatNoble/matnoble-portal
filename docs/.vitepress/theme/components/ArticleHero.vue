@@ -50,7 +50,7 @@ defineProps<Props>();
 .hero-tag {
   display: inline-block;
   padding: 0.25rem 0.75rem;
-  background: var(--mn-blue);
+  background: var(--mn-primary);
   color: white;
   border-radius: 20px;
   font-size: 0.85rem;
@@ -58,6 +58,7 @@ defineProps<Props>();
   margin-bottom: 1.5rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  box-shadow: var(--shadow-sm);
 }
 
 .hero-title {
@@ -66,9 +67,7 @@ defineProps<Props>();
   margin-bottom: 1.5rem;
   line-height: 1.2;
   font-family: var(--vp-font-family-base);
-  background: linear-gradient(135deg, var(--vp-c-text-1), var(--mn-blue));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--mn-text);
 }
 
 .hero-description {

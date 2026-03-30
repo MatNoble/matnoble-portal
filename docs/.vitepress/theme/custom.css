@@ -3,6 +3,8 @@
    Compliant with MASTER.md + ui-ux-pro-max skill
    ============================================================ */
 
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
 /* ===========================================
    § 1. Design Tokens (Root Variables)
    =========================================== */
@@ -42,11 +44,12 @@
   --radius-lg: 16px;
   --radius-xl: 24px;
 
-  /* --- Z-Index Scale --- */
-  --z-navbar:  100;
-  --z-sidebar: 50;
-  --z-modal:   200;
-  --z-toast:   300;
+  /* --- Z-Index Scale (MASTER.md mandated: 10 20 30 50) --- */
+  --z-sidebar: 10;
+  --z-navbar:  20;
+  --z-dropdown: 30;
+  --z-modal:   50;
+  --z-toast:   60;
 
   /* --- Motion --- */
   --duration-fast:   150ms;
@@ -61,9 +64,6 @@
   --vp-font-family-mono:    "JetBrains Mono", "Fira Code", source-code-pro, monospace;
   --vp-font-size-base: 18px;
 }
-
-/* --- Import Fonts (Archivo & Space Grotesk) --- */
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 /* Dark Mode Overrides */
 .dark {
@@ -111,8 +111,8 @@ code {
 }
 
 :not(pre) > code {
-  background-color: rgba(0, 0, 0, 0.04) !important;
-  color: #DC2626 !important; /* Scholarly red for inline code codes */
+  background-color: var(--mn-primary-soft) !important;
+  color: var(--mn-primary) !important; /* Unified with primary blue */
   padding: 0.2em 0.4em;
   border-radius: 4px;
   vertical-align: 0.05em;
@@ -213,7 +213,7 @@ body {
 
 /* Nav Links — plain text, no pill */
 .VPNavBarMenuLink {
-  font-family: "Jost", var(--vp-font-family-base) !important;
+  font-family: var(--vp-font-family-heading) !important;
   font-size: 0.95rem !important;
   font-weight: 500 !important;
   transition: color var(--duration-fast) ease !important;
@@ -248,7 +248,7 @@ body {
 
 /* Nav Group text */
 .VPNavBarMenuGroup .text {
-  font-family: "Jost", sans-serif !important;
+  font-family: var(--vp-font-family-heading) !important;
   font-size: 0.95rem !important;
   font-weight: 500 !important;
   transition: color var(--duration-fast) ease !important;

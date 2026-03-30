@@ -416,7 +416,7 @@ const presets = [
 }
 
 .is-fs .time-nums {
-  font-size: 20vh;
+  font-size: 17vh;
 }
 
 .is-fs .action-bar { margin-top: 5vh; }

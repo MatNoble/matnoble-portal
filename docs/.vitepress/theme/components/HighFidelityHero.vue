@@ -39,15 +39,6 @@ defineProps<Props>()
         </div>
       </div>
     </div>
-    
-    <!-- Decorative Math Layer -->
-    <div class="math-decoration" aria-hidden="true">
-      <div class="math-item symbol-1">∫</div>
-      <div class="math-item symbol-2">∑</div>
-      <div class="math-item symbol-3">∂</div>
-      <div class="math-item symbol-4">∇</div>
-      <div class="math-item symbol-5">∞</div>
-    </div>
   </section>
 </template>
 
@@ -78,10 +69,7 @@ defineProps<Props>()
 }
 
 .clip {
-  background: linear-gradient(135deg, var(--mn-text) 30%, var(--mn-primary) 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--mn-text);
   border-bottom: none;
   padding-bottom: 0;
   text-transform: none;
@@ -132,13 +120,13 @@ defineProps<Props>()
 .hf-button.brand {
   background-color: var(--mn-accent);
   color: white;
-  box-shadow: 0 10px 20px -5px var(--mn-accent-soft);
+  box-shadow: var(--shadow-md);
 }
 
 .hf-button.brand:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 20px 30px -8px var(--mn-accent-soft);
+  transform: translateY(-2px);
   filter: brightness(1.1);
+  box-shadow: var(--shadow-lg);
 }
 
 .hf-button.alt {
@@ -153,40 +141,9 @@ defineProps<Props>()
   transform: translateY(-3px);
 }
 
-/* Math Decoration */
-.math-decoration {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.4;
-}
-
-.math-item {
-  position: absolute;
-  font-family: serif;
-  font-style: italic;
-  font-size: 4rem;
-  color: var(--mn-primary);
-  filter: blur(2px);
-  opacity: 0.15;
-  animation: float 20s infinite linear;
-}
-
-.symbol-1 { top: 15%; left: 10%; animation-duration: 25s; }
-.symbol-2 { top: 60%; left: 5%; font-size: 3rem; animation-delay: -5s; }
-.symbol-3 { top: 20%; right: 12%; animation-duration: 22s; }
-.symbol-4 { top: 70%; right: 8%; font-size: 3.5rem; animation-delay: -10s; }
-.symbol-5 { top: 40%; left: 80%; animation-duration: 30s; }
-
 @keyframes float {
-  0% { transform: translate(0, 0) rotate(0deg); }
-  33% { transform: translate(20px, 40px) rotate(10deg); }
-  66% { transform: translate(-20px, 20px) rotate(-10deg); }
-  100% { transform: translate(0, 0) rotate(0deg); }
+  0% { transform: translateY(0); }
+  100% { transform: translateY(0); }
 }
 
 /* Reduced motion — disable floating animation */
@@ -212,7 +169,6 @@ defineProps<Props>()
     padding: 12px 24px !important;
     min-height: 52px !important; /* Larger touch target for mobile */
   }
-  .math-item { font-size: 1.8rem; opacity: 0.08; }
 }
 
 @media (min-width: 641px) and (max-width: 860px) {

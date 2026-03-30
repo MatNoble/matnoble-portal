@@ -123,7 +123,7 @@ const dismiss = () => {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--mn-blue);
+  color: var(--mn-primary);
 }
 
 .ios-arrow {
@@ -206,7 +206,7 @@ const dismiss = () => {
 }
 
 .pwa-install {
-  background-color: var(--mn-blue);
+  background-color: var(--mn-primary);
   color: white;
   border: none;
   padding: 8px 16px;

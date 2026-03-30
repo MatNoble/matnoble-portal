@@ -65,8 +65,7 @@ watch(
 
 .reading-progress-bar {
   height: 100%;
-  background: linear-gradient(90deg, var(--mn-blue), var(--mn-green));
-  box-shadow: 0 0 10px rgba(77, 132, 196, 0.4);
+  background: var(--mn-primary);
   transition: width 0.1s ease-out;
 }
 

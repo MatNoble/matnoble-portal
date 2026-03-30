@@ -27,7 +27,12 @@ const defaultIcons: Record<string, string> = {
   <section class="hf-features">
     <div class="hf-features-grid">
       <div v-for="(feature, index) in features" :key="index" class="hf-feature-card">
-        <div class="hf-feature-icon" v-html="feature.icon || defaultIcons.teaching"></div>
+        <div class="hf-feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <g v-if="feature.icon" v-html="feature.icon"></g>
+            <g v-else v-html="defaultIcons.teaching"></g>
+          </svg>
+        </div>
         <h2 class="hf-feature-title" v-html="feature.title"></h2>
         <p class="hf-feature-details" v-html="feature.details"></p>
         
@@ -65,7 +70,7 @@ const defaultIcons: Record<string, string> = {
   display: flex;
   flex-direction: column;
   transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-sm);
   position: relative;
   overflow: hidden;
 }
@@ -75,9 +80,9 @@ const defaultIcons: Record<string, string> = {
 }
 
 .hf-feature-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-4px);
   border-color: var(--mn-primary);
-  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--shadow-xl);
 }
 
 .hf-feature-icon {
@@ -85,28 +90,64 @@ const defaultIcons: Record<string, string> = {
   height: 52px;
   background: var(--mn-primary-soft);
   color: var(--mn-primary);
-  border-radius: 12px;
+  border: 1px solid rgba(37, 99, 235, 0.1); /* Super fine border for biotech feel */
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 24px;
   padding: 12px;
   flex-shrink: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation-duration: 6s; /* Slower for graceful gliding */
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+/* Sideways gliding animations to utilize empty horizontal space */
+.hf-feature-card:nth-child(1) .hf-feature-icon {
+  animation-name: glide-1;
+}
+.hf-feature-card:nth-child(2) .hf-feature-icon {
+  animation-name: glide-2;
+  animation-delay: -1.5s;
+}
+.hf-feature-card:nth-child(3) .hf-feature-icon {
+  animation-name: glide-3;
+  animation-delay: -3s;
+}
+
+@keyframes glide-1 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(12px, -4px); }
+}
+
+@keyframes glide-2 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(15px, 2px); }
+}
+
+@keyframes glide-3 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(10px, -6px); }
 }
 
 .dark .hf-feature-icon {
-  background: rgba(37, 99, 235, 0.20);
-  color: #60A5FA; /* lighter blue in dark mode for contrast */
+  background: rgba(37, 99, 235, 0.08); /* Lower saturation */
+  border-color: rgba(37, 99, 235, 0.15);
+  color: #60A5FA;
 }
 
-.hf-feature-icon :deep(svg) {
-  width: 100%;
-  height: 100%;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  fill: none;
+.hf-feature-card:hover .hf-feature-icon {
+  transform: translateY(-2px) scale(1.05);
+  background: var(--mn-primary-soft); /* De-saturated hover */
+  border-color: var(--mn-primary);
+  box-shadow: 0 0 15px var(--mn-primary-soft);
+}
+
+.hf-feature-icon svg {
+  width: 24px;
+  height: 24px;
 }
 
 .hf-feature-title {
@@ -153,16 +194,12 @@ const defaultIcons: Record<string, string> = {
   .hf-feature-card:hover { transform: none; box-shadow: none; }
 }
 
-@media (max-width: 480px) {
-  .hf-features-grid { grid-template-columns: 1fr; }
-  .hf-feature-card { padding: 20px; }
-  .hf-feature-title { font-size: 1.2rem; }
-  .hf-feature-details { font-size: 0.95rem; }
-}
-
 @media (max-width: 640px) {
-  .hf-feature-card { padding: 24px; }
-  .hf-feature-title { font-size: 1.3rem; }
-  .hf-feature-details { font-size: 1rem; }
+  .hf-features { padding: 0 16px; }
+  .hf-feature-card { padding: 24px; border-radius: 16px; }
+  .hf-feature-icon { width: 44px; height: 44px; padding: 10px; margin-bottom: 16px; }
+  .hf-feature-icon svg { width: 20px; height: 20px; }
+  .hf-feature-title { font-size: 1.25rem; }
+  .hf-feature-details { font-size: 0.95rem; margin-bottom: 20px; }
 }
 </style>

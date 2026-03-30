@@ -141,9 +141,12 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
+import { ref, computed, onMounted, onBeforeUnmount, watch } from 'vue';
+import { useData } from 'vitepress';
 import katex from 'katex';
 import 'katex/dist/katex.min.css';
+
+const { isDark } = useData();
 
 const containerRef = ref(null);
 const currentTopic = ref('surfaces');
@@ -324,6 +327,13 @@ onMounted(async () => {
     init(THREE_local, OrbitControls);
     onResize(); // 确保初始状态（如 mobile 适配）同步
     window.addEventListener('resize', onResize);
+
+    // 监听深色模式切换，同步更新 3D 背景
+    watch(isDark, (val) => {
+        if (scene) {
+            scene.background = new THREE_local.Color(val ? '#0B0F1A' : '#F8FAFC');
+        }
+    }, { immediate: true });
 });
 
 onBeforeUnmount(() => {
@@ -337,7 +347,7 @@ onBeforeUnmount(() => {
 
 function init(THREE, OrbitControls) {
     scene = new THREE.Scene();
-    scene.background = new THREE.Color('#F8FAFC');
+    scene.background = new THREE.Color(isDark.value ? '#0B0F1A' : '#F8FAFC');
 
     const width = containerRef.value.clientWidth;
     const height = containerRef.value.clientHeight;
@@ -713,8 +723,17 @@ function animate() {
     border: 1px solid rgba(255, 255, 255, 0.4);
     max-width: 400px;
     transform: translateY(-8px);
-    animation: floatUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transition: all 0.3s ease;
 }
+
+.dark .overlay-card {
+    background: rgba(30, 41, 59, 0.85);
+    border-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
+}
+
+.dark .overlay-card h3 { color: #F8FAFC; }
+.dark .overlay-card p { color: #94A3B8; }
 
 @keyframes floatUp {
     from { opacity: 0; transform: translateY(12px); }
@@ -784,14 +803,20 @@ function animate() {
     width: 100%;
     aspect-ratio: 16 / 9;
     background: #F8FAFC;
-    border-radius: 20px;
+    border-radius: 24px;
     overflow: hidden;
     box-shadow: 0 20px 40px -10px rgba(0,0,0,0.08);
     font-family: 'Jost', system-ui, sans-serif;
     color: #1E293B;
     transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    border: 1px solid rgba(255,255,255,0.8);
+    border: 1px solid rgba(0,0,0,0.05);
     user-select: none;
+}
+
+.dark .geometry-lab-container {
+    background: #0B0F1A;
+    border-color: rgba(255,255,255,0.05);
+    color: #F8FAFC;
 }
 
 /* 响应式宽高比：移动端 portrait 更高 */
@@ -822,6 +847,12 @@ function animate() {
     border-radius: 16px;
 }
 
+.dark .glass-panel {
+    background: rgba(15, 23, 42, 0.75);
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
 /* --- 信息面板 / 公式 --- */
 .right-panels-container {
     position: absolute;
@@ -847,10 +878,12 @@ function animate() {
     padding-bottom: 8px;
 }
 
-.equation { margin: 4px 0; text-align: center; color: #1E293B; }
+.equation { margin: 4px 0; text-align: center; color: #1E293B; transition: color 0.3s; }
+.dark .equation { color: #E2E8F0; }
 .equation :deep(.katex-display) { margin: 0.2em 0; }
 .equation :deep(.katex) { font-size: 1.05em; }
-.desc { font-size: 0.85rem; color: #475569; line-height: 1.5; }
+.desc { font-size: 0.85rem; color: #475569; line-height: 1.5; transition: color 0.3s; }
+.dark .desc { color: #94A3B8; }
 
 /* --- 顶部页签 --- */
 .tabs {
