@@ -222,24 +222,32 @@ head:
 }
 
 .cta-card {
-  background: var(--mn-text);
-  color: white;
+  background: var(--mn-primary-soft);
+  border: 1px solid var(--mn-primary-ring);
+  backdrop-filter: blur(12px);
   padding: 64px 32px;
   border-radius: 24px;
   max-width: 800px;
   margin: 0 auto;
+  transition: transform var(--duration-base) ease, box-shadow var(--duration-base) ease;
+}
+
+.cta-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
 }
 
 .cta-card h2 {
-  color: white;
+  color: var(--mn-primary);
   border: none;
   font-size: 2.5rem;
   margin-bottom: 16px;
+  font-weight: 700;
 }
 
 .cta-card p {
+  color: var(--mn-text-soft);
   font-size: 1.2rem;
-  opacity: 0.8;
   margin-bottom: 32px;
 }
 
@@ -251,20 +259,33 @@ head:
 
 .btn-primary {
   background: var(--mn-accent);
-  color: white;
+  color: white !important;
   padding: 12px 32px;
   border-radius: 8px;
   font-weight: 600;
-  text-decoration: none;
+  text-decoration: none !important;
+  transition: all var(--duration-fast) ease;
+}
+
+.btn-primary:hover {
+  background: #EA580C;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--mn-accent-ring);
 }
 
 .btn-secondary {
-  border: 2px solid white;
-  color: white;
+  border: 2px solid var(--mn-primary);
+  color: var(--mn-primary) !important;
   padding: 10px 32px;
   border-radius: 8px;
   font-weight: 600;
-  text-decoration: none;
+  text-decoration: none !important;
+  transition: all var(--duration-fast) ease;
+}
+
+.btn-secondary:hover {
+  background: var(--mn-primary-soft);
+  transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {
