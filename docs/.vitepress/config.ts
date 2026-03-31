@@ -175,6 +175,7 @@ export default defineConfig({
         {
           text: "效率与计算 (Productivity)",
           items: [
+            { text: "学术资源访问指南", link: "/tools/academic-resources" },
             { text: "DI 表格法动态演示", link: "/tools/di-method" },
             { text: "Memorize: 核心卡片", link: "/tools/memorize" },
             { text: "沉浸式计时器", link: "/tools/countdown" },
