@@ -601,13 +601,20 @@ export default defineConfig({
                 "@type": "DefinedTerm",
                 "name": "Universal Formula for Differentials (微分万能公式)",
                 "description": "利用一阶微分形式不变性，将链式法则简化为剥洋葱式的微分操作：dy = d(f(□)) = f'(□) d(□)。",
-                "url": "https://matnoble.top/teaching/derivative-method"
+                "url": "https://matnoble.top/teaching/derivative-method",
+                "sameAs": [
+                  "https://en.wikipedia.org/wiki/Differential_(mathematics)",
+                  "https://en.wikipedia.org/wiki/Chain_rule"
+                ]
               },
               {
                 "@type": "DefinedTerm",
                 "name": "DI Method (表格积分法)",
                 "description": "分部积分法的系统性优化工具，通过 D (求导) 和 I (积分) 两列快速得出结果，遵循 LIATE 优先级法则。",
-                "url": "https://matnoble.top/teaching/cheatsheet"
+                "url": "https://matnoble.top/teaching/cheatsheet",
+                "sameAs": [
+                  "https://en.wikipedia.org/wiki/Integration_by_parts"
+                ]
               }
             ]
           },

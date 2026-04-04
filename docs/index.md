@@ -3,7 +3,7 @@ layout: page
 title: MatNoble | 大学数学教学与技术探索
 breadcrumb: 首页
 titleTemplate: 构建可解释的数学世界
-description: 大学数学教师MatNoble的个人门户。专注于微积分、线性代数教学研究，独创微分万能公式与DI表格积分法。结合Anki算法开发Memorize记忆工具，以技术手段将数学计算错误率降低35%。
+description: MatNoble 是一站式大学数学与技术探索门户。专注于微积分（微分万能公式、DI表格法）、线性代数教学与 3D 辅助实验室开发。通过技术算法优化数学学习深度，为理工科学生与开发者构建可解释的数学世界。
 head:
   - - script
     - type: application/ld+json
