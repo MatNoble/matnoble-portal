@@ -28,7 +28,7 @@ const defaultIcons: Record<string, string> = {
     <div class="hf-features-grid">
       <div v-for="(feature, index) in features" :key="index" class="hf-feature-card">
         <div class="hf-feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <g v-if="feature.icon" v-html="feature.icon"></g>
             <g v-else v-html="defaultIcons.teaching"></g>
           </svg>
@@ -37,9 +37,13 @@ const defaultIcons: Record<string, string> = {
         <p class="hf-feature-details" v-html="feature.details"></p>
         
         <div v-if="feature.link" class="hf-feature-action">
-          <a :href="withBase(feature.link)" class="hf-feature-link">
+          <a 
+            :href="withBase(feature.link)" 
+            class="hf-feature-link"
+            :aria-label="feature.linkText || ('了解更多关于 ' + feature.title)"
+          >
             {{ feature.linkText || '了解更多' }}
-            <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg class="arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
           </a>
@@ -179,6 +183,12 @@ const defaultIcons: Record<string, string> = {
   text-decoration: none;
   font-size: 1rem;
   transition: gap 0.2s;
+  outline: none;
+}
+
+.hf-feature-link:focus-visible {
+  text-decoration: underline;
+  gap: 12px;
 }
 
 .hf-feature-link:hover {
@@ -192,6 +202,7 @@ const defaultIcons: Record<string, string> = {
 
 @media (prefers-reduced-motion: reduce) {
   .hf-feature-card:hover { transform: none; box-shadow: none; }
+  .hf-feature-icon { animation: none !important; }
 }
 
 @media (max-width: 640px) {

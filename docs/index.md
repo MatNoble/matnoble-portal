@@ -73,58 +73,64 @@ head:
     定制化学习路径 
     <span class="section-subtitle">Solutions by Role</span>
   </h2>
-  <div class="roles-grid">
-    <div class="role-card">
-      <h3>在校大学生</h3>
-      <p>扫清期末复习障碍，建立底层数学素养。</p>
-      <a href="/teaching/cheatsheet">获取速查表 &rarr;</a>
-    </div>
-    <div class="role-card">
-      <h3>研究生备考者</h3>
-      <p>针对考研数学的高频痛点，提供极限与积分的特项攻坚。</p>
-      <a href="/teaching/derivative-method">提升计算力 &rarr;</a>
-    </div>
-    <div class="role-card">
-      <h3>教育技术开发者</h3>
-      <p>分享 3D 实验室与自动化教学工具的构建经验。</p>
-      <a href="/projects/">技术栈分析 &rarr;</a>
-    </div>
-  </div>
+  <RoleGrid
+    :roles="[
+      {
+        title: '在校大学生',
+        details: '扫清期末复习障碍，建立底层数学素养。',
+        link: '/teaching/cheatsheet',
+        linkText: '获取速查表'
+      },
+      {
+        title: '研究生备考者',
+        details: '针对考研数学的高频痛点，提供极限与积分的特项攻坚。',
+        link: '/teaching/derivative-method',
+        linkText: '提升计算力'
+      },
+      {
+        title: '教育技术开发者',
+        details: '分享 3D 实验室与自动化教学工具的构建经验。',
+        link: '/projects/',
+        linkText: '技术栈分析'
+      }
+    ]"
+  />
 </section>
 
-<!-- Section 4: Client Logos / Trust Signals -->
+<!-- Section 4: Technology Stack -->
 <section class="gateway-section">
   <h2 class="section-title">
     驱动技术 
     <span class="section-subtitle">Technology Stack</span>
   </h2>
-  <div class="trust-logos">
-    <!-- Placeholder SVG Logos following Flat Design -->
-    <div class="logo-item" title="Vue.js">Vue</div>
-    <div class="logo-item" title="Vite">Vite</div>
-    <div class="logo-item" title="LaTeX">LaTeX</div>
-    <div class="logo-item" title="MathJax">MathJax</div>
-    <div class="logo-item" title="Vercel">Vercel</div>
-  </div>
+  <TrustLogos
+    :logos="[
+      { name: 'Vue', title: 'Vue.js' },
+      { name: 'Vite', title: 'Vite' },
+      { name: 'LaTeX', title: 'LaTeX' },
+      { name: 'MathJax', title: 'MathJax' },
+      { name: 'Vercel', title: 'Vercel' }
+    ]"
+  />
 </section>
 
-<!-- Section 5: Contact Sales / CTA -->
+<!-- Section 5: Contact / CTA -->
 <section class="gateway-section contact-cta">
-  <div class="cta-card">
-    <h2>开启您的数学重构之旅</h2>
-    <p>如果您有教学合作、演讲邀请或工具定制需求，欢迎随时联系。</p>
-    <div class="cta-actions">
-      <a href="/about" class="btn-primary">联系作者</a>
-      <a href="https://github.com/matnoble" target="_blank" rel="noopener noreferrer" class="btn-secondary">GitHub 仓库</a>
-    </div>
-  </div>
+  <ContactCta
+    title="开启您的数学重构之旅"
+    details="如果您有教学合作、演讲邀请或工具定制需求，欢迎随时联系。"
+    :actions="[
+      { theme: 'primary', text: '联系作者', link: '/about' },
+      { theme: 'secondary', text: 'GitHub 仓库', link: 'https://github.com/matnoble', external: true }
+    ]"
+  />
 </section>
 
 </div>
 
 <style scoped>
 .enterprise-gateway {
-  max-width: 1152px; /* Adjusted to 1152px for 3-column grid breathing room */
+  max-width: 1152px;
   margin: 0 auto;
 }
 
@@ -161,138 +167,9 @@ head:
   letter-spacing: 1px;
 }
 
-/* Roles Grid */
-.roles-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 24px;
-}
-
-.role-card {
-  padding: 32px;
-  background: var(--mn-primary-soft);
-  border-radius: 16px;
-  transition: transform 0.3s ease;
-  border: 1px solid transparent;
-}
-
-.role-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--mn-primary);
-}
-
-.role-card h3 {
-  margin-top: 0;
-  color: var(--mn-primary);
-  font-size: 1.4rem;
-}
-
-.role-card p {
-  color: var(--mn-text-soft);
-  margin: 16px 0 24px;
-}
-
-.role-card a {
-  font-weight: 600;
-  color: var(--mn-primary);
-  text-decoration: none;
-}
-
-/* Trust Logos */
-.trust-logos {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 48px;
-  opacity: 0.6;
-  grayscale: 1;
-}
-
-.logo-item {
-  font-family: var(--vp-font-family-heading);
-  font-size: 1.8rem;
-  font-weight: 800;
-  color: var(--mn-text-muted);
-}
-
-/* CTA Card */
-.contact-cta {
-  text-align: center;
-}
-
-.cta-card {
-  background: var(--mn-primary-soft);
-  border: 1px solid var(--mn-primary-ring);
-  backdrop-filter: blur(12px);
-  padding: 64px 32px;
-  border-radius: 24px;
-  max-width: 800px;
-  margin: 0 auto;
-  transition: transform var(--duration-base) ease, box-shadow var(--duration-base) ease;
-}
-
-.cta-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-xl);
-}
-
-.cta-card h2 {
-  color: var(--mn-primary);
-  border: none;
-  font-size: 2.5rem;
-  margin-bottom: 16px;
-  font-weight: 700;
-}
-
-.cta-card p {
-  color: var(--mn-text-soft);
-  font-size: 1.2rem;
-  margin-bottom: 32px;
-}
-
-.cta-actions {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-}
-
-.btn-primary {
-  background: var(--mn-accent);
-  color: white !important;
-  padding: 12px 32px;
-  border-radius: 8px;
-  font-weight: 600;
-  text-decoration: none !important;
-  transition: all var(--duration-fast) ease;
-}
-
-.btn-primary:hover {
-  background: #EA580C;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px var(--mn-accent-ring);
-}
-
-.btn-secondary {
-  border: 2px solid var(--mn-primary);
-  color: var(--mn-primary) !important;
-  padding: 10px 32px;
-  border-radius: 8px;
-  font-weight: 600;
-  text-decoration: none !important;
-  transition: all var(--duration-fast) ease;
-}
-
-.btn-secondary:hover {
-  background: var(--mn-primary-soft);
-  transform: translateY(-2px);
-}
-
 @media (max-width: 768px) {
   .gateway-section { padding: 40px 16px; }
   .section-title { font-size: 1.6rem; margin-bottom: 24px; }
   .section-subtitle { font-size: 0.9rem; }
-  .cta-card h2 { font-size: 1.8rem; }
-  .cta-actions { flex-direction: column; }
 }
 </style>

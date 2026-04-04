@@ -12,6 +12,9 @@ import BrownianBackground from "./components/BrownianBackground.vue";
 import PwaPrompt from "./components/PwaPrompt.vue";
 import HighFidelityHero from "./components/HighFidelityHero.vue";
 import ScholarlyFeatures from "./components/ScholarlyFeatures.vue";
+import RoleGrid from "./components/RoleGrid.vue";
+import TrustLogos from "./components/TrustLogos.vue";
+import ContactCta from "./components/ContactCta.vue";
 import "./custom.css";
 import { inject } from "@vercel/analytics";
 import { injectSpeedInsights } from "@vercel/speed-insights";
@@ -61,6 +64,9 @@ export default {
     app.component("FloatingTimerIcon", FloatingTimerIcon);
     app.component("HighFidelityHero", HighFidelityHero);
     app.component("ScholarlyFeatures", ScholarlyFeatures);
+    app.component("RoleGrid", RoleGrid);
+    app.component("TrustLogos", TrustLogos);
+    app.component("ContactCta", ContactCta);
     if (typeof window !== "undefined") {
       inject();
       injectSpeedInsights();

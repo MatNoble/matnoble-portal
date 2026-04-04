@@ -18,7 +18,7 @@ defineProps<Props>()
 </script>
 
 <template>
-  <section class="hf-hero">
+  <section class="hf-hero" aria-label="Hero section">
     <div class="hf-hero-container">
       <div class="hf-hero-content">
         <h1 class="hf-hero-name">
@@ -112,9 +112,13 @@ defineProps<Props>()
   font-weight: 600;
   border-radius: 12px;
   transition: all 0.25s cubic-bezier(0.2, 1, 0.3, 1);
-  text-decoration: none;
-  cursor: pointer;
   white-space: nowrap;
+  outline: none;
+}
+
+.hf-button:focus-visible {
+  box-shadow: 0 0 0 4px var(--mn-accent-ring);
+  transform: translateY(-2px);
 }
 
 .hf-button.brand {
