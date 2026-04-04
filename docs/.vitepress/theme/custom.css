@@ -3,7 +3,7 @@
    Compliant with MASTER.md + ui-ux-pro-max skill
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap');
 
 /* ===========================================
    § 1. Design Tokens (Root Variables)
@@ -22,6 +22,10 @@
   --mn-text:         #1E293B;
   --mn-text-soft:    #475569;
   --mn-text-muted:   #94A3B8;
+  --mn-accent-glow:  rgba(249, 115, 22, 0.25);
+
+  /* --- Noble Typography Layer --- */
+  --mn-font-noble:   "Cormorant Garamond", "Noto Serif SC", serif;
 
   /* --- Spacing Scale (4pt/8pt System) --- */
   --space-xs:  4px;
@@ -59,9 +63,10 @@
   --ease-in-out:     cubic-bezier(0.4, 0.0, 0.2, 1.0);
 
   /* --- VitePress Font Override --- */
-  --vp-font-family-base:    "Space Grotesk", "Noto Serif SC", "PingFang SC", sans-serif;
+  --vp-font-family-base:    "Space Grotesk", "PingFang SC", sans-serif;
   --vp-font-family-heading: "Archivo", sans-serif;
   --vp-font-family-mono:    "JetBrains Mono", "Fira Code", source-code-pro, monospace;
+  --vp-font-family-noble:   var(--mn-font-noble);
   --vp-font-size-base: 18px;
 }
 
@@ -150,6 +155,16 @@ a, button, [role="button"],
 .VPSocialLink, .VPMenuLink, .VPSidebarItem .link,
 summary, label[for], [tabindex="0"] {
   cursor: pointer;
+}
+
+/* --- Matrix Grid Pattern (Semantic Layer) --- */
+.matrix-grid-pattern {
+  background-image: radial-gradient(circle at 1px 1px, var(--mn-primary-ring) 0.5px, transparent 0px);
+  background-size: 16px 16px;
+}
+
+.dark .matrix-grid-pattern {
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 0.5px, transparent 0px);
 }
 
 

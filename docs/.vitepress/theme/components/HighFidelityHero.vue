@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { withBase } from 'vitepress'
+import { computed } from 'vue'
 
 interface Action {
   theme?: 'brand' | 'alt'
@@ -14,15 +15,27 @@ interface Props {
   actions: Action[]
 }
 
-defineProps<Props>()
+const props = defineProps<Props>()
+
+const splitName = computed(() => {
+  // Logic to separate "Mat" and "Noble" for brand expression
+  if (props.name.toLowerCase() === 'matnoble') {
+    return { first: 'Mat', second: 'Noble' }
+  }
+  return { first: props.name, second: '' }
+})
 </script>
 
 <template>
   <section class="hf-hero" aria-label="Hero section">
+    <!-- Semantic Matrix Background -->
+    <div class="hero-matrix-bg matrix-grid-pattern" aria-hidden="true"></div>
+    
     <div class="hf-hero-container">
       <div class="hf-hero-content">
         <h1 class="hf-hero-name">
-          <span class="clip">{{ name }}</span>
+          <span class="name-mat">{{ splitName.first }}</span>
+          <span v-if="splitName.second" class="name-noble">{{ splitName.second }}</span>
         </h1>
         <p class="hf-hero-text">{{ text }}</p>
         <p class="hf-hero-tagline">{{ tagline }}</p>
@@ -60,19 +73,61 @@ defineProps<Props>()
 }
 
 .hf-hero-name {
-  font-family: var(--vp-font-family-heading);
-  font-size: clamp(2.4rem, 8vw, 5rem);
+  font-size: clamp(2.8rem, 10vw, 6rem);
   font-weight: 800;
-  line-height: 1.1;
+  line-height: 1;
   margin-bottom: 24px;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 2px;
 }
 
-.clip {
+.name-mat {
+  font-family: var(--vp-font-family-heading);
   color: var(--mn-text);
-  border-bottom: none;
-  padding-bottom: 0;
-  text-transform: none;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* "Mat" decoded effect on hover */
+.hf-hero-name:hover .name-mat {
+  color: var(--mn-primary);
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 20px var(--mn-primary-ring);
+}
+
+.name-noble {
+  font-family: var(--mn-font-noble);
+  color: var(--mn-accent);
+  font-weight: 500;
+  font-style: italic;
+  font-size: 1.05em;
+  margin-left: -0.05em;
+  transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.hf-hero-name:hover .name-noble {
+  transform: translateY(-8px) rotate(-2deg);
+  text-shadow: 0 10px 25px var(--mn-accent-soft);
+}
+
+.hero-matrix-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.4;
+  mask-image: radial-gradient(circle at 50% 30%, black, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle at 50% 30%, black, transparent 80%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.dark .hero-matrix-bg {
+  opacity: 0.25;
 }
 
 .hf-hero-text {

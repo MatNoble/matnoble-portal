@@ -27,6 +27,9 @@ const defaultIcons: Record<string, string> = {
   <section class="hf-features">
     <div class="hf-features-grid">
       <div v-for="(feature, index) in features" :key="index" class="hf-feature-card">
+        <!-- Brand Theme Layer -->
+        <div class="card-matrix-overlay matrix-grid-pattern" aria-hidden="true"></div>
+        
         <div class="hf-feature-icon">
           <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <g v-if="feature.icon" v-html="feature.icon"></g>
@@ -77,6 +80,24 @@ const defaultIcons: Record<string, string> = {
   box-shadow: var(--shadow-sm);
   position: relative;
   overflow: hidden;
+  z-index: 10;
+}
+
+.card-matrix-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.15;
+  mask-image: linear-gradient(to bottom, black, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, black, transparent);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.dark .card-matrix-overlay {
+  opacity: 0.1;
 }
 
 .dark .hf-feature-card {
@@ -155,11 +176,13 @@ const defaultIcons: Record<string, string> = {
 }
 
 .hf-feature-title {
-  font-family: var(--vp-font-family-heading);
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-family: var(--vp-font-family-noble);
+  font-size: 1.65rem;
+  font-weight: 600;
+  font-style: italic;
   margin: 0 0 16px;
   color: var(--mn-text);
+  letter-spacing: -0.01em;
 }
 
 .hf-feature-details {
