@@ -45,6 +45,8 @@ const splitName = computed(() => {
             <a
               :class="['hf-button', action.theme || 'alt']"
               :href="action.link.startsWith('http') ? action.link : withBase(action.link)"
+              :title="action.text"
+              :aria-label="`MatNoble - ${action.text}`"
             >
               {{ action.text }}
             </a>
