@@ -8,16 +8,26 @@
       <!-- 页面顶部页签 (桌面端靠左，移动端置顶) -->
       <Transition name="fade-ui">
         <div v-show="isFullscreen" class="glass-panel tabs">
-          <button 
-            class="tab-btn" 
-            :class="{ active: currentTopic === 'surfaces' }" 
+          <button
+            class="tab-btn"
+            :class="{ active: currentTopic === 'surfaces' }"
             @click="setTopic('surfaces')"
           >空间曲面</button>
-          <button 
-            class="tab-btn" 
-            :class="{ active: currentTopic === 'curves' }" 
+          <button
+            class="tab-btn"
+            :class="{ active: currentTopic === 'curves' }"
             @click="setTopic('curves')"
           >空间曲线</button>
+          <button
+            class="tab-btn"
+            :class="{ active: currentTopic === 'planes' }"
+            @click="setTopic('planes')"
+          >空间平面</button>
+          <button
+            class="tab-btn"
+            :class="{ active: currentTopic === 'lines' }"
+            @click="setTopic('lines')"
+          >空间直线</button>
         </div>
       </Transition>
 
@@ -34,7 +44,41 @@
               <div class="desc" v-html="renderedDesc"></div>
             </div>
           </div>
+
+          <!-- 交互式参数控制面板 -->
+          <div class="glass-panel param-panel" v-if="showParamPanel">
+            <div class="panel-header">
+              <h3 class="panel-title">参数调整</h3>
+              <button class="close-btn" @click="showParamPanel = false">✕</button>
+            </div>
+            <div class="panel-content">
+              <div v-for="(param, key) in currentParams" :key="key" class="param-control">
+                <label class="param-label">{{ param.label }} = {{ param.value.toFixed(2) }}</label>
+                <input
+                  type="range"
+                  class="param-slider"
+                  v-model.number="param.value"
+                  :min="param.min"
+                  :max="param.max"
+                  :step="param.step"
+                  @input="updateScene"
+                />
+              </div>
+              <button class="reset-param-btn" @click="resetParams">重置参数</button>
+            </div>
+          </div>
         </div>
+      </Transition>
+
+      <!-- 参数面板切换按钮 -->
+      <Transition name="fade-ui">
+        <button
+          v-show="isFullscreen && !showParamPanel && ['planes', 'lines'].includes(currentTopic)"
+          class="glass-panel param-toggle-btn"
+          @click="showParamPanel = true"
+        >
+          <span>🎛️</span>
+        </button>
       </Transition>
 
       <!-- 移动端侧边呼出图标 -->
@@ -84,7 +128,44 @@
             </div>
           </div>
         </div>
-        
+
+        <div v-show="currentTopic === 'planes'" class="controls-layout">
+          <div class="control-section">
+            <span class="sub-category-title">平面方程</span>
+            <div class="btn-group">
+              <button @click="setScene('plane_point_normal')" class="scene-btn" :class="{ active: currentType === 'plane_point_normal' }">点法式方程</button>
+              <button @click="setScene('plane_general')" class="scene-btn" :class="{ active: currentType === 'plane_general' }">一般方程</button>
+              <button @click="setScene('plane_intercept')" class="scene-btn" :class="{ active: currentType === 'plane_intercept' }">截距式方程</button>
+            </div>
+          </div>
+          <div class="control-section">
+            <span class="sub-category-title">平面关系</span>
+            <div class="btn-group">
+              <button @click="setScene('plane_angle')" class="scene-btn" :class="{ active: currentType === 'plane_angle' }">两平面夹角</button>
+              <button @click="setScene('plane_distance')" class="scene-btn" :class="{ active: currentType === 'plane_distance' }">点到平面距离</button>
+            </div>
+          </div>
+        </div>
+
+        <div v-show="currentTopic === 'lines'" class="controls-layout">
+          <div class="control-section">
+            <span class="sub-category-title">直线方程</span>
+            <div class="btn-group">
+              <button @click="setScene('line_point_direction')" class="scene-btn" :class="{ active: currentType === 'line_point_direction' }">点向式方程</button>
+              <button @click="setScene('line_parametric')" class="scene-btn" :class="{ active: currentType === 'line_parametric' }">参数方程</button>
+              <button @click="setScene('line_general')" class="scene-btn" :class="{ active: currentType === 'line_general' }">一般方程(交线)</button>
+            </div>
+          </div>
+          <div class="control-section">
+            <span class="sub-category-title">位置关系</span>
+            <div class="btn-group">
+              <button @click="setScene('line_angle')" class="scene-btn" :class="{ active: currentType === 'line_angle' }">两直线夹角</button>
+              <button @click="setScene('line_plane_angle')" class="scene-btn" :class="{ active: currentType === 'line_plane_angle' }">线面夹角</button>
+              <button @click="setScene('line_distance')" class="scene-btn" :class="{ active: currentType === 'line_distance' }">点到直线距离</button>
+            </div>
+          </div>
+        </div>
+
         <div v-show="currentTopic === 'curves'" class="controls-layout">
           <div class="control-section">
             <span class="sub-category-title">投影理论</span>
@@ -153,15 +234,121 @@ const currentTopic = ref('surfaces');
 const currentType = ref('rotation');
 const isFullscreen = ref(false);
 const isOrthographic = ref(false);
-const isMathPanelVisible = ref(true); // 新增：公式面板可见性
-const isMobile = ref(false); // 新增：是否为移动端环境
+const isMathPanelVisible = ref(true); // 公式面板可见性
+const isMobile = ref(false); // 是否为移动端环境
+const showParamPanel = ref(false); // 参数面板可见性
+const currentParams = ref({}); // 当前场景的可调整参数
 
 const resetCamera = () => {
     if (!camera || !controls) return;
     // 重内置视角: Math Y (向右) = 14, Math Z (向上) = 8, Math X (向外迎向面门) = 16
-    camera.position.set(14, 8, 16); 
+    camera.position.set(14, 8, 16);
     controls.target.set(0, 0, 0);
     controls.update();
+};
+
+// 参数配置模板
+const paramTemplates = {
+    'plane_point_normal': {
+        A: { label: 'A', value: 1, min: -2, max: 2, step: 0.1 },
+        B: { label: 'B', value: 1, min: -2, max: 2, step: 0.1 },
+        C: { label: 'C', value: 1, min: -2, max: 2, step: 0.1 },
+        D: { label: 'D', value: -2, min: -5, max: 5, step: 0.1 }
+    },
+    'plane_general': {
+        A: { label: 'A', value: 2, min: -3, max: 3, step: 0.1 },
+        B: { label: 'B', value: -1, min: -3, max: 3, step: 0.1 },
+        C: { label: 'C', value: 1, min: -3, max: 3, step: 0.1 },
+        D: { label: 'D', value: 0, min: -5, max: 5, step: 0.1 }
+    },
+    'plane_intercept': {
+        a: { label: 'x轴截距 a', value: 2, min: 1, max: 5, step: 0.1 },
+        b: { label: 'y轴截距 b', value: 3, min: 1, max: 5, step: 0.1 },
+        c: { label: 'z轴截距 c', value: 4, min: 1, max: 5, step: 0.1 }
+    },
+    'plane_angle': {
+        n1x: { label: '平面1法向 x', value: 1, min: -2, max: 2, step: 0.1 },
+        n1y: { label: '平面1法向 y', value: 0, min: -2, max: 2, step: 0.1 },
+        n1z: { label: '平面1法向 z', value: 1, min: -2, max: 2, step: 0.1 },
+        n2x: { label: '平面2法向 x', value: 0, min: -2, max: 2, step: 0.1 },
+        n2y: { label: '平面2法向 y', value: 1, min: -2, max: 2, step: 0.1 },
+        n2z: { label: '平面2法向 z', value: 1, min: -2, max: 2, step: 0.1 }
+    },
+    'plane_distance': {
+        A: { label: '平面系数 A', value: 3, min: -5, max: 5, step: 0.1 },
+        B: { label: '平面系数 B', value: -4, min: -5, max: 5, step: 0.1 },
+        C: { label: '平面系数 C', value: 12, min: -5, max: 5, step: 0.1 },
+        D: { label: '平面系数 D', value: -13, min: -20, max: 20, step: 0.1 },
+        px: { label: '点 x 坐标', value: 0, min: -3, max: 3, step: 0.1 },
+        py: { label: '点 y 坐标', value: 0, min: -3, max: 3, step: 0.1 },
+        pz: { label: '点 z 坐标', value: 0, min: -3, max: 3, step: 0.1 }
+    },
+    'line_point_direction': {
+        x0: { label: '定点 x₀', value: 1, min: -3, max: 3, step: 0.1 },
+        y0: { label: '定点 y₀', value: 0, min: -3, max: 3, step: 0.1 },
+        z0: { label: '定点 z₀', value: -2, min: -3, max: 3, step: 0.1 },
+        m: { label: '方向 m', value: 2, min: -3, max: 3, step: 0.1 },
+        n: { label: '方向 n', value: -1, min: -3, max: 3, step: 0.1 },
+        p: { label: '方向 p', value: 1, min: -3, max: 3, step: 0.1 }
+    },
+    'line_parametric': {
+        x0: { label: 'x₀', value: 1, min: -3, max: 3, step: 0.1 },
+        y0: { label: 'y₀', value: 0, min: -3, max: 3, step: 0.1 },
+        z0: { label: 'z₀', value: 1, min: -3, max: 3, step: 0.1 },
+        vx: { label: 'x 方向', value: 1, min: -2, max: 2, step: 0.1 },
+        vy: { label: 'y 方向', value: 1, min: -2, max: 2, step: 0.1 },
+        vz: { label: 'z 方向', value: -1, min: -2, max: 2, step: 0.1 }
+    },
+    'line_general': {
+        A1: { label: '平面1 A₁', value: 1, min: -2, max: 2, step: 0.1 },
+        B1: { label: '平面1 B₁', value: -1, min: -2, max: 2, step: 0.1 },
+        C1: { label: '平面1 C₁', value: 1, min: -2, max: 2, step: 0.1 },
+        D1: { label: '平面1 D₁', value: -1, min: -5, max: 5, step: 0.1 },
+        A2: { label: '平面2 A₂', value: 2, min: -2, max: 2, step: 0.1 },
+        B2: { label: '平面2 B₂', value: 1, min: -2, max: 2, step: 0.1 },
+        C2: { label: '平面2 C₂', value: 1, min: -2, max: 2, step: 0.1 },
+        D2: { label: '平面2 D₂', value: -3, min: -5, max: 5, step: 0.1 }
+    },
+    'line_angle': {
+        s1x: { label: '直线1方向 x', value: 1, min: -2, max: 2, step: 0.1 },
+        s1y: { label: '直线1方向 y', value: 1, min: -2, max: 2, step: 0.1 },
+        s1z: { label: '直线1方向 z', value: -1, min: -2, max: 2, step: 0.1 },
+        s2x: { label: '直线2方向 x', value: -1, min: -2, max: 2, step: 0.1 },
+        s2y: { label: '直线2方向 y', value: 1, min: -2, max: 2, step: 0.1 },
+        s2z: { label: '直线2方向 z', value: 1, min: -2, max: 2, step: 0.1 }
+    },
+    'line_plane_angle': {
+        nx: { label: '平面法向 x', value: 1, min: -2, max: 2, step: 0.1 },
+        ny: { label: '平面法向 y', value: 1, min: -2, max: 2, step: 0.1 },
+        nz: { label: '平面法向 z', value: Math.sqrt(2), min: -3, max: 3, step: 0.1 },
+        sx: { label: '直线方向 x', value: 1, min: -2, max: 2, step: 0.1 },
+        sy: { label: '直线方向 y', value: 1, min: -2, max: 2, step: 0.1 },
+        sz: { label: '直线方向 z', value: Math.sqrt(2), min: -3, max: 3, step: 0.1 }
+    },
+    'line_distance': {
+        lx0: { label: '直线定点 x', value: 0, min: -3, max: 3, step: 0.1 },
+        ly0: { label: '直线定点 y', value: 0, min: -3, max: 3, step: 0.1 },
+        lz0: { label: '直线定点 z', value: 0, min: -3, max: 3, step: 0.1 },
+        sm: { label: '方向 m', value: 0, min: -2, max: 2, step: 0.1 },
+        sn: { label: '方向 n', value: 1, min: -2, max: 2, step: 0.1 },
+        sp: { label: '方向 p', value: 1, min: -2, max: 2, step: 0.1 },
+        px: { label: '外点 x', value: 1, min: -3, max: 3, step: 0.1 },
+        py: { label: '外点 y', value: 2, min: -3, max: 3, step: 0.1 },
+        pz: { label: '外点 z', value: 3, min: -3, max: 3, step: 0.1 }
+    }
+};
+
+// 重置当前场景参数
+const resetParams = () => {
+    if (paramTemplates[currentType.value]) {
+        currentParams.value = JSON.parse(JSON.stringify(paramTemplates[currentType.value]));
+        updateScene();
+    }
+};
+
+// 更新场景（参数变化时重新渲染）
+const updateScene = () => {
+    setScene(currentType.value);
 };
 
 const sceneData = {
@@ -200,10 +387,69 @@ const sceneData = {
         eq: '\\begin{aligned} &\\begin{cases} x^2+y^2 = z \\\\[0.5ex] x^2+y^2 = 4-z \\end{cases} \\\\[1.2ex] \\implies &x^2+y^2 = 2 \\end{aligned}', 
         desc: '<span style="font-weight: 600; color: #2563EB;">▍推导逻辑</span><br/>1. 消去 <i>z</i> 得到交线在 <i>xy</i> 面的投影方程：$x^2+y^2=2$。<br/>2. 请注意：空间投影线方程必须成组书写为 $\\begin{cases} x^2+y^2=2 \\\\[0.2ex] z=0 \\end{cases}$。' 
     },
-    'curve_parametric': { 
-        title: '参数方程投影', 
-        eq: '\\begin{cases} x=2\\cos t \\\\[0.5ex] y=2\\sin t \\\\[0.5ex] z=0.5t \\end{cases} \\implies x^2+y^2=4', 
-        desc: '<span style="font-weight: 600; color: #2563EB;">▍参数消元</span><br/>消去参数 <i>t</i> 即可得到投影轨迹。对于螺旋线，其余弦平方关系导致其在垂直方向上的投影呈现为一个标准的圆周。' 
+    'curve_parametric': {
+        title: '参数方程投影',
+        eq: '\\begin{cases} x=2\\cos t \\\\[0.5ex] y=2\\sin t \\\\[0.5ex] z=0.5t \\end{cases} \\implies x^2+y^2=4',
+        desc: '<span style="font-weight: 600; color: #2563EB;">▍参数消元</span><br/>消去参数 <i>t</i> 即可得到投影轨迹。对于螺旋线，其余弦平方关系导致其在垂直方向上的投影呈现为一个标准的圆周。'
+    },
+
+    // 空间平面相关场景
+    'plane_point_normal': {
+        title: '平面的点法式方程',
+        eq: 'A(x - x_0) + B(y - y_0) + C(z - z_0) = 0',
+        desc: '<span style="font-weight: 600; color: #2563EB;">▍几何含义</span><br/>已知平面上一点 $M_0(x_0,y_0,z_0)$ 和法向量 $\\mathbf{n}=\\{A,B,C\\}$，平面上任意点 $M(x,y,z)$ 满足 $\\vec{M_0M} \\perp \\mathbf{n}$，即点积为零。<br/><br/>法向量垂直于平面内所有直线，是平面的核心几何属性。'
+    },
+    'plane_general': {
+        title: '平面的一般方程',
+        eq: 'Ax + By + Cz + D = 0',
+        desc: '<span style="font-weight: 600; color: #2563EB;">▍系数含义</span><br/>三元一次方程的系数 $\\{A,B,C\\}$ 对应平面的法向量。<br/><br/>- $D=0$ 时平面过原点<br/>- 缺 $x$ 项时平面平行于 $x$ 轴<br/>- 缺 $x,y$ 项时平面平行于 $xOy$ 平面'
+    },
+    'plane_intercept': {
+        title: '平面的截距式方程',
+        eq: '\\frac{x}{a} + \\frac{y}{b} + \\frac{z}{c} = 1',
+        desc: '<span style="font-weight: 600; color: #2563EB;">▍几何意义</span><br/>$a,b,c$ 分别为平面在 $x,y,z$ 轴上的截距。截距式便于绘制平面草图和计算平面与坐标轴围成的体积。'
+    },
+    'plane_angle': {
+        title: '两平面的夹角',
+        eq: '\\cos\\theta = \\frac{|A_1A_2 + B_1B_2 + C_1C_2|}{\\sqrt{A_1^2+B_1^2+C_1^2}\\sqrt{A_2^2+B_2^2+C_2^2}}',
+        desc: '<span style="font-weight: 600; color: #2563EB;">▍夹角定义</span><br/>两平面的夹角等于其法向量夹角的锐角值。<br/><br/>- 垂直：$\\mathbf{n}_1 \\cdot \\mathbf{n}_2 = 0$<br/>- 平行：$\\frac{A_1}{A_2} = \\frac{B_1}{B_2} = \\frac{C_1}{C_2}$'
+    },
+    'plane_distance': {
+        title: '点到平面的距离',
+        eq: 'd = \\frac{|Ax_0 + By_0 + Cz_0 + D|}{\\sqrt{A^2 + B^2 + C^2}}',
+        desc: '<span style="font-weight: 600; color: #2563EB;">▍几何原理</span><br/>距离是点到平面的垂线段长度，等于向量在法向量上的投影绝对值。分子的绝对值保证距离非负。'
+    },
+
+    // 空间直线相关场景
+    'line_point_direction': {
+        title: '直线的点向式方程',
+        eq: '\\frac{x - x_0}{m} = \\frac{y - y_0}{n} = \\frac{z - z_0}{p}',
+        desc: '<span style="font-weight: 600; color: #2563EB;">▍几何含义</span><br/>已知直线上一点 $M_0(x_0,y_0,z_0)$ 和方向向量 $\\mathbf{s}=\\{m,n,p\\}$，直线上任意点 $M(x,y,z)$ 满足 $\\vec{M_0M} \\parallel \\mathbf{s}$，分量成比例。'
+    },
+    'line_parametric': {
+        title: '直线的参数方程',
+        eq: '\\begin{cases} x = x_0 + mt \\\\[0.5ex] y = y_0 + nt \\\\[0.5ex] z = z_0 + pt \\end{cases}',
+        desc: '<span style="font-weight: 600; color: #2563EB;">▍参数意义</span><br/>参数 $t$ 为任意实数，对应直线上的不同点。参数方程在求线面交点、分析直线运动时非常方便。'
+    },
+    'line_general': {
+        title: '直线的一般方程',
+        eq: '\\begin{cases} A_1x + B_1y + C_1z + D_1 = 0 \\\\[0.5ex] A_2x + B_2y + C_2z + D_2 = 0 \\end{cases}',
+        desc: '<span style="font-weight: 600; color: #2563EB;">▍几何含义</span><br/>直线可视为两个不平行平面的交线。方向向量等于两个平面法向量的叉乘：$\\mathbf{s} = \\mathbf{n}_1 \\times \\mathbf{n}_2$。'
+    },
+    'line_angle': {
+        title: '两直线的夹角',
+        eq: '\\cos\\varphi = \\frac{|\\mathbf{s}_1 \\cdot \\mathbf{s}_2|}{|\\mathbf{s}_1||\\mathbf{s}_2|}',
+        desc: '<span style="font-weight: 600; color: #2563EB;">▍夹角定义</span><br/>两直线的夹角等于其方向向量夹角的锐角值。<br/><br/>- 垂直：$\\mathbf{s}_1 \\cdot \\mathbf{s}_2 = 0$<br/>- 平行：方向向量分量成比例'
+    },
+    'line_plane_angle': {
+        title: '直线与平面的夹角',
+        eq: '\\sin\\phi = \\frac{|\\mathbf{n} \\cdot \\mathbf{s}|}{|\\mathbf{n}||\\mathbf{s}|}',
+        desc: '<span style="font-weight: 600; color: #2563EB;">▍夹角定义</span><br/>直线与平面的夹角是直线与它在平面内投影的夹角，与法线夹角互余，故使用正弦计算。<br/><br/>线面垂直时 $\\phi = 90^\\circ$，线面平行时 $\\phi = 0^\\circ$。'
+    },
+    'line_distance': {
+        title: '点到直线的距离',
+        eq: 'd = \\frac{|\\vec{M_1P_0} \\times \\mathbf{s}|}{|\\mathbf{s}|}',
+        desc: '<span style="font-weight: 600; color: #2563EB;">▍几何原理</span><br/>利用向量外积的几何意义：外积的模等于平行四边形的面积，除以底边长（方向向量模长）即得到高（点到直线的距离）。'
     }
 };
 
@@ -417,14 +663,24 @@ function setTopic(topic) {
     currentTopic.value = topic;
     if (topic === 'surfaces') setScene('dimension_concept');
     else if (topic === 'curves') setScene('curve_cylinder');
+    else if (topic === 'planes') setScene('plane_point_normal');
+    else if (topic === 'lines') setScene('line_point_direction');
 }
 
 function setScene(type) {
     if (!THREE_local || !ParametricGeometry_local) return;
-    
+
     currentType.value = type;
     rotationAngle = 0;
     currentData.value = sceneData[type];
+
+    // 加载对应场景的参数配置
+    if (paramTemplates[type]) {
+        currentParams.value = JSON.parse(JSON.stringify(paramTemplates[type]));
+        showParamPanel.value = !isMobile.value; // 桌面端默认显示参数面板
+    } else {
+        showParamPanel.value = false;
+    }
 
     while(currentGroup.children.length > 0){ 
         currentGroup.remove(currentGroup.children[0]); 
@@ -625,8 +881,8 @@ function setScene(type) {
             const x = a * Math.cos(t);
             const y = a * Math.sin(t);
             const z = b * t;
-            curvePoints.push(new THREE_local.Vector3(y, z, x)); 
-            projPoints.push(new THREE_local.Vector3(y, 0, x)); 
+            curvePoints.push(new THREE_local.Vector3(y, z, x));
+            projPoints.push(new THREE_local.Vector3(y, 0, x));
         }
 
         const curveGeom = new THREE_local.BufferGeometry().setFromPoints(curvePoints);
@@ -643,6 +899,507 @@ function setScene(type) {
             l.computeLineDistances();
             currentGroup.add(l);
         }
+
+    // ==================== 空间平面场景 ====================
+    } else if (type === 'plane_point_normal') {
+        const p = currentParams.value;
+        // 平面方程：Ax + By + Cz + D = 0 => z = (-Ax - By - D)/C
+        const planeGeom = new ParametricGeometry_local((u, v, target) => {
+            const x = (u - 0.5) * 8;
+            const y = (v - 0.5) * 8;
+            const z = Math.abs(p.C) > 0.01 ? (-p.A * x - p.B * y - p.D) / p.C : 0;
+            target.set(y, z, x);
+        }, 20, 20);
+        const planeMat = new THREE_local.MeshPhongMaterial({
+            color: 0x2563eb,
+            side: THREE_local.DoubleSide,
+            transparent: true,
+            opacity: 0.6,
+            wireframe: true
+        });
+        currentGroup.add(new THREE_local.Mesh(planeGeom, planeMat));
+
+        // 计算平面上的一个点（找特殊点）
+        let px = 0, py = 0, pz = 0;
+        if (Math.abs(p.C) > 0.01) pz = (-p.A * px - p.B * py - p.D) / p.C;
+        else if (Math.abs(p.B) > 0.01) py = (-p.A * px - p.C * pz - p.D) / p.B;
+        else if (Math.abs(p.A) > 0.01) px = (-p.B * py - p.C * pz - p.D) / p.A;
+
+        const normalOrigin = new THREE_local.Vector3(py, pz, px);
+        const normalDir = new THREE_local.Vector3(p.B, p.C, p.A).normalize(); // 映射到Three坐标系
+        const normalArrow = new THREE_local.ArrowHelper(
+            normalDir, normalOrigin, 3, 0xF97316, 0.3, 0.15
+        );
+        currentGroup.add(normalArrow);
+
+        // 标记平面上的点
+        const pointGeom = new THREE_local.SphereGeometry(0.15, 16, 16);
+        const pointMat = new THREE_local.MeshBasicMaterial({ color: 0xF97316 });
+        const pointMesh = new THREE_local.Mesh(pointGeom, pointMat);
+        pointMesh.position.copy(normalOrigin);
+        currentGroup.add(pointMesh);
+
+    } else if (type === 'plane_general') {
+        const p = currentParams.value;
+        // 平面方程：Ax + By + Cz + D = 0
+        const planeGeom = new ParametricGeometry_local((u, v, target) => {
+            const x = (u - 0.5) * 8;
+            const z = (v - 0.5) * 8;
+            const y = Math.abs(p.B) > 0.01 ? (-p.A * x - p.C * z - p.D) / p.B : 0;
+            target.set(y, z, x);
+        }, 20, 20);
+        const planeMat = new THREE_local.MeshPhongMaterial({
+            color: 0x2563eb,
+            side: THREE_local.DoubleSide,
+            transparent: true,
+            opacity: 0.6,
+            wireframe: true
+        });
+        currentGroup.add(new THREE_local.Mesh(planeGeom, planeMat));
+
+        // 绘制平面与坐标轴的交点
+        const pointMat = new THREE_local.MeshBasicMaterial({ color: 0xF97316 });
+        const origin = new THREE_local.Mesh(new THREE_local.SphereGeometry(0.15, 16, 16), pointMat);
+        origin.position.set(0, 0, 0); // 原点在平面上
+        currentGroup.add(origin);
+
+    } else if (type === 'plane_intercept') {
+        const p = currentParams.value;
+        // 截距式：x/a + y/b + z/c = 1
+        const planeGeom = new ParametricGeometry_local((u, v, target) => {
+            const s = u;
+            const t = v * (1 - u);
+            const x = s * p.a;
+            const y = t * p.b;
+            const z = p.c * (1 - s - t);
+            target.set(y, z, x);
+        }, 20, 20);
+        const planeMat = new THREE_local.MeshPhongMaterial({
+            color: 0x2563eb,
+            side: THREE_local.DoubleSide,
+            transparent: true,
+            opacity: 0.6,
+            wireframe: true
+        });
+        currentGroup.add(new THREE_local.Mesh(planeGeom, planeMat));
+
+        // 标记三个截距点
+        const pointMat = new THREE_local.MeshBasicMaterial({ color: 0xF97316 });
+        const points = [
+            new THREE_local.Vector3(0, 0, p.a),   // x轴截距 (a,0,0)
+            new THREE_local.Vector3(p.b, 0, 0),   // y轴截距 (0,b,0)
+            new THREE_local.Vector3(0, p.c, 0)    // z轴截距 (0,0,c)
+        ];
+        points.forEach(pos => {
+            const point = new THREE_local.Mesh(new THREE_local.SphereGeometry(0.15, 16, 16), pointMat);
+            point.position.copy(pos);
+            currentGroup.add(point);
+        });
+
+        // 绘制平面与坐标轴的连线
+        const lineMat = new THREE_local.LineBasicMaterial({ color: 0xF97316, linewidth: 2 });
+        currentGroup.add(new THREE_local.Line(new THREE_local.BufferGeometry().setFromPoints([points[0], points[1]]), lineMat));
+        currentGroup.add(new THREE_local.Line(new THREE_local.BufferGeometry().setFromPoints([points[1], points[2]]), lineMat));
+        currentGroup.add(new THREE_local.Line(new THREE_local.BufferGeometry().setFromPoints([points[2], points[0]]), lineMat));
+
+    } else if (type === 'plane_angle') {
+        const p = currentParams.value;
+        const planeMat1 = new THREE_local.MeshPhongMaterial({
+            color: 0x2563eb,
+            side: THREE_local.DoubleSide,
+            transparent: true,
+            opacity: 0.4,
+            wireframe: true
+        });
+        const planeMat2 = new THREE_local.MeshPhongMaterial({
+            color: 0x10B981,
+            side: THREE_local.DoubleSide,
+            transparent: true,
+            opacity: 0.4,
+            wireframe: true
+        });
+
+        // 平面1：n1x * x + n1y * y + n1z * z = 0
+        const planeGeom1 = new ParametricGeometry_local((u, v, target) => {
+            const x = (u - 0.5) * 6;
+            const y = (v - 0.5) * 6;
+            const z = Math.abs(p.n1z) > 0.01 ? (-p.n1x * x - p.n1y * y) / p.n1z : 0;
+            target.set(y, z, x);
+        }, 20, 20);
+        currentGroup.add(new THREE_local.Mesh(planeGeom1, planeMat1));
+
+        // 平面2：n2x * x + n2y * y + n2z * z = 0
+        const planeGeom2 = new ParametricGeometry_local((u, v, target) => {
+            const x = (u - 0.5) * 6;
+            const y = (v - 0.5) * 6;
+            const z = Math.abs(p.n2z) > 0.01 ? (-p.n2x * x - p.n2y * y) / p.n2z : 0;
+            target.set(y, z, x);
+        }, 20, 20);
+        currentGroup.add(new THREE_local.Mesh(planeGeom2, planeMat2));
+
+        // 计算交线方向：两个法向量的叉乘
+        const dirX = p.n1y * p.n2z - p.n1z * p.n2y;
+        const dirY = p.n1z * p.n2x - p.n1x * p.n2z;
+        const dirZ = p.n1x * p.n2y - p.n1y * p.n2x;
+
+        // 绘制交线
+        const linePoints = [];
+        for (let t = -3; t <= 3; t += 0.1) {
+            const x = dirX * t;
+            const y = dirY * t;
+            const z = dirZ * t;
+            linePoints.push(new THREE_local.Vector3(y, z, x));
+        }
+        const lineMat = new THREE_local.LineBasicMaterial({ color: 0xF97316, linewidth: 4 });
+        currentGroup.add(new THREE_local.Line(new THREE_local.BufferGeometry().setFromPoints(linePoints), lineMat));
+
+        // 绘制法向量
+        const normal1 = new THREE_local.ArrowHelper(
+            new THREE_local.Vector3(p.n1y, p.n1z, p.n1x).normalize(),
+            new THREE_local.Vector3(0, 0, 0), 2, 0x2563eb, 0.2, 0.1
+        );
+        const normal2 = new THREE_local.ArrowHelper(
+            new THREE_local.Vector3(p.n2y, p.n2z, p.n2x).normalize(),
+            new THREE_local.Vector3(0, 0, 0), 2, 0x10B981, 0.2, 0.1
+        );
+        currentGroup.add(normal1);
+        currentGroup.add(normal2);
+
+    } else if (type === 'plane_distance') {
+        const p = currentParams.value;
+        // 平面方程：Ax + By + Cz + D = 0
+        const planeGeom = new ParametricGeometry_local((u, v, target) => {
+            const x = (u - 0.5) * 8;
+            const y = (v - 0.5) * 8;
+            const z = Math.abs(p.C) > 0.01 ? (-p.A * x - p.B * y - p.D) / p.C : 0;
+            target.set(y, z, x);
+        }, 20, 20);
+        const planeMat = new THREE_local.MeshPhongMaterial({
+            color: 0x2563eb,
+            side: THREE_local.DoubleSide,
+            transparent: true,
+            opacity: 0.6,
+            wireframe: true
+        });
+        currentGroup.add(new THREE_local.Mesh(planeGeom, planeMat));
+
+        // 标记点 P0
+        const p0Pos = new THREE_local.Vector3(p.py, p.pz, p.px); // Math(x,y,z) -> Three(y,z,x)
+        const origin = new THREE_local.Mesh(
+            new THREE_local.SphereGeometry(0.15, 16, 16),
+            new THREE_local.MeshBasicMaterial({ color: 0xF97316 })
+        );
+        origin.position.copy(p0Pos);
+        currentGroup.add(origin);
+
+        // 计算垂足坐标
+        const denominator = p.A * p.A + p.B * p.B + p.C * p.C;
+        const t = -(p.A * p.px + p.B * p.py + p.C * p.pz + p.D) / denominator;
+        const hx = p.px + t * p.A;
+        const hy = p.py + t * p.B;
+        const hz = p.pz + t * p.C;
+        const footPos = new THREE_local.Vector3(hy, hz, hx);
+
+        // 平面内的参考点 M1
+        let m1x = 1, m1y = 0, m1z = 0;
+        if (Math.abs(p.C) > 0.01) m1z = (-p.A * m1x - p.B * m1y - p.D) / p.C;
+        const m1Point = new THREE_local.Vector3(m1y, m1z, m1x);
+        const m1Mesh = new THREE_local.Mesh(
+            new THREE_local.SphereGeometry(0.12, 16, 16),
+            new THREE_local.MeshBasicMaterial({ color: 0x94A3B8 })
+        );
+        m1Mesh.position.copy(m1Point);
+        currentGroup.add(m1Mesh);
+
+        // 绘制向量 M1P0
+        const vecLine = new THREE_local.Line(
+            new THREE_local.BufferGeometry().setFromPoints([m1Point, p0Pos]),
+            new THREE_local.LineBasicMaterial({ color: 0x94A3B8, linewidth: 2 })
+        );
+        currentGroup.add(vecLine);
+
+        // 绘制垂线段 P0H
+        const distanceLine = new THREE_local.Line(
+            new THREE_local.BufferGeometry().setFromPoints([p0Pos, footPos]),
+            new THREE_local.LineDashedMaterial({ color: 0xF97316, dashSize: 0.1, gapSize: 0.05, linewidth: 3 })
+        );
+        distanceLine.computeLineDistances();
+        currentGroup.add(distanceLine);
+
+        // 绘制法向量示意
+        const normalArrow = new THREE_local.ArrowHelper(
+            new THREE_local.Vector3(p.B, p.C, p.A).normalize(),
+            footPos, 1.5, 0x10B981, 0.2, 0.1
+        );
+        currentGroup.add(normalArrow);
+
+        // 标记垂足 H
+        const footPoint = new THREE_local.Mesh(
+            new THREE_local.SphereGeometry(0.15, 16, 16),
+            new THREE_local.MeshBasicMaterial({ color: 0x10B981 })
+        );
+        footPoint.position.copy(footPos);
+        currentGroup.add(footPoint);
+
+    // ==================== 空间直线场景 ====================
+    } else if (type === 'line_point_direction') {
+        const p = currentParams.value;
+        // 点向式：(x-x0)/m = (y-y0)/n = (z-z0)/p
+        const linePoints = [];
+        for (let t = -3; t <= 3; t += 0.1) {
+            const x = p.x0 + p.m * t; // Math X
+            const y = p.y0 + p.n * t; // Math Y
+            const z = p.z0 + p.p * t; // Math Z
+            linePoints.push(new THREE_local.Vector3(y, z, x));
+        }
+        const lineMat = new THREE_local.LineBasicMaterial({ color: 0x2563eb, linewidth: 4 });
+        currentGroup.add(new THREE_local.Line(new THREE_local.BufferGeometry().setFromPoints(linePoints), lineMat));
+
+        // 标记直线上的点 M0(x0,y0,z0)
+        const pointMat = new THREE_local.MeshBasicMaterial({ color: 0xF97316 });
+        const pointPos = new THREE_local.Vector3(p.y0, p.z0, p.x0);
+        const point = new THREE_local.Mesh(new THREE_local.SphereGeometry(0.15, 16, 16), pointMat);
+        point.position.copy(pointPos);
+        currentGroup.add(point);
+
+        // 绘制方向向量
+        const dirArrow = new THREE_local.ArrowHelper(
+            new THREE_local.Vector3(p.n, p.p, p.m).normalize(), // 方向向量{m,n,p}
+            pointPos, 2.5, 0xF97316, 0.3, 0.15
+        );
+        currentGroup.add(dirArrow);
+
+    } else if (type === 'line_parametric') {
+        const p = currentParams.value;
+        // 参数方程：x = x0 + vx*t, y = y0 + vy*t, z = z0 + vz*t
+        const linePoints = [];
+        for (let t = -3; t <= 3; t += 0.1) {
+            const x = p.x0 + p.vx * t;
+            const y = p.y0 + p.vy * t;
+            const z = p.z0 + p.vz * t;
+            linePoints.push(new THREE_local.Vector3(y, z, x));
+        }
+        const lineMat = new THREE_local.LineBasicMaterial({ color: 0x2563eb, linewidth: 4 });
+        currentGroup.add(new THREE_local.Line(new THREE_local.BufferGeometry().setFromPoints(linePoints), lineMat));
+
+        // 标记t=0, t=1, t=-1三个点
+        const pointMat = new THREE_local.MeshBasicMaterial({ color: 0xF97316 });
+        const points = [
+            new THREE_local.Vector3(p.y0, p.z0, p.x0),   // t=0
+            new THREE_local.Vector3(p.y0 + p.vy, p.z0 + p.vz, p.x0 + p.vx),   // t=1
+            new THREE_local.Vector3(p.y0 - p.vy, p.z0 - p.vz, p.x0 - p.vx)    // t=-1
+        ];
+        points.forEach((pos, i) => {
+            const point = new THREE_local.Mesh(new THREE_local.SphereGeometry(0.15, 16, 16), pointMat);
+            point.position.copy(pos);
+            currentGroup.add(point);
+        });
+
+    } else if (type === 'line_general') {
+        const p = currentParams.value;
+        // 直线作为两平面交线：A1x + B1y + C1z + D1 = 0 和 A2x + B2y + C2z + D2 = 0
+        const planeMat1 = new THREE_local.MeshPhongMaterial({
+            color: 0x2563eb,
+            side: THREE_local.DoubleSide,
+            transparent: true,
+            opacity: 0.3,
+            wireframe: true
+        });
+        const planeMat2 = new THREE_local.MeshPhongMaterial({
+            color: 0x10B981,
+            side: THREE_local.DoubleSide,
+            transparent: true,
+            opacity: 0.3,
+            wireframe: true
+        });
+
+        // 平面1
+        const planeGeom1 = new ParametricGeometry_local((u, v, target) => {
+            const x = (u - 0.5) * 6;
+            const y = (v - 0.5) * 6;
+            const z = Math.abs(p.C1) > 0.01 ? (-p.A1 * x - p.B1 * y - p.D1) / p.C1 : 0;
+            target.set(y, z, x);
+        }, 20, 20);
+        currentGroup.add(new THREE_local.Mesh(planeGeom1, planeMat1));
+
+        // 平面2
+        const planeGeom2 = new ParametricGeometry_local((u, v, target) => {
+            const x = (u - 0.5) * 6;
+            const y = (v - 0.5) * 6;
+            const z = Math.abs(p.C2) > 0.01 ? (-p.A2 * x - p.B2 * y - p.D2) / p.C2 : 0;
+            target.set(y, z, x);
+        }, 20, 20);
+        currentGroup.add(new THREE_local.Mesh(planeGeom2, planeMat2));
+
+        // 计算交线方向：两个法向量的叉乘
+        const dirX = p.B1 * p.C2 - p.C1 * p.B2;
+        const dirY = p.C1 * p.A2 - p.A1 * p.C2;
+        const dirZ = p.A1 * p.B2 - p.B1 * p.A2;
+
+        // 找直线上一点
+        let x0 = 0, y0 = 0, z0 = 0;
+        // 解联立方程找一个解
+        const det = p.A1 * p.B2 - p.A2 * p.B1;
+        if (Math.abs(det) > 0.01) {
+            // 消去z，解x和y
+            y0 = (p.A2 * (-p.D1) - p.A1 * (-p.D2)) / det;
+            x0 = (p.B2 * (-p.D1) - p.B1 * (-p.D2)) / -det;
+            if (Math.abs(p.C1) > 0.01) {
+                z0 = (-p.A1 * x0 - p.B1 * y0 - p.D1) / p.C1;
+            }
+        }
+
+        // 绘制交线
+        const linePoints = [];
+        for (let t = -2; t <= 2; t += 0.1) {
+            const x = x0 + dirX * t;
+            const y = y0 + dirY * t;
+            const z = z0 + dirZ * t;
+            linePoints.push(new THREE_local.Vector3(y, z, x));
+        }
+        const lineMat = new THREE_local.LineBasicMaterial({ color: 0xF97316, linewidth: 4 });
+        currentGroup.add(new THREE_local.Line(new THREE_local.BufferGeometry().setFromPoints(linePoints), lineMat));
+
+    } else if (type === 'line_angle') {
+        const p = currentParams.value;
+        const lineMat1 = new THREE_local.LineBasicMaterial({ color: 0x2563eb, linewidth: 3 });
+        const lineMat2 = new THREE_local.LineBasicMaterial({ color: 0x10B981, linewidth: 3 });
+
+        // 直线1：过原点，方向{s1x, s1y, s1z}
+        const line1Points = [];
+        for (let t = -3; t <= 3; t += 0.1) {
+            const x = p.s1x * t;
+            const y = p.s1y * t;
+            const z = p.s1z * t;
+            line1Points.push(new THREE_local.Vector3(y, z, x));
+        }
+        currentGroup.add(new THREE_local.Line(new THREE_local.BufferGeometry().setFromPoints(line1Points), lineMat1));
+
+        // 直线2：过原点，方向{s2x, s2y, s2z}
+        const line2Points = [];
+        for (let t = -3; t <= 3; t += 0.1) {
+            const x = p.s2x * t;
+            const y = p.s2y * t;
+            const z = p.s2z * t;
+            line2Points.push(new THREE_local.Vector3(y, z, x));
+        }
+        currentGroup.add(new THREE_local.Line(new THREE_local.BufferGeometry().setFromPoints(line2Points), lineMat2));
+
+        // 绘制方向向量
+        const dir1 = new THREE_local.ArrowHelper(
+            new THREE_local.Vector3(p.s1y, p.s1z, p.s1x).normalize(),
+            new THREE_local.Vector3(0, 0, 0), 2, 0x2563eb, 0.2, 0.1
+        );
+        const dir2 = new THREE_local.ArrowHelper(
+            new THREE_local.Vector3(p.s2y, p.s2z, p.s2x).normalize(),
+            new THREE_local.Vector3(0, 0, 0), 2, 0x10B981, 0.2, 0.1
+        );
+        currentGroup.add(dir1);
+        currentGroup.add(dir2);
+
+    } else if (type === 'line_plane_angle') {
+        const p = currentParams.value;
+        // 平面方程：nx*x + ny*y + nz*z = 0
+        const planeGeom = new ParametricGeometry_local((u, v, target) => {
+            const x = (u - 0.5) * 6;
+            const y = (v - 0.5) * 6;
+            const z = Math.abs(p.nz) > 0.01 ? (-p.nx * x - p.ny * y) / p.nz : 0;
+            target.set(y, z, x);
+        }, 20, 20);
+        const planeMat = new THREE_local.MeshPhongMaterial({
+            color: 0x2563eb,
+            side: THREE_local.DoubleSide,
+            transparent: true,
+            opacity: 0.4,
+            wireframe: true
+        });
+        currentGroup.add(new THREE_local.Mesh(planeGeom, planeMat));
+
+        // 直线：过原点，方向向量{sx, sy, sz}
+        const linePoints = [];
+        for (let t = -2; t <= 2; t += 0.1) {
+            const x = p.sx * t;
+            const y = p.sy * t;
+            const z = p.sz * t;
+            linePoints.push(new THREE_local.Vector3(y, z, x));
+        }
+        const lineMat = new THREE_local.LineBasicMaterial({ color: 0xF97316, linewidth: 4 });
+        currentGroup.add(new THREE_local.Line(new THREE_local.BufferGeometry().setFromPoints(linePoints), lineMat));
+
+        // 交点在原点
+        const intersectPoint = new THREE_local.Vector3(0, 0, 0);
+
+        // 标记交点P
+        const intersectMesh = new THREE_local.Mesh(
+            new THREE_local.SphereGeometry(0.15, 16, 16),
+            new THREE_local.MeshBasicMaterial({ color: 0x10B981 })
+        );
+        intersectMesh.position.copy(intersectPoint);
+        currentGroup.add(intersectMesh);
+
+        // 绘制平面法向量
+        const normalArrow = new THREE_local.ArrowHelper(
+            new THREE_local.Vector3(p.ny, p.nz, p.nx).normalize(),
+            intersectPoint, 2, 0x2563eb, 0.2, 0.1
+        );
+        currentGroup.add(normalArrow);
+
+        // 绘制直线方向向量
+        const lineDirArrow = new THREE_local.ArrowHelper(
+            new THREE_local.Vector3(p.sy, p.sz, p.sx).normalize(),
+            intersectPoint, 2, 0xF97316, 0.2, 0.1
+        );
+        currentGroup.add(lineDirArrow);
+
+    } else if (type === 'line_distance') {
+        const p = currentParams.value;
+        // 直线过点(lx0, ly0, lz0)，方向向量{sm, sn, sp}
+        const linePoints = [];
+        for (let t = -3; t <= 3; t += 0.1) {
+            const x = p.lx0 + p.sm * t;
+            const y = p.ly0 + p.sn * t;
+            const z = p.lz0 + p.sp * t;
+            linePoints.push(new THREE_local.Vector3(y, z, x));
+        }
+        const lineMat = new THREE_local.LineBasicMaterial({ color: 0x2563eb, linewidth: 3 });
+        currentGroup.add(new THREE_local.Line(new THREE_local.BufferGeometry().setFromPoints(linePoints), lineMat));
+
+        // 标记外点 P(px, py, pz)
+        const p0Pos = new THREE_local.Vector3(p.py, p.pz, p.px);
+        const pointP0 = new THREE_local.Mesh(
+            new THREE_local.SphereGeometry(0.15, 16, 16),
+            new THREE_local.MeshBasicMaterial({ color: 0xF97316 })
+        );
+        pointP0.position.copy(p0Pos);
+        currentGroup.add(pointP0);
+
+        // 计算垂足：t = ((px - lx0)*sm + (py - ly0)*sn + (pz - lz0)*sp) / (sm² + sn² + sp²)
+        const dx = p.px - p.lx0;
+        const dy = p.py - p.ly0;
+        const dz = p.pz - p.lz0;
+        const denominator = p.sm * p.sm + p.sn * p.sn + p.sp * p.sp;
+        const t = (dx * p.sm + dy * p.sn + dz * p.sp) / denominator;
+
+        // 垂足坐标
+        const hx = p.lx0 + p.sm * t;
+        const hy = p.ly0 + p.sn * t;
+        const hz = p.lz0 + p.sp * t;
+        const footPos = new THREE_local.Vector3(hy, hz, hx);
+
+        const footPoint = new THREE_local.Mesh(
+            new THREE_local.SphereGeometry(0.15, 16, 16),
+            new THREE_local.MeshBasicMaterial({ color: 0x10B981 })
+        );
+        footPoint.position.copy(footPos);
+        currentGroup.add(footPoint);
+
+        // 绘制垂线段
+        const distanceLine = new THREE_local.Line(
+            new THREE_local.BufferGeometry().setFromPoints([p0Pos, footPos]),
+            new THREE_local.LineDashedMaterial({ color: 0xF97316, dashSize: 0.1, gapSize: 0.05, linewidth: 3 })
+        );
+        distanceLine.computeLineDistances();
+        currentGroup.add(distanceLine);
     }
 }
 
@@ -1032,6 +1789,10 @@ function animate() {
     }
     
     .info-toggle-btn { top: 80px; right: 12px; }
+    .param-toggle-btn { top: 140px; right: 12px; width: 38px; height: 38px; }
+    .param-panel { margin-top: 12px; }
+    .param-control { margin-bottom: 12px; }
+    .param-label { font-size: 0.75rem; }
 }
 
 @media (max-width: 480px) {
@@ -1042,6 +1803,10 @@ function animate() {
     .right-panels-container { top: 72px; right: 8px; max-width: 160px; }
     .math-panel { padding: 12px !important; }
     .info-toggle-btn { top: 72px; right: 8px; width: 38px; height: 38px; font-size: 1.1rem; }
+    .param-toggle-btn { top: 120px; right: 8px; width: 34px; height: 34px; font-size: 1rem; }
+    .param-panel { padding: 12px !important; }
+    .param-control { margin-bottom: 8px; }
+    .reset-param-btn { padding: 6px 10px; font-size: 0.75rem; }
 
     .controls { padding: 8px 0 24px 0 !important; }
     .scene-btn { padding: 6px 14px !important; font-size: 0.8rem !important; }
@@ -1062,6 +1827,98 @@ function animate() {
     width: 44px; height: 44px; font-size: 1.25rem; cursor: pointer; border-radius: 50%;
     z-index: 45; background: rgba(255, 255, 255, 0.9); border: 1px solid rgba(37, 99, 235, 0.2);
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.param-toggle-btn {
+    position: absolute; display: flex; align-items: center; justify-content: center;
+    width: 44px; height: 44px; font-size: 1.25rem; cursor: pointer; border-radius: 50%;
+    z-index: 45; background: rgba(255, 255, 255, 0.9); border: 1px solid rgba(37, 99, 235, 0.2);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    top: 24px;
+    right: 24px;
+}
+
+.param-panel {
+    margin-top: 16px;
+    padding: 16px;
+}
+
+.param-control {
+    margin-bottom: 16px;
+}
+
+.param-label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #475569;
+    margin-bottom: 4px;
+}
+
+.dark .param-label {
+    color: #94A3B8;
+}
+
+.param-slider {
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: #E2E8F0;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.dark .param-slider {
+    background: #334155;
+}
+
+.param-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #2563EB;
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.param-slider::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #2563EB;
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.reset-param-btn {
+    width: 100%;
+    padding: 8px 12px;
+    background: #EFF6FF;
+    border: 1px solid #BFDBFE;
+    border-radius: 8px;
+    color: #2563EB;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.reset-param-btn:hover {
+    background: #DBEAFE;
+}
+
+.dark .reset-param-btn {
+    background: rgba(37, 99, 235, 0.1);
+    border-color: rgba(37, 99, 235, 0.3);
+    color: #93C5FD;
+}
+
+.dark .reset-param-btn:hover {
+    background: rgba(37, 99, 235, 0.2);
 }
 
 .panels-stack { pointer-events: auto; }
