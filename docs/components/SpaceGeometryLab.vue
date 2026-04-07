@@ -8,16 +8,26 @@
       <!-- 页面顶部页签 (桌面端靠左，移动端置顶) -->
       <Transition name="fade-ui">
         <div v-show="isFullscreen" class="glass-panel tabs">
-          <button 
-            class="tab-btn" 
-            :class="{ active: currentTopic === 'surfaces' }" 
+          <button
+            class="tab-btn"
+            :class="{ active: currentTopic === 'surfaces' }"
             @click="setTopic('surfaces')"
           >空间曲面</button>
-          <button 
-            class="tab-btn" 
-            :class="{ active: currentTopic === 'curves' }" 
+          <button
+            class="tab-btn"
+            :class="{ active: currentTopic === 'curves' }"
             @click="setTopic('curves')"
           >空间曲线</button>
+          <button
+            class="tab-btn"
+            :class="{ active: currentTopic === 'planes' }"
+            @click="setTopic('planes')"
+          >空间平面</button>
+          <button
+            class="tab-btn"
+            :class="{ active: currentTopic === 'lines' }"
+            @click="setTopic('lines')"
+          >空间直线</button>
         </div>
       </Transition>
 
@@ -84,7 +94,44 @@
             </div>
           </div>
         </div>
-        
+
+        <div v-show="currentTopic === 'planes'" class="controls-layout">
+          <div class="control-section">
+            <span class="sub-category-title">平面方程</span>
+            <div class="btn-group">
+              <button @click="setScene('plane_point_normal')" class="scene-btn" :class="{ active: currentType === 'plane_point_normal' }">点法式方程</button>
+              <button @click="setScene('plane_general')" class="scene-btn" :class="{ active: currentType === 'plane_general' }">一般方程</button>
+              <button @click="setScene('plane_intercept')" class="scene-btn" :class="{ active: currentType === 'plane_intercept' }">截距式方程</button>
+            </div>
+          </div>
+          <div class="control-section">
+            <span class="sub-category-title">平面关系</span>
+            <div class="btn-group">
+              <button @click="setScene('plane_angle')" class="scene-btn" :class="{ active: currentType === 'plane_angle' }">两平面夹角</button>
+              <button @click="setScene('plane_distance')" class="scene-btn" :class="{ active: currentType === 'plane_distance' }">点到平面距离</button>
+            </div>
+          </div>
+        </div>
+
+        <div v-show="currentTopic === 'lines'" class="controls-layout">
+          <div class="control-section">
+            <span class="sub-category-title">直线方程</span>
+            <div class="btn-group">
+              <button @click="setScene('line_point_direction')" class="scene-btn" :class="{ active: currentType === 'line_point_direction' }">点向式方程</button>
+              <button @click="setScene('line_parametric')" class="scene-btn" :class="{ active: currentType === 'line_parametric' }">参数方程</button>
+              <button @click="setScene('line_general')" class="scene-btn" :class="{ active: currentType === 'line_general' }">一般方程(交线)</button>
+            </div>
+          </div>
+          <div class="control-section">
+            <span class="sub-category-title">位置关系</span>
+            <div class="btn-group">
+              <button @click="setScene('line_angle')" class="scene-btn" :class="{ active: currentType === 'line_angle' }">两直线夹角</button>
+              <button @click="setScene('line_plane_angle')" class="scene-btn" :class="{ active: currentType === 'line_plane_angle' }">线面夹角</button>
+              <button @click="setScene('line_distance')" class="scene-btn" :class="{ active: currentType === 'line_distance' }">点到直线距离</button>
+            </div>
+          </div>
+        </div>
+
         <div v-show="currentTopic === 'curves'" class="controls-layout">
           <div class="control-section">
             <span class="sub-category-title">投影理论</span>
@@ -200,10 +247,69 @@ const sceneData = {
         eq: '\\begin{aligned} &\\begin{cases} x^2+y^2 = z \\\\[0.5ex] x^2+y^2 = 4-z \\end{cases} \\\\[1.2ex] \\implies &x^2+y^2 = 2 \\end{aligned}', 
         desc: '<span style="font-weight: 600; color: #2563EB;">▍推导逻辑</span><br/>1. 消去 <i>z</i> 得到交线在 <i>xy</i> 面的投影方程：$x^2+y^2=2$。<br/>2. 请注意：空间投影线方程必须成组书写为 $\\begin{cases} x^2+y^2=2 \\\\[0.2ex] z=0 \\end{cases}$。' 
     },
-    'curve_parametric': { 
-        title: '参数方程投影', 
-        eq: '\\begin{cases} x=2\\cos t \\\\[0.5ex] y=2\\sin t \\\\[0.5ex] z=0.5t \\end{cases} \\implies x^2+y^2=4', 
-        desc: '<span style="font-weight: 600; color: #2563EB;">▍参数消元</span><br/>消去参数 <i>t</i> 即可得到投影轨迹。对于螺旋线，其余弦平方关系导致其在垂直方向上的投影呈现为一个标准的圆周。' 
+    'curve_parametric': {
+        title: '参数方程投影',
+        eq: '\\begin{cases} x=2\\cos t \\\\[0.5ex] y=2\\sin t \\\\[0.5ex] z=0.5t \\end{cases} \\implies x^2+y^2=4',
+        desc: '<span style="font-weight: 600; color: #2563EB;">▍参数消元</span><br/>消去参数 <i>t</i> 即可得到投影轨迹。对于螺旋线，其余弦平方关系导致其在垂直方向上的投影呈现为一个标准的圆周。'
+    },
+
+    // 空间平面相关场景
+    'plane_point_normal': {
+        title: '平面的点法式方程',
+        eq: 'A(x - x_0) + B(y - y_0) + C(z - z_0) = 0',
+        desc: '<span style="font-weight: 600; color: #2563EB;">▍几何含义</span><br/>已知平面上一点 $M_0(x_0,y_0,z_0)$ 和法向量 $\\mathbf{n}=\\{A,B,C\\}$，平面上任意点 $M(x,y,z)$ 满足 $\\vec{M_0M} \\perp \\mathbf{n}$，即点积为零。<br/><br/>法向量垂直于平面内所有直线，是平面的核心几何属性。'
+    },
+    'plane_general': {
+        title: '平面的一般方程',
+        eq: 'Ax + By + Cz + D = 0',
+        desc: '<span style="font-weight: 600; color: #2563EB;">▍系数含义</span><br/>三元一次方程的系数 $\\{A,B,C\\}$ 对应平面的法向量。<br/><br/>- $D=0$ 时平面过原点<br/>- 缺 $x$ 项时平面平行于 $x$ 轴<br/>- 缺 $x,y$ 项时平面平行于 $xOy$ 平面'
+    },
+    'plane_intercept': {
+        title: '平面的截距式方程',
+        eq: '\\frac{x}{a} + \\frac{y}{b} + \\frac{z}{c} = 1',
+        desc: '<span style="font-weight: 600; color: #2563EB;">▍几何意义</span><br/>$a,b,c$ 分别为平面在 $x,y,z$ 轴上的截距。截距式便于绘制平面草图和计算平面与坐标轴围成的体积。'
+    },
+    'plane_angle': {
+        title: '两平面的夹角',
+        eq: '\\cos\\theta = \\frac{|A_1A_2 + B_1B_2 + C_1C_2|}{\\sqrt{A_1^2+B_1^2+C_1^2}\\sqrt{A_2^2+B_2^2+C_2^2}}',
+        desc: '<span style="font-weight: 600; color: #2563EB;">▍夹角定义</span><br/>两平面的夹角等于其法向量夹角的锐角值。<br/><br/>- 垂直：$\\mathbf{n}_1 \\cdot \\mathbf{n}_2 = 0$<br/>- 平行：$\\frac{A_1}{A_2} = \\frac{B_1}{B_2} = \\frac{C_1}{C_2}$'
+    },
+    'plane_distance': {
+        title: '点到平面的距离',
+        eq: 'd = \\frac{|Ax_0 + By_0 + Cz_0 + D|}{\\sqrt{A^2 + B^2 + C^2}}',
+        desc: '<span style="font-weight: 600; color: #2563EB;">▍几何原理</span><br/>距离是点到平面的垂线段长度，等于向量在法向量上的投影绝对值。分子的绝对值保证距离非负。'
+    },
+
+    // 空间直线相关场景
+    'line_point_direction': {
+        title: '直线的点向式方程',
+        eq: '\\frac{x - x_0}{m} = \\frac{y - y_0}{n} = \\frac{z - z_0}{p}',
+        desc: '<span style="font-weight: 600; color: #2563EB;">▍几何含义</span><br/>已知直线上一点 $M_0(x_0,y_0,z_0)$ 和方向向量 $\\mathbf{s}=\\{m,n,p\\}$，直线上任意点 $M(x,y,z)$ 满足 $\\vec{M_0M} \\parallel \\mathbf{s}$，分量成比例。'
+    },
+    'line_parametric': {
+        title: '直线的参数方程',
+        eq: '\\begin{cases} x = x_0 + mt \\\\[0.5ex] y = y_0 + nt \\\\[0.5ex] z = z_0 + pt \\end{cases}',
+        desc: '<span style="font-weight: 600; color: #2563EB;">▍参数意义</span><br/>参数 $t$ 为任意实数，对应直线上的不同点。参数方程在求线面交点、分析直线运动时非常方便。'
+    },
+    'line_general': {
+        title: '直线的一般方程',
+        eq: '\\begin{cases} A_1x + B_1y + C_1z + D_1 = 0 \\\\[0.5ex] A_2x + B_2y + C_2z + D_2 = 0 \\end{cases}',
+        desc: '<span style="font-weight: 600; color: #2563EB;">▍几何含义</span><br/>直线可视为两个不平行平面的交线。方向向量等于两个平面法向量的叉乘：$\\mathbf{s} = \\mathbf{n}_1 \\times \\mathbf{n}_2$。'
+    },
+    'line_angle': {
+        title: '两直线的夹角',
+        eq: '\\cos\\varphi = \\frac{|\\mathbf{s}_1 \\cdot \\mathbf{s}_2|}{|\\mathbf{s}_1||\\mathbf{s}_2|}',
+        desc: '<span style="font-weight: 600; color: #2563EB;">▍夹角定义</span><br/>两直线的夹角等于其方向向量夹角的锐角值。<br/><br/>- 垂直：$\\mathbf{s}_1 \\cdot \\mathbf{s}_2 = 0$<br/>- 平行：方向向量分量成比例'
+    },
+    'line_plane_angle': {
+        title: '直线与平面的夹角',
+        eq: '\\sin\\phi = \\frac{|\\mathbf{n} \\cdot \\mathbf{s}|}{|\\mathbf{n}||\\mathbf{s}|}',
+        desc: '<span style="font-weight: 600; color: #2563EB;">▍夹角定义</span><br/>直线与平面的夹角是直线与它在平面内投影的夹角，与法线夹角互余，故使用正弦计算。<br/><br/>线面垂直时 $\\phi = 90^\\circ$，线面平行时 $\\phi = 0^\\circ$。'
+    },
+    'line_distance': {
+        title: '点到直线的距离',
+        eq: 'd = \\frac{|\\vec{M_1P_0} \\times \\mathbf{s}|}{|\\mathbf{s}|}',
+        desc: '<span style="font-weight: 600; color: #2563EB;">▍几何原理</span><br/>利用向量外积的几何意义：外积的模等于平行四边形的面积，除以底边长（方向向量模长）即得到高（点到直线的距离）。'
     }
 };
 
@@ -417,6 +523,8 @@ function setTopic(topic) {
     currentTopic.value = topic;
     if (topic === 'surfaces') setScene('dimension_concept');
     else if (topic === 'curves') setScene('curve_cylinder');
+    else if (topic === 'planes') setScene('plane_point_normal');
+    else if (topic === 'lines') setScene('line_point_direction');
 }
 
 function setScene(type) {
@@ -625,8 +733,8 @@ function setScene(type) {
             const x = a * Math.cos(t);
             const y = a * Math.sin(t);
             const z = b * t;
-            curvePoints.push(new THREE_local.Vector3(y, z, x)); 
-            projPoints.push(new THREE_local.Vector3(y, 0, x)); 
+            curvePoints.push(new THREE_local.Vector3(y, z, x));
+            projPoints.push(new THREE_local.Vector3(y, 0, x));
         }
 
         const curveGeom = new THREE_local.BufferGeometry().setFromPoints(curvePoints);
@@ -643,6 +751,477 @@ function setScene(type) {
             l.computeLineDistances();
             currentGroup.add(l);
         }
+
+    // ==================== 空间平面场景 ====================
+    } else if (type === 'plane_point_normal') {
+        // 平面：x + y + z = 2，过点(1,1,0)，法向量{1,1,1}
+        const planeGeom = new ParametricGeometry_local((u, v, target) => {
+            const x = (u - 0.5) * 6;
+            const y = (v - 0.5) * 6;
+            const z = 2 - x - y; // Math Z = Three Y
+            target.set(y, z, x); // Three X(Math Y), Three Y(Math Z), Three Z(Math X)
+        }, 20, 20);
+        const planeMat = new THREE_local.MeshPhongMaterial({
+            color: 0x2563eb,
+            side: THREE_local.DoubleSide,
+            transparent: true,
+            opacity: 0.6,
+            wireframe: true
+        });
+        currentGroup.add(new THREE_local.Mesh(planeGeom, planeMat));
+
+        // 绘制法向量
+        const normalOrigin = new THREE_local.Vector3(1, 0, 1); // 点(1,1,0) -> Math X=1, Math Y=1, Math Z=0
+        const normalDir = new THREE_local.Vector3(1, 1, 1).normalize();
+        const normalArrow = new THREE_local.ArrowHelper(
+            normalDir, normalOrigin, 3, 0xF97316, 0.3, 0.15
+        );
+        currentGroup.add(normalArrow);
+
+        // 标记平面上的点
+        const pointGeom = new THREE_local.SphereGeometry(0.15, 16, 16);
+        const pointMat = new THREE_local.MeshBasicMaterial({ color: 0xF97316 });
+        const pointMesh = new THREE_local.Mesh(pointGeom, pointMat);
+        pointMesh.position.copy(normalOrigin);
+        currentGroup.add(pointMesh);
+
+    } else if (type === 'plane_general') {
+        // 平面：2x - y + z = 0，过原点，缺常数项D=0
+        const planeGeom = new ParametricGeometry_local((u, v, target) => {
+            const x = (u - 0.5) * 6;
+            const z = (v - 0.5) * 6;
+            const y = 2 * x + z; // 2x - y + z = 0 => y = 2x + z (Math Y)
+            target.set(y, z, x);
+        }, 20, 20);
+        const planeMat = new THREE_local.MeshPhongMaterial({
+            color: 0x2563eb,
+            side: THREE_local.DoubleSide,
+            transparent: true,
+            opacity: 0.6,
+            wireframe: true
+        });
+        currentGroup.add(new THREE_local.Mesh(planeGeom, planeMat));
+
+        // 绘制平面与坐标轴的交点
+        const pointMat = new THREE_local.MeshBasicMaterial({ color: 0xF97316 });
+        const origin = new THREE_local.Mesh(new THREE_local.SphereGeometry(0.15, 16, 16), pointMat);
+        origin.position.set(0, 0, 0); // 原点在平面上
+        currentGroup.add(origin);
+
+    } else if (type === 'plane_intercept') {
+        // 平面：x/2 + y/3 + z/4 = 1，截距a=2,b=3,c=4
+        const planeGeom = new ParametricGeometry_local((u, v, target) => {
+            // 使用重心坐标确保仅绘制三角形区域
+            const s = u;
+            const t = v * (1 - u);
+            const x = s * 2;
+            const y = t * 3;
+            const z = 4 * (1 - s - t);
+            target.set(y, z, x);
+        }, 20, 20);
+        const planeMat = new THREE_local.MeshPhongMaterial({
+            color: 0x2563eb,
+            side: THREE_local.DoubleSide,
+            transparent: true,
+            opacity: 0.6,
+            wireframe: true
+        });
+        currentGroup.add(new THREE_local.Mesh(planeGeom, planeMat));
+
+        // 标记三个截距点
+        const pointMat = new THREE_local.MeshBasicMaterial({ color: 0xF97316 });
+        const points = [
+            new THREE_local.Vector3(0, 0, 2),   // x轴截距 (2,0,0)
+            new THREE_local.Vector3(3, 0, 0),   // y轴截距 (0,3,0)
+            new THREE_local.Vector3(0, 4, 0)    // z轴截距 (0,0,4)
+        ];
+        points.forEach(pos => {
+            const point = new THREE_local.Mesh(new THREE_local.SphereGeometry(0.15, 16, 16), pointMat);
+            point.position.copy(pos);
+            currentGroup.add(point);
+        });
+
+        // 绘制平面与坐标轴的连线
+        const lineMat = new THREE_local.LineBasicMaterial({ color: 0xF97316, linewidth: 2 });
+        currentGroup.add(new THREE_local.Line(new THREE_local.BufferGeometry().setFromPoints([points[0], points[1]]), lineMat));
+        currentGroup.add(new THREE_local.Line(new THREE_local.BufferGeometry().setFromPoints([points[1], points[2]]), lineMat));
+        currentGroup.add(new THREE_local.Line(new THREE_local.BufferGeometry().setFromPoints([points[2], points[0]]), lineMat));
+
+    } else if (type === 'plane_angle') {
+        // 两个相交平面：x + z = 0 和 y + z = 0，夹角60度
+        const planeMat1 = new THREE_local.MeshPhongMaterial({
+            color: 0x2563eb,
+            side: THREE_local.DoubleSide,
+            transparent: true,
+            opacity: 0.4,
+            wireframe: true
+        });
+        const planeMat2 = new THREE_local.MeshPhongMaterial({
+            color: 0x10B981,
+            side: THREE_local.DoubleSide,
+            transparent: true,
+            opacity: 0.4,
+            wireframe: true
+        });
+
+        // 平面1：x + z = 0
+        const planeGeom1 = new ParametricGeometry_local((u, v, target) => {
+            const x = (u - 0.5) * 6;
+            const y = (v - 0.5) * 6;
+            const z = -x;
+            target.set(y, z, x);
+        }, 20, 20);
+        currentGroup.add(new THREE_local.Mesh(planeGeom1, planeMat1));
+
+        // 平面2：y + z = 0
+        const planeGeom2 = new ParametricGeometry_local((u, v, target) => {
+            const x = (u - 0.5) * 6;
+            const y = (v - 0.5) * 6;
+            const z = -y;
+            target.set(y, z, x);
+        }, 20, 20);
+        currentGroup.add(new THREE_local.Mesh(planeGeom2, planeMat2));
+
+        // 绘制交线
+        const linePoints = [];
+        for (let t = -3; t <= 3; t += 0.1) {
+            linePoints.push(new THREE_local.Vector3(-t, t, t)); // x=y=-z
+        }
+        const lineMat = new THREE_local.LineBasicMaterial({ color: 0xF97316, linewidth: 4 });
+        currentGroup.add(new THREE_local.Line(new THREE_local.BufferGeometry().setFromPoints(linePoints), lineMat));
+
+        // 绘制法向量
+        const normal1 = new THREE_local.ArrowHelper(
+            new THREE_local.Vector3(0, 1, 1).normalize(), // 法向量{1,0,1}
+            new THREE_local.Vector3(0, 0, 0), 2, 0x2563eb, 0.2, 0.1
+        );
+        const normal2 = new THREE_local.ArrowHelper(
+            new THREE_local.Vector3(1, 1, 0).normalize(), // 法向量{0,1,1}
+            new THREE_local.Vector3(0, 0, 0), 2, 0x10B981, 0.2, 0.1
+        );
+        currentGroup.add(normal1);
+        currentGroup.add(normal2);
+
+    } else if (type === 'plane_distance') {
+        // 平面：3x - 4y + 12z - 13 = 0，原点到平面距离为1
+        const planeGeom = new ParametricGeometry_local((u, v, target) => {
+            const x = (u - 0.5) * 8;
+            const y = (v - 0.5) * 8;
+            const z = (13 - 3 * x + 4 * y) / 12;
+            target.set(y, z, x);
+        }, 20, 20);
+        const planeMat = new THREE_local.MeshPhongMaterial({
+            color: 0x2563eb,
+            side: THREE_local.DoubleSide,
+            transparent: true,
+            opacity: 0.6,
+            wireframe: true
+        });
+        currentGroup.add(new THREE_local.Mesh(planeGeom, planeMat));
+
+        // 标记原点 P0
+        const origin = new THREE_local.Mesh(
+            new THREE_local.SphereGeometry(0.15, 16, 16),
+            new THREE_local.MeshBasicMaterial({ color: 0xF97316 })
+        );
+        origin.position.set(0, 0, 0);
+        currentGroup.add(origin);
+
+        // 平面内的参考点 M1(1, 1, (13-3+4)/12 = 14/12 = 7/6)
+        const m1Point = new THREE_local.Vector3(1, 7/6, 1);
+        const m1Mesh = new THREE_local.Mesh(
+            new THREE_local.SphereGeometry(0.12, 16, 16),
+            new THREE_local.MeshBasicMaterial({ color: 0x94A3B8 })
+        );
+        m1Mesh.position.copy(m1Point);
+        currentGroup.add(m1Mesh);
+
+        // 绘制向量 M1P0
+        const vecLine = new THREE_local.Line(
+            new THREE_local.BufferGeometry().setFromPoints([m1Point, new THREE_local.Vector3(0, 0, 0)]),
+            new THREE_local.LineBasicMaterial({ color: 0x94A3B8, linewidth: 2 })
+        );
+        currentGroup.add(vecLine);
+
+        // 绘制垂线段（原点到平面）
+        const projPoint = new THREE_local.Vector3(
+            3/13,       // Three X = Math Y = -4/13? 修正坐标映射
+            12/13,      // Three Y = Math Z
+            -4/13       // Three Z = Math X
+        );
+        const distanceLine = new THREE_local.Line(
+            new THREE_local.BufferGeometry().setFromPoints([
+                new THREE_local.Vector3(0, 0, 0),
+                projPoint
+            ]),
+            new THREE_local.LineDashedMaterial({ color: 0xF97316, dashSize: 0.1, gapSize: 0.05, linewidth: 3 })
+        );
+        distanceLine.computeLineDistances();
+        currentGroup.add(distanceLine);
+
+        // 绘制法向量示意
+        const normalArrow = new THREE_local.ArrowHelper(
+            new THREE_local.Vector3(-4, 12, 3).normalize(), // 法向量 {3, -4, 12}
+            projPoint, 1.5, 0x10B981, 0.2, 0.1
+        );
+        currentGroup.add(normalArrow);
+
+        // 标记垂足 H
+        const footPoint = new THREE_local.Mesh(
+            new THREE_local.SphereGeometry(0.15, 16, 16),
+            new THREE_local.MeshBasicMaterial({ color: 0x10B981 })
+        );
+        footPoint.position.copy(projPoint);
+        currentGroup.add(footPoint);
+
+        // 绘制投影示意：将 M1P0 投影到法向量上
+        const projLine = new THREE_local.Line(
+            new THREE_local.BufferGeometry().setFromPoints([m1Point, new THREE_local.Vector3(m1Point.x, projPoint.y, m1Point.z)]),
+            new THREE_local.LineDashedMaterial({ color: 0x94A3B8, dashSize: 0.1, gapSize: 0.05, linewidth: 2 })
+        );
+        currentGroup.add(projLine);
+
+    // ==================== 空间直线场景 ====================
+    } else if (type === 'line_point_direction') {
+        // 直线：(x-1)/2 = (y-0)/(-1) = (z+2)/1，过点(1,0,-2)，方向向量{2,-1,1}
+        const linePoints = [];
+        for (let t = -3; t <= 3; t += 0.1) {
+            const x = 1 + 2 * t; // Math X
+            const y = 0 - 1 * t; // Math Y
+            const z = -2 + 1 * t; // Math Z
+            linePoints.push(new THREE_local.Vector3(y, z, x));
+        }
+        const lineMat = new THREE_local.LineBasicMaterial({ color: 0x2563eb, linewidth: 4 });
+        currentGroup.add(new THREE_local.Line(new THREE_local.BufferGeometry().setFromPoints(linePoints), lineMat));
+
+        // 标记直线上的点
+        const pointMat = new THREE_local.MeshBasicMaterial({ color: 0xF97316 });
+        const point = new THREE_local.Mesh(new THREE_local.SphereGeometry(0.15, 16, 16), pointMat);
+        point.position.set(0, -2, 1); // (1,0,-2)
+        currentGroup.add(point);
+
+        // 绘制方向向量
+        const dirArrow = new THREE_local.ArrowHelper(
+            new THREE_local.Vector3(-1, 1, 2).normalize(), // 方向向量{2,-1,1}
+            new THREE_local.Vector3(0, -2, 1), 2.5, 0xF97316, 0.3, 0.15
+        );
+        currentGroup.add(dirArrow);
+
+    } else if (type === 'line_parametric') {
+        // 直线参数方程：x=1+t, y=t, z=1-t
+        const linePoints = [];
+        for (let t = -3; t <= 3; t += 0.1) {
+            const x = 1 + t;
+            const y = t;
+            const z = 1 - t;
+            linePoints.push(new THREE_local.Vector3(y, z, x));
+        }
+        const lineMat = new THREE_local.LineBasicMaterial({ color: 0x2563eb, linewidth: 4 });
+        currentGroup.add(new THREE_local.Line(new THREE_local.BufferGeometry().setFromPoints(linePoints), lineMat));
+
+        // 标记t=0, t=1, t=-1三个点
+        const pointMat = new THREE_local.MeshBasicMaterial({ color: 0xF97316 });
+        const points = [
+            new THREE_local.Vector3(0, 1, 1),   // t=0: (1,0,1)
+            new THREE_local.Vector3(1, 0, 2),   // t=1: (2,1,0)
+            new THREE_local.Vector3(-1, 2, 0)   // t=-1: (0,-1,2)
+        ];
+        points.forEach((pos, i) => {
+            const point = new THREE_local.Mesh(new THREE_local.SphereGeometry(0.15, 16, 16), pointMat);
+            point.position.copy(pos);
+            currentGroup.add(point);
+        });
+
+    } else if (type === 'line_general') {
+        // 直线作为两平面交线：x - y + z = 1 和 2x + y + z = 3
+        const planeMat1 = new THREE_local.MeshPhongMaterial({
+            color: 0x2563eb,
+            side: THREE_local.DoubleSide,
+            transparent: true,
+            opacity: 0.3,
+            wireframe: true
+        });
+        const planeMat2 = new THREE_local.MeshPhongMaterial({
+            color: 0x10B981,
+            side: THREE_local.DoubleSide,
+            transparent: true,
+            opacity: 0.3,
+            wireframe: true
+        });
+
+        // 平面1：x - y + z = 1
+        const planeGeom1 = new ParametricGeometry_local((u, v, target) => {
+            const x = (u - 0.5) * 6;
+            const y = (v - 0.5) * 6;
+            const z = 1 - x + y;
+            target.set(y, z, x);
+        }, 20, 20);
+        currentGroup.add(new THREE_local.Mesh(planeGeom1, planeMat1));
+
+        // 平面2：2x + y + z = 3
+        const planeGeom2 = new ParametricGeometry_local((u, v, target) => {
+            const x = (u - 0.5) * 6;
+            const y = (v - 0.5) * 6;
+            const z = 3 - 2 * x - y;
+            target.set(y, z, x);
+        }, 20, 20);
+        currentGroup.add(new THREE_local.Mesh(planeGeom2, planeMat2));
+
+        // 绘制交线：解联立方程 x - y + z = 1 和 2x + y + z = 3
+        // 两式相减得 x + 2y = 2 => x = 2 - 2y
+        // 代入第一式：(2-2y) - y + z = 1 => z = 3y - 1
+        // 令 y = t，则参数方程为 x=2-2t, y=t, z=3t-1
+        const linePoints = [];
+        for (let t = -0.5; t <= 1; t += 0.1) {
+            const x = 2 - 2*t;  // Math X
+            const y = t;        // Math Y
+            const z = 3*t - 1;  // Math Z
+            linePoints.push(new THREE_local.Vector3(y, z, x));
+        }
+        const lineMat = new THREE_local.LineBasicMaterial({ color: 0xF97316, linewidth: 4 });
+        currentGroup.add(new THREE_local.Line(new THREE_local.BufferGeometry().setFromPoints(linePoints), lineMat));
+
+    } else if (type === 'line_angle') {
+        // 两直线夹角：L1方向{1,1,-1}, L2方向{-1,1,1}，夹角arccos(1/3)
+        const lineMat1 = new THREE_local.LineBasicMaterial({ color: 0x2563eb, linewidth: 3 });
+        const lineMat2 = new THREE_local.LineBasicMaterial({ color: 0x10B981, linewidth: 3 });
+
+        // 直线1：过原点，方向{1,1,-1}
+        const line1Points = [];
+        for (let t = -3; t <= 3; t += 0.1) {
+            line1Points.push(new THREE_local.Vector3(t, -t, t));
+        }
+        currentGroup.add(new THREE_local.Line(new THREE_local.BufferGeometry().setFromPoints(line1Points), lineMat1));
+
+        // 直线2：过原点，方向{-1,1,1}
+        const line2Points = [];
+        for (let t = -3; t <= 3; t += 0.1) {
+            line2Points.push(new THREE_local.Vector3(t, t, -t));
+        }
+        currentGroup.add(new THREE_local.Line(new THREE_local.BufferGeometry().setFromPoints(line2Points), lineMat2));
+
+        // 绘制方向向量
+        const dir1 = new THREE_local.ArrowHelper(
+            new THREE_local.Vector3(1, -1, 1).normalize(),
+            new THREE_local.Vector3(0, 0, 0), 2, 0x2563eb, 0.2, 0.1
+        );
+        const dir2 = new THREE_local.ArrowHelper(
+            new THREE_local.Vector3(1, 1, -1).normalize(),
+            new THREE_local.Vector3(0, 0, 0), 2, 0x10B981, 0.2, 0.1
+        );
+        currentGroup.add(dir1);
+        currentGroup.add(dir2);
+
+    } else if (type === 'line_plane_angle') {
+        // 直线与平面夹角：直线方向{1,1,√2}，平面法向{1,1,√2}，线面夹角90度
+        const planeGeom = new ParametricGeometry_local((u, v, target) => {
+            const x = (u - 0.5) * 6;
+            const y = (v - 0.5) * 6;
+            const z = (5 - x - y) / Math.sqrt(2); // x + y + √2 z = 5
+            target.set(y, z, x);
+        }, 20, 20);
+        const planeMat = new THREE_local.MeshPhongMaterial({
+            color: 0x2563eb,
+            side: THREE_local.DoubleSide,
+            transparent: true,
+            opacity: 0.4,
+            wireframe: true
+        });
+        currentGroup.add(new THREE_local.Mesh(planeGeom, planeMat));
+
+        // 直线：过点P0(0,1,-1)，方向向量s={1,1,√2}
+        const linePoints = [];
+        for (let t = -1.5; t <= 1.5; t += 0.1) {
+            const x = 0 + t;      // Math X
+            const y = 1 + t;      // Math Y
+            const z = -1 + Math.sqrt(2) * t; // Math Z
+            linePoints.push(new THREE_local.Vector3(y, z, x));
+        }
+        const lineMat = new THREE_local.LineBasicMaterial({ color: 0xF97316, linewidth: 4 });
+        currentGroup.add(new THREE_local.Line(new THREE_local.BufferGeometry().setFromPoints(linePoints), lineMat));
+
+        // 计算交点：代入平面方程 (t) + (1+t) + √2*(-1 + √2 t) = 5
+        // t + 1 + t - √2 + 2t = 5 => 4t = 4 + √2 => t = 1 + √2/4 ≈ 1.353
+        const t_intersect = 1 + Math.sqrt(2)/4;
+        const intersectPoint = new THREE_local.Vector3(
+            1 + t_intersect,                      // Math Y = Three X
+            -1 + Math.sqrt(2) * t_intersect,      // Math Z = Three Y
+            t_intersect                           // Math X = Three Z
+        );
+
+        // 标记交点P
+        const intersectMesh = new THREE_local.Mesh(
+            new THREE_local.SphereGeometry(0.15, 16, 16),
+            new THREE_local.MeshBasicMaterial({ color: 0x10B981 })
+        );
+        intersectMesh.position.copy(intersectPoint);
+        currentGroup.add(intersectMesh);
+
+        // 绘制平面法向量
+        const normalArrow = new THREE_local.ArrowHelper(
+            new THREE_local.Vector3(1, Math.sqrt(2), 1).normalize(), // 法向量 {1,1,√2}
+            intersectPoint, 2, 0x2563eb, 0.2, 0.1
+        );
+        currentGroup.add(normalArrow);
+
+        // 绘制直线方向向量
+        const lineDirArrow = new THREE_local.ArrowHelper(
+            new THREE_local.Vector3(1, Math.sqrt(2), 1).normalize(), // 与法向量同方向，说明垂直
+            intersectPoint, 2, 0xF97316, 0.2, 0.1
+        );
+        currentGroup.add(lineDirArrow);
+
+        // 标记点P0
+        const p0Point = new THREE_local.Vector3(1, -1, 0); // (0,1,-1)
+        const p0Mesh = new THREE_local.Mesh(
+            new THREE_local.SphereGeometry(0.15, 16, 16),
+            new THREE_local.MeshBasicMaterial({ color: 0xF97316 })
+        );
+        p0Mesh.position.copy(p0Point);
+        currentGroup.add(p0Mesh);
+
+        // 绘制直线在平面内的投影（此处因垂直，投影为一个点）
+        const projectionPoint = new THREE_local.Mesh(
+            new THREE_local.SphereGeometry(0.1, 16, 16),
+            new THREE_local.MeshBasicMaterial({ color: 0x94A3B8 })
+        );
+        projectionPoint.position.copy(intersectPoint);
+        currentGroup.add(projectionPoint);
+
+    } else if (type === 'line_distance') {
+        // 点到直线距离：点P0(1,2,3)到直线x=0, y=t, z=t的距离
+        // 直线过原点，方向向量{0,1,1}
+        const linePoints = [];
+        for (let t = -3; t <= 3; t += 0.1) {
+            linePoints.push(new THREE_local.Vector3(t, t, 0));
+        }
+        const lineMat = new THREE_local.LineBasicMaterial({ color: 0x2563eb, linewidth: 3 });
+        currentGroup.add(new THREE_local.Line(new THREE_local.BufferGeometry().setFromPoints(linePoints), lineMat));
+
+        // 标记点P0(1,2,3)
+        const pointP0 = new THREE_local.Mesh(
+            new THREE_local.SphereGeometry(0.15, 16, 16),
+            new THREE_local.MeshBasicMaterial({ color: 0xF97316 })
+        );
+        pointP0.position.set(2, 3, 1); // (1,2,3)
+        currentGroup.add(pointP0);
+
+        // 计算垂足：t = (P0·s)/(s·s) = (2*1 + 3*1)/(1+1) = 5/2 = 2.5
+        const footPos = new THREE_local.Vector3(2.5, 2.5, 0); // t=2.5
+        const footPoint = new THREE_local.Mesh(
+            new THREE_local.SphereGeometry(0.15, 16, 16),
+            new THREE_local.MeshBasicMaterial({ color: 0x10B981 })
+        );
+        footPoint.position.copy(footPos);
+        currentGroup.add(footPoint);
+
+        // 绘制垂线段
+        const distanceLine = new THREE_local.Line(
+            new THREE_local.BufferGeometry().setFromPoints([pointP0.position, footPos]),
+            new THREE_local.LineDashedMaterial({ color: 0xF97316, dashSize: 0.1, gapSize: 0.05, linewidth: 3 })
+        );
+        distanceLine.computeLineDistances();
+        currentGroup.add(distanceLine);
     }
 }
 
