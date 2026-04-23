@@ -15,13 +15,13 @@
   --mn-primary-soft: rgba(37, 99, 235, 0.10);
   --mn-primary-ring: rgba(37, 99, 235, 0.35);
   --mn-secondary:    #3B82F6;
-  --mn-accent:       #F97316;
-  --mn-accent-soft:  rgba(249, 115, 22, 0.15);
-  --mn-accent-ring:  rgba(249, 115, 22, 0.35);
-  --mn-bg:           #F8FAFC;
-  --mn-text:         #1E293B;
-  --mn-text-soft:    #475569;
-  --mn-text-muted:   #94A3B8;
+  --mn-accent:       #0F766E; /* Scholar Teal - Fresh & Academic */
+  --mn-accent-soft:  rgba(15, 118, 110, 0.1);
+  --mn-accent-ring:  rgba(15, 118, 110, 0.25);
+  --mn-bg:           #FDFCFB; 
+  --mn-text:         #1A1A1A; 
+  --mn-text-soft:    #4B5563;
+  --mn-text-muted:   #9CA3AF;
   --mn-accent-glow:  rgba(249, 115, 22, 0.25);
 
   /* --- Noble Typography Layer --- */
@@ -63,11 +63,11 @@
   --ease-in-out:     cubic-bezier(0.4, 0.0, 0.2, 1.0);
 
   /* --- VitePress Font Override --- */
-  --vp-font-family-base:    "Space Grotesk", "PingFang SC", sans-serif;
+  --vp-font-family-base:    var(--mn-font-noble);
   --vp-font-family-heading: "Archivo", sans-serif;
   --vp-font-family-mono:    "JetBrains Mono", "Fira Code", source-code-pro, monospace;
   --vp-font-family-noble:   var(--mn-font-noble);
-  --vp-font-size-base: 18px;
+  --vp-font-size-base: 19px; /* Slightly larger for better readability */
 }
 
 /* Dark Mode Overrides */
@@ -213,10 +213,10 @@ body {
    =========================================== */
 
 .VPNavBar {
-  background-color: rgba(248, 250, 252, 0.80) !important;
-  backdrop-filter: blur(28px) saturate(200%);
-  -webkit-backdrop-filter: blur(28px) saturate(200%);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+  background-color: rgba(253, 252, 251, 0.85) !important;
+  backdrop-filter: blur(32px) saturate(180%);
+  -webkit-backdrop-filter: blur(32px) saturate(180%);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
   transition: background-color var(--duration-base) ease;
   z-index: var(--z-navbar);
 }
@@ -390,11 +390,12 @@ body {
 /* Sidebar group title */
 .VPSidebarItem.level-0 > .item > .text {
   font-family: var(--vp-font-family-heading);
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: var(--mn-text-soft);
-  text-transform: uppercase;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--mn-text-muted);
+  text-transform: none; /* Removed Uppercase */
+  opacity: 0.8;
 }
 
 
@@ -485,26 +486,23 @@ mjx-container:not([display]) {
 }
 
 .VPFeature {
-  background: rgba(255, 255, 255, 0.45) !important;
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.35) !important;
-  border-radius: var(--radius-lg) !important;
+  background: var(--vp-c-bg-soft) !important;
+  border: 1px solid rgba(0, 0, 0, 0.04) !important;
+  border-radius: var(--radius-md) !important;
   transition: transform var(--duration-base) var(--ease-out),
-              box-shadow var(--duration-base) var(--ease-out),
-              border-color var(--duration-fast) ease !important;
-  box-shadow: var(--shadow-sm) !important;
+              box-shadow var(--duration-base) var(--ease-out) !important;
+  box-shadow: none !important; /* Flat design */
 }
 
 .dark .VPFeature {
-  background: rgba(15, 23, 42, 0.50) !important;
-  border: 1px solid rgba(255, 255, 255, 0.06) !important;
-  box-shadow: var(--shadow-md) !important;
+  background: rgba(15, 23, 42, 0.30) !important;
+  border: 1px solid rgba(255, 255, 255, 0.04) !important;
 }
 
 .VPFeature:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-xl) !important;
-  border-color: rgba(37, 99, 235, 0.30) !important;
+  transform: translateY(-2px);
+  border-color: var(--mn-primary) !important;
+  background: var(--mn-primary-soft) !important;
 }
 
 /* Feature icon container — high-contrast in dark mode */
@@ -539,7 +537,40 @@ mjx-container:not([display]) {
 
 
 /* ===========================================
-   § 8. CTA Buttons
+   § 8. Responsive Adaptations
+   =========================================== */
+
+@media (max-width: 960px) {
+  :root {
+    --vp-screen-max-width: 100%;
+  }
+  
+  .VPDoc {
+    padding: 24px 16px 96px !important;
+  }
+  
+  .hero-title {
+    font-size: clamp(2rem, 8vw, 3.5rem) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .VPDoc {
+    padding: 16px 12px 64px !important;
+  }
+  
+  /* Increase touch targets for mobile */
+  .VPSidebarItem .link {
+    min-height: 48px;
+  }
+  
+  .node-label {
+    font-size: 0.8rem !important;
+  }
+}
+
+/* ===========================================
+   § 9. CTA Buttons
    =========================================== */
 
 .VPButton {

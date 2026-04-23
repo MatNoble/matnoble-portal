@@ -15,6 +15,10 @@ import ScholarlyFeatures from "./components/ScholarlyFeatures.vue";
 import RoleGrid from "./components/RoleGrid.vue";
 import TrustLogos from "./components/TrustLogos.vue";
 import ContactCta from "./components/ContactCta.vue";
+import ScholarMap from "./components/ScholarMap.vue";
+import ChapterNavigation from "./components/ChapterNavigation.vue";
+import LearningPathHeader from "./components/LearningPathHeader.vue";
+import KnowledgeGraph from "./components/KnowledgeGraph.vue";
 import "./custom.css";
 import { inject } from "@vercel/analytics";
 import { injectSpeedInsights } from "@vercel/speed-insights";
@@ -36,7 +40,7 @@ export default {
       // 在文档内容之后插入分享组件和评论组件
       "doc-after": () => [h(RelatedPosts), h(Share), h(Comment)],
       "layout-top": () => h(ReadingProgressBar),
-      "layout-bottom": () => [h(BrownianBackground), h(PwaPrompt), h(FloatingTimerIcon)],
+      "layout-bottom": () => [h(BrownianBackground), h(FloatingTimerIcon)],
     });
   },
   setup() {
@@ -67,6 +71,10 @@ export default {
     app.component("RoleGrid", RoleGrid);
     app.component("TrustLogos", TrustLogos);
     app.component("ContactCta", ContactCta);
+    app.component("ScholarMap", ScholarMap);
+    app.component("ChapterNavigation", ChapterNavigation);
+    app.component("LearningPathHeader", LearningPathHeader);
+    app.component("KnowledgeGraph", KnowledgeGraph);
     if (typeof window !== "undefined") {
       inject();
       injectSpeedInsights();

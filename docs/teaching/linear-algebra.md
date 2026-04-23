@@ -16,9 +16,20 @@ structuredData:
 ---
 
 <ArticleHero 
-  tag="教学体系"
-  title="线性代数 (Linear Algebra)" 
-  description="以空间变换为核心的现代线性代数教学。强调几何直觉，拒绝死记硬背矩阵运算。"
+  tag="教学体系 (Curriculum)"
+  title="线性代数与几何直观" 
+  description="以空间变换为核心的现代线性代数教学。我们拒绝死记硬背，聚焦于理解矩阵作为线性变换的几何本质。"
+  :points="['从向量到空间', '矩阵即变换', '特征值的不动轴', 'SVD 的旋转缩放']"
+/>
+
+<LearningPathHeader
+  :nodes="[
+    { text: '线性空间', active: true },
+    { text: '矩阵变换' },
+    { text: '行列式本质' },
+    { text: '特征分解' },
+    { text: '奇异值分解 (SVD)' }
+  ]"
 />
 
 ## 为什么学习线性代数？
@@ -58,3 +69,11 @@ structuredData:
 - **Gilbert Strang, _Introduction to Linear Algebra_**：MIT 公开课配套教材，线性代数教学的“黄金标准”。
 - **3Blue1Brown, _Essence of Linear Algebra_**：必看的视频系列，构建极致的几何直观。
 - **可视化辅助**：建议配合 Python 的 Numpy 和 Matplotlib 进行矩阵运算验证。
+
+<ChapterNavigation 
+  :next="{ 
+    title: '初等变换：数值的流动', 
+    link: '/teaching/linear-algebra/elementary-transformations',
+    description: '通过交互动画深入理解矩阵化简的物理过程。'
+  }"
+/>

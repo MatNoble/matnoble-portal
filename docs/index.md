@@ -24,104 +24,33 @@ head:
 
 <HighFidelityHero 
   name="MatNoble"
-  text="Mathematics as the Core."
-  tagline="以数学为原点，用代码重构可解释的世界。致力于数学与计算机科学的交叉探索，构建可解释的方法论。"
+  text="The Digital Scholar's Lab"
+  tagline="以数学为原点，用代码重构可解释的世界。我们在这里通过算法优化学习，通过可视化洞察本质。"
   :actions="[
-    { theme: 'brand', text: '联系咨询 / 合作', link: '/about' },
-    { theme: 'alt', text: '查看教学体系', link: '/teaching/' }
+    { theme: 'brand', text: '开启探索之旅', link: '/teaching/calculus' },
+    { theme: 'alt', text: '了解方法论', link: '/about' }
   ]"
 />
 
 <div class="enterprise-gateway">
 
-<!-- Section 2: Solutions by Industry -->
 <section class="gateway-section">
   <h2 class="section-title">
-    领域集成方案 
-    <span class="section-subtitle">Solutions by Field</span>
+    核心研学地图
+    <span class="section-subtitle">Scholarly Knowledge Graph</span>
   </h2>
-  <ScholarlyFeatures
-    :features="[
-      {
-        title: '高等数学与微积分',
-        details: '深耕<b>微分形式不变性</b>教学。为理工科学生提供高度提炼的「秒杀」计算方案。',
-        link: '/teaching/calculus',
-        linkText: '查看方案',
-        icon: '<path d=&quot;M22 10v6M2 10l10-5 10 5-10 5z&quot;/><path d=&quot;M6 12v5c3 3 9 3 12 0v-5&quot;/>'
-      },
-      {
-        title: '代数与几何实验室',
-        details: '基于 <b>WebGL</b> 的 3D 实验室。将抽象曲面可视化，重构线性代数几何感。',
-        link: '/teaching/space-geometry-lab',
-        linkText: '进入实验室',
-        icon: '<path d=&quot;M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5&quot;/>'
-      },
-      {
-        title: '数字化学习工具栈',
-        details: '专为开发者与学者设计。集成 <b>Anki 算法</b>与 <b>LaTeX</b> 云同步，强化长期记忆。',
-        link: '/tools/',
-        linkText: '开始使用',
-        icon: '<path d=&quot;M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.77 3.77z&quot;/>'
-      }
-    ]"
-  />
+  
+  <KnowledgeGraph />
 </section>
 
-<!-- Section 3: Solutions by Role -->
-<section class="gateway-section">
-  <h2 class="section-title">
-    定制化学习路径 
-    <span class="section-subtitle">Solutions by Role</span>
-  </h2>
-  <RoleGrid
-    :roles="[
-      {
-        title: '在校大学生',
-        details: '扫清期末复习障碍，建立底层数学素养。',
-        link: '/teaching/cheatsheet',
-        linkText: '获取速查表'
-      },
-      {
-        title: '研究生备考者',
-        details: '针对考研数学的高频痛点，提供极限与积分的特项攻坚。',
-        link: '/teaching/derivative-method',
-        linkText: '提升计算力'
-      },
-      {
-        title: '教育技术开发者',
-        details: '分享 3D 实验室与自动化教学工具的构建经验。',
-        link: '/projects/',
-        linkText: '技术栈分析'
-      }
-    ]"
-  />
-</section>
-
-<!-- Section 4: Technology Stack -->
-<section class="gateway-section">
-  <h2 class="section-title">
-    驱动技术 
-    <span class="section-subtitle">Technology Stack</span>
-  </h2>
-  <TrustLogos
-    :logos="[
-      { name: 'Vue', title: 'Vue.js' },
-      { name: 'Vite', title: 'Vite' },
-      { name: 'LaTeX', title: 'LaTeX' },
-      { name: 'MathJax', title: 'MathJax' },
-      { name: 'Vercel', title: 'Vercel' }
-    ]"
-  />
-</section>
-
-<!-- Section 5: Contact / CTA -->
+<!-- Section 3: Contact / CTA -->
 <section class="gateway-section contact-cta">
   <ContactCta
-    title="开启您的数学重构之旅"
-    details="如果您有教学合作、演讲邀请或工具定制需求，欢迎随时联系。"
+    title="共同重构数学世界"
+    details="探索更高效的学习方式。如果您有教学合作或工具定制需求，欢迎随时联系。"
     :actions="[
       { theme: 'primary', text: '联系作者', link: '/about' },
-      { theme: 'secondary', text: 'GitHub 仓库', link: 'https://github.com/matnoble', external: true }
+      { theme: 'secondary', text: 'GitHub', link: 'https://github.com/matnoble', external: true }
     ]"
   />
 </section>

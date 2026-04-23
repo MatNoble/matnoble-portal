@@ -7,9 +7,21 @@ import MatrixTransformationDemo from '../../components/math/MatrixTransformation
 import MatrixLeftRightDemo from '../../components/math/MatrixLeftRightDemo.vue'
 </script>
 
-# 矩阵的初等变换与线性方程组
+<ArticleHero 
+  tag="交互式实验 (Lab)"
+  title="初等变换：数值的流动" 
+  description="线性方程组求解的核心算法。通过交互动画，观察数字如何在空间中流动、组合与重构。"
+  :points="['互换：空间重排', '倍乘：维度缩放', '倍加：剪切变换', '行阶梯形矩阵']"
+/>
 
-> **Mathematics as the Core. Technology as the Extension.**
+<LearningPathHeader
+  :nodes="[
+    { text: '理论引入', active: true },
+    { text: '交互动画' },
+    { text: '初等矩阵' },
+    { text: '左右乘规律' }
+  ]"
+/>
 
 在线性代数中，初等变换是化简矩阵、求解线性方程组的核心算法。为了更直观地理解这三类基本的变换操作，我们可以通过下方的交互式动画来进行物理过程的推演。
 
@@ -48,3 +60,13 @@ import MatrixLeftRightDemo from '../../components/math/MatrixLeftRightDemo.vue'
 <ClientOnly>
   <MatrixLeftRightDemo />
 </ClientOnly>
+
+---
+
+<ChapterNavigation 
+  :next="{ 
+    title: '空间几何 3D 实验室', 
+    link: '/teaching/space-geometry-lab',
+    description: '从数值计算跃迁到三维空间，探索曲面的几何本质。'
+  }"
+/>
