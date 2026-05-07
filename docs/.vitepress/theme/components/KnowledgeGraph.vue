@@ -1,135 +1,150 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { withBase, useRouter } from 'vitepress'
 
-interface Node {
+interface NodeData {
   id: string
-  x: number
-  y: number
   label: string
   details: string
-  link: string
-  category: 'calculus' | 'algebra' | 'tool' | 'core'
-}
-
-interface Edge {
-  from: string
-  to: string
+  link?: string
+  children?: NodeData[]
 }
 
 const router = useRouter()
 
-const nodes = ref<Node[]>([
-  { id: 'core', x: 400, y: 300, label: 'MatNoble Core', details: '数学作为底层架构', link: '/about', category: 'core' },
-  // Calculus Branch
-  { id: 'calculus', x: 250, y: 150, label: '微积分直觉', details: '微分万能公式与 DI 策略', link: '/teaching/calculus', category: 'calculus' },
-  { id: 'derivative', x: 100, y: 100, label: '导数方法论', details: '计算深度的提升', link: '/teaching/derivative-method', category: 'calculus' },
-  // Algebra Branch
-  { id: 'algebra', x: 550, y: 150, label: '线性代数', details: '空间变换与几何直观', link: '/teaching/linear-algebra', category: 'algebra' },
-  { id: 'matrix', x: 700, y: 80, label: '矩阵动画', details: '初等变换的可视化', link: '/teaching/linear-algebra/elementary-transformations', category: 'algebra' },
-  { id: 'lab', x: 720, y: 220, label: '3D 实验室', details: '空间几何交互', link: '/teaching/space-geometry-lab', category: 'algebra' },
-  // Tools Branch
-  { id: 'tools', x: 400, y: 500, label: '研学套件', details: 'LaTeX 与记忆算法', link: '/tools/', category: 'tool' },
-])
-
-const edges = ref<Edge[]>([
-  { from: 'core', to: 'calculus' },
-  { from: 'core', to: 'algebra' },
-  { from: 'core', to: 'tools' },
-  { from: 'calculus', to: 'derivative' },
-  { from: 'algebra', to: 'matrix' },
-  { from: 'algebra', to: 'lab' },
-  { from: 'calculus', to: 'algebra' }, // Cross link
-])
-
-const activeNode = ref<string | null>(null)
-
-const handleNodeClick = (node: Node) => {
-  if (activeNode.value === node.id) {
-    window.location.href = withBase(node.link)
-  } else {
-    activeNode.value = node.id
-  }
+// Hierarchical Knowledge Map
+const fullData: NodeData = {
+  id: 'core',
+  label: 'MatNoble Core',
+  details: '数学作为底层架构',
+  children: [
+    {
+      id: 'calculus',
+      label: '微积分直觉',
+      details: '微分万能公式与 DI 策略',
+      children: [
+        { id: 'derivative', label: '导数方法论', details: '计算深度的提升', link: '/teaching/derivative-method' },
+        { id: 'integral', label: '积分心法', details: 'DI 表格法演示', link: '/tools/di-method' },
+        { id: 'ode', label: '常微分方程', details: '二阶解析直觉', link: '/teaching/ode-intuition' }
+      ]
+    },
+    {
+      id: 'algebra',
+      label: '线性代数',
+      details: '空间变换与几何直观',
+      children: [
+        { id: 'matrix', label: '初等变换', details: '矩阵动画演示', link: '/teaching/linear-algebra/elementary-transformations' },
+        { id: 'geometric', label: '几何直观', details: '线性代数核心心法', link: '/teaching/linear-algebra' },
+        { id: 'space', label: '3D 实验室', details: '空间几何交互', link: '/teaching/space-geometry-lab' }
+      ]
+    },
+    {
+      id: 'tools',
+      label: '研学套件',
+      details: '高效学习工具链',
+      children: [
+        { id: 'memorize', label: 'Memorize', details: '核心公式记忆', link: '/tools/memorize' },
+        { id: 'countdown', label: '沉浸计时', details: '专注力辅助', link: '/tools/countdown' },
+        { id: 'cheatsheet', label: '速查表', details: '考研级精炼内容', link: '/teaching/cheatsheet' }
+      ]
+    }
+  ]
 }
 
-// Simple floating animation logic
-const offset = ref({ x: 0, y: 0 })
-onMounted(() => {
-  let tick = 0
-  const animate = () => {
-    tick += 0.02
-    offset.value = {
-      x: Math.sin(tick) * 5,
-      y: Math.cos(tick) * 5
+// Navigation State
+const history = ref<NodeData[]>([fullData])
+const currentParent = computed(() => history.value[history.value.length - 1])
+const currentNodes = computed(() => currentParent.value.children || [])
+
+// Layout Constants
+const centerX = 400
+const centerY = 300
+const radius = 180
+
+// Calculate node positions dynamically based on current list
+const positionedNodes = computed(() => {
+  const nodes = currentNodes.value
+  return nodes.map((node, index) => {
+    const angle = (index / nodes.length) * Math.PI * 2 - Math.PI / 2
+    return {
+      ...node,
+      x: centerX + Math.cos(angle) * radius,
+      y: centerY + Math.sin(angle) * radius
     }
-    requestAnimationFrame(animate)
-  }
-  animate()
+  })
 })
 
-const getPath = (edge: Edge) => {
-  const from = nodes.value.find(n => n.id === edge.from)!
-  const to = nodes.value.find(n => n.id === edge.to)!
-  
-  // Calculate quadratic bezier curve for more organic feel
-  const mx = (from.x + to.x) / 2 + 20
-  const my = (from.y + to.y) / 2 - 20
-  
-  return `M ${from.x} ${from.y} Q ${mx} ${my} ${to.x} ${to.y}`
+const handleNodeClick = (node: NodeData) => {
+  if (node.children && node.children.length > 0) {
+    // Drill down
+    history.value.push(node)
+  } else if (node.link) {
+    // Navigate to page
+    router.go(withBase(node.link))
+  }
 }
+
+const goBack = () => {
+  if (history.value.length > 1) {
+    history.value.pop()
+  }
+}
+
+const activeNodeId = ref<string | null>(null)
 </script>
 
 <template>
   <div class="knowledge-graph-container">
-    <svg viewBox="0 0 800 600" class="graph-svg" preserveAspectRatio="xMidYMid meet">
-      <!-- Defs for arrows and filters -->
-      <defs>
-        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="25" refY="3.5" orient="auto">
-          <polygon points="0 0, 10 3.5, 0 7" fill="var(--mn-accent)" opacity="0.5" />
-        </marker>
-        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur stdDeviation="3" result="blur" />
-          <feComposite in="SourceGraphic" in2="blur" operator="over" />
-        </filter>
-      </defs>
+    <!-- Navigation / Breadcrumbs -->
+    <div class="graph-nav">
+      <button v-if="history.length > 1" @click="goBack" class="back-btn">
+        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none">
+          <path d="M15 18l-6-6 6-6"/>
+        </svg>
+        返回
+      </button>
+      <span class="current-path">
+        {{ history.map(h => h.label).join(' / ') }}
+      </span>
+    </div>
 
-      <!-- Edges -->
-      <path 
-        v-for="(edge, i) in edges" 
-        :key="i"
-        :d="getPath(edge)"
-        class="edge-path"
-        marker-end="url(#arrowhead)"
-      />
+    <svg viewBox="0 0 800 600" class="graph-svg">
+      <!-- Central Parent Node -->
+      <g class="node-group parent" @click="goBack">
+        <circle :cx="centerX" :cy="centerY" r="45" class="center-ring" />
+        <text :x="centerX" :y="centerY + 5" class="center-label">{{ currentParent.label }}</text>
+      </g>
 
-      <!-- Nodes -->
-      <g 
-        v-for="node in nodes" 
-        :key="node.id" 
-        class="node-group"
-        :class="[node.category, { active: activeNode === node.id }]"
-        @mouseenter="activeNode = node.id"
-        @mouseleave="activeNode = null"
-        @click="handleNodeClick(node)"
-        @touchstart.stop="handleNodeClick(node)"
-        :transform="`translate(${node.x}, ${node.y})`"
+      <!-- Child Nodes -->
+      <g v-for="node in positionedNodes" 
+         :key="node.id"
+         class="node-group child"
+         :class="{ hasChildren: node.children, isActive: activeNodeId === node.id }"
+         @mouseenter="activeNodeId = node.id"
+         @mouseleave="activeNodeId = null"
+         @click="handleNodeClick(node)"
       >
-        <circle r="8" class="node-dot" />
-        <circle r="20" class="node-hitbox" fill="transparent" />
+        <!-- Connecting Line -->
+        <line :x1="centerX" :y1="centerY" :x2="node.x" :y2="node.y" class="connection-line" />
         
-        <!-- Labels -->
-        <g class="label-group">
-          <text y="-25" class="node-label">{{ node.label }}</text>
-          <text y="30" class="node-details" v-if="activeNode === node.id">{{ node.details }}</text>
+        <!-- Node Circle -->
+        <circle :cx="node.x" :cy="node.y" r="10" class="node-dot" />
+        <circle :cx="node.x" :cy="node.y" r="25" class="hitbox" fill="transparent" />
+
+        <!-- Node Label -->
+        <text :x="node.x" :y="node.y - 25" class="node-label">{{ node.label }}</text>
+        
+        <!-- Details Popup -->
+        <g v-if="activeNodeId === node.id" class="details-group">
+          <text :x="node.x" :y="node.y + 35" class="node-details">{{ node.details }}</text>
+          <text v-if="node.children" :x="node.x" :y="node.y + 52" class="drill-hint">点击进入分类</text>
         </g>
       </g>
     </svg>
 
-    <div class="graph-hint">
-      <svg class="hint-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>
-      </svg>
-      点击节点进入对应知识领域
+    <div class="graph-footer">
+      <p v-if="history.length === 1">点击节点探索子领域</p>
+      <p v-else>点击中心圆圈或返回按钮可回到上一级</p>
     </div>
   </div>
 </template>
@@ -138,96 +153,140 @@ const getPath = (edge: Edge) => {
 .knowledge-graph-container {
   width: 100%;
   max-width: 900px;
+  min-height: 500px;
   margin: 40px auto;
   position: relative;
-  background: var(--vp-c-bg-soft);
-  border-radius: 32px;
-  border: 1px solid rgba(0,0,0,0.03);
+  background: var(--mn-primary-soft);
+  border-radius: 2rem;
   overflow: hidden;
+  border: 1px solid rgba(var(--mn-primary-rgb), 0.1);
+  box-shadow: 0 10px 40px -10px rgba(0,0,0,0.05);
+}
+
+.graph-nav {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  background: var(--mn-primary);
+  color: white;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.back-btn:hover {
+  transform: translateX(-3px);
+}
+
+.current-path {
+  font-family: var(--mn-font-heading);
+  font-size: 0.9rem;
+  color: var(--mn-text-muted);
+  font-style: italic;
+  opacity: 0.8;
 }
 
 .graph-svg {
   width: 100%;
   height: auto;
-  cursor: grab;
 }
 
-.edge-path {
-  fill: none;
-  stroke: var(--mn-accent);
-  stroke-width: 1.5;
-  stroke-dasharray: 4 4;
-  opacity: 0.15;
-  transition: opacity 0.3s ease, stroke-width 0.3s ease;
-}
-
-.node-group {
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.node-dot {
-  fill: var(--vp-c-bg);
-  stroke: var(--mn-accent);
+/* Central Node */
+.center-ring {
+  fill: white;
+  stroke: var(--mn-primary);
   stroke-width: 2;
-  transition: all 0.3s ease;
+  stroke-dasharray: 4 4;
+  cursor: pointer;
 }
 
-.node-group.core .node-dot {
-  fill: var(--mn-accent);
-  r: 12;
+.center-label {
+  text-anchor: middle;
+  font-family: var(--mn-font-heading);
+  font-weight: 700;
+  font-size: 0.95rem;
+  fill: var(--mn-primary);
+  pointer-events: none;
+}
+
+/* Connections */
+.connection-line {
+  stroke: var(--mn-primary);
+  stroke-width: 1;
+  opacity: 0.15;
+  stroke-dasharray: 5 5;
+}
+
+/* Child Nodes */
+.node-dot {
+  fill: white;
+  stroke: var(--mn-primary);
+  stroke-width: 2.5;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .node-group:hover .node-dot {
-  r: 14;
-  filter: url(#glow);
-  stroke-width: 3;
+  r: 12;
+  fill: var(--mn-primary);
 }
 
 .node-label {
-  font-family: var(--vp-font-family-noble);
-  font-size: 1.1rem;
+  text-anchor: middle;
+  font-family: var(--mn-font-heading);
+  font-size: 1.05rem;
   font-weight: 600;
   fill: var(--mn-text);
-  text-anchor: middle;
   pointer-events: none;
-  font-style: italic;
 }
 
 .node-details {
-  font-size: 0.75rem;
-  fill: var(--mn-accent);
   text-anchor: middle;
-  pointer-events: none;
-  font-weight: 700;
+  font-size: 0.75rem;
+  fill: var(--mn-primary);
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.drill-hint {
+  text-anchor: middle;
+  font-size: 0.65rem;
+  fill: var(--mn-accent);
   text-transform: uppercase;
   letter-spacing: 1px;
+  font-weight: 700;
 }
 
-.node-group.active ~ .edge-path {
-  opacity: 0.05;
-}
-
-.graph-hint {
+.graph-footer {
   position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 24px;
+  width: 100%;
+  text-align: center;
   font-size: 0.8rem;
   color: var(--mn-text-muted);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  pointer-events: none;
+  opacity: 0.6;
 }
 
-.hint-icon {
-  width: 14px;
-  height: 14px;
+/* Animations */
+.node-group {
+  cursor: pointer;
 }
 
 @media (max-width: 640px) {
   .node-label { font-size: 0.9rem; }
-  .graph-svg { min-height: 400px; }
+  .center-ring { r: 35; }
+  .center-label { font-size: 0.75rem; }
 }
 </style>

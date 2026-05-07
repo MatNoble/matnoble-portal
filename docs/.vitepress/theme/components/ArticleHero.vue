@@ -82,7 +82,7 @@ defineProps<Props>();
 
 .hero-title {
   font-family: var(--vp-font-family-noble);
-  font-size: 4rem;
+  font-size: 3.25rem;
   font-weight: 600;
   font-style: italic;
   line-height: 1.1;

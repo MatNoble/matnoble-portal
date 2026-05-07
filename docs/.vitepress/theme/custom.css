@@ -3,29 +3,30 @@
    Compliant with MASTER.md + ui-ux-pro-max skill
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 /* ===========================================
    § 1. Design Tokens (Root Variables)
    =========================================== */
 
 :root {
-  /* --- Brand Colors --- */
-  --mn-primary:      #2563EB;
-  --mn-primary-soft: rgba(37, 99, 235, 0.10);
-  --mn-primary-ring: rgba(37, 99, 235, 0.35);
-  --mn-secondary:    #3B82F6;
-  --mn-accent:       #0F766E; /* Scholar Teal - Fresh & Academic */
-  --mn-accent-soft:  rgba(15, 118, 110, 0.1);
-  --mn-accent-ring:  rgba(15, 118, 110, 0.25);
-  --mn-bg:           #FDFCFB; 
-  --mn-text:         #1A1A1A; 
-  --mn-text-soft:    #4B5563;
-  --mn-text-muted:   #9CA3AF;
-  --mn-accent-glow:  rgba(249, 115, 22, 0.25);
+  /* --- Brand Colors (3b1b Inspired) --- */
+  --mn-primary:      #38bdf8; /* Sky Blue */
+  --mn-primary-soft: rgba(56, 189, 248, 0.10);
+  --mn-primary-ring: rgba(56, 189, 248, 0.35);
+  --mn-secondary:    #0ea5e9;
+  --mn-accent:       #b45309; /* Deep Amber for better contrast in light mode */
+  --mn-accent-soft:  rgba(180, 83, 9, 0.08);
+  --mn-accent-ring:  rgba(180, 83, 9, 0.20);
+  --mn-bg:           #ffffff; 
+  --mn-text:         #171717; 
+  --mn-text-soft:    #404040;
+  --mn-text-muted:   #737373;
+  --mn-accent-glow:  rgba(56, 189, 248, 0.25);
 
-  /* --- Noble Typography Layer --- */
-  --mn-font-noble:   "Cormorant Garamond", "Noto Serif SC", serif;
+  /* --- Typography Layer --- */
+  --mn-font-serif:   "EB Garamond", serif;
+  --mn-font-sans:    "Inter", sans-serif;
 
   /* --- Spacing Scale (4pt/8pt System) --- */
   --space-xs:  4px;
@@ -63,31 +64,56 @@
   --ease-in-out:     cubic-bezier(0.4, 0.0, 0.2, 1.0);
 
   /* --- VitePress Font Override --- */
-  --vp-font-family-base:    var(--mn-font-noble);
-  --vp-font-family-heading: "Archivo", sans-serif;
+  --vp-font-family-base:    var(--mn-font-sans);
+  --vp-font-family-heading: var(--mn-font-serif);
   --vp-font-family-mono:    "JetBrains Mono", "Fira Code", source-code-pro, monospace;
-  --vp-font-family-noble:   var(--mn-font-noble);
-  --vp-font-size-base: 19px; /* Slightly larger for better readability */
+  --vp-font-family-noble:   var(--mn-font-serif);
+  --vp-font-size-base: 18px; /* Slightly larger for better readability */
 }
 
 /* Dark Mode Overrides */
+/* Dark Mode (3b1b Signature) */
 .dark {
-  --mn-bg:        #020617;
-  --mn-text:      #F1F5F9;
-  --mn-text-soft: #94A3B8;
-  --mn-text-muted: #64748B;
+  --mn-bg:        #0e1117; /* Soft Midnight Black */
+  --mn-text:      #d1d5db; /* Softer text color */
+  --mn-text-soft: #94a3b8;
+  --mn-text-muted: #64748b;
 
-  --vp-c-bg:      #020617;
-  --vp-c-bg-soft: #0F172A;
-  --vp-c-bg-mute: #1E293B;
+  --vp-c-bg:      #0e1117;
+  --vp-c-bg-soft: #161b22;
+  --vp-c-bg-mute: #21262d;
 
-  --vp-c-brand-1: #3B82F6;
-  --vp-c-brand-2: #2563EB;
+  --vp-c-brand-1: #38bdf8;
+  --vp-c-brand-2: #0ea5e9;
 
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.30);
-  --shadow-md: 0 4px 6px  rgba(0,0,0,0.45);
-  --shadow-lg: 0 10px 20px rgba(0,0,0,0.55);
-  --shadow-xl: 0 20px 35px rgba(0,0,0,0.65);
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.50);
+  --shadow-md: 0 4px 6px  rgba(0,0,0,0.65);
+  --shadow-lg: 0 10px 20px rgba(0,0,0,0.75);
+  --shadow-xl: 0 20px 35px rgba(0,0,0,0.85);
+}
+
+/* 3b1b Readability Boost for Dark Mode */
+.dark .vp-doc {
+  color: var(--mn-text);
+  font-weight: 450; /* Slightly thicker for dark background */
+}
+
+.dark .vp-doc h1, 
+.dark .vp-doc h2, 
+.dark .vp-doc h3, 
+.dark .vp-doc h4 {
+  color: #f8fafc; /* Brighter headings */
+  font-weight: 500;
+  letter-spacing: 0.015em;
+}
+
+.dark .vp-doc p {
+  letter-spacing: 0.012em;
+}
+
+.dark .vp-doc .katex, 
+.dark .vp-doc .mjx-chtml {
+  color: #f8fafc !important; /* Sharp math */
 }
 
 
@@ -158,13 +184,16 @@ summary, label[for], [tabindex="0"] {
 }
 
 /* --- Matrix Grid Pattern (Semantic Layer) --- */
+/* --- Coordinate Grid Pattern (3b1b Inspired) --- */
 .matrix-grid-pattern {
-  background-image: radial-gradient(circle at 1px 1px, var(--mn-primary-ring) 0.5px, transparent 0px);
-  background-size: 16px 16px;
+  background-image: 
+    radial-gradient(circle at 1px 1px, var(--mn-primary-ring) 1px, transparent 0px);
+  background-size: 24px 24px;
 }
 
 .dark .matrix-grid-pattern {
-  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 0.5px, transparent 0px);
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.08) 1px, transparent 0px);
 }
 
 
@@ -177,21 +206,39 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  line-height: 1.75;
+  line-height: 1.85;
   background-color: var(--mn-bg);
   color: var(--mn-text);
+  letter-spacing: 0.01em;
 }
 
 .vp-doc h1, .vp-doc h2, .vp-doc h3, .vp-doc h4 {
   font-family: var(--vp-font-family-heading);
   font-weight: 600;
-  letter-spacing: -0.015em;
   line-height: 1.25;
+  margin-bottom: var(--space-xl) !important;
+}
+
+.vp-doc h1 {
+  font-size: 2.85rem;
+  letter-spacing: -0.02em;
+  margin-top: 1rem !important;
+}
+
+.vp-doc h2 {
+  font-size: 1.85rem;
+  margin-top: 6rem !important; /* Significant space for new section */
+}
+
+.vp-doc h3 {
+  font-size: 1.45rem;
+  margin-top: 4rem !important;
 }
 
 .vp-doc p, .vp-doc li {
   max-width: 72ch;
-  line-height: 1.85;
+  line-height: 1.95;
+  margin-bottom: var(--space-lg) !important;
 }
 
 /* Link style */
@@ -411,52 +458,25 @@ body {
   border-radius: var(--radius-md);
 }
 
-/* ─── Display Math ($$...$$) — Academic Monograph Style ─── */
-/* MathJax 3 CHTML 输出元素为 <mjx-container display="true"> */
-mjx-container[display="true"],
-mjx-container[display] {
-  background: transparent !important;
-  border: none !important;
-  border-radius: 0 !important;
-  padding: 0 !important;
-  box-shadow: none !important;
+/* MathJax 3 - Absolute Reset to kill scrollbars */
+mjx-container {
+  overflow: visible !important;
+  height: auto !important;
+  max-width: none !important;
+}
 
+mjx-container[display="true"] {
   display: block !important;
-  text-align: center !important;
-  overflow-x: auto;
-  overflow-y: hidden;
-  margin: 2.2rem auto !important;
-  max-width: 100%;
+  margin: 2em 0 !important;
+  text-align: center;
 }
 
-/* 深色模式 — 印刷白，高对比度 */
-.dark mjx-container[display="true"],
-.dark mjx-container[display] {
-  color: #E8EDF4 !important;
-}
-
-/* ─── Inline Math ($...$) ─── */
 mjx-container:not([display]) {
-  background: none !important;
-  border: none !important;
-  padding: 0 !important;
-  box-shadow: none !important;
-  display: inline !important;
-  vertical-align: -0.1em;
+  display: inline-block !important;
+  margin: 0 !important;
+  vertical-align: middle !important;
 }
 
-.dark mjx-container:not([display]) {
-  color: #E8EDF4 !important;
-}
-
-/* 移动端：长公式水平滚动保护 */
-@media (max-width: 640px) {
-  mjx-container[display="true"],
-  mjx-container[display] {
-    margin: 1.6rem 0 !important;
-    font-size: 0.92em !important;
-  }
-}
 
 /* TOC aside (right-side) */
 .VPDocAside .outline-link {
@@ -500,9 +520,10 @@ mjx-container:not([display]) {
 }
 
 .VPFeature:hover {
-  transform: translateY(-2px);
+  transform: translateY(-4px); /* Stronger lift */
   border-color: var(--mn-primary) !important;
   background: var(--mn-primary-soft) !important;
+  box-shadow: 0 20px 40px rgba(56, 189, 248, 0.15) !important;
 }
 
 /* Feature icon container — high-contrast in dark mode */
@@ -733,3 +754,6 @@ mjx-container:not([display]) {
   }
   .mjx-chtml { font-size: 100% !important; }
 }
+
+/* End of file */
+

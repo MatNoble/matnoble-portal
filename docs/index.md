@@ -1,8 +1,8 @@
 ---
 layout: page
-title: MatNoble | 大学数学教学与技术探索
+title: MatNoble
 breadcrumb: 首页
-titleTemplate: 构建可解释的数学世界
+titleTemplate: false
 description: MatNoble 是一站式大学数学与技术探索门户。专注于微积分（微分万能公式、DI表格法）、线性代数教学与 3D 辅助实验室开发。通过技术算法优化数学学习深度，为理工科学生与开发者构建可解释的数学世界。
 head:
   - - script
@@ -32,6 +32,7 @@ head:
   ]"
 />
 
+
 <div class="enterprise-gateway">
 
 <section class="gateway-section">
@@ -44,16 +45,7 @@ head:
 </section>
 
 <!-- Section 3: Contact / CTA -->
-<section class="gateway-section contact-cta">
-  <ContactCta
-    title="共同重构数学世界"
-    details="探索更高效的学习方式。如果您有教学合作或工具定制需求，欢迎随时联系。"
-    :actions="[
-      { theme: 'primary', text: '联系作者', link: '/about' },
-      { theme: 'secondary', text: 'GitHub', link: 'https://github.com/matnoble', external: true }
-    ]"
-  />
-</section>
+<FollowSection />
 
 </div>
 
@@ -64,7 +56,7 @@ head:
 }
 
 .gateway-section {
-  padding: 80px 16px;
+  padding: 40px 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -78,9 +70,9 @@ head:
 .section-title {
   text-align: center;
   font-family: var(--vp-font-family-heading);
-  font-size: 2.2rem;
+  font-size: 1.8rem;
   font-weight: 700;
-  margin-bottom: 48px;
+  margin-bottom: 24px;
   color: var(--mn-text);
   border: none;
   line-height: 1.2;
@@ -88,10 +80,10 @@ head:
 
 .section-subtitle {
   display: block;
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   font-weight: 500;
   color: var(--mn-text-muted);
-  margin-top: 8px;
+  margin-top: 4px;
   text-transform: uppercase;
   letter-spacing: 1px;
 }

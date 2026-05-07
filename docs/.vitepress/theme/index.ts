@@ -30,6 +30,9 @@ import DISolver from "./components/DIMethod/DISolver.vue";
 import ScrollTelling from "./components/ScrollTelling.vue";
 import MatCountdown from "./components/MatCountdown.vue";
 import FloatingTimerIcon from "./components/FloatingTimerIcon.vue";
+import ManimVideo from "./components/ManimVideo.vue";
+import ComparisonGrid from "./components/ComparisonGrid.vue";
+import FollowSection from "./components/FollowSection.vue";
 
 export default {
   extends: DefaultTheme,
@@ -75,6 +78,9 @@ export default {
     app.component("ChapterNavigation", ChapterNavigation);
     app.component("LearningPathHeader", LearningPathHeader);
     app.component("KnowledgeGraph", KnowledgeGraph);
+    app.component("ManimVideo", ManimVideo);
+    app.component("ComparisonGrid", ComparisonGrid);
+    app.component("FollowSection", FollowSection);
     if (typeof window !== "undefined") {
       inject();
       injectSpeedInsights();

@@ -1,72 +1,190 @@
 ---
-outline: deep
+title: 初等变换的矩阵形式 | 线性代数直观教学
+breadcrumb: 初等变换
+description: 深入理解线性代数中的初等行变换与初等列变换。通过 Manim 动画直观演示交换（Swap）、倍乘（Stretch）与倍加（Shear）的矩阵乘法本质。
+sidebar: false
+aside: true
 ---
-
-<script setup>
-import MatrixTransformationDemo from '../../components/math/MatrixTransformationDemo.vue'
-import MatrixLeftRightDemo from '../../components/math/MatrixLeftRightDemo.vue'
-</script>
 
 <ArticleHero 
-  tag="交互式实验 (Lab)"
-  title="初等变换：数值的流动" 
-  description="线性方程组求解的核心算法。通过交互动画，观察数字如何在空间中流动、组合与重构。"
-  :points="['互换：空间重排', '倍乘：维度缩放', '倍加：剪切变换', '行阶梯形矩阵']"
+  tag="线性代数"
+  title="初等变换的直观理解" 
+  description="矩阵不仅是数字的方阵，更是空间的变换。初等变换是理解矩阵构造与方程组求解的基石。"
 />
 
-<LearningPathHeader
-  :nodes="[
-    { text: '理论引入', active: true },
-    { text: '交互动画' },
-    { text: '初等矩阵' },
-    { text: '左右乘规律' }
-  ]"
-/>
+<ThreeOneQuote author="MatNoble">
+  “初等变换的本质，是将复杂的系统化简为最纯粹的基向量变换。”
+</ThreeOneQuote>
 
-在线性代数中，初等变换是化简矩阵、求解线性方程组的核心算法。为了更直观地理解这三类基本的变换操作，我们可以通过下方的交互式动画来进行物理过程的推演。
+在学习线性代数时，初等变换不仅是计算的工具，更是空间的几何重组。所有的操作都可以归结为一句话：**“左乘行，右乘列”**。
 
-## 初等变换：系统的“归一化”
+## 1. 交换变换 (Swap)
+*交换坐标轴的顺序。*
 
-对矩阵进行以下三类操作，统称为 **初等行（列）变换**：
+<ComparisonGrid>
 
-1. **互换（Swap）**：交换两行（列）的位置。记为 $E_{ij}$。
-2. **倍乘（Multiply）**：用一个非零常数 $k$ 乘以某一行（列）。记为 $E_i(k)$。
-3. **倍加（Add）**：将某一行（列）的 $k$ 倍加到另一行（列）上。记为 $E_{ij}(k)$。
+<div class="comparison-item">
 
-### 交互式动画演示
+#### 行交换 (Row Swap)
+左乘一个交换矩阵 $E_{ij}$，实现第 $i$ 行与第 $j$ 行对调。
 
-点击下方按钮，观察数字是如何在空间中流动、组合与重构的。
+$$
+\begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix} \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix} = \begin{bmatrix} 3 & 4 \\ 1 & 2 \end{bmatrix}
+$$
 
-<ClientOnly>
-  <MatrixTransformationDemo />
-</ClientOnly>
+<ManimVideo src="/videos/SwapRow.mp4" />
 
-## 初等矩阵与变换的“算子化”
+</div>
 
-对单位矩阵 $I$ 执行一次初等变换所得到的矩阵，称为 **初等矩阵**。
+<div class="comparison-item">
 
-在实际操作中，我们需要牢记一个核心准则：
+#### 列交换 (Col Swap)
+右乘一个交换矩阵 $E_{ij}$，实现第 $i$ 列与第 $j$ 列对调。
 
-::: warning 避坑指南
-记住一句话：**左乘时，下标顺序与行操作一致；右乘时，操作方向与下标顺序相反。**（即左乘对应行变换，右乘对应列变换）。
-:::
+$$
+\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix} \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix} = \begin{bmatrix} 2 & 1 \\ 4 & 3 \end{bmatrix}
+$$
 
-利用这种几何与代数的映射关系，初等变换不仅能用于求解逆矩阵，还能深刻揭示矩阵“秩”在变换过程中的不变性。
+<ManimVideo src="/videos/SwapCol.mp4" />
 
-### 左乘与右乘对比动画演示
+</div>
 
-下面这个动画将以物理“撞击”的隐喻，直观地展示为什么 $E$ 放在左边时改变的是**行**（水平冲击），而放在右边时改变的是**列**（垂直冲击）。
+</ComparisonGrid>
 
-<ClientOnly>
-  <MatrixLeftRightDemo />
-</ClientOnly>
+## 2. 倍乘变换 (Stretch)
+*在特定维度上的拉伸或压缩。*
 
----
+<ComparisonGrid>
 
-<ChapterNavigation 
-  :next="{ 
-    title: '空间几何 3D 实验室', 
-    link: '/teaching/space-geometry-lab',
-    description: '从数值计算跃迁到三维空间，探索曲面的几何本质。'
-  }"
-/>
+<div class="comparison-item">
+
+#### 行倍乘 (Row Stretch)
+左乘对角矩阵，对特定行进行缩放。
+
+$$
+\begin{bmatrix} 2 & 0 \\ 0 & 1 \end{bmatrix} \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix} = \begin{bmatrix} 2 & 4 \\ 3 & 4 \end{bmatrix}
+$$
+
+<ManimVideo src="/videos/StretchRow.mp4" />
+
+</div>
+
+<div class="comparison-item">
+
+#### 列倍乘 (Col Stretch)
+右乘对角矩阵，对特定列进行缩放。
+
+$$
+\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix} \begin{bmatrix} 2 & 0 \\ 0 & 1 \end{bmatrix} = \begin{bmatrix} 2 & 2 \\ 6 & 4 \end{bmatrix}
+$$
+
+<ManimVideo src="/videos/StretchCol.mp4" />
+
+</div>
+
+</ComparisonGrid>
+
+## 3. 倍加变换 (Shear)
+*消元法的核心：保持面积/体积不变的错切。*
+
+<ComparisonGrid>
+
+<div class="comparison-item">
+
+#### 行倍加 (Row Shear)
+将一行的倍数加到另一行。
+
+$$
+\begin{bmatrix} 1 & 2 \\ 0 & 1 \end{bmatrix} \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix} = \begin{bmatrix} 7 & 10 \\ 3 & 4 \end{bmatrix}
+$$
+
+<ManimVideo src="/videos/ShearRow.mp4" />
+
+</div>
+
+<div class="comparison-item">
+
+#### 列倍加 (Col Shear)
+将一列的倍数加到另一列。
+
+$$
+\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix} \begin{bmatrix} 1 & 2 \\ 0 & 1 \end{bmatrix} = \begin{bmatrix} 1 & 4 \\ 3 & 10 \end{bmatrix}
+$$
+
+<ManimVideo src="/videos/ShearCol.mp4" />
+
+</div>
+
+</ComparisonGrid>
+
+## 4. 综合应用：求逆与方程求解
+*初等变换不仅仅是数学游戏，它是解决线性系统最强有力的武器。*
+
+### 求逆矩阵 (Matrix Inversion)
+求逆的本质是寻找一组变换，将 A 还原为单位矩阵 $I$。
+
+<ComparisonGrid>
+
+<div class="comparison-item">
+
+#### 行变换求逆
+构造增广矩阵 $(A | I)$，通过行变换将其化为 $(I | A^{-1})$。
+
+$$
+E_n \dots E_1 A = I \implies A^{-1} = E_n \dots E_1 I
+$$
+
+<ManimVideo src="/videos/InverseRow.mp4" />
+
+</div>
+
+<div class="comparison-item">
+
+#### 列变换求逆
+构造增广矩阵 $\begin{bmatrix} A \\ \hline I \end{bmatrix}$，通过列变换将其化为 $\begin{bmatrix} I \\ \hline A^{-1} \end{bmatrix}$。
+
+$$
+A E_1 \dots E_n = I \implies A^{-1} = I E_1 \dots E_n
+$$
+
+<ManimVideo src="/videos/InverseCol.mp4" />
+
+</div>
+
+</ComparisonGrid>
+
+### 解矩阵方程 (Solving Matrix Equations)
+根据变量 $X$ 的位置，决定使用行变换还是列变换。
+
+<ComparisonGrid>
+
+<div class="comparison-item">
+
+#### 求解 $AX = B$
+$X$ 在 A 的右侧，故对 A 进行**行变换**。构造 $(A | B)$，化为 $(I | X)$。
+
+$$
+X = A^{-1}B
+$$
+
+<ManimVideo src="/videos/SolveAXB.mp4" />
+
+</div>
+
+<div class="comparison-item">
+
+#### 求解 $XA = B$
+$X$ 在 A 的左侧，故对 A 进行**列变换**。构造 $\begin{bmatrix} A \\ \hline B \end{bmatrix}$，化为 $\begin{bmatrix} I \\ \hline X \end{bmatrix}$。
+
+$$
+X = B A^{-1}
+$$
+
+<ManimVideo src="/videos/SolveXAB.mp4" />
+
+</div>
+
+</ComparisonGrid>
+
+## 结语
+矩阵的初等变换实际上是在对坐标空间进行连续的几何重构。掌握了这一点，你就掌握了理解逆矩阵、秩以及特征值的钥匙。

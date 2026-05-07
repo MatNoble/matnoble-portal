@@ -60,7 +60,7 @@ const splitName = computed(() => {
 <style scoped>
 .hf-hero {
   position: relative;
-  padding: 120px 24px 80px;
+  padding: 80px 24px 40px;
   text-align: center;
   overflow: hidden;
   background: radial-gradient(circle at 50% -20%, var(--mn-primary-soft) 0%, transparent 70%);
@@ -75,10 +75,10 @@ const splitName = computed(() => {
 }
 
 .hf-hero-name {
-  font-size: clamp(2.8rem, 10vw, 6rem);
+  font-size: clamp(2.5rem, 8vw, 5rem);
   font-weight: 800;
   line-height: 1;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   letter-spacing: -0.03em;
   display: flex;
   justify-content: center;
@@ -101,7 +101,7 @@ const splitName = computed(() => {
 }
 
 .name-noble {
-  font-family: var(--mn-font-noble);
+  font-family: var(--mn-font-serif);
   color: var(--mn-accent);
   font-weight: 500;
   font-style: italic;
