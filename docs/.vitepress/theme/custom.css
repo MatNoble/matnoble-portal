@@ -485,6 +485,9 @@ mjx-container:not([display]) {
   display: flex;
   align-items: center;
   transition: color var(--duration-fast) ease;
+  white-space: normal !important; /* 允许换行 */
+  line-height: 1.4 !important;   /* 调整行高 */
+  padding: 4px 0 !important;     /* 增加上下间距防止拥挤 */
 }
 
 .VPDocAside .outline-link:hover {

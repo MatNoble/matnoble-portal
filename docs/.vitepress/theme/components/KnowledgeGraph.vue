@@ -8,6 +8,7 @@ interface NodeData {
   details: string
   link?: string
   children?: NodeData[]
+  relatedTo?: string
 }
 
 const router = useRouter()
@@ -34,6 +35,7 @@ const fullData: NodeData = {
       details: '空间变换与几何直观',
       children: [
         { id: 'matrix', label: '初等变换', details: '矩阵动画演示', link: '/teaching/linear-algebra/elementary-transformations' },
+        { id: 'simplification', label: '矩阵化简', details: '矩阵去冗余演示', link: '/teaching/linear-algebra/matrix-normal-form', relatedTo: 'matrix' },
         { id: 'geometric', label: '几何直观', details: '线性代数核心心法', link: '/teaching/linear-algebra' },
         { id: 'space', label: '3D 实验室', details: '空间几何交互', link: '/teaching/space-geometry-lab' }
       ]
@@ -91,6 +93,26 @@ const goBack = () => {
 }
 
 const activeNodeId = ref<string | null>(null)
+
+const relationLinks = computed(() => {
+  const nodes = positionedNodes.value
+  return nodes
+    .filter(node => node.relatedTo)
+    .map(node => {
+      const target = nodes.find(n => n.id === node.relatedTo)
+      return target ? { source: node, target } : null
+    })
+    .filter((link): link is { source: any, target: any } => link !== null)
+})
+
+const getArcPath = (source: any, target: any) => {
+  const midX = (source.x + target.x) / 2
+  const midY = (source.y + target.y) / 2
+  // Control point offset outward
+  const cpX = midX * 1.25 - centerX * 0.25
+  const cpY = midY * 1.25 - centerY * 0.25
+  return `M ${source.x} ${source.y} Q ${cpX} ${cpY} ${target.x} ${target.y}`
+}
 </script>
 
 <template>
@@ -114,6 +136,14 @@ const activeNodeId = ref<string | null>(null)
         <circle :cx="centerX" :cy="centerY" r="45" class="center-ring" />
         <text :x="centerX" :y="centerY + 5" class="center-label">{{ currentParent.label }}</text>
       </g>
+
+      <!-- Relation Links between siblings -->
+      <path
+        v-for="(link, index) in relationLinks"
+        :key="'rel-' + index"
+        :d="getArcPath(link.source, link.target)"
+        class="relation-line"
+      />
 
       <!-- Child Nodes -->
       <g v-for="node in positionedNodes" 
@@ -228,6 +258,26 @@ const activeNodeId = ref<string | null>(null)
   stroke-width: 1;
   opacity: 0.15;
   stroke-dasharray: 5 5;
+}
+
+.relation-line {
+  fill: none;
+  stroke: var(--mn-primary);
+  stroke-width: 2;
+  stroke-dasharray: 6 4;
+  opacity: 0.35;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 3px var(--mn-primary-ring));
+  animation: dash-flow 20s linear infinite;
+}
+
+@keyframes dash-flow {
+  from { stroke-dashoffset: 100; }
+  to { stroke-dashoffset: 0; }
+}
+
+.dark .relation-line {
+  opacity: 0.5;
 }
 
 /* Child Nodes */

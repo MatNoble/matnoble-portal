@@ -149,39 +149,8 @@ export default defineConfig({
       },
     ],
 
-    // 侧边栏结构化配置 (Pro Max 学者风)
-    sidebar: {
-      "/teaching/": [
-        {
-          text: "核心导读 (Core Methodologies)",
-          items: [
-            { text: "序：微积分概览", link: "/teaching/calculus" },
-            { text: "微分万能公式", link: "/teaching/derivative-method" },
-            { text: "线性代数与直觉", link: "/teaching/linear-algebra" },
-            { text: "初等变换动画演示", link: "/teaching/linear-algebra/elementary-transformations" },
-            { text: "二阶常微分方程解析", link: "/teaching/ode-intuition" },
-          ],
-        },
-        {
-          text: "研学套件 (Toolkits & Labs)",
-          items: [
-            { text: "考研级速查表 (CheatSheet)", link: "/teaching/cheatsheet" },
-            { text: "空间几何 3D 实验室", link: "/teaching/space-geometry-lab" },
-          ],
-        },
-      ],
-      "/tools/": [
-        {
-          text: "效率与计算 (Productivity)",
-          items: [
-            { text: "学术资源访问指南", link: "/tools/academic-resources" },
-            { text: "DI 表格法动态演示", link: "/tools/di-method" },
-            { text: "Memorize: 核心卡片", link: "/tools/memorize" },
-            { text: "沉浸式计时器", link: "/tools/countdown" },
-          ],
-        },
-      ],
-    },
+    // 移除侧边栏，实现全屏沉浸式阅读
+    sidebar: [],
 
     socialLinks: [],
 
