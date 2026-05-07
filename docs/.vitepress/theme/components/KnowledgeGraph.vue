@@ -58,6 +58,30 @@ const history = ref<NodeData[]>([fullData])
 const currentParent = computed(() => history.value[history.value.length - 1])
 const currentNodes = computed(() => currentParent.value.children || [])
 
+// Sync with URL for persistence
+onMounted(() => {
+  const params = new URLSearchParams(window.location.search)
+  const nodeId = params.get('node')
+  if (nodeId) {
+    // Find path to node
+    const findPath = (current: NodeData, id: string, path: NodeData[]): boolean => {
+      if (current.id === id) return true
+      if (current.children) {
+        for (const child of current.children) {
+          path.push(child)
+          if (findPath(child, id, path)) return true
+          path.pop()
+        }
+      }
+      return false
+    }
+    const path: NodeData[] = []
+    if (findPath(fullData, nodeId, path)) {
+      history.value = [fullData, ...path]
+    }
+  }
+})
+
 // Layout Constants
 const centerX = 400
 const centerY = 300
@@ -76,10 +100,21 @@ const positionedNodes = computed(() => {
   })
 })
 
+const updateUrl = (nodeId: string | null) => {
+  const url = new URL(window.location.href)
+  if (nodeId && nodeId !== 'core') {
+    url.searchParams.set('node', nodeId)
+  } else {
+    url.searchParams.delete('node')
+  }
+  window.history.replaceState({}, '', url.toString())
+}
+
 const handleNodeClick = (node: NodeData) => {
   if (node.children && node.children.length > 0) {
     // Drill down
     history.value.push(node)
+    updateUrl(node.id)
   } else if (node.link) {
     // Navigate to page
     router.go(withBase(node.link))
@@ -89,6 +124,7 @@ const handleNodeClick = (node: NodeData) => {
 const goBack = () => {
   if (history.value.length > 1) {
     history.value.pop()
+    updateUrl(history.value[history.value.length - 1].id)
   }
 }
 

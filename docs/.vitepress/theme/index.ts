@@ -34,10 +34,16 @@ import ManimVideo from "./components/ManimVideo.vue";
 import ComparisonGrid from "./components/ComparisonGrid.vue";
 import FollowSection from "./components/FollowSection.vue";
 
+import BackToGraph from "./components/BackToGraph.vue";
+import { useData } from "vitepress";
+
 export default {
   extends: DefaultTheme,
   Layout: () => {
+    const { page } = useData();
     return h(DefaultTheme.Layout, null, {
+      // 在文档内容之前插入返回图谱按钮（首页除外）
+      "doc-before": () => page.value.relativePath !== 'index.md' ? h(BackToGraph) : null,
       // 使用 nav-bar-title-before 插槽插入自定义 Logo
       "nav-bar-title-before": () => h(Logo),
       // 在文档内容之后插入分享组件和评论组件

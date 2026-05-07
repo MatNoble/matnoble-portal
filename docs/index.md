@@ -35,7 +35,7 @@ head:
 
 <div class="enterprise-gateway">
 
-<section class="gateway-section">
+<section id="knowledge-graph" class="gateway-section">
   <h2 class="section-title">
     核心研学地图
     <span class="section-subtitle">Scholarly Knowledge Graph</span>
@@ -61,6 +61,7 @@ head:
   flex-direction: column;
   align-items: center;
   width: 100%;
+  scroll-margin-top: 80px; /* 补偿导航栏高度 */
 }
 
 .gateway-section > * {

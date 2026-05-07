@@ -121,32 +121,9 @@ export default defineConfig({
     siteTitle: false,
     // 顶部导航
     nav: [
-      {
-        text: "教学",
-        items: [
-          { text: "教学体系概览", link: "/teaching/calculus" },
-          { text: "线性代数几何直观", link: "/teaching/linear-algebra" },
-          { text: "初等变换动画演示", link: "/teaching/linear-algebra/elementary-transformations" },
-          { text: "二阶常微分方程", link: "/teaching/ode-intuition" },
-          { text: "空间几何 3D 实验室", link: "/teaching/space-geometry-lab" },
-        ],
-      },
-      {
-        text: "工具",
-        items: [
-          { text: "DI 表格法演示", link: "/tools/di-method" },
-          { text: "Memorize 记忆助手", link: "/tools/memorize" },
-          { text: "沉浸式计时器", link: "/tools/countdown" },
-        ],
-      },
-      {
-        text: "关于",
-        items: [
-          { text: "个人简介", link: "/about" },
-          { text: "技术博客", link: "https://blog.matnoble.top" },
-          { text: "在线相册", link: "https://album.matnoble.top/" },
-        ],
-      },
+      { text: "关于我", link: "/about" },
+      { text: "技术博客", link: "https://blog.matnoble.top" },
+      { text: "在线相册", link: "https://album.matnoble.top/" },
     ],
 
     // 移除侧边栏，实现全屏沉浸式阅读
@@ -365,8 +342,12 @@ export default defineConfig({
       });
     }
 
+    // 8. Dynamic Keywords handling
+    const keywords = pageData.frontmatter.keywords || "计算数学, 算法思维, 微积分, 线性代数, MatNoble";
+
     return [
       ["link", { rel: "canonical", href: url }],
+      ["meta", { name: "keywords", content: keywords }],
       // Open Graph
       ["meta", { property: "og:url", content: url }],
       ["meta", { property: "og:title", content: title }],
