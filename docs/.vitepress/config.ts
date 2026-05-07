@@ -99,9 +99,9 @@ export default defineConfig({
     lastmodDateOnly: true,
     xmlns: {
       news: false,
-      video: false,
-      image: false,
-      xhtml: false,
+      video: true,
+      image: true,
+      xhtml: true,
     },
     transformItems: (items) => {
       return items

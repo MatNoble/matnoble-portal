@@ -25,6 +25,7 @@ const fullData: NodeData = {
       details: '微分万能公式与 DI 策略',
       children: [
         { id: 'derivative', label: '导数方法论', details: '计算深度的提升', link: '/teaching/derivative-method' },
+        { id: 'integral-def', label: '积分定义', details: '从一元到二重的直观', link: '/teaching/integral-definition' },
         { id: 'integral', label: '积分心法', details: 'DI 表格法演示', link: '/tools/di-method' },
         { id: 'ode', label: '常微分方程', details: '二阶解析直觉', link: '/teaching/ode-intuition' }
       ]
