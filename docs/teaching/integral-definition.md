@@ -54,7 +54,7 @@ head:
 3.  **求和**：计算所有矩形的面积之和 $S_n = \sum_{i=1}^n f(\xi_i) \Delta x_i$。
 4.  **取极限**：令子区间长度的最大值 $\lambda \to 0$。
 
-<ManimVideo src="/videos/RiemannSum1D.mp4" />
+<ManimVideo src="https://assets.matnoble.top/RiemannSum1D.mp4" />
 
 ### 正式定义
 
@@ -77,7 +77,7 @@ $$ \int_a^b f(x) \mathrm{d}x = \lim_{\lambda \to 0} \sum_{i=1}^n f(\xi_i) \Delta
 3.  **求和**：计算所有小柱体的体积之和 $\sum_{i=1}^n f(\xi_i, \eta_i) \Delta \sigma_i$。
 4.  **取极限**：令所有小区域直径的最大值 $\lambda \to 0$。
 
-<ManimVideo src="/videos/DoubleIntegralFullNarrative.mp4" />
+<ManimVideo src="https://assets.matnoble.top/DoubleIntegralFullNarrative.mp4" />
 
 ### 正式定义
 
