@@ -44,7 +44,7 @@ $$
 #### REF 的意义
 行阶梯形确立了矩阵的**秩**（非零行的数量）。对于此矩阵，$\text{rank}(A) = 3$。在这个阶段，我们已经可以看出空间在哪些方向上发生了坍缩。
 
-<ManimVideo src="/videos/MatrixRankExplainer.mp4" />
+<ManimVideo src="MatrixRankExplainer.mp4" />
 
 </div>
 
@@ -62,7 +62,7 @@ $$
 #### RREF 的独特性
 行最简形是唯一的。无论消元路径如何，同一个矩阵的 RREF 始终相同。它是线性方程组通解的核心依据。
 
-<ManimVideo src="/videos/MatrixRREFExplainer.mp4" />
+<ManimVideo src="MatrixRREFExplainer.mp4" />
 
 </div>
 
@@ -80,7 +80,7 @@ $$
 #### 最终的本质
 标准型只取决于矩阵的**秩 $r$**。对于任何 $m \times n$ 矩阵，只要秩相同，它们的标准型就完全一致。
 
-<ManimVideo src="/videos/MatrixStandardFormExplainer.mp4" />
+<ManimVideo src="MatrixStandardFormExplainer.mp4" />
 
 </div>
 
@@ -104,7 +104,7 @@ $$
 3. **Case 3: $k = 1$**
    代入后矩阵行与行之间成比例，此时 $\text{rank}(A) = 1$。
 
-<ManimVideo src="/videos/ParametricRankExplainer.mp4" />
+<ManimVideo src="ParametricRankExplainer.mp4" />
 
 </div>
 

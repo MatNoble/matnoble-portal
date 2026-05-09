@@ -452,8 +452,6 @@ export default defineConfig({
     ["meta", { name: "mobile-web-app-capable", content: "yes" }],
     ["meta", { name: "apple-mobile-web-app-status-bar-style", content: "default" }],
     // Security Headers
-    ['meta', { 'http-equiv': 'X-Content-Type-Options', content: 'nosniff' }],
-    ['meta', { 'http-equiv': 'X-Frame-Options', content: 'DENY' }],
     ['meta', { name: 'referrer', content: 'strict-origin-when-cross-origin' }],
     [
       "meta",

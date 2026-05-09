@@ -33,6 +33,7 @@ import FloatingTimerIcon from "./components/FloatingTimerIcon.vue";
 import ManimVideo from "./components/ManimVideo.vue";
 import ComparisonGrid from "./components/ComparisonGrid.vue";
 import FollowSection from "./components/FollowSection.vue";
+import ThreeOneQuote from "./components/ThreeOneQuote.vue";
 
 import BackToGraph from "./components/BackToGraph.vue";
 import { useData } from "vitepress";
@@ -87,6 +88,7 @@ export default {
     app.component("ManimVideo", ManimVideo);
     app.component("ComparisonGrid", ComparisonGrid);
     app.component("FollowSection", FollowSection);
+    app.component("ThreeOneQuote", ThreeOneQuote);
     if (typeof window !== "undefined") {
       inject();
       injectSpeedInsights();

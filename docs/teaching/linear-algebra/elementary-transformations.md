@@ -32,7 +32,7 @@ $$
 \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix} \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix} = \begin{bmatrix} 3 & 4 \\ 1 & 2 \end{bmatrix}
 $$
 
-<ManimVideo src="/videos/SwapRow.mp4" />
+<ManimVideo src="SwapRow.mp4" />
 
 </div>
 
@@ -45,7 +45,7 @@ $$
 \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix} \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix} = \begin{bmatrix} 2 & 1 \\ 4 & 3 \end{bmatrix}
 $$
 
-<ManimVideo src="/videos/SwapCol.mp4" />
+<ManimVideo src="SwapCol.mp4" />
 
 </div>
 
@@ -65,7 +65,7 @@ $$
 \begin{bmatrix} 2 & 0 \\ 0 & 1 \end{bmatrix} \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix} = \begin{bmatrix} 2 & 4 \\ 3 & 4 \end{bmatrix}
 $$
 
-<ManimVideo src="/videos/StretchRow.mp4" />
+<ManimVideo src="StretchRow.mp4" />
 
 </div>
 
@@ -78,7 +78,7 @@ $$
 \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix} \begin{bmatrix} 2 & 0 \\ 0 & 1 \end{bmatrix} = \begin{bmatrix} 2 & 2 \\ 6 & 4 \end{bmatrix}
 $$
 
-<ManimVideo src="/videos/StretchCol.mp4" />
+<ManimVideo src="StretchCol.mp4" />
 
 </div>
 
@@ -98,7 +98,7 @@ $$
 \begin{bmatrix} 1 & 2 \\ 0 & 1 \end{bmatrix} \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix} = \begin{bmatrix} 7 & 10 \\ 3 & 4 \end{bmatrix}
 $$
 
-<ManimVideo src="/videos/ShearRow.mp4" />
+<ManimVideo src="ShearRow.mp4" />
 
 </div>
 
@@ -111,7 +111,7 @@ $$
 \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix} \begin{bmatrix} 1 & 2 \\ 0 & 1 \end{bmatrix} = \begin{bmatrix} 1 & 4 \\ 3 & 10 \end{bmatrix}
 $$
 
-<ManimVideo src="/videos/ShearCol.mp4" />
+<ManimVideo src="ShearCol.mp4" />
 
 </div>
 
@@ -134,7 +134,7 @@ $$
 E_n \dots E_1 A = I \implies A^{-1} = E_n \dots E_1 I
 $$
 
-<ManimVideo src="/videos/InverseRow.mp4" />
+<ManimVideo src="InverseRow.mp4" />
 
 </div>
 
@@ -147,7 +147,7 @@ $$
 A E_1 \dots E_n = I \implies A^{-1} = I E_1 \dots E_n
 $$
 
-<ManimVideo src="/videos/InverseCol.mp4" />
+<ManimVideo src="InverseCol.mp4" />
 
 </div>
 
@@ -167,7 +167,7 @@ $$
 X = A^{-1}B
 $$
 
-<ManimVideo src="/videos/SolveAXB.mp4" />
+<ManimVideo src="SolveAXB.mp4" />
 
 </div>
 
@@ -180,7 +180,7 @@ $$
 X = B A^{-1}
 $$
 
-<ManimVideo src="/videos/SolveXAB.mp4" />
+<ManimVideo src="SolveXAB.mp4" />
 
 </div>
 

@@ -17,8 +17,21 @@ const props = withDefaults(defineProps<Props>(), {
   ratio: '16/9'
 })
 
+// Centralized CDN Base URL
+const CDN_BASE = 'https://assets.matnoble.top'
+
 const isPlaying = ref(false)
 const showVideo = ref(!!props.src || !!props.bvid)
+
+const videoSrc = computed(() => {
+  if (!props.src) return ''
+  // If it's already a full URL or a local path starting with /, use as is
+  if (props.src.startsWith('http') || props.src.startsWith('/')) {
+    return props.src
+  }
+  // Otherwise, prepend the CDN base URL
+  return `${CDN_BASE}/${props.src}`
+})
 
 const bilibiliUrl = computed(() => {
   if (!props.bvid) return ''
@@ -49,12 +62,14 @@ const containerStyle = computed(() => ({
       <!-- Native HTML5 Video -->
       <video
         v-else-if="src"
-        :src="src"
+        :src="videoSrc"
         :poster="poster"
         :autoplay="autoplay"
         :loop="loop"
         controls
         playsinline
+        preload="metadata"
+        crossorigin="anonymous"
         class="native-video"
       ></video>
     </div>
