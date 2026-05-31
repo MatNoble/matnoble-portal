@@ -4,6 +4,7 @@ import { genFeed } from "./genFeed";
 import { VitePWA } from "vite-plugin-pwa";
 
 export default defineConfig({
+  srcExclude: ["**/economic-math-2.md"],
   lang: "zh-CN",
   title: "MatNoble",
   titleTemplate: ":title | MatNoble", // 统一标题模板，防止重复
@@ -122,6 +123,7 @@ export default defineConfig({
     // 顶部导航
     nav: [
       { text: "关于我", link: "/about" },
+      { text: "课程中心", link: "/courses/" },
       { text: "技术博客", link: "https://blog.matnoble.top" },
       { text: "在线相册", link: "https://album.matnoble.top/" },
     ],

@@ -36,6 +36,7 @@ import FollowSection from "./components/FollowSection.vue";
 import ThreeOneQuote from "./components/ThreeOneQuote.vue";
 
 import BackToGraph from "./components/BackToGraph.vue";
+import CourseList from "./components/CourseList.vue";
 import { useData } from "vitepress";
 
 export default {
@@ -89,6 +90,7 @@ export default {
     app.component("ComparisonGrid", ComparisonGrid);
     app.component("FollowSection", FollowSection);
     app.component("ThreeOneQuote", ThreeOneQuote);
+    app.component("CourseList", CourseList);
     if (typeof window !== "undefined") {
       inject();
       injectSpeedInsights();
