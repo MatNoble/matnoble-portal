@@ -1,4 +1,4 @@
-import { h, onMounted, watch, nextTick } from "vue";
+import { h, onMounted, watch, nextTick, defineAsyncComponent } from "vue";
 import { useRoute } from "vitepress";
 import DefaultTheme from "vitepress/theme";
 import Logo from "./components/Logo.vue";
@@ -26,11 +26,11 @@ import mediumZoom from "medium-zoom";
 
 import type { EnhanceAppContext } from "vitepress";
 import CheatSheetFooter from "./components/CheatSheetFooter.vue";
-import DISolver from "./components/DIMethod/DISolver.vue";
+const DISolver = defineAsyncComponent(() => import("./components/DIMethod/DISolver.vue"));
 import ScrollTelling from "./components/ScrollTelling.vue";
 import MatCountdown from "./components/MatCountdown.vue";
 import FloatingTimerIcon from "./components/FloatingTimerIcon.vue";
-import ManimVideo from "./components/ManimVideo.vue";
+const ManimVideo = defineAsyncComponent(() => import("./components/ManimVideo.vue"));
 import ComparisonGrid from "./components/ComparisonGrid.vue";
 import FollowSection from "./components/FollowSection.vue";
 import ThreeOneQuote from "./components/ThreeOneQuote.vue";
@@ -60,9 +60,42 @@ export default {
       // mediumZoom('[data-zoomable]')
       mediumZoom(".main img", { background: "var(--vp-c-bg)" });
     };
+
+    const initAnalytics = () => {
+      if (typeof window === "undefined") return;
+
+      // 1. 动态延迟加载 Vercel Analytics 和 Speed Insights
+      inject();
+      injectSpeedInsights();
+
+      // 2. 动态延迟加载 Google Analytics
+      if (!document.getElementById('google-analytics-tag')) {
+        const script1 = document.createElement('script');
+        script1.id = 'google-analytics-tag';
+        script1.async = true;
+        script1.src = 'https://www.googletagmanager.com/gtag/js?id=G-491EPRZ1LY';
+        document.head.appendChild(script1);
+
+        const script2 = document.createElement('script');
+        script2.id = 'google-analytics';
+        script2.innerHTML = `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-491EPRZ1LY');
+        `;
+        document.head.appendChild(script2);
+      }
+    };
+
     onMounted(() => {
       initZoom();
+      // 延迟 4 秒，确保首屏网络与 CPU 闲置后加载分析统计
+      setTimeout(() => {
+        initAnalytics();
+      }, 4000);
     });
+
     watch(
       () => route.path,
       () => nextTick(() => initZoom())
@@ -92,8 +125,7 @@ export default {
     app.component("ThreeOneQuote", ThreeOneQuote);
     app.component("CourseList", CourseList);
     if (typeof window !== "undefined") {
-      inject();
-      injectSpeedInsights();
+      // Vercel 静态注入已移至 setup() 延迟初始化
     }
   },
 };

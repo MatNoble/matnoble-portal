@@ -52,7 +52,9 @@ import SpaceGeometryLab from '../components/SpaceGeometryLab.vue'
 > **引用基准：James Stewart, *Calculus: Early Transcendentals***  
 > 本交互式实验室旨在通过现代可视化手段，填补传统黑板绘图在表达三维空间曲面（Surfaces）与曲线（Lines in Space）时的盲区。我们遵循 Stewart 微积分体系，重点展示解析几何在物理建模中的直观逻辑。
 
-<SpaceGeometryLab />
+<ClientOnly>
+  <SpaceGeometryLab />
+</ClientOnly>
 
 <br/>
 

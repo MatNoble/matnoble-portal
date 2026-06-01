@@ -41,7 +41,6 @@
 <script setup>
 import { onMounted, onUnmounted } from "vue";
 import { useData } from "vitepress";
-import { init } from "@waline/client";
 import "@waline/client/style";
 
 const { isDark } = useData();
@@ -52,8 +51,11 @@ onMounted(() => {
   const serverURL = "https://matnoble-comment.vercel.app";
 
   const observer = new IntersectionObserver(
-    (entries) => {
+    async (entries) => {
       if (entries[0].isIntersecting) {
+        // 动态导入 Waline 客户端核心库
+        const { init } = await import("@waline/client");
+        
         walineInstance = init({
           el: "#waline",
           serverURL: serverURL,

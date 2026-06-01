@@ -22,7 +22,9 @@ structuredData:
 点击下方的题目切换例题，点击 **“下一步”** 观察表格是如何构建的。
 :::
 
-<DISolver />
+<ClientOnly>
+  <DISolver />
+</ClientOnly>
 
 ---
 

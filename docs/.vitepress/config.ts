@@ -21,6 +21,24 @@ export default defineConfig({
     build: {
       target: "esnext",
       chunkSizeWarningLimit: 1000,
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (id.includes("node_modules/three")) {
+              return "vendor-three";
+            }
+            if (id.includes("node_modules/video.js") || id.includes("node_modules/videojs")) {
+              return "vendor-videojs";
+            }
+            if (id.includes("node_modules/@waline")) {
+              return "vendor-waline";
+            }
+            if (id.includes("node_modules/katex")) {
+              return "vendor-katex";
+            }
+          }
+        }
+      }
     },
     plugins: [
       webfontDl([
@@ -387,7 +405,7 @@ export default defineConfig({
           merrorInheritFont: true,
           displayAlign: 'center',
           displayIndent: '0',
-          fontURL: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/stix2'
+          fontURL: 'https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/3.2.0/es5/output/chtml/fonts/stix2'
         },
         tex: {
           packages: {'[+]': ['physics']},
@@ -396,15 +414,6 @@ export default defineConfig({
           processEscapes: true
         }
       };`,
-    ],
-    ["link", { rel: "preconnect", href: "https://www.googletagmanager.com" }],
-    ["link", { rel: "dns-prefetch", href: "https://www.googletagmanager.com" }],
-    [
-      "script",
-      {
-        async: "",
-        src: "https://www.googletagmanager.com/gtag/js?id=G-491EPRZ1LY",
-      },
     ],
     [
       "link",
@@ -423,14 +432,6 @@ export default defineConfig({
         title: "RSS Feed for MatNoble",
         href: "/feed.xml",
       },
-    ],
-    [
-      "script",
-      {},
-      `window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-491EPRZ1LY');`,
     ],
     ["link", { rel: "icon", href: "/favicon.ico", sizes: "any" }],
     ["link", { rel: "icon", href: "/logo.svg", type: "image/svg+xml" }],
