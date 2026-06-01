@@ -124,6 +124,7 @@ export default defineConfig({
     nav: [
       { text: "关于我", link: "/about" },
       { text: "课程中心", link: "/courses/" },
+      { text: "开源项目", link: "/projects/" },
       { text: "技术博客", link: "https://blog.matnoble.top" },
       { text: "在线相册", link: "https://album.matnoble.top/" },
     ],

@@ -21,6 +21,11 @@ head:
             "@type": "SoftwareApplication",
             "name": "HUSTMatNobleBeamer",
             "description": "基于 HUST 官方视觉元素的 Beamer 幻灯片模板。"
+          },
+          {
+            "@type": "SoftwareApplication",
+            "name": "点名光标 (Roll Call Beacon)",
+            "description": "结合高校教务系统考勤页面的浏览器点名辅助扩展。"
           }
         ]
       }
@@ -45,6 +50,10 @@ head:
 ---
 
 ## 教学辅助与交互工具 (Educational Tools)
+
+### [点名光标 Roll Call Beacon](/roll-call-beacon/)
+一款专为高校教学场景设计的浏览器点名辅助扩展。支持与学校教务系统考勤页面深度结合，在本地进行智能名单识别、科学随机抽样与护眼高亮视觉反馈，辅助教师高效进行课堂互动。
+- [详细介绍与下载](/roll-call-beacon/) | [隐私政策](/roll-call-beacon/privacy)
 
 ### [Memorize 记忆助手](https://memorize.matnoble.top)
 基于 SM-2 间隔重复算法的记忆辅助工具。深度集成 KaTeX 渲染，完美支持数学公式，助你对抗遗忘。

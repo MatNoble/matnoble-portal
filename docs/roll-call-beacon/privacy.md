@@ -66,6 +66,7 @@ breadcrumb: 点名光标隐私政策
 - 开发者：MatNoble
 - 邮箱：contact@matnoble.top
 - 网站：[https://matnoble.top](https://matnoble.top)
+- 扩展主页：[点名光标介绍与下载](/roll-call-beacon/)
 
 ---
 
