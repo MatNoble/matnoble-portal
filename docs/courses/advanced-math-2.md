@@ -15,21 +15,21 @@ next: false
 const CDN_BASE = 'https://assets.matnoble.top/calculus/II'
 </script>
 
-# 高等数学II <span class="subtitle">Advanced Mathematics II</span>
+# 高等数学II
 
 《高等数学II》是理工科各专业的核心基础课。本页面提供课程的章节化授课课件与复习讲义资料下载。所有文件均与备课目录实时同步。
 
 ---
 
-## 章节大纲与课件下载 <span class="sec-eng">Syllabus, Lectures & Reviews</span>
+## 章节大纲与课件下载
 
-### 第 7 章：常微分方程 <span class="sec-eng">Chapter 7: Differential Equations (暂未开放)</span>
+### 第 7 章：常微分方程
 
-<table class="academic-table table-disabled">
+<table class="academic-table">
   <thead>
     <tr>
       <th style="width: 12%">章节</th>
-      <th style="width: 73%">核心知识要点 (Key Topics)</th>
+      <th style="width: 73%">核心知识要点</th>
       <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
     </tr>
   </thead>
@@ -37,32 +37,32 @@ const CDN_BASE = 'https://assets.matnoble.top/calculus/II'
     <tr>
       <td class="chap-num">7.1</td>
       <td class="chap-title">微分方程的基本概念</td>
-      <td class="download-cell"><span class="btn-lock">未开放 🔒</span></td>
+      <td class="download-cell"><a :href="CDN_BASE + '/7/7-1_basic_concepts_of_differential_equations.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
     </tr>
     <tr>
       <td class="chap-num">7.2</td>
       <td class="chap-title">一阶线性微分方程</td>
-      <td class="download-cell"><span class="btn-lock">未开放 🔒</span></td>
+      <td class="download-cell"><a :href="CDN_BASE + '/7/7-2_first_order_linear_differential_equations.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
     </tr>
     <tr>
       <td class="chap-num">7.3</td>
       <td class="chap-title">可降阶的高阶微分方程</td>
-      <td class="download-cell"><span class="btn-lock">未开放 🔒</span></td>
+      <td class="download-cell"><a :href="CDN_BASE + '/7/7-3_higher_order_differential_equations_reducible_in_order.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
     </tr>
     <tr>
       <td class="chap-num">7.4</td>
       <td class="chap-title">二阶线性微分方程解的结构</td>
-      <td class="download-cell"><span class="btn-lock">未开放 🔒</span></td>
+      <td class="download-cell"><a :href="CDN_BASE + '/7/7-4_structure_of_solutions_to_second_order_linear_differential_equations.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
     </tr>
     <tr>
       <td class="chap-num">7.5</td>
       <td class="chap-title">二阶常系数齐次线性微分方程</td>
-      <td class="download-cell"><span class="btn-lock">未开放 🔒</span></td>
+      <td class="download-cell"><a :href="CDN_BASE + '/7/7-5_second_order_homogeneous_linear_differential_equations_with_constant_coefficients.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
     </tr>
     <tr>
       <td class="chap-num">7.6</td>
       <td class="chap-title">二阶常系数非齐次线性微分方程</td>
-      <td class="download-cell"><span class="btn-lock">未开放 🔒</span></td>
+      <td class="download-cell"><a :href="CDN_BASE + '/7/7-6_second_order_nonhomogeneous_linear_differential_equations_with_constant_coefficients.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
     </tr>
     <tr class="review-row">
       <td class="chap-num">复习</td>
@@ -72,13 +72,13 @@ const CDN_BASE = 'https://assets.matnoble.top/calculus/II'
   </tbody>
 </table>
 
-### 第 8 章：向量代数与空间解析几何 <span class="sec-eng">Chapter 8: Vectors & Analytic Geometry (暂未开放)</span>
+### 第 8 章：向量代数与空间解析几何
 
-<table class="academic-table table-disabled">
+<table class="academic-table">
   <thead>
     <tr>
       <th style="width: 12%">章节</th>
-      <th style="width: 73%">核心知识要点 (Key Topics)</th>
+      <th style="width: 73%">核心知识要点</th>
       <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
     </tr>
   </thead>
@@ -86,32 +86,32 @@ const CDN_BASE = 'https://assets.matnoble.top/calculus/II'
     <tr>
       <td class="chap-num">8.1</td>
       <td class="chap-title">向量代数及其几何意义</td>
-      <td class="download-cell"><span class="btn-lock">未开放 🔒</span></td>
+      <td class="download-cell"><a :href="CDN_BASE + '/8/8-1_vector_algebra.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
     </tr>
     <tr>
       <td class="chap-num">8.2</td>
       <td class="chap-title">数量积与向量积的坐标运算</td>
-      <td class="download-cell"><span class="btn-lock">未开放 🔒</span></td>
+      <td class="download-cell"><a :href="CDN_BASE + '/8/8-2_dot_product_and_cross_product.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
     </tr>
     <tr>
       <td class="chap-num">8.3</td>
       <td class="chap-title">空间曲面及其方程（二次曲面）</td>
-      <td class="download-cell"><span class="btn-lock">未开放 🔒</span></td>
+      <td class="download-cell"><a :href="CDN_BASE + '/8/8-3_surfaces_in_space_and_their_equations.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
     </tr>
     <tr>
       <td class="chap-num">8.4</td>
       <td class="chap-title">空间曲线及其方程与投影</td>
-      <td class="download-cell"><span class="btn-lock">未开放 🔒</span></td>
+      <td class="download-cell"><a :href="CDN_BASE + '/8/8-4_space_curves_and_their_equations.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
     </tr>
     <tr>
       <td class="chap-num">8.5</td>
       <td class="chap-title">平面及其方程计算</td>
-      <td class="download-cell"><span class="btn-lock">未开放 🔒</span></td>
+      <td class="download-cell"><a :href="CDN_BASE + '/8/8-5_planes_and_their_equations.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
     </tr>
     <tr>
       <td class="chap-num">8.6</td>
       <td class="chap-title">空间直线及其方程与夹角</td>
-      <td class="download-cell"><span class="btn-lock">未开放 🔒</span></td>
+      <td class="download-cell"><a :href="CDN_BASE + '/8/8-6_lines_in_space_and_their_equations.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
     </tr>
     <tr class="review-row">
       <td class="chap-num">复习</td>
@@ -121,13 +121,13 @@ const CDN_BASE = 'https://assets.matnoble.top/calculus/II'
   </tbody>
 </table>
 
-### 第 9 章：多元函数微分学 <span class="sec-eng">Chapter 9: Multivariate Differentiation</span>
+### 第 9 章：多元函数微分学
 
 <table class="academic-table">
   <thead>
     <tr>
       <th style="width: 12%">章节</th>
-      <th style="width: 73%">核心知识要点 (Key Topics)</th>
+      <th style="width: 73%">核心知识要点</th>
       <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
     </tr>
   </thead>
@@ -170,13 +170,13 @@ const CDN_BASE = 'https://assets.matnoble.top/calculus/II'
   </tbody>
 </table>
 
-### 第 10 章：多元函数积分学 <span class="sec-eng">Chapter 10: Multivariate Integration</span>
+### 第 10 章：多元函数积分学
 
 <table class="academic-table">
   <thead>
     <tr>
       <th style="width: 12%">章节</th>
-      <th style="width: 73%">核心知识要点 (Key Topics)</th>
+      <th style="width: 73%">核心知识要点</th>
       <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
     </tr>
   </thead>
@@ -219,13 +219,13 @@ const CDN_BASE = 'https://assets.matnoble.top/calculus/II'
   </tbody>
 </table>
 
-### 第 12 章：无穷级数 <span class="sec-eng">Chapter 12: Infinite Series</span>
+### 第 12 章：无穷级数
 
 <table class="academic-table">
   <thead>
     <tr>
       <th style="width: 12%">章节</th>
-      <th style="width: 73%">核心知识要点 (Key Topics)</th>
+      <th style="width: 73%">核心知识要点</th>
       <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
     </tr>
   </thead>
