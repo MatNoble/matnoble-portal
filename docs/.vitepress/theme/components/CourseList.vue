@@ -13,7 +13,7 @@ interface Course {
   link: string
 }
 
-// 仅保留理工数学核心课程
+// 理工科与专业核心数学课程
 const courses = ref<Course[]>([
   {
     id: 'advanced-math-2',
@@ -24,6 +24,16 @@ const courses = ref<Course[]>([
     semester: '2026 春季',
     description: '理工科核心基础课。涵盖多元函数微积分学、重积分、常微分方程以及无穷级数，致力于重构空间几何直觉，提供严密精细的数理逻辑支撑。',
     link: '/courses/advanced-math-2'
+  },
+  {
+    id: 'discrete-math',
+    code: '专业数学',
+    title: '离散数学',
+    enTitle: 'Discrete Mathematics',
+    category: 'stem',
+    semester: '2026 春季',
+    description: '计算机类各专业核心基础课。本课程深入探讨集合论、二元关系、等价与偏序、图论及代数结构，为算法结构设计与数理逻辑证明奠定基础。',
+    link: '/courses/discrete-math'
   }
 ])
 </script>
@@ -34,7 +44,7 @@ const courses = ref<Course[]>([
     <div class="hub-header">
       <h1 class="hub-title">课程中心 <span class="subtitle">Course Hub</span></h1>
       <p class="hub-description">
-        以数学直觉为引领，用计算与代码重构科学视野。在这里获取本学期主讲课程《高等数学II》的章节化教学大纲及期末冲刺复习讲义。
+        以数学直觉为引领，用计算与代码重构科学视野。在这里获取本学期主讲课程《高等数学II》与《离散数学》的章节化教学大纲及精品讲义课件。
       </p>
     </div>
 
