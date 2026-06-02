@@ -38,7 +38,7 @@ const courses = ref<Course[]>([
   {
     id: 'economic-math-2',
     code: '经管数学',
-    title: '经济数学II (线性代数)',
+    title: '经济数学II',
     enTitle: 'Economic Mathematics II',
     category: 'business',
     semester: '2026 春季',
