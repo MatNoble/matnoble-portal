@@ -67,7 +67,14 @@ const CDN_BASE = 'https://assets.matnoble.top/calculus/II'
     <tr class="review-row">
       <td class="chap-num">复习</td>
       <td class="chap-title font-review">本章专题复习与核心计算方法讲义</td>
-      <td class="download-cell"><span class="btn-lock">未开放 🔒</span></td>
+      <td class="download-cell">
+        <div class="dl-group">
+          <a :href="CDN_BASE + '/7/Chapter_7_Differential_Equations_Student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">学生版 📂</a>
+          <!-- 待授课完成后开放教师版： -->
+          <!-- <a :href="CDN_BASE + '/7/Chapter_7_Differential_Equations_Teacher.pdf'" target="_blank" rel="noopener" class="btn-dl">教师版 📂</a> -->
+          <span class="btn-lock">教师版 🔒</span>
+        </div>
+      </td>
     </tr>
   </tbody>
 </table>
@@ -116,7 +123,14 @@ const CDN_BASE = 'https://assets.matnoble.top/calculus/II'
     <tr class="review-row">
       <td class="chap-num">复习</td>
       <td class="chap-title font-review">本章专题复习与空间解析几何几何法讲义</td>
-      <td class="download-cell"><span class="btn-lock">未开放 🔒</span></td>
+      <td class="download-cell">
+        <div class="dl-group">
+          <a :href="CDN_BASE + '/8/Chapter_8_Spatial_Analytic_Geometry_Student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">学生版 📂</a>
+          <!-- 待授课完成后开放教师版： -->
+          <!-- <a :href="CDN_BASE + '/8/Chapter_8_Spatial_Analytic_Geometry_Teacher.pdf'" target="_blank" rel="noopener" class="btn-dl">教师版 📂</a> -->
+          <span class="btn-lock">教师版 🔒</span>
+        </div>
+      </td>
     </tr>
   </tbody>
 </table>
@@ -258,7 +272,14 @@ const CDN_BASE = 'https://assets.matnoble.top/calculus/II'
     <tr class="review-row">
       <td class="chap-num">复习</td>
       <td class="chap-title font-review">本章专题复习与无穷级数收敛性判定/展开式大题讲义</td>
-      <td class="download-cell"><a :href="CDN_BASE + '/12/series-final-review.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">复习 PDF 📂</a></td>
+      <td class="download-cell">
+        <div class="dl-group">
+          <a :href="CDN_BASE + '/12/Chapter_12_Infinite_Series_Student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">学生版 📂</a>
+          <!-- 待授课完成后开放教师版： -->
+          <!-- <a :href="CDN_BASE + '/12/Chapter_12_Infinite_Series_Teacher.pdf'" target="_blank" rel="noopener" class="btn-dl">教师版 📂</a> -->
+          <span class="btn-lock">教师版 🔒</span>
+        </div>
+      </td>
     </tr>
   </tbody>
 </table>
@@ -378,6 +399,14 @@ const CDN_BASE = 'https://assets.matnoble.top/calculus/II'
 .download-cell {
   text-align: center !important;
   padding: 8px 18px !important;
+}
+
+.dl-group {
+  display: inline-flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .btn-dl {
