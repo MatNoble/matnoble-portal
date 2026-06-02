@@ -13,7 +13,7 @@ interface Course {
   link: string
 }
 
-// 理工科与专业核心数学课程
+// 核心数学课程
 const courses = ref<Course[]>([
   {
     id: 'advanced-math-2',
@@ -34,6 +34,16 @@ const courses = ref<Course[]>([
     semester: '2026 春季',
     description: '计算机类各专业核心基础课。本课程深入探讨集合论、二元关系、等价与偏序、图论及代数结构，为算法结构设计与数理逻辑证明奠定基础。',
     link: '/courses/discrete-math'
+  },
+  {
+    id: 'economic-math-2',
+    code: '经管数学',
+    title: '经济数学II (线性代数)',
+    enTitle: 'Economic Mathematics II',
+    category: 'business',
+    semester: '2026 春季',
+    description: '经管类专业核心工具课。课程以线性代数为主体，包含行列式、矩阵运算、线性方程组求解及向量组线性相关性，为经管决策分析构建代数基础。',
+    link: '/courses/economic-math-2'
   }
 ])
 </script>
@@ -95,7 +105,7 @@ const courses = ref<Course[]>([
 
 <style scoped>
 .courses-hub {
-  max-width: 960px; /* Narrower width for a more balanced dual-card layout */
+  max-width: 1200px; /* Wider for 3-card layout */
   margin: 0 auto;
   padding: 40px 24px 80px;
 }
@@ -136,7 +146,7 @@ const courses = ref<Course[]>([
 /* Dual Card Grid System */
 .courses-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 32px;
 }
 
@@ -330,6 +340,12 @@ const courses = ref<Course[]>([
   font-size: 0.95rem;
   color: var(--mn-text-muted);
   font-weight: 600;
+}
+
+@media (max-width: 992px) {
+  .courses-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 768px) {

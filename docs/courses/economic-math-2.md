@@ -2,166 +2,209 @@
 layout: doc
 title: 经济数学II
 breadcrumb: 经济数学II
-description: 经济管理类核心工具课《经济数学II》教学大纲、模块化课件与复习专题讲义。内容深度融合微积分在边际分析、弹性模型、拉格朗日最优化及索洛经济增长模型中的工具性应用。
+description: 经济管理类核心工具课《经济数学II》（线性代数）教学大纲、授课课件与复习专题讲义。内容涵盖行列式、矩阵代数与线性方程组。
 head:
   - - meta
     - name: keywords
-      content: 经济数学II, 边际分析, 拉格朗日乘数, 消费者剩余, 差分方程, 课件下载, 复习讲义
+      content: 经济数学II, 线性代数, 行列式, 矩阵运算, 线性方程组, 课件下载, 复习讲义
+prev: false
+next: false
 ---
 
-# 经济数学II <span class="subtitle">Economic Mathematics II</span>
+<script setup>
+const CDN_BASE = 'https://assets.matnoble.top/linear_algebra/economics'
+</script>
 
-《经济数学II》是经济管理类各专业的核心工具课。本页面提供课程的章节化授课课件与复习讲义资料下载。所有文件均与备课目录实时同步。
+# 经济数学II
+
+《经济数学II》是经济管理类各专业的核心工具课，其授课主体内容为**线性代数**。本页面提供课程的章节化授课课件与复习讲义资料下载。所有文件均与备课目录实时同步。
 
 ---
 
-## 章节大纲与课件下载 <span class="sec-eng">Syllabus, Lectures & Reviews</span>
+## 章节大纲与课件下载
 
-### 第一模块：空间几何与多元微分 <span class="sec-eng">Module 1: Vectors & Differentiation</span>
+### 第 1 章：行列式
 
 <table class="academic-table">
   <thead>
     <tr>
-      <th style="width: 12%">模块</th>
-      <th style="width: 73%">经济学应用与核心要点 (Key Topics)</th>
+      <th style="width: 12%">章节</th>
+      <th style="width: 73%">核心知识要点</th>
       <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td class="chap-num">1.1</td>
-      <td class="chap-title">三维空间与向量代数（在多维生产函数中的映射）</td>
-      <td class="download-cell"><span class="btn-lock">未开放 🔒</span></td>
+      <td class="chap-title">行列式的定义</td>
+      <td class="download-cell"><a :href="CDN_BASE + '/1-1_Determinant_Definition.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
     </tr>
     <tr>
       <td class="chap-num">1.2</td>
-      <td class="chap-title">多元函数的基本概念、极限与偏导数定义</td>
-      <td class="download-cell"><span class="btn-lock">未开放 🔒</span></td>
+      <td class="chap-title">行列式的性质</td>
+      <td class="download-cell"><a :href="CDN_BASE + '/1-2_Determinant_Properties.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
     </tr>
     <tr>
       <td class="chap-num">1.3</td>
-      <td class="chap-title">全微分的计算及其在经济边际分析中的应用</td>
-      <td class="download-cell"><span class="btn-lock">未开放 🔒</span></td>
+      <td class="chap-title">行列式展开定理</td>
+      <td class="download-cell"><a :href="CDN_BASE + '/1-3_Determinant_Expansion_Theorem.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
+    </tr>
+    <tr>
+      <td class="chap-num">1.3.5</td>
+      <td class="chap-title">范德蒙德行列式</td>
+      <td class="download-cell"><a :href="CDN_BASE + '/1-3_5_Vandermonde_Determinant.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
     </tr>
     <tr>
       <td class="chap-num">1.4</td>
-      <td class="chap-title">多元复合函数求导与需求交叉替代弹性模型</td>
-      <td class="download-cell"><span class="btn-lock">未开放 🔒</span></td>
+      <td class="chap-title">克拉默法则与矩阵概念</td>
+      <td class="download-cell"><a :href="CDN_BASE + '/1-4_Cramers_Rule_and_Matrix_Concept.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
     </tr>
     <tr class="review-row">
       <td class="chap-num">复习</td>
-      <td class="chap-title font-review">本模块专题复习：多维微分边际计算与弹性模型专题精解</td>
-      <td class="download-cell"><span class="btn-lock">未开放 🔒</span></td>
+      <td class="chap-title font-review">本章专题复习与行列式核心计算方法讲义</td>
+      <td class="download-cell">
+        <div class="dl-group">
+          <a :href="CDN_BASE + '/handout_ch1_determinants_student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">学生版 📂</a>
+          <!-- 待授课完成后开放教师版： -->
+          <!-- <a :href="CDN_BASE + '/handout_ch1_determinants_teacher.pdf'" target="_blank" rel="noopener" class="btn-dl">教师版 📂</a> -->
+          <span class="btn-lock">教师版 🔒</span>
+        </div>
+      </td>
     </tr>
   </tbody>
 </table>
 
-### 第二模块：拉格朗日乘数与约束最优化 <span class="sec-eng">Module 2: Constraint Optimization</span>
+### 第 2 章：矩阵及其运算
 
 <table class="academic-table">
   <thead>
     <tr>
-      <th style="width: 12%">模块</th>
-      <th style="width: 73%">经济学应用与核心要点 (Key Topics)</th>
+      <th style="width: 12%">章节</th>
+      <th style="width: 73%">核心知识要点</th>
       <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td class="chap-num">2.1</td>
-      <td class="chap-title">无约束极值与二阶偏导数判定条件</td>
-      <td class="download-cell"><span class="btn-lock">未开放 🔒</span></td>
+      <td class="chap-title">矩阵的定义与运算</td>
+      <td class="download-cell"><a :href="CDN_BASE + '/2-1_Matrix_Operations.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
     </tr>
     <tr>
       <td class="chap-num">2.2</td>
-      <td class="chap-title">拉格朗日乘数法定理与经济约束最优化问题</td>
-      <td class="download-cell"><span class="btn-lock">未开放 🔒</span></td>
+      <td class="chap-title">逆矩阵</td>
+      <td class="download-cell"><a :href="CDN_BASE + '/2-2_Inverse_Matrix.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
     </tr>
     <tr>
       <td class="chap-num">2.3</td>
-      <td class="chap-title">预算约束下的效用最大化与厂商成本最小化证明</td>
-      <td class="download-cell"><span class="btn-lock">未开放 🔒</span></td>
-    </tr>
-    <tr>
-      <td class="chap-num">2.4</td>
-      <td class="chap-title">拉格朗日乘数的经济学解释：影子价格（Shadow Price）</td>
-      <td class="download-cell"><span class="btn-lock">未开放 🔒</span></td>
+      <td class="chap-title">分块矩阵</td>
+      <td class="download-cell"><a :href="CDN_BASE + '/2-3_Block_Matrix.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
     </tr>
     <tr class="review-row">
       <td class="chap-num">复习</td>
-      <td class="chap-title font-review">本模块专题复习：拉格朗日约束最优化与影子价格经济证明专题</td>
-      <td class="download-cell"><span class="btn-lock">未开放 🔒</span></td>
+      <td class="chap-title font-review">本章专题复习与矩阵代数经典计算讲义</td>
+      <td class="download-cell">
+        <div class="dl-group">
+          <a :href="CDN_BASE + '/handout_ch2_matrix_operations_student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">学生版 📂</a>
+          <!-- 待授课完成后开放教师版： -->
+          <!-- <a :href="CDN_BASE + '/handout_ch2_matrix_operations_teacher.pdf'" target="_blank" rel="noopener" class="btn-dl">教师版 📂</a> -->
+          <span class="btn-lock">教师版 🔒</span>
+        </div>
+      </td>
     </tr>
   </tbody>
 </table>
 
-### 第三模块：重积分计算与消费者剩余 <span class="sec-eng">Module 3: Multiple Integrals</span>
+### 第 3 章：矩阵的初等变换与线性方程组
 
 <table class="academic-table">
   <thead>
     <tr>
-      <th style="width: 12%">模块</th>
-      <th style="width: 73%">经济学应用与核心要点 (Key Topics)</th>
+      <th style="width: 12%">章节</th>
+      <th style="width: 73%">核心知识要点</th>
       <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td class="chap-num">3.1</td>
-      <td class="chap-title">二重积分的定义、性质与直角坐标系计算</td>
-      <td class="download-cell"><span class="btn-lock">未开放 🔒</span></td>
+      <td class="chap-title">矩阵的初等变换</td>
+      <td class="download-cell"><a :href="CDN_BASE + '/3-1_Elementary_Transformations.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
     </tr>
     <tr>
       <td class="chap-num">3.2</td>
-      <td class="chap-title">二重积分在极坐标系下的计算技巧</td>
-      <td class="download-cell"><span class="btn-lock">未开放 🔒</span></td>
+      <td class="chap-title">矩阵的秩</td>
+      <td class="download-cell"><a :href="CDN_BASE + '/3-2_Matrix_Rank.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
     </tr>
     <tr>
       <td class="chap-num">3.3</td>
-      <td class="chap-title">积分在经济总量中的应用：消费者剩余与生产者剩余</td>
-      <td class="download-cell"><span class="btn-lock">未开放 🔒</span></td>
+      <td class="chap-title">线性方程组消元法</td>
+      <td class="download-cell"><a :href="CDN_BASE + '/3-3_Elimination_Method.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
     </tr>
     <tr class="review-row">
       <td class="chap-num">复习</td>
-      <td class="chap-title font-review">本模块专题复习：消费者与生产者剩余的量化积分计算专题</td>
-      <td class="download-cell"><span class="btn-lock">未开放 🔒</span></td>
+      <td class="chap-title font-review">本章专题复习与线性方程组消元求解大题讲义</td>
+      <td class="download-cell">
+        <div class="dl-group">
+          <a :href="CDN_BASE + '/handout_ch3_elimination_systems_student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">学生版 📂</a>
+          <!-- 待授课完成后开放教师版： -->
+          <!-- <a :href="CDN_BASE + '/handout_ch3_elimination_systems_teacher.pdf'" target="_blank" rel="noopener" class="btn-dl">教师版 📂</a> -->
+          <span class="btn-lock">教师版 🔒</span>
+        </div>
+      </td>
     </tr>
   </tbody>
 </table>
 
-### 第四模块：微分方程与经济增长模型 <span class="sec-eng">Module 4: Dynamic Models</span>
+::: info 📊 核心方法直观：线性方程组无解/有唯一解/有无穷多解的判定与求解流程
+本图梳理了通过初等行变换将增广矩阵化为行阶梯形后，利用系数矩阵秩 $r(A)$ 与增广矩阵秩 $r(\bar{A})$ 的关系进行解的判定，以及进一步求出唯一解或通解的完整逻辑路径。
+
+<p align="center" style="margin: 24px 0 12px;">
+  <img src="/assets/images/solution_judgment_flowchart_unified.svg" alt="线性方程组解的判定与求解流程图" style="max-width: 100%; border-radius: 12px; box-shadow: var(--shadow-sm); background: #ffffff; padding: 12px; border: 1px solid rgba(0,0,0,0.05);" />
+</p>
+:::
+
+### 第 4 章：向量组的线性相关性
 
 <table class="academic-table">
   <thead>
     <tr>
-      <th style="width: 12%">模块</th>
-      <th style="width: 73%">经济学应用与核心要点 (Key Topics)</th>
+      <th style="width: 12%">章节</th>
+      <th style="width: 73%">核心知识要点</th>
       <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td class="chap-num">4.1</td>
-      <td class="chap-title">一阶常微分方程（变量分离、一阶线性方程）与市场均衡</td>
-      <td class="download-cell"><span class="btn-lock">未开放 🔒</span></td>
+      <td class="chap-title">向量与线性相关性</td>
+      <td class="download-cell"><a :href="CDN_BASE + '/4-1_Vectors_and_Linear_Dependence.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
     </tr>
     <tr>
       <td class="chap-num">4.2</td>
-      <td class="chap-title">一阶线性差分方程的求解与动态蜘蛛网价格模型</td>
-      <td class="download-cell"><span class="btn-lock">未开放 🔒</span></td>
+      <td class="chap-title">向量组的秩</td>
+      <td class="download-cell"><a :href="CDN_BASE + '/4-2_Rank_of_Vector_Groups.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
     </tr>
     <tr>
       <td class="chap-num">4.3</td>
-      <td class="chap-title">索洛新古典经济增长模型（Solow Growth Model）的稳态分析</td>
-      <td class="download-cell"><span class="btn-lock">未开放 🔒</span></td>
+      <td class="chap-title">线性方程组解的结构</td>
+      <td class="download-cell"><a :href="CDN_BASE + '/4-3_Solution_Structure.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
     </tr>
     <tr class="review-row">
       <td class="chap-num">复习</td>
-      <td class="chap-title font-review">本模块专题复习：差分与微分方程在动态蜘蛛网/索洛模型中的分析专题</td>
-      <td class="download-cell"><span class="btn-lock">未开放 🔒</span></td>
+      <td class="chap-title font-review">本章专题复习与线性方程组解的结构核心大题讲义</td>
+      <td class="download-cell">
+        <div class="dl-group">
+          <a :href="CDN_BASE + '/handout_ch4_vector_dependence_student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">学生版 📂</a>
+          <!-- 待授课完成后开放教师版： -->
+          <!-- <a :href="CDN_BASE + '/handout_ch4_vector_dependence_teacher.pdf'" target="_blank" rel="noopener" class="btn-dl">教师版 📂</a> -->
+          <span class="btn-lock">教师版 🔒</span>
+        </div>
+      </td>
     </tr>
   </tbody>
 </table>
+
 
 <style scoped>
 .subtitle {
@@ -304,6 +347,10 @@ head:
 }
 
 /* 暂未开放状态样式 */
+.table-disabled {
+  opacity: 0.65;
+}
+
 .btn-lock {
   display: inline-flex;
   padding: 4px 12px;

@@ -4,7 +4,6 @@ import { genFeed } from "./genFeed";
 import { VitePWA } from "vite-plugin-pwa";
 
 export default defineConfig({
-  srcExclude: ["**/economic-math-2.md"],
   lang: "zh-CN",
   title: "MatNoble",
   titleTemplate: ":title | MatNoble", // 统一标题模板，防止重复
