@@ -15,21 +15,21 @@ next: false
 const CDN_BASE = 'https://assets.matnoble.top/discrete'
 </script>
 
-# 离散数学 <span class="subtitle">Discrete Mathematics</span>
+# 离散数学
 
 《离散数学》是计算机类各专业的核心基础必修课，也是构建现代算法、数理逻辑与系统分析必不可少的数理基石。本页面提供课程中“二元关系”与“图论基础”章节的章节化授课课件与专题习题讲义下载。所有文件均与备课目录实时同步。
 
 ---
 
-## 章节大纲与课件下载 <span class="sec-eng">Syllabus, Lectures & Reviews</span>
+## 章节大纲与课件下载
 
-### 第 4 章：二元关系与函数 <span class="sec-eng">Chapter 4: Binary Relations & Functions</span>
+### 第 4 章：二元关系与函数
 
 <table class="academic-table">
   <thead>
     <tr>
       <th style="width: 12%">章节</th>
-      <th style="width: 73%">核心知识要点 (Key Topics)</th>
+      <th style="width: 73%">核心知识要点</th>
       <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
     </tr>
   </thead>
@@ -57,13 +57,13 @@ const CDN_BASE = 'https://assets.matnoble.top/discrete'
   </tbody>
 </table>
 
-### 第 5 章：图论基础 <span class="sec-eng">Chapter 5: Introduction to Graph Theory</span>
+### 第 5 章：图论基础
 
 <table class="academic-table">
   <thead>
     <tr>
       <th style="width: 12%">章节</th>
-      <th style="width: 73%">核心知识要点 (Key Topics)</th>
+      <th style="width: 73%">核心知识要点</th>
       <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
     </tr>
   </thead>
@@ -98,17 +98,14 @@ const CDN_BASE = 'https://assets.matnoble.top/discrete'
 
 ---
 
-## 期末复习 <span class="sec-eng">Final Review & Practice Exams</span>
+## 期末复习
 
-::: info 📝 备考建议
-期末复习样卷旨在帮助同学们熟悉离散数学“关系”与“图论”核心证明与推导题目的题型与分值分布，建议大家在复习完第四章、第五章的全部讲义后，预留 2 小时进行自主闭卷模拟测试。
-:::
 
 <table class="academic-table">
   <thead>
     <tr>
       <th style="width: 12%">类型</th>
-      <th style="width: 73%">资料名称 (Resource Title)</th>
+      <th style="width: 73%">资料名称</th>
       <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
     </tr>
   </thead>
@@ -117,6 +114,18 @@ const CDN_BASE = 'https://assets.matnoble.top/discrete'
       <td class="chap-num">样卷</td>
       <td class="chap-title font-review">期末复习参考样卷（学生自测版）</td>
       <td class="download-cell"><a :href="CDN_BASE + '/student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">下载 PDF 📂</a></td>
+    </tr>
+    <tr class="review-row">
+      <td class="chap-num">复习</td>
+      <td class="chap-title font-review">期末专题复习与核心要点讲义</td>
+      <td class="download-cell">
+        <div class="dl-group">
+          <a :href="CDN_BASE + '/final_review_handout_student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">学生版 📂</a>
+          <!-- 待授课完成后开放教师版： -->
+          <!-- <a :href="CDN_BASE + '/final_review_handout_teacher.pdf'" target="_blank" rel="noopener" class="btn-dl">教师版 📂</a> -->
+          <span class="btn-lock">教师版 🔒</span>
+        </div>
+      </td>
     </tr>
   </tbody>
 </table>
@@ -236,6 +245,14 @@ const CDN_BASE = 'https://assets.matnoble.top/discrete'
 .download-cell {
   text-align: center !important;
   padding: 8px 18px !important;
+}
+
+.dl-group {
+  display: inline-flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .btn-dl {
