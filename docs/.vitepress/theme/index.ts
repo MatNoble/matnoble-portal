@@ -20,8 +20,6 @@ import ChapterNavigation from "./components/ChapterNavigation.vue";
 import LearningPathHeader from "./components/LearningPathHeader.vue";
 import KnowledgeGraph from "./components/KnowledgeGraph.vue";
 import "./custom.css";
-import { inject } from "@vercel/analytics";
-import { injectSpeedInsights } from "@vercel/speed-insights";
 import mediumZoom from "medium-zoom";
 
 import type { EnhanceAppContext } from "vitepress";
@@ -64,11 +62,7 @@ export default {
     const initAnalytics = () => {
       if (typeof window === "undefined") return;
 
-      // 1. 动态延迟加载 Vercel Analytics 和 Speed Insights
-      inject();
-      injectSpeedInsights();
-
-      // 2. 动态延迟加载 Google Analytics
+      // 动态延迟加载 Google Analytics
       if (!document.getElementById('google-analytics-tag')) {
         const script1 = document.createElement('script');
         script1.id = 'google-analytics-tag';
@@ -125,7 +119,7 @@ export default {
     app.component("ThreeOneQuote", ThreeOneQuote);
     app.component("CourseList", CourseList);
     if (typeof window !== "undefined") {
-      // Vercel 静态注入已移至 setup() 延迟初始化
+      // Browser-only enhancements are initialized from setup().
     }
   },
 };

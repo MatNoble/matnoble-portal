@@ -1,7 +1,7 @@
 # MatNoble Portal
 
 ![VitePress](https://img.shields.io/badge/VitePress-1.0-646CFF?style=flat&logo=vite&logoColor=white)
-![Vercel](https://img.shields.io/badge/Deployment-Vercel-000000?style=flat&logo=vercel&logoColor=white)
+![Cloudflare Pages](https://img.shields.io/badge/Deployment-Cloudflare%20Pages-F38020?style=flat&logo=cloudflare&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 
 > **Mathematics as the Core. Technology as the Extension.**
@@ -23,13 +23,13 @@ This is the source code for the personal portal of **MatNoble**, a university ma
 - **AI-Ready**: Includes `llms.txt` and `robots.txt` specifically configured to welcome AI crawlers (ChatGPT, Perplexity, etc.).
 - **Structured Data**: Injected **JSON-LD** (Schema.org) for rich results and knowledge graph integration.
 - **Canonical URLs**: Auto-generated canonical tags to prevent duplicate content issues.
-- **Performance**: High Lighthouse scores via VitePress static generation and Vercel edge caching.
+- **Performance**: High Lighthouse scores via VitePress static generation and Cloudflare edge caching.
 
 ## 🛠️ Tech Stack
 
 - **Framework**: [VitePress](https://vitepress.dev/) (Vue 3 + Vite)
 - **Styling**: Custom CSS variables + CSS3 Transitions
-- **Deployment**: Vercel
+- **Deployment**: Cloudflare Pages
 - **Fonts**: Google Fonts (Inter & Outfit)
 
 ## 🚀 Local Development
@@ -64,7 +64,7 @@ matnoble-portal/
 │   ├── teaching/           # Academic content
 │   ├── tools/              # Tools showcase
 │   └── index.md            # Home page
-├── vercel.json             # Vercel deployment config
+├── docs/public/_headers    # Cloudflare Pages headers and cache rules
 └── package.json
 ```
 
@@ -90,15 +90,17 @@ The portal is organized into several key sections:
 
 ## ☁️ Deployment
 
-This project is optimized for **Vercel**.
+This project is optimized for **Cloudflare Pages**.
 
 1. Push code to GitHub.
-2. Import repository in Vercel.
+2. Import repository in Cloudflare Pages.
 3. Settings:
    - **Framework Preset**: VitePress
    - **Build Command**: `npm run docs:build`
    - **Output Directory**: `docs/.vitepress/dist`
 4. Add custom domain (`matnoble.top`).
+
+The site is statically generated, so Cloudflare Workers / Pages Functions are not required for the current deployment.
 
 ## ✉️ Contact
 
