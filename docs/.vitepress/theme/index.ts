@@ -9,7 +9,6 @@ import RelatedPosts from "./components/RelatedPosts.vue";
 import ReadingProgressBar from "./components/ReadingProgressBar.vue";
 import ArticleHero from "./components/ArticleHero.vue";
 import BrownianBackground from "./components/BrownianBackground.vue";
-import PwaPrompt from "./components/PwaPrompt.vue";
 import HighFidelityHero from "./components/HighFidelityHero.vue";
 import ScholarlyFeatures from "./components/ScholarlyFeatures.vue";
 import RoleGrid from "./components/RoleGrid.vue";
