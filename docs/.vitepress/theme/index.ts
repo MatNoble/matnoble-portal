@@ -40,9 +40,17 @@ export default {
   extends: DefaultTheme,
   Layout: () => {
     const { page } = useData();
+    const showBackLink = () => {
+      const relativePath = page.value.relativePath;
+      return (
+        relativePath.startsWith("courses/") ||
+        relativePath.startsWith("teaching/") ||
+        relativePath.startsWith("tools/")
+      );
+    };
     return h(DefaultTheme.Layout, null, {
-      // 在文档内容之前插入返回图谱按钮（首页除外）
-      "doc-before": () => page.value.relativePath !== 'index.md' ? h(BackToGraph) : null,
+      // 只在课程、教学与工具内容页插入返回入口，避免隐私政策等普通页面出现错位导航。
+      "doc-before": () => showBackLink() ? h(BackToGraph) : null,
       // 使用 nav-bar-title-before 插槽插入自定义 Logo
       "nav-bar-title-before": () => h(Logo),
       // 在文档内容之后插入分享组件和评论组件
