@@ -6,6 +6,7 @@ const timeLeft = ref(300)
 const totalTime = ref(300)
 const timer = ref(null)
 const isFullscreen = ref(false)
+const customMinutes = ref(5)
 
 const formattedTime = computed(() => {
   const m = Math.floor(timeLeft.value / 60)
@@ -46,6 +47,14 @@ const resetTimer = (seconds) => {
   } else {
     timeLeft.value = totalTime.value
   }
+}
+
+const applyCustomTime = () => {
+  const minutes = Number(customMinutes.value)
+  if (!Number.isFinite(minutes) || minutes <= 0) return
+  const clampedMinutes = Math.min(Math.max(minutes, 1), 180)
+  customMinutes.value = clampedMinutes
+  resetTimer(Math.round(clampedMinutes * 60))
 }
 
 const toggleFullscreen = () => {
@@ -137,6 +146,24 @@ const presets = [
           {{ p.label }}
         </button>
       </div>
+
+      <form class="custom-time" @submit.prevent="applyCustomTime">
+        <label class="custom-label" for="custom-minutes">自定义</label>
+        <input
+          id="custom-minutes"
+          v-model.number="customMinutes"
+          class="custom-input"
+          type="number"
+          min="1"
+          max="180"
+          step="1"
+          inputmode="numeric"
+          :disabled="isRunning"
+          aria-label="自定义倒计时分钟数"
+        />
+        <span class="custom-unit">min</span>
+        <button class="custom-apply" type="submit" :disabled="isRunning">设置</button>
+      </form>
       
       <button @click="toggleFullscreen" class="fs-toggle" title="全屏模式">
         <svg v-if="!isFullscreen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
@@ -277,6 +304,63 @@ const presets = [
   border-color: var(--accent);
 }
 
+.custom-time {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #8E8E93;
+}
+
+.custom-label,
+.custom-unit {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.custom-input {
+  width: 72px;
+  height: 38px;
+  border-radius: 14px;
+  border: 1px solid #333;
+  background: #1C1C1E;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+  outline: none;
+  font-variant-numeric: tabular-nums;
+}
+
+.custom-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(255, 159, 10, 0.18);
+}
+
+.custom-input:disabled,
+.custom-apply:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.custom-apply {
+  height: 38px;
+  border: none;
+  border-radius: 14px;
+  padding: 0 14px;
+  background: var(--accent);
+  color: #000;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.custom-apply:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+}
+
 .fs-toggle {
   position: absolute;
   top: 24px;
@@ -363,6 +447,24 @@ const presets = [
     padding: 6px 10px;
     font-size: 12px;
   }
+  .custom-time {
+    margin-top: 14px;
+    gap: 6px;
+  }
+  .custom-label,
+  .custom-unit {
+    font-size: 12px;
+  }
+  .custom-input {
+    width: 64px;
+    height: 34px;
+    font-size: 14px;
+  }
+  .custom-apply {
+    height: 34px;
+    padding: 0 12px;
+    font-size: 13px;
+  }
   .home-link, .fs-toggle {
     top: 16px;
   }
@@ -389,7 +491,8 @@ const presets = [
     flex-direction: column;
     margin-top: 0;
   }
-  .preset-grid {
+  .preset-grid,
+  .custom-time {
     display: none; /* 横屏空间有限，隐藏预设 */
   }
 }
@@ -423,6 +526,21 @@ const presets = [
 .is-fs .ctrl-btn { width: 10vh; height: 10vh; border-radius: 5vh; }
 .is-fs .ctrl-btn svg { width: 4vh; height: 4vh; }
 .is-fs .p-pill { font-size: 2.5vh; padding: 1.5vh 3vh; border-radius: 3vh; }
+.is-fs .custom-time { margin-top: 2.2vh; gap: 1.2vh; }
+.is-fs .custom-label,
+.is-fs .custom-unit { font-size: 2vh; }
+.is-fs .custom-input {
+  width: 10vh;
+  height: 5vh;
+  border-radius: 2vh;
+  font-size: 2.2vh;
+}
+.is-fs .custom-apply {
+  height: 5vh;
+  border-radius: 2vh;
+  padding: 0 2vh;
+  font-size: 2vh;
+}
 
 .is-fs .home-link, .is-fs .fs-toggle {
   top: 4vh;
