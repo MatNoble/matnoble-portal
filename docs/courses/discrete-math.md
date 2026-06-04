@@ -2,11 +2,11 @@
 layout: doc
 title: 离散数学
 breadcrumb: 离散数学
-description: 计算机科学与技术等理工专业核心基础课《离散数学》教学大纲、章节课件与复习专题讲义。内容涵盖集合论、二元关系、等价与偏序、图论及代数结构。
+description: 计算机科学与技术等理工专业核心基础课《离散数学》教学大纲、章节课件与复习专题讲义。内容涵盖命题逻辑、一阶逻辑、二元关系、等价与偏序、图论及代数结构。
 head:
   - - meta
     - name: keywords
-      content: 离散数学, 二元关系, 笛卡尔积, 关系的性质, 等价关系, 偏序关系, 图论, 通路, 最短路径, 关键路径, 图的着色, 离散数学课件, 课件下载
+      content: 离散数学, 命题逻辑, 命题符号化, 命题公式, 等值演算, 主范式, 推理理论, 一阶逻辑, 二元关系, 笛卡尔积, 关系的性质, 等价关系, 偏序关系, 图论, 通路, 最短路径, 关键路径, 图的着色, 离散数学课件, 课件下载
 prev: false
 next: false
 ---
@@ -17,11 +17,84 @@ const CDN_BASE = 'https://assets.matnoble.top/discrete'
 
 # 离散数学
 
-《离散数学》是计算机类各专业的核心基础必修课，也是构建现代算法、数理逻辑与系统分析必不可少的数理基石。本页面提供课程中“二元关系”与“图论基础”章节的章节化授课课件与专题习题讲义下载。所有文件均与备课目录实时同步。
+《离散数学》是计算机类各专业的核心基础必修课，也是构建现代算法、数理逻辑与系统分析必不可少的数理基石。本页面提供课程中“命题逻辑”“一阶逻辑”“二元关系”与“图论基础”等章节的章节化授课课件与专题习题讲义下载。所有文件均与备课目录实时同步。
 
 ---
 
 ## 章节大纲与课件下载
+
+### 第 1 章：命题逻辑
+
+<table class="academic-table">
+  <thead>
+    <tr>
+      <th style="width: 12%">章节</th>
+      <th style="width: 73%">核心知识要点</th>
+      <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="chap-num">1.1</td>
+      <td class="chap-title">命题符号化与联结词</td>
+      <td class="download-cell"><a :href="CDN_BASE + '/1-1_Propositional_Symbolization_and_Connectives.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
+    </tr>
+    <tr>
+      <td class="chap-num">1.2</td>
+      <td class="chap-title">命题公式及其分类</td>
+      <td class="download-cell"><a :href="CDN_BASE + '/1-2_Propositional_Formulas_and_Classification.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
+    </tr>
+    <tr>
+      <td class="chap-num">1.3</td>
+      <td class="chap-title">命题等值演算</td>
+      <td class="download-cell"><a :href="CDN_BASE + '/1-3_Propositional_Equivalence_Calculus.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
+    </tr>
+    <tr>
+      <td class="chap-num">1.4</td>
+      <td class="chap-title">命题范式</td>
+      <td class="download-cell"><a :href="CDN_BASE + '/1-4_Propositional_Normal_Forms.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
+    </tr>
+    <tr>
+      <td class="chap-num">1.5</td>
+      <td class="chap-title">命题逻辑推理理论</td>
+      <td class="download-cell"><a :href="CDN_BASE + '/1-5_Inference_Theory.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
+    </tr>
+  </tbody>
+</table>
+
+### 第 2 章：一阶逻辑
+
+<table class="academic-table">
+  <thead>
+    <tr>
+      <th style="width: 12%">章节</th>
+      <th style="width: 73%">核心知识要点</th>
+      <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="chap-num">2.1</td>
+      <td class="chap-title">一阶逻辑的基本概念</td>
+      <td class="download-cell"><a :href="CDN_BASE + '/2-1_Basic_Concepts_of_First_Order_Logic.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
+    </tr>
+    <tr>
+      <td class="chap-num">2.2</td>
+      <td class="chap-title">合式公式与解释</td>
+      <td class="download-cell"><a :href="CDN_BASE + '/2-2_Well_Formed_Formulas_and_Interpretations.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
+    </tr>
+    <tr>
+      <td class="chap-num">2.3</td>
+      <td class="chap-title">一阶逻辑等值演算与前束范式</td>
+      <td class="download-cell"><a :href="CDN_BASE + '/2-3_Equivalence_Calculus_and_Prenex_Normal_Form_in_First_Order_Logic.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
+    </tr>
+    <tr>
+      <td class="chap-num">2.4</td>
+      <td class="chap-title">一阶逻辑形式推理理论</td>
+      <td class="download-cell"><a :href="CDN_BASE + '/2-4_Formal_Inference_Theory_of_First_Order_Logic.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
+    </tr>
+  </tbody>
+</table>
 
 ### 第 4 章：二元关系与函数
 
