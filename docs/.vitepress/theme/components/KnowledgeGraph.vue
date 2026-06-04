@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { withBase, useRouter } from 'vitepress'
 
 interface NodeData {
@@ -58,9 +58,19 @@ const fullData: NodeData = {
 const history = ref<NodeData[]>([fullData])
 const currentParent = computed(() => history.value[history.value.length - 1])
 const currentNodes = computed(() => currentParent.value.children || [])
+const viewportWidth = ref(1024)
+const isMobileGraph = computed(() => viewportWidth.value <= 640)
+const graphViewBox = computed(() => isMobileGraph.value ? '135 60 530 430' : '0 0 800 600')
+
+const updateViewportWidth = () => {
+  viewportWidth.value = window.innerWidth
+}
 
 // Sync with URL for persistence
 onMounted(() => {
+  updateViewportWidth()
+  window.addEventListener('resize', updateViewportWidth)
+
   const params = new URLSearchParams(window.location.search)
   const nodeId = params.get('node')
   if (nodeId) {
@@ -81,6 +91,10 @@ onMounted(() => {
       history.value = [fullData, ...path]
     }
   }
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', updateViewportWidth)
 })
 
 // Layout Constants
@@ -167,7 +181,7 @@ const getArcPath = (source: any, target: any) => {
       </span>
     </div>
 
-    <svg viewBox="0 0 800 600" class="graph-svg">
+    <svg :viewBox="graphViewBox" class="graph-svg" preserveAspectRatio="xMidYMid meet">
       <!-- Central Parent Node -->
       <g class="node-group parent" @click="goBack">
         <circle :cx="centerX" :cy="centerY" r="45" class="center-ring" />
@@ -372,8 +386,62 @@ const getArcPath = (source: any, target: any) => {
 }
 
 @media (max-width: 640px) {
-  .node-label { font-size: 0.9rem; }
-  .center-ring { r: 35; }
-  .center-label { font-size: 0.75rem; }
+  .knowledge-graph-container {
+    min-height: 420px;
+    margin: 24px auto;
+    border-radius: 24px;
+  }
+
+  .graph-nav {
+    top: 18px;
+    left: 18px;
+    right: 18px;
+  }
+
+  .current-path {
+    font-size: 0.82rem;
+  }
+
+  .graph-svg {
+    width: 100%;
+    height: 360px;
+    margin-top: 24px;
+  }
+
+  .center-ring {
+    r: 54;
+    stroke-width: 3;
+  }
+
+  .center-label {
+    font-size: 1.15rem;
+  }
+
+  .node-dot {
+    r: 15;
+    stroke-width: 3;
+  }
+
+  .hitbox {
+    r: 40;
+  }
+
+  .node-label {
+    font-size: 1.28rem;
+    font-weight: 700;
+  }
+
+  .node-details {
+    font-size: 0.95rem;
+  }
+
+  .drill-hint {
+    font-size: 0.8rem;
+  }
+
+  .graph-footer {
+    bottom: 20px;
+    font-size: 0.88rem;
+  }
 }
 </style>

@@ -2,9 +2,6 @@
    MatNoble Portal — Pro Max Design System (custom.css)
    Compliant with MASTER.md + ui-ux-pro-max skill
    ============================================================ */
-
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-
 /* ===========================================
    § 1. Design Tokens (Root Variables)
    =========================================== */
@@ -252,6 +249,22 @@ body {
 }
 .vp-doc a:hover {
   text-decoration-color: currentColor;
+}
+
+.vp-doc img,
+.vp-doc svg,
+.vp-doc video,
+.vp-doc canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+.vp-doc table,
+.vp-doc .table-wrapper,
+.vp-doc mjx-container[display="true"] {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 
@@ -582,6 +595,27 @@ mjx-container:not([display]) {
   .VPDoc {
     padding: 16px 12px 64px !important;
   }
+
+  .vp-doc p,
+  .vp-doc li {
+    max-width: 100%;
+    line-height: 1.85;
+  }
+
+  .vp-doc [class*='language-'] {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .vp-doc table {
+    display: block;
+  }
+
+  .VPFeature,
+  .VPButton,
+  .VPNavBarMenuLink {
+    transition-duration: 120ms !important;
+  }
   
   /* Increase touch targets for mobile */
   .VPSidebarItem .link {
@@ -590,6 +624,15 @@ mjx-container:not([display]) {
   
   .node-label {
     font-size: 0.8rem !important;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .VPFeature:hover,
+  .VPButton:hover,
+  .VPNavBarMenuLink:hover {
+    transform: none !important;
+    box-shadow: var(--shadow-sm) !important;
   }
 }
 
@@ -759,4 +802,3 @@ mjx-container:not([display]) {
 }
 
 /* End of file */
-

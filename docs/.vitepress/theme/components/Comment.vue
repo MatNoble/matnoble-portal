@@ -28,6 +28,10 @@
             src="/qrcode_for_wechat.jpg"
             alt="数学思维探究社"
             class="wechat-qr"
+            width="64"
+            height="64"
+            loading="lazy"
+            decoding="async"
           />
         </div>
       </div>
@@ -75,7 +79,7 @@ onMounted(() => {
         observer.disconnect();
       }
     },
-    { rootMargin: "200px" } // 提前 200px 开始加载，提升用户体验
+    { rootMargin: "80px" }
   );
 
   const el = document.querySelector("#waline");

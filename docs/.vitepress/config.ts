@@ -29,9 +29,6 @@ export default defineConfig({
             if (id.includes("node_modules/video.js") || id.includes("node_modules/videojs")) {
               return "vendor-videojs";
             }
-            if (id.includes("node_modules/@waline")) {
-              return "vendor-waline";
-            }
             if (id.includes("node_modules/katex")) {
               return "vendor-katex";
             }
@@ -41,7 +38,7 @@ export default defineConfig({
     },
     plugins: [
       webfontDl([
-        "https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
+        "https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap",
       ]),
       VitePWA({
         outDir: ".vitepress/dist",
@@ -152,8 +149,8 @@ export default defineConfig({
     socialLinks: [],
 
     footer: {
-      message: '以数学构建逻辑，用技术驱动学习。 | <a href="/privacy">隐私政策</a> | <a href="/terms">服务条款</a>',
-      copyright: "Copyright © 2025-2026 MatNoble",
+      message: '以数学构建逻辑，用技术驱动学习。<br><a href="/privacy">隐私政策</a> | <a href="/terms">服务条款</a><br>Copyright © 2025-2026 MatNoble',
+      copyright: "",
     },
 
     // --- 汉化配置 ---

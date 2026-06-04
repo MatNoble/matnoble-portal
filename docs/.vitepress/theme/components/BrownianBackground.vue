@@ -7,7 +7,20 @@ let ctx: CanvasRenderingContext2D | null = null;
 let animationFrameId: number;
 let particles: Particle[] = [];
 let particleCount = 60; // Default for desktop
+let pointerEventsEnabled = false;
 const mouse = { x: -1000, y: -1000, active: false };
+
+const stopAnimation = () => {
+  if (animationFrameId) {
+    cancelAnimationFrame(animationFrameId);
+    animationFrameId = 0;
+  }
+  particles = [];
+  if (ctx && canvasRef.value) {
+    ctx.clearRect(0, 0, canvasRef.value.width, canvasRef.value.height);
+  }
+  ctx = null;
+};
 
 class Particle {
   x: number;
@@ -77,9 +90,14 @@ const init = () => {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (prefersReducedMotion) return;
 
-  // Performance Check: Mobile Device Adjustment
-  const isMobile = window.innerWidth < 768;
-  particleCount = isMobile ? 15 : 60; // Reduce particles significantly on mobile
+  // Mobile and tablet devices should prioritize scroll/input smoothness.
+  const isTouchLayout = window.innerWidth <= 1024 || window.matchMedia('(pointer: coarse)').matches;
+  if (isTouchLayout) {
+    stopAnimation();
+    return;
+  }
+
+  particleCount = 60;
 
   const canvas = canvasRef.value;
   canvas.width = window.innerWidth;
@@ -164,19 +182,23 @@ const handleClick = () => {
 onMounted(() => {
   init();
   window.addEventListener('resize', handleResize);
-  window.addEventListener('mousemove', handleMouseMove);
-  window.addEventListener('mouseleave', handleMouseLeave);
-  window.addEventListener('click', handleClick);
+
+  pointerEventsEnabled = window.matchMedia('(pointer: fine)').matches;
+  if (pointerEventsEnabled) {
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseleave', handleMouseLeave);
+    window.addEventListener('click', handleClick);
+  }
 });
 
 onUnmounted(() => {
-  if (animationFrameId) {
-    cancelAnimationFrame(animationFrameId);
-  }
+  stopAnimation();
   window.removeEventListener('resize', handleResize);
-  window.removeEventListener('mousemove', handleMouseMove);
-  window.removeEventListener('mouseleave', handleMouseLeave);
-  window.removeEventListener('click', handleClick);
+  if (pointerEventsEnabled) {
+    window.removeEventListener('mousemove', handleMouseMove);
+    window.removeEventListener('mouseleave', handleMouseLeave);
+    window.removeEventListener('click', handleClick);
+  }
 });
 </script>
 
