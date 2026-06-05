@@ -10,12 +10,13 @@
   ],
   "token_endpoint_auth_methods_supported": [],
   "agent_auth": {
+    "skill": "https://matnoble.top/auth.md",
     "register_uri": "https://matnoble.top/auth.md",
-    "supported_identity_types": [
+    "identity_types_supported": [
       "none"
     ],
-    "supported_credential_types": [],
-    "claims_uri": "https://matnoble.top/auth.md",
+    "credential_types_supported": [],
+    "claim_uri": "https://matnoble.top/auth.md",
     "revocation_uri": "https://matnoble.top/auth.md"
   }
 }

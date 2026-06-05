@@ -1,4 +1,4 @@
-# MatNoble Agent Authentication
+# auth.md
 
 MatNoble Portal currently serves public educational content and public discovery documents. Agents do not need to register or obtain access tokens to read the public site, `llms.txt`, course pages, or published agent skill metadata.
 
