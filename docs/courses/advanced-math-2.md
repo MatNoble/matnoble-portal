@@ -70,7 +70,7 @@ const CDN_BASE = 'https://assets.matnoble.top/calculus/II'
       <td class="download-cell">
         <div class="dl-group">
           <a :href="CDN_BASE + '/7/Chapter_7_Differential_Equations_Student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">学生版 📂</a>
-          <a :href="CDN_BASE + '/7/Chapter_7_Differential_Equations_Teacher.pdf'" target="_blank" rel="noopener" class="btn-dl">教师版 📂</a>
+          <a :href="CDN_BASE + '/7/Chapter_7_Differential_Equations_Teacher.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">教师版 📂</a>
         </div>
       </td>
     </tr>
@@ -124,7 +124,7 @@ const CDN_BASE = 'https://assets.matnoble.top/calculus/II'
       <td class="download-cell">
         <div class="dl-group">
           <a :href="CDN_BASE + '/8/Chapter_8_Spatial_Analytic_Geometry_Student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">学生版 📂</a>
-          <a :href="CDN_BASE + '/8/Chapter_8_Spatial_Analytic_Geometry_Teacher.pdf'" target="_blank" rel="noopener" class="btn-dl">教师版 📂</a>
+          <a :href="CDN_BASE + '/8/Chapter_8_Spatial_Analytic_Geometry_Teacher.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">教师版 📂</a>
         </div>
       </td>
     </tr>
@@ -175,7 +175,14 @@ const CDN_BASE = 'https://assets.matnoble.top/calculus/II'
     <tr class="review-row">
       <td class="chap-num">复习</td>
       <td class="chap-title font-review">微积分期末“保命”公式定理速查与计算专题</td>
-      <td class="download-cell"><span class="btn-lock">未开放 🔒</span></td>
+      <td class="download-cell">
+        <div class="dl-group">
+          <a :href="CDN_BASE + '/9/Chapter_9_Multivariable_Differentiation_Student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">学生版 📂</a>
+          <!-- 待授课完成后开放教师版： -->
+          <!-- <a :href="CDN_BASE + '/9/Chapter_9_Multivariable_Differentiation_Teacher.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">教师版 📂</a> -->
+          <span class="btn-lock">教师版 🔒</span>
+        </div>
+      </td>
     </tr>
   </tbody>
 </table>
@@ -211,20 +218,17 @@ const CDN_BASE = 'https://assets.matnoble.top/calculus/II'
       <td class="chap-title">重积分的几何与物理应用</td>
       <td class="download-cell"><a :href="CDN_BASE + '/10/10-4_integral_applications.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
     </tr>
-    <tr>
-      <td class="chap-num">10.5</td>
-      <td class="chap-title">第一/二类曲线积分及其格林公式</td>
-      <td class="download-cell"><span class="btn-lock">未开放 🔒</span></td>
-    </tr>
-    <tr>
-      <td class="chap-num">10.6</td>
-      <td class="chap-title">第一/二类曲面积分与高斯、斯托克斯定理</td>
-      <td class="download-cell"><span class="btn-lock">未开放 🔒</span></td>
-    </tr>
     <tr class="review-row">
       <td class="chap-num">复习</td>
       <td class="chap-title font-review">本章专题复习与重积分几何/物理计算讲义</td>
-      <td class="download-cell"><span class="btn-lock">未开放 🔒</span></td>
+      <td class="download-cell">
+        <div class="dl-group">
+          <a :href="CDN_BASE + '/10/Chapter_10_Multiple_Integrals_Student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">学生版 📂</a>
+          <!-- 待授课完成后开放教师版： -->
+          <!-- <a :href="CDN_BASE + '/10/Chapter_10_Multiple_Integrals_Teacher.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">教师版 📂</a> -->
+          <span class="btn-lock">教师版 🔒</span>
+        </div>
+      </td>
     </tr>
   </tbody>
 </table>
@@ -271,7 +275,7 @@ const CDN_BASE = 'https://assets.matnoble.top/calculus/II'
       <td class="download-cell">
         <div class="dl-group">
           <a :href="CDN_BASE + '/12/Chapter_12_Infinite_Series_Student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">学生版 📂</a>
-          <a :href="CDN_BASE + '/12/Chapter_12_Infinite_Series_Teacher.pdf'" target="_blank" rel="noopener" class="btn-dl">教师版 📂</a>
+          <a :href="CDN_BASE + '/12/Chapter_12_Infinite_Series_Teacher.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">教师版 📂</a>
         </div>
       </td>
     </tr>
