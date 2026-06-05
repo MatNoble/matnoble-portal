@@ -1,0 +1,21 @@
+{
+  "serverInfo": {
+    "name": "matnoble-portal-mcp",
+    "version": "1.0.0"
+  },
+  "endpoint": "https://matnoble.top",
+  "capabilities": {
+    "tools": {
+      "search-courses": {
+        "description": "Search for mathematics and computer science courses available on the portal.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "query": { "type": "string", "description": "Search query or course name (e.g. Advanced Math, Discrete Mathematics)" }
+          },
+          "required": ["query"]
+        }
+      }
+    }
+  }
+}

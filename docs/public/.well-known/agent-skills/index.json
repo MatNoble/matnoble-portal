@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "skills": [
+    {
+      "name": "course-search-skill",
+      "type": "skill-md",
+      "description": "Searches for courses by query string on the MatNoble portal.",
+      "url": "https://matnoble.top/.well-known/agent-skills/course-search-skill.md",
+      "digest": "sha256:b0c3352b6aed356fd6d12abb9e5a38fda078ea55566b8714baa6d6bbd165bc46"
+    }
+  ]
+}

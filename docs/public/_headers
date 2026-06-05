@@ -4,6 +4,7 @@
   X-XSS-Protection: 1; mode=block
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Link: </.well-known/api-catalog>; rel="api-catalog", </.well-known/agent-skills/index.json>; rel="agent-skills", </.well-known/mcp/server-card.json>; rel="mcp-server-card", </llms.txt>; rel="help"
 
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
@@ -25,3 +26,12 @@
 
 /llms*.txt
   Cache-Control: public, max-age=3600, must-revalidate
+
+/.well-known/api-catalog
+  Content-Type: application/linkset+json
+
+/.well-known/mcp/server-card.json
+  Content-Type: application/json
+
+/.well-known/agent-skills/index.json
+  Content-Type: application/json

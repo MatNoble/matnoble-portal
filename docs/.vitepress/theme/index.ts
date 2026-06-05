@@ -95,6 +95,33 @@ export default {
       setTimeout(() => {
         initAnalytics();
       }, 4000);
+
+      // WebMCP tool registration for agent discovery
+      if (typeof navigator !== 'undefined' && (navigator as any).modelContext && typeof (navigator as any).modelContext.provideContext === 'function') {
+        try {
+          (navigator as any).modelContext.provideContext({
+            tools: [
+              {
+                name: "search-courses",
+                description: "Search for mathematics and computer science courses available on the portal.",
+                inputSchema: {
+                  type: "object",
+                  properties: {
+                    query: { type: "string", description: "Search query or course name (e.g. Advanced Math, Discrete Mathematics)" }
+                  },
+                  required: ["query"]
+                },
+                execute: async ({ query }: { query: string }) => {
+                  window.location.href = `/courses/?q=${encodeURIComponent(query)}`;
+                  return { success: true, message: `Navigating to search for: ${query}` };
+                }
+              }
+            ]
+          });
+        } catch (e) {
+          console.error("Failed to register WebMCP tools:", e);
+        }
+      }
     });
 
     watch(

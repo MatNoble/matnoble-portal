@@ -1,0 +1,14 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://matnoble.top",
+      "service-doc": [
+        {
+          "href": "https://matnoble.top/courses/",
+          "type": "text/html",
+          "title": "Courses Catalog"
+        }
+      ]
+    }
+  ]
+}
