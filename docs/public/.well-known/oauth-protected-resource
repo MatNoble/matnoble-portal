@@ -1,0 +1,13 @@
+{
+  "resource": "https://matnoble.top",
+  "authorization_servers": [
+    "https://matnoble.top"
+  ],
+  "scopes_supported": [
+    "public.read"
+  ],
+  "bearer_methods_supported": [
+    "header"
+  ],
+  "resource_documentation": "https://matnoble.top/auth.md"
+}

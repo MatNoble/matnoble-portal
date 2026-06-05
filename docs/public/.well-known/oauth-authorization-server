@@ -1,0 +1,21 @@
+{
+  "issuer": "https://matnoble.top",
+  "authorization_endpoint": "https://matnoble.top/auth.md",
+  "token_endpoint": "https://matnoble.top/auth.md",
+  "jwks_uri": "https://matnoble.top/.well-known/jwks.json",
+  "grant_types_supported": [],
+  "response_types_supported": [],
+  "scopes_supported": [
+    "public.read"
+  ],
+  "token_endpoint_auth_methods_supported": [],
+  "agent_auth": {
+    "register_uri": "https://matnoble.top/auth.md",
+    "supported_identity_types": [
+      "none"
+    ],
+    "supported_credential_types": [],
+    "claims_uri": "https://matnoble.top/auth.md",
+    "revocation_uri": "https://matnoble.top/auth.md"
+  }
+}

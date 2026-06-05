@@ -5,8 +5,9 @@
   "description": "MatNoble Personal Portal",
   "main": "index.js",
   "scripts": {
+    "docs:markdown": "node scripts/generate-agent-markdown.mjs",
     "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
+    "docs:build": "npm run docs:markdown && vitepress build docs",
     "docs:preview": "vitepress preview docs"
   },
   "keywords": [

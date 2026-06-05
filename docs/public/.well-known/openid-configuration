@@ -1,0 +1,13 @@
+{
+  "issuer": "https://matnoble.top",
+  "authorization_endpoint": "https://matnoble.top/auth.md",
+  "token_endpoint": "https://matnoble.top/auth.md",
+  "jwks_uri": "https://matnoble.top/.well-known/jwks.json",
+  "grant_types_supported": [],
+  "response_types_supported": [],
+  "subject_types_supported": [],
+  "id_token_signing_alg_values_supported": [],
+  "scopes_supported": [
+    "public.read"
+  ]
+}
