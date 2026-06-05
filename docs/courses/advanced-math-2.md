@@ -70,9 +70,7 @@ const CDN_BASE = 'https://assets.matnoble.top/calculus/II'
       <td class="download-cell">
         <div class="dl-group">
           <a :href="CDN_BASE + '/7/Chapter_7_Differential_Equations_Student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">学生版 📂</a>
-          <!-- 待授课完成后开放教师版： -->
-          <!-- <a :href="CDN_BASE + '/7/Chapter_7_Differential_Equations_Teacher.pdf'" target="_blank" rel="noopener" class="btn-dl">教师版 📂</a> -->
-          <span class="btn-lock">教师版 🔒</span>
+          <a :href="CDN_BASE + '/7/Chapter_7_Differential_Equations_Teacher.pdf'" target="_blank" rel="noopener" class="btn-dl">教师版 📂</a>
         </div>
       </td>
     </tr>
@@ -126,9 +124,7 @@ const CDN_BASE = 'https://assets.matnoble.top/calculus/II'
       <td class="download-cell">
         <div class="dl-group">
           <a :href="CDN_BASE + '/8/Chapter_8_Spatial_Analytic_Geometry_Student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">学生版 📂</a>
-          <!-- 待授课完成后开放教师版： -->
-          <!-- <a :href="CDN_BASE + '/8/Chapter_8_Spatial_Analytic_Geometry_Teacher.pdf'" target="_blank" rel="noopener" class="btn-dl">教师版 📂</a> -->
-          <span class="btn-lock">教师版 🔒</span>
+          <a :href="CDN_BASE + '/8/Chapter_8_Spatial_Analytic_Geometry_Teacher.pdf'" target="_blank" rel="noopener" class="btn-dl">教师版 📂</a>
         </div>
       </td>
     </tr>
@@ -275,9 +271,7 @@ const CDN_BASE = 'https://assets.matnoble.top/calculus/II'
       <td class="download-cell">
         <div class="dl-group">
           <a :href="CDN_BASE + '/12/Chapter_12_Infinite_Series_Student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">学生版 📂</a>
-          <!-- 待授课完成后开放教师版： -->
-          <!-- <a :href="CDN_BASE + '/12/Chapter_12_Infinite_Series_Teacher.pdf'" target="_blank" rel="noopener" class="btn-dl">教师版 📂</a> -->
-          <span class="btn-lock">教师版 🔒</span>
+          <a :href="CDN_BASE + '/12/Chapter_12_Infinite_Series_Teacher.pdf'" target="_blank" rel="noopener" class="btn-dl">教师版 📂</a>
         </div>
       </td>
     </tr>

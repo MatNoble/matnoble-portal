@@ -65,9 +65,7 @@ const CDN_BASE = 'https://assets.matnoble.top/linear_algebra/economics'
       <td class="download-cell">
         <div class="dl-group">
           <a :href="CDN_BASE + '/handout_ch1_determinants_student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">学生版 📂</a>
-          <!-- 待授课完成后开放教师版： -->
-          <!-- <a :href="CDN_BASE + '/handout_ch1_determinants_teacher.pdf'" target="_blank" rel="noopener" class="btn-dl">教师版 📂</a> -->
-          <span class="btn-lock">教师版 🔒</span>
+          <a :href="CDN_BASE + '/handout_ch1_determinants_teacher.pdf'" target="_blank" rel="noopener" class="btn-dl">教师版 📂</a>
         </div>
       </td>
     </tr>
@@ -106,9 +104,7 @@ const CDN_BASE = 'https://assets.matnoble.top/linear_algebra/economics'
       <td class="download-cell">
         <div class="dl-group">
           <a :href="CDN_BASE + '/handout_ch2_matrix_operations_student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">学生版 📂</a>
-          <!-- 待授课完成后开放教师版： -->
-          <!-- <a :href="CDN_BASE + '/handout_ch2_matrix_operations_teacher.pdf'" target="_blank" rel="noopener" class="btn-dl">教师版 📂</a> -->
-          <span class="btn-lock">教师版 🔒</span>
+          <a :href="CDN_BASE + '/handout_ch2_matrix_operations_teacher.pdf'" target="_blank" rel="noopener" class="btn-dl">教师版 📂</a>
         </div>
       </td>
     </tr>
@@ -147,9 +143,7 @@ const CDN_BASE = 'https://assets.matnoble.top/linear_algebra/economics'
       <td class="download-cell">
         <div class="dl-group">
           <a :href="CDN_BASE + '/handout_ch3_elimination_systems_student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">学生版 📂</a>
-          <!-- 待授课完成后开放教师版： -->
-          <!-- <a :href="CDN_BASE + '/handout_ch3_elimination_systems_teacher.pdf'" target="_blank" rel="noopener" class="btn-dl">教师版 📂</a> -->
-          <span class="btn-lock">教师版 🔒</span>
+          <a :href="CDN_BASE + '/handout_ch3_elimination_systems_teacher.pdf'" target="_blank" rel="noopener" class="btn-dl">教师版 📂</a>
         </div>
       </td>
     </tr>
@@ -196,9 +190,7 @@ const CDN_BASE = 'https://assets.matnoble.top/linear_algebra/economics'
       <td class="download-cell">
         <div class="dl-group">
           <a :href="CDN_BASE + '/handout_ch4_vector_dependence_student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">学生版 📂</a>
-          <!-- 待授课完成后开放教师版： -->
-          <!-- <a :href="CDN_BASE + '/handout_ch4_vector_dependence_teacher.pdf'" target="_blank" rel="noopener" class="btn-dl">教师版 📂</a> -->
-          <span class="btn-lock">教师版 🔒</span>
+          <a :href="CDN_BASE + '/handout_ch4_vector_dependence_teacher.pdf'" target="_blank" rel="noopener" class="btn-dl">教师版 📂</a>
         </div>
       </td>
     </tr>
