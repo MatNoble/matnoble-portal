@@ -43,6 +43,7 @@ export async function onRequest(context: EventContext<Env, string, unknown>): Pr
   const headers = new Headers(markdownResponse.headers);
   headers.set("Content-Type", "text/markdown; charset=utf-8");
   headers.set("Vary", appendVary(headers.get("Vary"), "Accept"));
+  headers.set("X-Robots-Tag", "noindex, follow");
   headers.set("x-markdown-tokens", String(estimateTokenCount(body)));
 
   return new Response(body, {

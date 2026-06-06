@@ -26,9 +26,14 @@
 
 /llms*.txt
   Cache-Control: public, max-age=3600, must-revalidate
+  X-Robots-Tag: noindex, follow
 
 /.well-known/api-catalog
   Content-Type: application/linkset+json
+  X-Robots-Tag: noindex, follow
+
+/.well-known/*
+  X-Robots-Tag: noindex, follow
 
 /.well-known/mcp/server-card.json
   Content-Type: application/json
@@ -50,6 +55,14 @@
 
 /auth.md
   Content-Type: text/markdown; charset=utf-8
+  X-Robots-Tag: noindex, follow
+
+/agents/*
+  X-Robots-Tag: noindex, follow
+
+/public/*
+  X-Robots-Tag: noindex, follow
 
 /.well-known/markdown/*
   Content-Type: text/markdown; charset=utf-8
+  X-Robots-Tag: noindex, follow

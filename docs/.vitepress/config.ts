@@ -3,6 +3,30 @@ import webfontDl from "vite-plugin-webfont-dl";
 import { genFeed } from "./genFeed";
 import { VitePWA } from "vite-plugin-pwa";
 
+const SITE_ORIGIN = "https://matnoble.top";
+
+function canonicalUrl(relativePath: string): string {
+  if (relativePath === "index.md") return `${SITE_ORIGIN}/`;
+
+  const withoutExtension = relativePath.replace(/\.md$/, "");
+  if (withoutExtension.endsWith("/index")) {
+    return `${SITE_ORIGIN}/${withoutExtension.replace(/index$/, "")}`;
+  }
+
+  return `${SITE_ORIGIN}/${withoutExtension}`;
+}
+
+function isIndexableUrl(url: string): boolean {
+  const pathname = new URL(url, SITE_ORIGIN).pathname;
+  return !(
+    pathname === "/404" ||
+    pathname === "/404.html" ||
+    pathname.startsWith("/agents/") ||
+    pathname.startsWith("/public/") ||
+    pathname.startsWith("/.well-known/")
+  );
+}
+
 export default defineConfig({
   lang: "zh-CN",
   title: "MatNoble",
@@ -15,6 +39,7 @@ export default defineConfig({
   },
 
   buildEnd: genFeed,
+  srcExclude: ["agents/**/*.md", "public/**/*.md"],
 
   vite: {
     build: {
@@ -110,7 +135,7 @@ export default defineConfig({
 
   // 关键 SEO 配置：生成 sitemap
   sitemap: {
-    hostname: "https://matnoble.top",
+    hostname: SITE_ORIGIN,
     lastmodDateOnly: true,
     xmlns: {
       news: false,
@@ -119,15 +144,7 @@ export default defineConfig({
       xhtml: true,
     },
     transformItems: (items) => {
-      return items
-        .filter((item) => {
-          const is404 = item.url.includes('404') || item.url.endsWith('404.html');
-          return !is404;
-        })
-        .map((item) => ({
-          ...item,
-          url: item.url.replace(/\/$/, ""),
-        }));
+      return items.filter((item) => isIndexableUrl(item.url));
     },
   },
 
@@ -210,10 +227,7 @@ export default defineConfig({
   // 动态注入 Canonical URL (规范链接)，防止重复内容降权
   // 动态注入 Canonical URL (规范链接) 和 Open Graph / Twitter Card 元数据
   transformHead: ({ pageData }) => {
-    const url = `https://matnoble.top/${pageData.relativePath}`
-      .replace(/index\.md$/, "")
-      .replace(/\.md$/, "")
-      .replace(/\/$/, "");
+    const url = canonicalUrl(pageData.relativePath);
 
     const siteTitle = "MatNoble";
     const pageTitle = pageData.title;
