@@ -68,6 +68,7 @@ export default {
 
     const initAnalytics = () => {
       if (typeof window === "undefined") return;
+      if (["localhost", "127.0.0.1", "::1"].includes(window.location.hostname)) return;
 
       // 动态延迟加载 Google Analytics
       if (!document.getElementById('google-analytics-tag')) {

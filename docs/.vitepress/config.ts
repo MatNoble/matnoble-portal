@@ -456,6 +456,15 @@ export default defineConfig({
         content: "OeFbtbYCwGN3Bnb3MSOm50bnnxInp9jj_bQT5vOIBPo",
       },
     ],
+    // Google AdSense 验证
+    [
+      "script",
+      {
+        async: "",
+        src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4221480300398103",
+        crossorigin: "anonymous",
+      },
+    ],
     // Bing Webmaster Tools 验证
     [
       "meta",
