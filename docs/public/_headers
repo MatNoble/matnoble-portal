@@ -24,6 +24,10 @@
 /downloads/*
   Cache-Control: public, max-age=3600, must-revalidate
 
+/ads.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=3600, must-revalidate
+
 /llms*.txt
   Cache-Control: public, max-age=3600, must-revalidate
   X-Robots-Tag: noindex, follow
