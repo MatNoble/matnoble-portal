@@ -4,16 +4,15 @@
     <div class="wechat-promo">
       <div class="wechat-content">
         <div class="wechat-icon">
-          <svg viewBox="0 0 24 24" width="32" height="32" fill="#07C160">
-            <path
-              d="M12 24c6.627 0 12-5.373 12-12S18.627 0 12 0 0 5.373 0 12s5.373 12 12 12z"
-              fill="#fff"
-            />
-            <path
-              d="M17.5 9c0 2.21-2.239 4-5 4s-5-1.79-5-4c0-2.21 2.239-4 5-4s5 1.79 5 4zm-3.5 1.5c.276 0 .5-.224.5-.5s-.224-.5-.5-.5-.5.224-.5.5.224.5.5.5zm-3 0c.276 0 .5-.224.5-.5s-.224-.5-.5-.5-.5.224-.5.5.224.5.5.5zM7.2 16.5c-3.3 0-6-2.2-6-4.9 0-1.4.7-2.7 1.9-3.6-.1-.5-.4-1.6-.4-1.7 0-.1 0-.1.1-.1.1 0 .2 0 .5.1 1 .5 1.9.9 2.1 1 5.9-2.3 9.4 4.5 5.5 8-.8.8-2.1 1.2-3.7 1.2z"
-              fill="#07C160"
-            />
-          </svg>
+          <img
+            src="/wechat-official-account.png"
+            alt=""
+            class="wechat-official-icon"
+            width="48"
+            height="48"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
         <div class="wechat-text">
           <p class="wechat-title">不想公开提问？</p>
@@ -120,6 +119,12 @@ onUnmounted(() => {
 
 .wechat-text {
   flex: 1;
+}
+
+.wechat-official-icon {
+  display: block;
+  width: 48px;
+  height: 48px;
 }
 
 .wechat-title {
