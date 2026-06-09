@@ -49,7 +49,7 @@ head:
 
 本页面汇总站点中常见的课程和工具问题。
 
-## 核心方法论
+## 常用方法
 
 ### Q: 什么是“微分万能公式”？
 **A:** 微分万能公式是指：$\mathrm{d}y=\mathrm{d}(f(\square))=f'(\square)\mathrm{d}(\square)$。

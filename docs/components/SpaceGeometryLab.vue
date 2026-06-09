@@ -176,7 +176,7 @@
                </svg>
             </div>
             <h3>空间解析几何实验室</h3>
-            <p>控制面板较多，请进入全屏沉浸模式开启教学展示与交互。</p>
+            <p>控制面板较多，请进入全屏模式查看演示与交互。</p>
             <button class="btn-primary" @click="toggleFullscreen">
               ⛶ 开启教学展示
             </button>
@@ -220,7 +220,7 @@ const sceneData = {
     'rot_z': { 
         title: '代换规律：抛物面', 
         eq: '\\begin{aligned} &z = y^2 \\\\[0.8ex] \\Longrightarrow\\; &z = x^2 + y^2 \\end{aligned}', 
-        desc: '<span style="font-weight: 600; color: #2563EB;">▍核心口诀</span><br/>绕哪轴哪轴不动，另一变量换成到轴距离。<br/>(抛物线绕 $z$ 轴：$z$ 恒定不动，$y$ 换成 $\\pm\\sqrt{x^2+y^2}$，即生成旋转抛物面)' 
+        desc: '<span style="font-weight: 600; color: #2563EB;">▍代换规则</span><br/>绕哪轴哪轴不动，另一变量换成到轴距离。<br/>(抛物线绕 $z$ 轴：$z$ 恒定不动，$y$ 换成 $\\pm\\sqrt{x^2+y^2}$，即生成旋转抛物面)' 
     },
     'rot_y': { 
         title: '代换示例：绕 y 轴', 
@@ -240,7 +240,7 @@ const sceneData = {
     'curve_cylinder': { 
         title: '投射柱面概念', 
         eq: '\\begin{cases} F(x,y,z)=0 \\\\[0.5ex] G(x,y,z)=0 \\end{cases} \\implies H(x,y)=0', 
-        desc: '<span style="font-weight: 600; color: #2563EB;">▍解析本质</span><br/>从空间曲线方程组中消去变量 <i>z</i>，得到的二元方程 $H(x,y)=0$ 在空间中表示的是**投射柱面**。它垂直于 <i>xy</i> 面且穿过空间曲线。' 
+        desc: '<span style="font-weight: 600; color: #2563EB;">▍解析说明</span><br/>从空间曲线方程组中消去变量 <i>z</i>，得到的二元方程 $H(x,y)=0$ 在空间中表示的是**投射柱面**。它垂直于 <i>xy</i> 面且穿过空间曲线。' 
     },
     'curve_intersect': { 
         title: '消元法求投影', 
@@ -257,7 +257,7 @@ const sceneData = {
     'plane_point_normal': {
         title: '平面的点法式方程',
         eq: 'A(x - x_0) + B(y - y_0) + C(z - z_0) = 0',
-        desc: '<span style="font-weight: 600; color: #2563EB;">▍几何含义</span><br/>已知平面上一点 $M_0(x_0,y_0,z_0)$ 和法向量 $\\mathbf{n}=\\{A,B,C\\}$，平面上任意点 $M(x,y,z)$ 满足 $\\vec{M_0M} \\perp \\mathbf{n}$，即点积为零。<br/><br/>法向量垂直于平面内所有直线，是平面的核心几何属性。'
+        desc: '<span style="font-weight: 600; color: #2563EB;">▍几何含义</span><br/>已知平面上一点 $M_0(x_0,y_0,z_0)$ 和法向量 $\\mathbf{n}=\\{A,B,C\\}$，平面上任意点 $M(x,y,z)$ 满足 $\\vec{M_0M} \\perp \\mathbf{n}$，即点积为零。<br/><br/>法向量垂直于平面内所有直线，是描述平面的主要几何量。'
     },
     'plane_general': {
         title: '平面的一般方程',
@@ -471,7 +471,7 @@ function init(THREE, OrbitControls) {
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
 
-    // --- 强制接管坐标系为大学数学高数板书绝对标准：X向着脸，Y向右，Z向上 ---
+    // 坐标系约定：数学 X 轴朝向观察者，Y 轴向右，Z 轴向上。
     // (Three.js Z = Math X, Three.js X = Math Y, Three.js Y = Math Z)
     const origin = new THREE.Vector3(0, 0, 0);
     const axisColor = 0x64748B; 

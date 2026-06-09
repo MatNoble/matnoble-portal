@@ -1,23 +1,23 @@
 ---
-title: 微积分三大计算教学体系 | 极限、导数与积分复习
-breadcrumb: 教学体系
+title: 微积分三类计算 | 极限、导数与积分复习
+breadcrumb: 微积分
 titleTemplate: 微积分专题
 description: 针对大学微积分三大计算专题的复习指南。整理极限计算常用等价无穷小、复合函数求导方法、不定积分凑微分与 DI 表格法。
-tags: ["微积分", "教学体系"]
+tags: ["微积分", "复习"]
 structuredData:
   course:
-    name: "微积分三大计算教学体系 (Calculus Calculation Framework)"
-    description: "涵盖极限、导数与积分三类计算的系统性复习指南，结合微分计算框架与 DI 表格法。"
+    name: "微积分三类计算 (Calculus Calculation Notes)"
+    description: "整理极限、导数与积分三类计算题的常用方法，包含微分计算框架与 DI 表格法。"
     provider: "MatNoble"
 ---
 
 <ArticleHero 
-  tag="教学体系"
+  tag="微积分"
   title="微积分 (Calculus)" 
   description="从几何直观到正式定义，梳理极限、导数与积分的主要计算方法。"
 />
 
-微积分是大学数学的基石。在我的教学中，我将微积分拆解为“**三大计算**”与“**核心理论**”两大部分。本页面作为微积分学习的导航中心，旨在帮助你构建从极限到多元微积分的完整知识脉络。
+微积分的复习可以先从计算题入手。本页按极限、导数与积分三类题目整理常用方法，并列出后续概念学习的入口。
 
 ## 三大计算专题
 
@@ -54,18 +54,18 @@ $$ \text{结果} = e^{\lim [f(x)-1]g(x)} $$
 
 ## 辅助学习工具
 
-- **公式练习**：[前往 Memorize 练习核心公式](/tools/memorize)
+- **公式练习**：[前往 Memorize 练习常用公式](/tools/memorize)
 - **速查手册**：[下载/打印微积分公式与方法速查表 (PDF)](./cheatsheet)
 
 ## 课程模块大纲
 
 1.  **一元微积分**
-    - 极限与连续性的工程意义：如何用 $\varepsilon-\delta$ 语言描述稳定性。
-    - 导数：变化率与线性逼近，掌握导数的物理与几何本质。
-    - **[积分的定义](./integral-definition)**：从黎曼和直观理解定积分的本质。
+    - 极限与连续性：用 $\varepsilon-\delta$ 语言描述趋近与稳定。
+    - 导数：变化率与线性逼近。
+    - **[积分的定义](./integral-definition)**：从黎曼和理解定积分。
 2.  **多元微积分**
     - **偏导数与全微分**：理解梯度场与多维空间的局部线性化。
-    - **[二重积分的定义](./integral-definition#_2-二重积分-double-integral)**：从一维面积到二维体积的逻辑跨越。
+    - **[二重积分的定义](./integral-definition#_2-二重积分-double-integral)**：从一维面积推广到二维区域上的累加。
     - **重积分与坐标变换**：掌握极坐标、柱坐标、球坐标下的积分技巧。配合 [**空间解析几何 3D 实验室**](./space-geometry-lab) 进行直观验证。
     - **场论初步**：直观理解散度与旋度。
 

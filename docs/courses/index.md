@@ -3,7 +3,7 @@ layout: page
 title: 课程中心
 breadcrumb: 课程中心
 titleTemplate: 课程中心 | MatNoble
-description: 欢迎来到 MatNoble 的课程中心。在这里，您可以浏览高等数学、线性代数、经济数学等理工及经管类核心数学课程的章节化讲义课件与期末复习专题资源。
+description: MatNoble 课程中心，整理高等数学、线性代数、经济数学等课程的章节课件与期末复习资料。
 head:
   - - meta
     - name: keywords

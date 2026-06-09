@@ -50,7 +50,7 @@ import SpaceGeometryLab from '../components/SpaceGeometryLab.vue'
 </script>
 
 > **引用基准：James Stewart, *Calculus: Early Transcendentals***  
-> 本交互式实验室用于辅助展示三维空间曲面（Surfaces）与曲线（Lines in Space）。内容参考 Stewart 微积分体系，重点呈现公式、图形和投影关系。
+> 本交互页面用于辅助展示三维空间曲面（Surfaces）与曲线（Lines in Space）。内容参考 Stewart 微积分教材，重点呈现公式、图形和投影关系。
 
 <ClientOnly>
   <SpaceGeometryLab />
@@ -60,7 +60,7 @@ import SpaceGeometryLab from '../components/SpaceGeometryLab.vue'
 
 ## 理论基础与几何直观
 
-在 **James Stewart** 的微积分体系中，三维空间的几何对象通常由多变量方程描述。本实验室主要覆盖以下概念：
+在 **James Stewart** 的微积分教材中，三维空间的几何对象通常由多变量方程描述。本页面主要覆盖以下概念：
 
 ### 1. 空间平面 (Planes in Space)
 平面是三维空间中最基础的几何对象，由点和法向量唯一确定：
@@ -79,10 +79,10 @@ import SpaceGeometryLab from '../components/SpaceGeometryLab.vue'
 - **基本规则**：绕哪条轴旋转，该轴变量保持不变；垂直方向变量替换为到轴的欧几里得距离 $r = \pm\sqrt{x^2+y^2}$。
 
 ### 4. 二次曲面与截痕法 (Quadric Surfaces & Traces)
-二次曲面通常可以通过“截痕法”分析。本实验室允许用户观察椭球面（Ellipsoid）与单叶双曲面（Hyperboloid）的截面变化，并比较方程中系数符号变化带来的图形差异。
+二次曲面通常可以通过“截痕法”分析。页面中的交互演示可用于观察椭球面（Ellipsoid）与单叶双曲面（Hyperboloid）的截面变化，并比较方程中系数符号变化带来的图形差异。
 
 ### 5. 投射柱面 (Projection Cylinders)
-空间曲线投影常需要借助投射柱面理解。实验室展示投射柱面与投影平面的关系，用于说明“消去 $z$ 得到 $xy$ 面投影”的几何含义。
+空间曲线投影常需要借助投射柱面理解。页面展示投射柱面与投影平面的关系，用于说明“消去 $z$ 得到 $xy$ 面投影”的几何含义。
 
 ## 操作指南
 
@@ -119,6 +119,6 @@ import SpaceGeometryLab from '../components/SpaceGeometryLab.vue'
 
 空间解析几何与线性代数有不少共同内容，可以继续浏览：
 - [**线性代数总论**](./linear-algebra)：建立向量空间与线性变换的直观理解。
-- [**大学数学教学体系概览**](./index)：查看 MatNoble 的课程目录。
+- [**大学数学课程目录**](./index)：查看 MatNoble 的课程目录。
 
 <br/>

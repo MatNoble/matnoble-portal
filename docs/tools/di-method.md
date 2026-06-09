@@ -28,7 +28,7 @@ structuredData:
 
 ---
 
-## 💡 如何使用 DI 表格法？
+## 如何使用 DI 表格法？
 
 1.  **选角 (LIATE 法则)**：
     *   **L**ogarithmic (对数函数)

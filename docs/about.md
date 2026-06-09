@@ -19,7 +19,7 @@ head:
             "https://t.me/HUSTMatNoble",
             "https://www.youtube.com/@RossMatNoble"
           ],
-          "description": "高校数学讲师，专注于微积分与线性代数教学研究，独创微分万能公式与 DI 表格法。"
+          "description": "高校数学讲师，主要讲授微积分、线性代数等课程，并开发配套教学工具。"
         }
       }
 ---
@@ -43,7 +43,7 @@ head:
 ## 联系与合作
 
 - **开源项目**: [GitHub (matnoble)](https://github.com/matnoble) —— 获取教学脚本与工具。
-- **数字花园**: [个人博客 (blog.matnoble.top)](https://blog.matnoble.top) —— 沉淀技术思考。
+- **个人博客**: [blog.matnoble.top](https://blog.matnoble.top) —— 记录技术与教学相关笔记。
 - **社交媒体**: 
   - 邮箱: [me@matnoble.top](mailto:me@matnoble.top)
   - 知乎: [MatNoble](https://www.zhihu.com/people/matnoble)
@@ -62,4 +62,4 @@ head:
 **A:** 因为很多教学材料可以通过程序生成、验证或交互展示。本站会同时记录数学内容和相关工具开发。
 
 **Q: 如何获取本站提到的复习资料？**  
-**A:** 核心资源（如 CheatSheet）托管在 **[教学门户](/teaching/)**。所有在线工具均可在 **[工具箱](/tools/)** 中免费访问。
+**A:** 复习资料和 CheatSheet 放在 **[教学目录](/teaching/)**，在线工具放在 **[工具箱](/tools/)**。

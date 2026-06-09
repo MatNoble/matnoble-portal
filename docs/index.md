@@ -13,7 +13,7 @@ head:
         "@type": "WebSite",
         "name": "MatNoble",
         "url": "https://matnoble.top",
-        "description": "专注于大学数学教学与AI技术交叉探索的个人门户。",
+        "description": "记录大学数学教学内容、交互式课件和相关工具开发的个人站点。",
         "potentialAction": {
           "@type": "SearchAction",
           "target": "https://matnoble.top/search?q={search_term_string}",
@@ -24,7 +24,7 @@ head:
 
 <HighFidelityHero 
   name="MatNoble"
-  text="The Digital Scholar's Lab"
+  text="数学课程与教学工具"
   tagline="整理大学数学课程内容，并用代码实现可交互的学习工具。"
   :actions="[
     { theme: 'brand', text: '浏览课程内容', link: '/teaching/calculus' },
@@ -37,8 +37,8 @@ head:
 
 <section id="knowledge-graph" class="gateway-section">
   <h2 class="section-title">
-    核心研学地图
-    <span class="section-subtitle">Scholarly Knowledge Graph</span>
+    内容地图
+    <span class="section-subtitle">Site Map</span>
   </h2>
   
   <KnowledgeGraph />

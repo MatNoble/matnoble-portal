@@ -17,7 +17,7 @@ const CDN_BASE = 'https://assets.matnoble.top/calculus/II'
 
 # 高等数学II
 
-《高等数学II》是理工科各专业的核心基础课。本页面提供课程的章节化授课课件与复习讲义资料下载。所有文件均与备课目录实时同步。
+《高等数学II》是理工科专业常见的基础课程。本页面提供章节课件与复习讲义下载。
 
 ---
 
@@ -29,7 +29,7 @@ const CDN_BASE = 'https://assets.matnoble.top/calculus/II'
   <thead>
     <tr>
       <th style="width: 12%">章节</th>
-      <th style="width: 73%">核心知识要点</th>
+      <th style="width: 73%">知识要点</th>
       <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
     </tr>
   </thead>
@@ -66,7 +66,7 @@ const CDN_BASE = 'https://assets.matnoble.top/calculus/II'
     </tr>
     <tr class="review-row">
       <td class="chap-num">复习</td>
-      <td class="chap-title font-review">本章专题复习与核心计算方法讲义</td>
+      <td class="chap-title font-review">本章专题复习与计算方法讲义</td>
       <td class="download-cell">
         <div class="dl-group">
           <a :href="CDN_BASE + '/7/Chapter_7_Differential_Equations_Student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">学生版 📂</a>
@@ -83,7 +83,7 @@ const CDN_BASE = 'https://assets.matnoble.top/calculus/II'
   <thead>
     <tr>
       <th style="width: 12%">章节</th>
-      <th style="width: 73%">核心知识要点</th>
+      <th style="width: 73%">知识要点</th>
       <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
     </tr>
   </thead>
@@ -137,7 +137,7 @@ const CDN_BASE = 'https://assets.matnoble.top/calculus/II'
   <thead>
     <tr>
       <th style="width: 12%">章节</th>
-      <th style="width: 73%">核心知识要点</th>
+      <th style="width: 73%">知识要点</th>
       <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
     </tr>
   </thead>
@@ -193,7 +193,7 @@ const CDN_BASE = 'https://assets.matnoble.top/calculus/II'
   <thead>
     <tr>
       <th style="width: 12%">章节</th>
-      <th style="width: 73%">核心知识要点</th>
+      <th style="width: 73%">知识要点</th>
       <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
     </tr>
   </thead>
@@ -239,7 +239,7 @@ const CDN_BASE = 'https://assets.matnoble.top/calculus/II'
   <thead>
     <tr>
       <th style="width: 12%">章节</th>
-      <th style="width: 73%">核心知识要点</th>
+      <th style="width: 73%">知识要点</th>
       <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
     </tr>
   </thead>

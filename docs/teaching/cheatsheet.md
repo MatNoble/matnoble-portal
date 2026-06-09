@@ -52,7 +52,7 @@ const printPage = () => {
 
 ## 1. 微分万能公式 (Universal Formula)
 
-::: tip 核心定义
+::: tip 定义
 利用**一阶微分形式不变性**，把链式法则写成逐层微分的形式。
 $$\mathrm{d}y=\mathrm{d}(f(\square))=f'(\square)\mathrm{d}(\square)$$
 :::
@@ -75,7 +75,7 @@ $$\begin{aligned}\mathrm{d}y & = \mathrm{d}(\ln(\sin(e^x)))\\&=\frac{1}{\sin(e^x
 
 ## 2. DI Method (表格积分法)
 
-::: tip 核心定义
+::: tip 定义
 分部积分法 $\int u\mathrm{d}v=uv-\int v\mathrm{d}u$ 的**表格化**版本，特别适用于多次分部积分。
 :::
 

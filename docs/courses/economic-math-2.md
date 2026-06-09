@@ -2,7 +2,7 @@
 layout: doc
 title: 经济数学II
 breadcrumb: 经济数学II
-description: 经济管理类核心工具课《经济数学II》（线性代数）教学大纲、授课课件与复习专题讲义。内容涵盖行列式、矩阵代数与线性方程组。
+description: 经济管理类课程《经济数学II》（线性代数）教学大纲、授课课件与复习专题讲义。内容涵盖行列式、矩阵代数与线性方程组。
 head:
   - - meta
     - name: keywords
@@ -17,7 +17,7 @@ const CDN_BASE = 'https://assets.matnoble.top/linear_algebra/economics'
 
 # 经济数学II
 
-《经济数学II》是经济管理类各专业的核心工具课，其授课主体内容为**线性代数**。本页面提供课程的章节化授课课件与复习讲义资料下载。所有文件均与备课目录实时同步。
+《经济数学II》面向经济管理类专业，授课主体内容为**线性代数**。本页面提供章节课件与复习讲义下载。
 
 ---
 
@@ -29,7 +29,7 @@ const CDN_BASE = 'https://assets.matnoble.top/linear_algebra/economics'
   <thead>
     <tr>
       <th style="width: 12%">章节</th>
-      <th style="width: 73%">核心知识要点</th>
+      <th style="width: 73%">知识要点</th>
       <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
     </tr>
   </thead>
@@ -61,7 +61,7 @@ const CDN_BASE = 'https://assets.matnoble.top/linear_algebra/economics'
     </tr>
     <tr class="review-row">
       <td class="chap-num">复习</td>
-      <td class="chap-title font-review">本章专题复习与行列式核心计算方法讲义</td>
+      <td class="chap-title font-review">本章专题复习与行列式计算方法讲义</td>
       <td class="download-cell">
         <div class="dl-group">
           <a :href="CDN_BASE + '/handout_ch1_determinants_student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">学生版 📂</a>
@@ -78,7 +78,7 @@ const CDN_BASE = 'https://assets.matnoble.top/linear_algebra/economics'
   <thead>
     <tr>
       <th style="width: 12%">章节</th>
-      <th style="width: 73%">核心知识要点</th>
+      <th style="width: 73%">知识要点</th>
       <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
     </tr>
   </thead>
@@ -117,7 +117,7 @@ const CDN_BASE = 'https://assets.matnoble.top/linear_algebra/economics'
   <thead>
     <tr>
       <th style="width: 12%">章节</th>
-      <th style="width: 73%">核心知识要点</th>
+      <th style="width: 73%">知识要点</th>
       <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
     </tr>
   </thead>
@@ -150,8 +150,8 @@ const CDN_BASE = 'https://assets.matnoble.top/linear_algebra/economics'
   </tbody>
 </table>
 
-::: info 📊 核心方法直观：线性方程组无解/有唯一解/有无穷多解的判定与求解流程
-本图梳理了通过初等行变换将增广矩阵化为行阶梯形后，利用系数矩阵秩 $r(A)$ 与增广矩阵秩 $r(\bar{A})$ 的关系进行解的判定，以及进一步求出唯一解或通解的完整逻辑路径。
+::: info 线性方程组解的判定与求解流程
+本图梳理通过初等行变换将增广矩阵化为行阶梯形后，如何利用系数矩阵秩 $r(A)$ 与增广矩阵秩 $r(\bar{A})$ 的关系判断解的情况，并继续求唯一解或通解。
 
 <p align="center" style="margin: 24px 0 12px;">
   <img src="/assets/images/solution_judgment_flowchart_unified.svg" alt="线性方程组解的判定与求解流程图" style="max-width: 100%; border-radius: 12px; box-shadow: var(--shadow-sm); background: #ffffff; padding: 12px; border: 1px solid rgba(0,0,0,0.05);" />
@@ -164,7 +164,7 @@ const CDN_BASE = 'https://assets.matnoble.top/linear_algebra/economics'
   <thead>
     <tr>
       <th style="width: 12%">章节</th>
-      <th style="width: 73%">核心知识要点</th>
+      <th style="width: 73%">知识要点</th>
       <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
     </tr>
   </thead>
@@ -186,7 +186,7 @@ const CDN_BASE = 'https://assets.matnoble.top/linear_algebra/economics'
     </tr>
     <tr class="review-row">
       <td class="chap-num">复习</td>
-      <td class="chap-title font-review">本章专题复习与线性方程组解的结构核心大题讲义</td>
+      <td class="chap-title font-review">本章专题复习与线性方程组解的结构讲义</td>
       <td class="download-cell">
         <div class="dl-group">
           <a :href="CDN_BASE + '/handout_ch4_vector_dependence_student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">学生版 📂</a>

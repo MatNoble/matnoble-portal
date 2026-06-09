@@ -59,12 +59,12 @@ Memorize 支持常用 LaTeX 数学公式录入和渲染。
 ## 使用入口
 
 ::: info 推荐用法
-在学习 [大学数学教学体系](/teaching/) 时，遇到核心公式可一键加入复习计划。
+在学习 [大学数学课程内容](/teaching/) 时，可以把常用公式加入复习计划。
 :::
 
 <div style="margin: 30px 0; text-align: center;">
   <a href="https://memorize.matnoble.top" target="_blank" rel="noopener noreferrer" style="display: inline-block; padding: 12px 36px; background-color: var(--vp-c-brand); color: white; border-radius: 24px; font-weight: bold; text-decoration: none; font-size: 1.1em; transition: transform 0.2s;">
-    立即开始记忆
+    打开 Memorize
   </a>
 </div>
 

@@ -2,7 +2,7 @@
 layout: doc
 title: 离散数学
 breadcrumb: 离散数学
-description: 计算机科学与技术等理工专业核心基础课《离散数学》教学大纲、章节课件与复习专题讲义。内容涵盖命题逻辑、一阶逻辑、二元关系、等价与偏序、图论及代数结构。
+description: 计算机科学与技术等专业《离散数学》教学大纲、章节课件与复习专题讲义。内容涵盖命题逻辑、一阶逻辑、二元关系、等价与偏序、图论及代数结构。
 head:
   - - meta
     - name: keywords
@@ -17,7 +17,7 @@ const CDN_BASE = 'https://assets.matnoble.top/discrete'
 
 # 离散数学
 
-《离散数学》是计算机类各专业的核心基础必修课，也是构建现代算法、数理逻辑与系统分析必不可少的数理基石。本页面提供课程中“命题逻辑”“一阶逻辑”“二元关系”与“图论基础”等章节的章节化授课课件与专题习题讲义下载。所有文件均与备课目录实时同步。
+《离散数学》是计算机类专业常见的基础课程，内容包括命题逻辑、一阶逻辑、二元关系和图论基础等。本页面提供章节课件与专题习题讲义下载。
 
 ---
 
@@ -29,7 +29,7 @@ const CDN_BASE = 'https://assets.matnoble.top/discrete'
   <thead>
     <tr>
       <th style="width: 12%">章节</th>
-      <th style="width: 73%">核心知识要点</th>
+      <th style="width: 73%">知识要点</th>
       <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
     </tr>
   </thead>
@@ -68,7 +68,7 @@ const CDN_BASE = 'https://assets.matnoble.top/discrete'
   <thead>
     <tr>
       <th style="width: 12%">章节</th>
-      <th style="width: 73%">核心知识要点</th>
+      <th style="width: 73%">知识要点</th>
       <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
     </tr>
   </thead>
@@ -102,7 +102,7 @@ const CDN_BASE = 'https://assets.matnoble.top/discrete'
   <thead>
     <tr>
       <th style="width: 12%">章节</th>
-      <th style="width: 73%">核心知识要点</th>
+      <th style="width: 73%">知识要点</th>
       <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
     </tr>
   </thead>
@@ -136,7 +136,7 @@ const CDN_BASE = 'https://assets.matnoble.top/discrete'
   <thead>
     <tr>
       <th style="width: 12%">章节</th>
-      <th style="width: 73%">核心知识要点</th>
+      <th style="width: 73%">知识要点</th>
       <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
     </tr>
   </thead>
@@ -190,7 +190,7 @@ const CDN_BASE = 'https://assets.matnoble.top/discrete'
     </tr>
     <tr class="review-row">
       <td class="chap-num">复习</td>
-      <td class="chap-title font-review">期末专题复习与核心要点讲义</td>
+      <td class="chap-title font-review">期末专题复习讲义</td>
       <td class="download-cell">
         <div class="dl-group">
           <a :href="CDN_BASE + '/final_review_handout_student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">学生版 📂</a>

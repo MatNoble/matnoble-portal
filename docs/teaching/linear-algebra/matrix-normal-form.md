@@ -2,11 +2,11 @@
 title: 矩阵化简的三种形态
 titleTemplate: ":title | MatNoble"
 description: 说明行阶梯形(REF)、行最简形(RREF)与标准型(Normal Form)之间的关系，并用动画辅助理解矩阵秩的变化过程。
-keywords: 矩阵化简, 矩阵秩的本质, 行最简形, 线性代数几何直观, Manim 动画教学, 矩阵标准型推导
+keywords: 矩阵化简, 矩阵秩, 行最简形, 线性代数几何直观, Manim 动画教学, 矩阵标准型推导
 structuredData:
   course:
     name: "线性代数几何直观"
-    description: "通过可视化手段探索矩阵变换的核心逻辑。"
+    description: "通过可视化演示说明矩阵化简与矩阵秩的关系。"
     provider: "MatNoble"
 ---
 

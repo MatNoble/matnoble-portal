@@ -1,7 +1,7 @@
 ---
 layout: page
-title: 沉浸式计时器
-description: 为课堂练习设计的极简倒计时工具，致敬 Apple Watch 设计。
+title: 课堂倒计时
+description: 为课堂练习设计的全屏倒计时工具。
 navbar: false
 sidebar: false
 aside: false
