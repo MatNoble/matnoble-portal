@@ -4,6 +4,21 @@ import { genFeed } from "./genFeed";
 import { VitePWA } from "vite-plugin-pwa";
 
 const SITE_ORIGIN = "https://matnoble.top";
+const SITE_DESCRIPTION =
+  "MatNoble 是大学数学教师的个人站点，整理微积分、线性代数、空间解析几何等课程内容，并提供若干交互式教学工具。";
+
+const ROUTE_LABELS: Record<string, string> = {
+  "about": "关于 MatNoble",
+  "courses": "课程中心",
+  "projects": "开源项目",
+  "teaching": "教学目录",
+  "teaching/calculus": "微积分",
+  "teaching/linear-algebra": "线性代数",
+  "teaching/linear-algebra/cramers-rule": "克拉默法则",
+  "teaching/linear-algebra/elementary-transformations": "初等变换",
+  "teaching/linear-algebra/matrix-normal-form": "矩阵化简",
+  "tools": "数学工具",
+};
 
 function canonicalUrl(relativePath: string): string {
   if (relativePath === "index.md") return `${SITE_ORIGIN}/`;
@@ -27,12 +42,27 @@ function isIndexableUrl(url: string): boolean {
   );
 }
 
+function routePath(relativePath: string): string {
+  if (relativePath === "index.md") return "";
+
+  const withoutExtension = relativePath.replace(/\.md$/, "");
+  if (withoutExtension.endsWith("/index")) {
+    return withoutExtension.replace(/\/index$/, "");
+  }
+
+  return withoutExtension;
+}
+
+function markdownMirrorUrl(relativePath: string): string {
+  const route = routePath(relativePath);
+  return `${SITE_ORIGIN}/.well-known/markdown/${route || "index"}.md`;
+}
+
 export default defineConfig({
   lang: "zh-CN",
   title: "MatNoble",
   titleTemplate: ":title | MatNoble", // 统一标题模板，防止重复
-  description:
-    "大学数学教师 MatNoble 的个人门户。致力于数学与计算机科学的交叉探索，分享微积分、线性代数的高效方法论及数学辅助工具开发。为热爱数学与编程的探索者提供深度内容。",
+  description: SITE_DESCRIPTION,
 
   markdown: {
     math: true,
@@ -233,9 +263,7 @@ export default defineConfig({
     const pageTitle = pageData.title;
     const title = pageTitle ? `${pageTitle} | ${siteTitle}` : siteTitle;
 
-    const description =
-      pageData.description ||
-      "大学数学教师 MatNoble 的个人门户。专注于微积分三大计算（微分万能公式、DI表格法）与线性代数教学，分享数学学习方法与辅助工具。";
+    const description = pageData.description || SITE_DESCRIPTION;
 
     const image = pageData.frontmatter.image || "/social-card.png";
     const imageUrl = image.startsWith("http")
@@ -253,13 +281,18 @@ export default defineConfig({
       "item": "https://matnoble.top/"
     });
 
-    const pathSegments = pageData.relativePath.split('/').filter(s => s !== 'index.md');
+    const pageRoutePath = routePath(pageData.relativePath);
+    const pathSegments = pageRoutePath ? pageRoutePath.split("/") : [];
     if (pathSegments.length > 0) {
       let cumulativePath = "https://matnoble.top/";
       pathSegments.forEach((segment, index) => {
-        const cleanSegment = segment.replace('.md', '');
-        cumulativePath += cleanSegment + '/';
-        const name = pageData.frontmatter.breadcrumb || cleanSegment.charAt(0).toUpperCase() + cleanSegment.slice(1);
+        const currentRoute = pathSegments.slice(0, index + 1).join("/");
+        cumulativePath += segment + "/";
+        const isLast = index === pathSegments.length - 1;
+        const name =
+          (isLast && pageData.frontmatter.breadcrumb) ||
+          ROUTE_LABELS[currentRoute] ||
+          segment.replace(/-/g, " ");
         breadcrumbs.push({
           "@type": "ListItem",
           "position": index + 2,
@@ -302,6 +335,7 @@ export default defineConfig({
         "learningResourceType": "Math Solver",
         "eduQuestionType": "Integration",
         "usageInfo": "https://matnoble.top/about",
+        "provider": { "@id": "https://matnoble.top/#person" },
         "description": ms.description,
         "potentialAction": ms.potentialAction.map((action: any) => ({
           "@type": action.type === "SolveAction" ? "SolveMathAction" : action.type,
@@ -378,6 +412,9 @@ export default defineConfig({
 
     return [
       ["link", { rel: "canonical", href: url }],
+      ["link", { rel: "alternate", type: "text/markdown", href: markdownMirrorUrl(pageData.relativePath) }],
+      ["meta", { name: "robots", content: "index, follow, max-image-preview:large" }],
+      ["meta", { name: "author", content: "MatNoble" }],
       ["meta", { name: "keywords", content: keywords }],
       // Open Graph
       ["meta", { property: "og:url", content: url }],
@@ -510,11 +547,13 @@ export default defineConfig({
               "Web Development",
             ],
             description:
-              "大学数学教师与独立开发者。致力于数学与计算机科学的交叉探索，通过“微分万能公式”与“DI Method”等高效方法论，构建可解释的数学与代码世界。",
+              "大学数学教师与独立开发者，主要整理微积分、线性代数等课程内容，并开发交互式教学工具。",
             image: "https://matnoble.top/logo.svg",
             sameAs: [
               "https://github.com/matnoble",
               "https://blog.matnoble.top",
+              "https://www.zhihu.com/people/matnoble",
+              "https://www.youtube.com/@RossMatNoble"
             ],
           },
           {
@@ -522,15 +561,16 @@ export default defineConfig({
             "@id": "https://matnoble.top/#website",
             url: "https://matnoble.top",
             name: "MatNoble Portal",
-            description:
-              "MatNoble的个人门户，分享大学数学教学资源与数学辅助工具。",
+            description: SITE_DESCRIPTION,
             publisher: { "@id": "https://matnoble.top/#person" },
+            inLanguage: "zh-CN"
           },
           {
-            "@type": "Organization",
-            "name": "MatNoble数学教育",
+            "@type": "EducationalOrganization",
+            "@id": "https://matnoble.top/#organization",
+            "name": "MatNoble",
             "url": "https://matnoble.top",
-            "description": "专注于高等数学教育的创新教学平台",
+            "description": "面向大学数学教学的个人站点，包含课程讲义、交互演示和学习工具。",
             "logo": "https://matnoble.top/logo.svg",
             "founder": {
               "@type": "Person",
@@ -544,12 +584,12 @@ export default defineConfig({
           {
             "@type": "DefinedTermSet",
             "@id": "https://matnoble.top/#methods",
-            "name": "大学数学三大计算核心方法论",
+            "name": "大学数学常用计算方法",
             "hasDefinedTerm": [
               {
                 "@type": "DefinedTerm",
                 "name": "Universal Formula for Differentials (微分万能公式)",
-                "description": "利用一阶微分形式不变性，将链式法则简化为剥洋葱式的微分操作：dy = d(f(□)) = f'(□) d(□)。",
+                "description": "利用一阶微分形式不变性，将链式法则写成逐层微分操作：dy = d(f(□)) = f'(□) d(□)。",
                 "url": "https://matnoble.top/teaching/derivative-method",
                 "sameAs": [
                   "https://en.wikipedia.org/wiki/Differential_(mathematics)",
@@ -559,7 +599,7 @@ export default defineConfig({
               {
                 "@type": "DefinedTerm",
                 "name": "DI Method (表格积分法)",
-                "description": "分部积分法的系统性优化工具，通过 D (求导) 和 I (积分) 两列快速得出结果，遵循 LIATE 优先级法则。",
+                "description": "分部积分法的一种表格化写法，通过 D (求导) 和 I (积分) 两列组织计算，遵循 LIATE 优先级法则。",
                 "url": "https://matnoble.top/teaching/cheatsheet",
                 "sameAs": [
                   "https://en.wikipedia.org/wiki/Integration_by_parts"
@@ -572,7 +612,7 @@ export default defineConfig({
             name: "Universal Formula for Differentials (微分万能公式)",
             author: { "@id": "https://matnoble.top/#person" },
             description:
-              "A simplified operational framework for calculating differentials of composite functions: \mathrm{d}y = \mathrm{d}(f(□)) = f'(□) \mathrm{d}(□).",
+              "一种用于整理复合函数微分计算步骤的写法：\\mathrm{d}y = \\mathrm{d}(f(□)) = f'(□)\\mathrm{d}(□)。",
             inLanguage: "zh-CN",
           },
           {
@@ -582,7 +622,7 @@ export default defineConfig({
             operatingSystem: "Web",
             author: { "@id": "https://matnoble.top/#person" },
             description:
-              "A spaced repetition tool designed for mathematical formulas with LaTeX support.",
+              "支持 LaTeX 公式录入的间隔重复记忆工具。",
             url: "https://matnoble.top/tools/memorize",
           },
         ],

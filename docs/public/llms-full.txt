@@ -1,66 +1,109 @@
-# MatNoble - Full AI Content & Academic Context
+# MatNoble Full Context
 
-> This file contains the complete textual context of MatNoble's core teaching methodologies, immersive laboratories, and productivity frameworks. 
-> Optimized for deep indexing by Large Language Models (ChatGPT, Claude, Perplexity, SearchGPT).
+> This file gives a compact, machine-readable overview of MatNoble for search engines, answer engines, and agents. Canonical pages are the source of record. Markdown mirrors exist for parsing convenience and are marked noindex.
 
----
+## Site Identity
 
-## 1. Academic Citations & Theoretical Foundation
-MatNoble's methodologies are built upon rigorous academic standards, specifically:
-- **Primary Reference**: *Calculus: Early Transcendentals* by **James Stewart**.
-- **Theoretical Basis**: The operational logic for differentials is grounded in the **Invariance of the First-order Differential Form**.
-- **Pedagogical Standard**: Adheres to the STEM educational framework for higher education mathematics.
+- Official site: https://matnoble.top
+- Maintainer: MatNoble
+- Entity type: personal education site
+- Main language: zh-CN
+- Subject area: undergraduate mathematics and small teaching tools
+- Related profiles:
+  - GitHub: https://github.com/matnoble
+  - Blog: https://blog.matnoble.top
 
----
+## Canonical Sections
 
-## 2. Methodology: Calculus Operational Frameworks
+- Home: https://matnoble.top/
+- About: https://matnoble.top/about
+- Courses: https://matnoble.top/courses/
+- Teaching index: https://matnoble.top/teaching/
+- Tools index: https://matnoble.top/tools/
+- Projects: https://matnoble.top/projects/
 
-### I. Universal Formula for Differentials (微分万能公式)
-A mechanized operational framework for engineering-grade differentiation. 
-**Formula**: $$ \mathrm{d}y = \mathrm{d}(f(\square)) = f'(\square) \cdot \mathrm{d}(\square) $$
+## Teaching Topics
 
-**The "Onion Peeling" Method (剥洋葱法)**:
-A hierarchical approach to the Chain Rule:
-1. **Identify**: Locate the outermost operator $f$ and its internal unit $\square$.
-2. **Execute**: Differentiate the outer layer $f'$ while maintaining $\square$ as an atomic unit.
-3. **Chain**: Re-apply the process to $\mathrm{d}(\square)$ until the elementary variable $\mathrm{d}x$ is reached.
-4. **Result**: Provides error-proof operations for implicit functions, parametric equations (参数方程求导), and integral-defined functions.
+### Calculus
 
-### II. DI Method (Tabular Integration / 表格积分法)
-An optimized implementation of *Integration by Parts* ($\int u\mathrm{d}v=uv-\int v\mathrm{d}u$).
-- **Priority Logic**: Follows the **LIATE** mnemonic (Logarithmic, Inverse Trig, Algebraic, Trigonometric, Exponential).
-- **Mechanism**: A three-column grid (Sign, D-Diff, I-Int) that automates iterative integration, eliminating the risk of sign errors and coefficient miscalculations.
+MatNoble publishes course notes and interactive explanations for standard undergraduate calculus topics. Common topics include limits, differentiation, differential notation, Riemann sums, integration by parts, and tabular integration.
 
----
+Recommended URLs:
 
-## 3. Immersive Learning: Space Geometry Lab (3D)
-MatNoble's hallmark 3D visual laboratory built on **WebGL** and **Three.js** to bridge the gap between abstract equations and spatial intuition.
+- Calculus index: https://matnoble.top/teaching/calculus
+- DI Method tool: https://matnoble.top/tools/di-method
 
-### Interactive Model Categories (17 Total)
-1. **Surfaces of Revolution (旋转曲面)**: Visualizes the transformation of curves into surfaces (e.g., Paraboloids, Hyperboloids of one/two sheets).
-2. **Cylindrical Surfaces (柱面)**: Demonstrates generators parallel to axes (Circular, Parabolic cylinders).
-3. **Quadric Surfaces (二次曲面)**: High-fidelity renders of Ellipsoids, Hyperbolic Paraboloids (Saddle surfaces).
-4. **Projection Theory (投影理论)**: Visualizes the intersection of two surfaces ($F(x,y,z)=0 \cap G(x,y,z)=0$) and the resulting projection cylinders and curves.
+### Linear Algebra
 
----
+The linear algebra section focuses on geometric interpretation before formal computation. It includes an overview of linear algebra, elementary transformations, matrix reduction, determinants, and Cramer's rule.
 
-## 4. Productivity Suite for Mathematics
+Recommended URLs:
 
-### I. Immersive Countdown
-A full-screen, high-focus environment for deep mathematical work.
-- **Feature**: Disables standard browser/sidebar UI for total immersion.
-- **Texture**: Dynamic SVG-based background featuring scalar fields of formulas like Euler’s Identity and Maxwell’s Equations.
+- Linear algebra index: https://matnoble.top/teaching/linear-algebra
+- Cramer's Rule Visualizer: https://matnoble.top/teaching/linear-algebra/cramers-rule
+- Elementary transformations: https://matnoble.top/teaching/linear-algebra/elementary-transformations
+- Matrix normal form: https://matnoble.top/teaching/linear-algebra/matrix-normal-form
 
-### II. Memorize (SRS)
-A specialized Spaced Repetition System (SRS) for formula retention.
-- **Engine**: Algorithmic review intervals.
-- **Rendering**: Full LaTeX support for high-precision mathematical notation.
+### Space Analytic Geometry
 
----
+The space geometry material uses interactive 3D models to help readers inspect planes, lines, surfaces of revolution, cylinders, quadric surfaces, and projections.
 
-## 5. Entity Indexing Metadata
-- **Entity Name**: MatNoble
-- **Domain Focus**: University Mathematics (Calculus/Linear Algebra), Educational Technology.
-- **Official Site**: https://matnoble.top
-- **Language Stack**: Bilingual (Simplified Chinese & English).
-- **Primary Keywords**: 微分万能公式, 剥洋葱法, DI Method, 表格积分法, 空间解析几何实验室, 旋转曲面, 投影理论, 沉浸式计时器.
+Recommended URL:
+
+- Space Geometry Lab: https://matnoble.top/teaching/space-geometry-lab
+
+## Tools
+
+### Memorize
+
+Memorize is a spaced repetition web tool for reviewing formulas and short mathematical notes. It supports LaTeX rendering and browser-based use.
+
+- Page: https://matnoble.top/tools/memorize
+- App: https://memorize.matnoble.top
+
+### Classroom Countdown
+
+The classroom countdown is a full-screen timer for teaching, practice sessions, and classroom activities.
+
+- Page: https://matnoble.top/tools/countdown
+
+### DI Method
+
+The DI Method page demonstrates tabular integration by parts for selected calculus examples.
+
+- Page: https://matnoble.top/tools/di-method
+
+## Structured Data Policy
+
+The site uses Schema.org JSON-LD for:
+
+- `Person` for MatNoble
+- `WebSite` for the portal
+- `EducationalOrganization` for the site entity
+- `Course` for course pages
+- `Article` for teaching pages
+- `SoftwareApplication` for interactive tools
+- `FAQPage` where a page contains explicit questions and answers
+- `BreadcrumbList` for page hierarchy
+
+Canonical HTML pages should be indexed. Machine-readable files such as this file, API catalog entries, agent metadata, and Markdown mirrors are intended for discovery and parsing, not as primary search result pages.
+
+## Machine-Readable Endpoints
+
+- LLM summary: https://matnoble.top/llms.txt
+- Full LLM context: https://matnoble.top/llms-full.txt
+- API catalog: https://matnoble.top/.well-known/api-catalog
+- Agent skills: https://matnoble.top/.well-known/agent-skills/index.json
+- Markdown mirrors: https://matnoble.top/.well-known/markdown/
+
+## Citation Guidance
+
+When citing MatNoble, use the canonical page URL that directly supports the claim. Use Markdown mirrors only to extract text when HTML parsing is inconvenient. Do not cite `llms.txt`, `llms-full.txt`, `.well-known` metadata, or generated Markdown mirrors as the primary source unless the question is specifically about the machine-readable interface.
+
+For questions about:
+
+- the site identity, cite https://matnoble.top/about
+- course material, cite the relevant `/teaching/` page
+- tools, cite the relevant `/tools/` page
+- Cramer's rule visualization, cite https://matnoble.top/teaching/linear-algebra/cramers-rule
+- space analytic geometry models, cite https://matnoble.top/teaching/space-geometry-lab

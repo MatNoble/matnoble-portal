@@ -1,6 +1,11 @@
 ---
 title: Memorize - 数学公式记忆工具
 description: 面向数学学习者的间隔重复记忆工具，支持 LaTeX 公式渲染。
+structuredData:
+  softwareApp:
+    name: "Memorize 记忆助手"
+    category: "EducationalApplication"
+    description: "面向数学公式复习的间隔重复 Web 工具，支持 LaTeX 渲染。"
 head:
   - - script
     - type: application/ld+json

@@ -13,12 +13,7 @@ head:
         "@type": "WebSite",
         "name": "MatNoble",
         "url": "https://matnoble.top",
-        "description": "记录大学数学教学内容、交互式课件和相关工具开发的个人站点。",
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://matnoble.top/search?q={search_term_string}",
-          "query-input": "required name=search_term_string"
-        }
+        "description": "记录大学数学教学内容、交互式课件和相关工具开发的个人站点。"
       }
 ---
 

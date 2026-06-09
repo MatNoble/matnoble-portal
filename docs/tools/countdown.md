@@ -5,6 +5,11 @@ description: 为课堂练习设计的全屏倒计时工具。
 navbar: false
 sidebar: false
 aside: false
+structuredData:
+  softwareApp:
+    name: "课堂倒计时"
+    category: "EducationalApplication"
+    description: "用于课堂练习和教学展示的全屏倒计时工具。"
 ---
 
 <div class="countdown-page-container">

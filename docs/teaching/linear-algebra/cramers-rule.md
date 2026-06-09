@@ -11,6 +11,10 @@ structuredData:
     name: "线性代数几何直观"
     description: "通过交互图形理解克拉默法则中的列替换与面积比值。"
     provider: "MatNoble"
+  softwareApp:
+    name: "Cramer's Rule Visualizer"
+    category: "EducationalApplication"
+    description: "通过面积比值演示二维克拉默法则的交互式 Web 可视化。"
 ---
 
 <ArticleHero
