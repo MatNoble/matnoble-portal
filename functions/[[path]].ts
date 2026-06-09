@@ -17,15 +17,25 @@ interface EventContext<Env, Params extends string, Data> {
 }
 
 const MARKDOWN_MANIFEST_PATH = "/.well-known/markdown/manifest.json";
+const ADS_TXT_BODY = "google.com, pub-4221480300398103, DIRECT, f08c47fec0942fa0\n";
 
 export async function onRequest(context: EventContext<Env, string, unknown>): Promise<Response> {
   const request = context.request;
+  const url = new URL(request.url);
+
+  if (url.pathname === "/ads.txt") {
+    return new Response(ADS_TXT_BODY, {
+      headers: {
+        "Content-Type": "text/plain; charset=utf-8",
+        "Cache-Control": "public, max-age=300, must-revalidate",
+      },
+    });
+  }
 
   if (!prefersMarkdown(request)) {
     return context.next();
   }
 
-  const url = new URL(request.url);
   const markdownPath = await resolveMarkdownPath(context.env, url.pathname);
 
   if (!markdownPath) {
