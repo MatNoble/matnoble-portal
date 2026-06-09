@@ -1,6 +1,6 @@
 ---
 title: 微积分公式大全与 DI 表格积分法速查表 (PDF 打印版)
-description: 专为大学生设计的期末复习与考研数学速查指南。集成微分万能公式操作流程、LIATE 优先级口诀及 DI 表格法实战示例。支持 A4 高清打印与 PDF 导出。
+description: 面向大学微积分复习的公式与方法速查表。包含微分万能公式操作流程、LIATE 优先级口诀及 DI 表格法示例，支持 A4 打印与 PDF 导出。
 layout: doc
 head:
   - - script
@@ -9,7 +9,7 @@ head:
       {
         "@context": "https://schema.org",
         "@type": "Article",
-        "headline": "核心心法速查表 (微积分公式与 DI 表格法)",
+        "headline": "微积分公式与方法速查表",
         "description": "包含微分万能公式、LIATE 优先级口诀与 DI 表格积分法的系统性复习工具。",
         "author": {
           "@type": "Person",
@@ -26,7 +26,7 @@ const printPage = () => {
 
 <ArticleHero 
   tag="工具速查"
-  title="核心心法速查表" 
+  title="微积分公式与方法速查表" 
   description="包含微分万能公式操作流程、LIATE 优先级口诀与 DI 表格积分法。支持 A4 打印与 PDF 导出。"
   class="no-print"
 />
@@ -34,7 +34,7 @@ const printPage = () => {
 <div class="print-only" style="display: none;">
   <div style="display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid #333; padding-bottom: 10px; margin-bottom: 20px;">
     <div>
-      <div style="margin: 0; font-size: 24px; font-weight: bold;">核心心法速查表</div>
+      <div style="margin: 0; font-size: 24px; font-weight: bold;">微积分公式与方法速查表</div>
       <p style="margin: 5px 0 0 0; font-size: 14px; color: #666;">Math Core Methods Cheat Sheet</p>
     </div>
     <div style="text-align: right;">
@@ -53,14 +53,14 @@ const printPage = () => {
 ## 1. 微分万能公式 (Universal Formula)
 
 ::: tip 核心定义
-利用**一阶微分形式不变性**，将链式法则转化为“填空游戏”。
+利用**一阶微分形式不变性**，把链式法则写成逐层微分的形式。
 $$\mathrm{d}y=\mathrm{d}(f(\square))=f'(\square)\mathrm{d}(\square)$$
 :::
 
 ### 操作流程
 
 1.  **观察**：识别最外层函数 $f$ 和内层函数 $\square$。
-2.  **剥皮**：对最外层求导 $f'(\square)$，保留内层不动。
+2.  **处理外层**：对最外层求导 $f'(\square)$，保留内层不动。
 3.  **填空**：在微分号 $\mathrm{d}$ 后填入内层函数 $\square$，继续对 $\mathrm{d}(\square)$ 重复上述步骤。
 
 ### 实战示例
@@ -69,7 +69,7 @@ $$\mathrm{d}y=\mathrm{d}(f(\square))=f'(\square)\mathrm{d}(\square)$$
 
 $$\begin{aligned}\mathrm{d}y & = \mathrm{d}(\ln(\sin(e^x)))\\&=\frac{1}{\sin(e^x)}\mathrm{d}(\sin(e^x))\quad\text{(剥去 ln)}\\&=\frac{1}{\sin(e^x)}\cos(e^x)\mathrm{d}(e^x)\quad\text{(剥去 sin)}\\&=\cot(e^x)e^x\mathrm{d}x\quad\text{(剥去 e)}\end{aligned}$$
 
-> 💡 **深度学习**：想要掌握隐函数、参数方程求导等更高级的技巧？查看 [**微分万能公式详解**](/teaching/derivative-method)。
+> 继续学习隐函数、参数方程求导等用法，可查看 [**微分万能公式详解**](/teaching/derivative-method)。
 
 ---
 
@@ -79,7 +79,7 @@ $$\begin{aligned}\mathrm{d}y & = \mathrm{d}(\ln(\sin(e^x)))\\&=\frac{1}{\sin(e^x
 分部积分法 $\int u\mathrm{d}v=uv-\int v\mathrm{d}u$ 的**表格化**版本，特别适用于多次分部积分。
 :::
 
-### 核心法则 (LIATE)
+### LIATE 选取规则
 
 选取 **D 列 (求导)** 和 **I 列 (积分)** 的优先级：
 

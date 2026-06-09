@@ -2,6 +2,7 @@
 interface Node {
   text: string
   active?: boolean
+  link?: string
 }
 
 interface Props {
@@ -15,7 +16,11 @@ defineProps<Props>()
   <div class="learning-path-header">
     <div class="path-container">
       <template v-for="(node, index) in nodes" :key="index">
-        <div class="path-node" :class="{ active: node.active }">
+        <a v-if="node.link" class="path-node" :class="{ active: node.active }" :href="node.link">
+          <div class="node-bullet"></div>
+          <span class="node-text">{{ node.text }}</span>
+        </a>
+        <div v-else class="path-node" :class="{ active: node.active }">
           <div class="node-bullet"></div>
           <span class="node-text">{{ node.text }}</span>
         </div>
@@ -54,10 +59,15 @@ defineProps<Props>()
   gap: 8px;
   opacity: 0.4;
   transition: all 0.3s ease;
+  text-decoration: none;
 }
 
 .path-node.active {
   opacity: 1;
+}
+
+.path-node:hover {
+  opacity: 0.85;
 }
 
 .node-bullet {

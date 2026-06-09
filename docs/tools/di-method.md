@@ -1,6 +1,6 @@
 ---
 title: DI 表格法交互演示
-description: 交互式学习分部积分法的系统性优化工具 —— DI Method。通过逐步推演，掌握表格积分法的核心逻辑。
+description: 用交互方式学习 DI Method。通过逐步推演，理解表格积分法如何组织分部积分计算。
 structuredData:
   mathSolver:
     name: "DI Method Integration Solver"
@@ -16,7 +16,7 @@ structuredData:
 
 # DI 表格法交互演示
 
-**DI Method (Differentiate & Integrate Method)** 是对分部积分法的一种高效、直观的简化。它通过将“求导”与“积分”过程解耦，极大地降低了计算过程中的符号错误率，特别适合处理需要多次分部积分的题目。
+**DI Method (Differentiate & Integrate Method)** 是分部积分法的一种表格化写法。它把“求导”和“积分”分成两列，并用交替符号组织计算步骤，适合处理需要多次分部积分的题目。
 
 ::: tip 提示
 点击下方的题目切换例题，点击 **“下一步”** 观察表格是如何构建的。

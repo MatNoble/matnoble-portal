@@ -2,13 +2,13 @@
 title: 积分的定义：从一元到多元 | 黎曼和与几何直观
 breadcrumb: 积分定义
 titleTemplate: 微积分专题
-description: 深入理解定积分与二重积分的正式定义。通过 Manim 动画直观演示黎曼和（Riemann Sum）的分割、近似与取极限过程，掌握积分从一维到二维的逻辑演进。是微积分三大计算专题的核心理论基础。
+description: 说明定积分与二重积分的正式定义。通过 Manim 动画演示黎曼和（Riemann Sum）的分割、近似、求和与取极限过程。
 keywords: 黎曼和, 定积分定义, 二重积分定义, 微积分教学, 可视化数学, Riemann Sum, Double Integral, 极限思想, 分割近似求和取极限
 tags: ["微积分", "定积分", "二重积分", "黎曼和"]
 structuredData:
   course:
     name: "微积分直觉：积分定义篇"
-    description: "通过几何直观与 Manim 动画深入剖析黎曼积分的本质，涵盖一元定积分与二重积分。"
+    description: "通过几何直观与 Manim 动画说明黎曼积分的定义，涵盖一元定积分与二重积分。"
     provider: "MatNoble"
   mathSolver:
     name: "积分定义可视化工具"
@@ -23,7 +23,7 @@ head:
       {
         "@context": "https://schema.org",
         "@type": "TechArticle",
-        "headline": "积分的定义：从一元定积分到二重积分的黎曼和本质",
+        "headline": "积分的定义：从一元定积分到二重积分的黎曼和",
         "author": {
           "@type": "Person",
           "name": "MatNoble"
@@ -36,11 +36,11 @@ head:
 <ArticleHero 
   tag="核心概念"
   title="积分的定义 (Definitions)" 
-  description="积分不仅是导数的逆运算，更是无限累积的艺术。从一维的面积到二维的体积，黎曼和（Riemann Sum）是连接直觉与严谨的桥梁。"
+  description="积分可以从黎曼和定义出发理解：先分割区域，再用简单几何量近似，最后通过极限得到精确结果。"
 />
 
 <ThreeOneQuote author="MatNoble">
-  “理解积分的关键不在于计算公式，而在于理解‘分割、近似、求和、取极限’这四部曲如何在不同维度间保持一致。”
+  “定积分和二重积分的定义都遵循同一流程：分割、近似、求和、取极限。”
 </ThreeOneQuote>
 
 ## 1. 一元函数定积分 (Definite Integral)
@@ -103,12 +103,12 @@ $$ \iint_D f(x, y) \mathrm{d}A = \lim_{\lambda \to 0} \sum_{i=1}^n f(\xi_i, \eta
 | **求和 (Sum)** | 重新组合 | 恢复总量 |
 | **取极限 (Limit)** | 精益求精 | 消除误差，获得精确值 |
 
-掌握了这“四部曲”，你就掌握了整个积分学的灵魂。
+理解这四步，有助于把定积分、二重积分和更高维积分放在同一套定义框架中。
 
 <ChapterNavigation 
   :next="{ 
     title: '微分万能公式', 
     link: '/teaching/derivative-method',
-    description: '掌握求导的剥洋葱心法。'
+    description: '继续学习复合函数求导的逐层微分写法。'
   }"
 />

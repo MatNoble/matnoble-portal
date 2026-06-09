@@ -1,32 +1,32 @@
 ---
-title: 线性代数与几何直观 | 空间变换视角下的核心概念
+title: 线性代数总论 | 空间变换视角下的课程结构
 breadcrumb: 线性代数
-titleTemplate: 几何直观专题
-description: 强调几何直觉与空间变换的线性代数教学体系。深入浅出讲解特征值、奇异值分解 (SVD) 等核心概念，助你理解矩阵运算背后的几何本质。
+titleTemplate: 教学体系总论
+description: 线性代数教学体系总论。以空间变换为主线，串联向量空间、矩阵变换、行列式、特征值与奇异值分解等核心概念。
 structuredData:
   course:
-    name: "线性代数与几何直观 (Linear Algebra & Geometric Intuition)"
-    description: "以空间变换为核心的现代线性代数课程。强调几何直觉，拒绝死记硬背矩阵运算。"
+    name: "线性代数总论 (Linear Algebra Overview)"
+    description: "以空间变换为主线的线性代数教学体系总论，串联向量空间、矩阵、行列式、特征值与 SVD。"
     provider: "MatNoble"
   faq:
     - question: "为什么要学习线性代数？"
-      answer: "线性代数不仅是处理数据的工具，更是理解多维空间的语言。通过掌握矩阵作为线性变换的几何本质，你将能更直观地理解现代科学与工程中的复杂系统。"
+      answer: "线性代数用于描述向量空间、线性变换和多维数据结构。把矩阵理解为线性变换，有助于理解方程组、行列式、特征值和矩阵分解。"
     - question: "什么是奇异值分解 (SVD)？"
       answer: "奇异值分解 (SVD) 是线性代数中的核心定理，它揭示了任何矩阵变换都可以分解为旋转、缩放和再次旋转三个步骤。SVD 在图像压缩、数据降维和推荐系统中有着广泛应用。"
 ---
 
 <ArticleHero 
   tag="教学体系 (Curriculum)"
-  title="线性代数与几何直观" 
-  description="以空间变换为核心的现代线性代数教学。我们拒绝死记硬背，聚焦于理解矩阵作为线性变换的几何本质。"
-  :points="['从向量到空间', '矩阵即变换', '特征值的不动轴', 'SVD 的旋转缩放']"
+  title="线性代数总论" 
+  description="以空间变换为主线梳理线性代数。内容从向量空间出发，依次讨论矩阵、行列式、特征值与 SVD。"
+  :points="['从向量到空间', '矩阵与变换', '特征值与特征向量', 'SVD 分解']"
 />
 
 <LearningPathHeader
   :nodes="[
     { text: '线性空间', active: true },
     { text: '矩阵变换' },
-    { text: '行列式本质' },
+    { text: '行列式本质', link: '/teaching/linear-algebra/cramers-rule' },
     { text: '特征分解' },
     { text: '奇异值分解 (SVD)' }
   ]"
@@ -46,8 +46,12 @@ structuredData:
 - **思维转换**：矩阵乘法不仅仅是行乘以列，而是**基变换**。
 - **核心重点**：行列式的面积/体积意义、逆矩阵的变换恢复。
 
-### 3. 特征值与奇异值 (Eigenvalues & SVD)
-- **物理意义**：寻找变换中的“不动轴”。
+### 3. 行列式与方程组 (Determinants & Linear Systems)
+- **交互专题**：[克拉默法则的几何直观](./linear-algebra/cramers-rule)：通过拖拽右端向量，理解 $x_1 = D_1 / D$ 与 $x_2 = D_2 / D$ 的面积比值来源。
+- **核心重点**：行列式不是孤立计算，而是判断列向量张成能力与方程组唯一解的几何尺度。
+
+### 4. 特征值与奇异值 (Eigenvalues & SVD)
+- **几何意义**：寻找在线性变换下方向不变的向量。
 - **实战应用**：奇异值分解 (SVD) 在图像压缩与数据降维中的应用。
 
 ## 🎓 学习资源与下载
@@ -64,16 +68,16 @@ structuredData:
 
 ---
 
-## 📖 推荐资源推荐
+## 📖 推荐资源
 
-- **Gilbert Strang, _Introduction to Linear Algebra_**：MIT 公开课配套教材，线性代数教学的“黄金标准”。
-- **3Blue1Brown, _Essence of Linear Algebra_**：必看的视频系列，构建极致的几何直观。
+- **Gilbert Strang, _Introduction to Linear Algebra_**：MIT 公开课配套教材，适合系统学习线性代数。
+- **3Blue1Brown, _Essence of Linear Algebra_**：视频系列，适合配合几何图像理解矩阵与线性变换。
 - **可视化辅助**：建议配合 Python 的 Numpy 和 Matplotlib 进行矩阵运算验证。
 
 <ChapterNavigation 
   :next="{ 
-    title: '初等变换：数值的流动', 
-    link: '/teaching/linear-algebra/elementary-transformations',
-    description: '通过交互动画深入理解矩阵化简的物理过程。'
+    title: '克拉默法则：面积比值直观', 
+    link: '/teaching/linear-algebra/cramers-rule',
+    description: '通过交互图形理解行列式替换列与线性方程组求解。'
   }"
 />

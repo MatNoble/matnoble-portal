@@ -3,7 +3,7 @@ layout: page
 title: MatNoble
 breadcrumb: 首页
 titleTemplate: false
-description: MatNoble 是一站式大学数学与技术探索门户。专注于微积分（微分万能公式、DI表格法）、线性代数教学与 3D 辅助实验室开发。通过技术算法优化数学学习深度，为理工科学生与开发者构建可解释的数学世界。
+description: MatNoble 是大学数学教学与技术实践门户，内容包括微积分、线性代数、3D 解析几何演示和若干学习辅助工具。
 head:
   - - script
     - type: application/ld+json
@@ -25,10 +25,10 @@ head:
 <HighFidelityHero 
   name="MatNoble"
   text="The Digital Scholar's Lab"
-  tagline="以数学为原点，用代码重构可解释的世界。我们在这里通过算法优化学习，通过可视化洞察本质。"
+  tagline="整理大学数学课程内容，并用代码实现可交互的学习工具。"
   :actions="[
-    { theme: 'brand', text: '开启探索之旅', link: '/teaching/calculus' },
-    { theme: 'alt', text: '了解方法论', link: '/about' }
+    { theme: 'brand', text: '浏览课程内容', link: '/teaching/calculus' },
+    { theme: 'alt', text: '关于 MatNoble', link: '/about' }
   ]"
 />
 

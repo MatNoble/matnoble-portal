@@ -31,6 +31,7 @@ const ManimVideo = defineAsyncComponent(() => import("./components/ManimVideo.vu
 import ComparisonGrid from "./components/ComparisonGrid.vue";
 import FollowSection from "./components/FollowSection.vue";
 import ThreeOneQuote from "./components/ThreeOneQuote.vue";
+const CramerRuleVisualizer = defineAsyncComponent(() => import("../../components/math/CramerRuleVisualizer.vue"));
 
 import BackToGraph from "./components/BackToGraph.vue";
 import CourseList from "./components/CourseList.vue";
@@ -152,6 +153,7 @@ export default {
     app.component("ComparisonGrid", ComparisonGrid);
     app.component("FollowSection", FollowSection);
     app.component("ThreeOneQuote", ThreeOneQuote);
+    app.component("CramerRuleVisualizer", CramerRuleVisualizer);
     app.component("CourseList", CourseList);
     if (typeof window !== "undefined") {
       // Browser-only enhancements are initialized from setup().
