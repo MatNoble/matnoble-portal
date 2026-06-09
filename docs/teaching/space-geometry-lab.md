@@ -46,15 +46,13 @@ head:
 # 空间解析几何 3D 实验室 (Space Geometry Lab)
 
 <script setup>
-import SpaceGeometryLab from '../components/SpaceGeometryLab.vue'
+import LazySpaceGeometryLab from '../components/LazySpaceGeometryLab.vue'
 </script>
 
 > **引用基准：James Stewart, *Calculus: Early Transcendentals***  
 > 本交互页面用于辅助展示三维空间曲面（Surfaces）与曲线（Lines in Space）。内容参考 Stewart 微积分教材，重点呈现公式、图形和投影关系。
 
-<ClientOnly>
-  <SpaceGeometryLab />
-</ClientOnly>
+<LazySpaceGeometryLab />
 
 <br/>
 

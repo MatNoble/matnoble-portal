@@ -1,9 +1,9 @@
 ---
 layout: page
-title: MatNoble
+title: 大学数学课程与交互式教学工具
 breadcrumb: 首页
 titleTemplate: false
-description: MatNoble 是大学数学教学与技术实践门户，内容包括微积分、线性代数、3D 解析几何演示和若干学习辅助工具。
+description: MatNoble 是面向大学数学教学的个人门户，整理微积分、线性代数、空间解析几何课程内容，并提供 3D 演示、DI 表格法和课堂工具。
 head:
   - - script
     - type: application/ld+json
@@ -13,7 +13,7 @@ head:
         "@type": "WebSite",
         "name": "MatNoble",
         "url": "https://matnoble.top",
-        "description": "记录大学数学教学内容、交互式课件和相关工具开发的个人站点。"
+        "description": "记录大学数学教学内容、交互式课件和相关工具开发的个人站点，覆盖微积分、线性代数和课堂教学工具。"
       }
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: 隐私政策
-description: MatNoble 个人门户网站的隐私政策，说明我们如何处理您的个人信息。
+description: MatNoble 个人门户网站的隐私政策，说明联系信息、外部链接、Cookie、统计分析和个人信息处理原则。
 ---
 
 # 隐私政策

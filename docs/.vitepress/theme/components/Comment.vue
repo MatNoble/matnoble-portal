@@ -6,7 +6,7 @@
         <div class="wechat-icon">
           <img
             src="/wechat-official-account.png"
-            alt=""
+            alt="数学思维探究社微信公众号图标"
             class="wechat-official-icon"
             width="48"
             height="48"

@@ -1,6 +1,6 @@
 ---
 title: 服务条款
-description: MatNoble 个人门户网站的服务条款。
+description: MatNoble 个人门户网站的服务条款，说明教学内容、交互工具、知识共享许可、免责声明与网站使用约定。
 ---
 
 # 服务条款

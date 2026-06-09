@@ -1,7 +1,7 @@
 ---
 layout: page
 title: 课堂倒计时
-description: 为课堂练习设计的全屏倒计时工具。
+description: 为课堂练习、限时答题和教学展示设计的全屏倒计时工具，支持快速设置时间并用于投屏课堂节奏控制。
 navbar: false
 sidebar: false
 aside: false
@@ -13,6 +13,7 @@ structuredData:
 ---
 
 <div class="countdown-page-container">
+  <h1 class="sr-only">课堂倒计时</h1>
   <ClientOnly>
     <MatCountdown />
   </ClientOnly>
@@ -29,6 +30,18 @@ structuredData:
   background-color: #000;
   position: relative;
   overflow: hidden;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .countdown-page-container::before {

@@ -20,6 +20,8 @@ const ROUTE_LABELS: Record<string, string> = {
   "tools": "数学工具",
 };
 
+const DIRECTORY_ROUTES = new Set(["courses", "projects", "teaching", "tools"]);
+
 function canonicalUrl(relativePath: string): string {
   if (relativePath === "index.md") return `${SITE_ORIGIN}/`;
 
@@ -56,6 +58,11 @@ function routePath(relativePath: string): string {
 function markdownMirrorUrl(relativePath: string): string {
   const route = routePath(relativePath);
   return `${SITE_ORIGIN}/.well-known/markdown/${route || "index"}.md`;
+}
+
+function breadcrumbItemUrl(route: string): string {
+  const trailingSlash = DIRECTORY_ROUTES.has(route) ? "/" : "";
+  return `${SITE_ORIGIN}/${route}${trailingSlash}`;
 }
 
 export default defineConfig({
@@ -284,10 +291,8 @@ export default defineConfig({
     const pageRoutePath = routePath(pageData.relativePath);
     const pathSegments = pageRoutePath ? pageRoutePath.split("/") : [];
     if (pathSegments.length > 0) {
-      let cumulativePath = "https://matnoble.top/";
       pathSegments.forEach((segment, index) => {
         const currentRoute = pathSegments.slice(0, index + 1).join("/");
-        cumulativePath += segment + "/";
         const isLast = index === pathSegments.length - 1;
         const name =
           (isLast && pageData.frontmatter.breadcrumb) ||
@@ -297,7 +302,7 @@ export default defineConfig({
           "@type": "ListItem",
           "position": index + 2,
           "name": name,
-          "item": cumulativePath.replace(/\/$/, "")
+          "item": breadcrumbItemUrl(currentRoute)
         });
       });
     }
