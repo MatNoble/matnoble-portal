@@ -1,0 +1,5 @@
+CREATE TABLE page_views (
+  path TEXT PRIMARY KEY,
+  views INTEGER NOT NULL DEFAULT 0 CHECK (views >= 0),
+  updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
