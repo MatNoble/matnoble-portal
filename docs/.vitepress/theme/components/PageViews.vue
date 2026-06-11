@@ -14,6 +14,7 @@ const route = useRoute();
 const { frontmatter } = useData();
 const views = ref<number | null>(null);
 const visible = ref(false);
+const enabled = ref(false);
 
 let abortController: AbortController | null = null;
 let idleHandle: number | null = null;
@@ -101,10 +102,12 @@ watch(
     cancelPendingWork();
     views.value = null;
     visible.value = false;
+    enabled.value = false;
 
     if (typeof window === "undefined" || LOCAL_HOSTNAMES.has(window.location.hostname) || pageViews === false) return;
     const path = normalizePath(rawPath);
     if (!isEligible(path)) return;
+    enabled.value = true;
     scheduleLoad(path, requestVersion);
   },
   { immediate: true },
@@ -114,7 +117,7 @@ onBeforeUnmount(cancelPendingWork);
 </script>
 
 <template>
-  <div class="page-views" :class="{ visible }" aria-live="polite">
+  <div v-if="enabled" class="page-views" :class="{ visible }" aria-live="polite">
     <template v-if="views !== null">
       <svg class="page-views-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
         <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z" />
