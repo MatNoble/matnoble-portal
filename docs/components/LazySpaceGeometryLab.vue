@@ -32,6 +32,8 @@ const SpaceGeometryLab = defineAsyncComponent(() => import('./SpaceGeometryLab.v
 <style scoped>
 .lazy-geometry-lab {
   width: 100%;
+  aspect-ratio: 16 / 9;
+  min-height: 360px;
   margin: 24px 0 32px;
 }
 
@@ -128,6 +130,11 @@ const SpaceGeometryLab = defineAsyncComponent(() => import('./SpaceGeometryLab.v
 }
 
 @media (max-width: 768px) {
+  .lazy-geometry-lab {
+    aspect-ratio: 1 / 1.2;
+    min-height: 420px;
+  }
+
   .geometry-lab-placeholder {
     aspect-ratio: 1 / 1.2;
     min-height: 420px;

@@ -75,6 +75,10 @@ export default defineConfig({
     math: true,
   },
 
+  router: {
+    prefetchLinks: false,
+  },
+
   buildEnd: genFeed,
   srcExclude: ["agents/**/*.md", "public/**/*.md"],
 
