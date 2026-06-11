@@ -801,4 +801,18 @@ mjx-container:not([display]) {
   .mjx-chtml { font-size: 100% !important; }
 }
 
+.mobile-desktop-hint {
+  display: none;
+  margin: 0.5rem 0 0;
+  color: var(--mn-text-muted);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .mobile-desktop-hint {
+    display: block;
+  }
+}
+
 /* End of file */

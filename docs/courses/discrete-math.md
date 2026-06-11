@@ -19,6 +19,8 @@ const CDN_BASE = 'https://assets.matnoble.top/discrete'
 
 《离散数学》是计算机类专业常见的基础课程，内容包括命题逻辑、一阶逻辑、二元关系和图论基础等。本页面提供章节课件与专题习题讲义下载。
 
+<p class="mobile-desktop-hint">建议使用电脑桌面端访问，以获得更佳的课件浏览与下载体验。</p>
+
 ---
 
 ## 章节大纲与课件下载

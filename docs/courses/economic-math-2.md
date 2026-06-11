@@ -19,6 +19,8 @@ const CDN_BASE = 'https://assets.matnoble.top/linear_algebra/economics'
 
 《经济数学II》面向经济管理类专业，授课主体内容为**线性代数**。本页面提供章节课件与复习讲义下载。
 
+<p class="mobile-desktop-hint">建议使用电脑桌面端访问，以获得更佳的课件浏览与下载体验。</p>
+
 ---
 
 ## 章节大纲与课件下载

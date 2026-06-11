@@ -19,6 +19,8 @@ const CDN_BASE = 'https://assets.matnoble.top/calculus/II'
 
 《高等数学II》是理工科专业常见的基础课程。本页面提供章节课件与复习讲义下载。
 
+<p class="mobile-desktop-hint">建议使用电脑桌面端访问，以获得更佳的课件浏览与下载体验。</p>
+
 ---
 
 ## 章节大纲与课件下载
