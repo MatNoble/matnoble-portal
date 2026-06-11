@@ -68,7 +68,7 @@ const relatedPosts = computed(() => {
 .related-posts {
   margin-top: 3rem;
   padding-top: 2rem;
-  border-top: 1px solid var(--vp-c-divider);
+  border-top: 1px solid color-mix(in srgb, var(--vp-c-divider) 38%, transparent);
 }
 
 .title {

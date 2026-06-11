@@ -22,6 +22,7 @@ const CramerRuleVisualizer = defineAsyncComponent(() => import("../../components
 const LearningPathHeader = defineAsyncComponent(() => import("./components/LearningPathHeader.vue"));
 const ScrollTelling = defineAsyncComponent(() => import("./components/ScrollTelling.vue"));
 const ThreeOneQuote = defineAsyncComponent(() => import("./components/ThreeOneQuote.vue"));
+const PageViews = defineAsyncComponent(() => import("./components/PageViews.vue"));
 
 import BackToGraph from "./components/BackToGraph.vue";
 import CourseList from "./components/CourseList.vue";
@@ -44,8 +45,8 @@ export default {
       "doc-before": () => showBackLink() ? h(BackToGraph) : null,
       // 使用 nav-bar-title-before 插槽插入自定义 Logo
       "nav-bar-title-before": () => h(Logo),
-      // 在文档内容之后插入分享组件和评论组件
-      "doc-after": () => [h(RelatedPosts), h(Share), h(Comment)],
+      // 在正文之后依次插入浏览量、推荐、分享和评论。
+      "doc-after": () => [h(PageViews), h(RelatedPosts), h(Share), h(Comment)],
       "layout-top": () => h(ReadingProgressBar),
       "layout-bottom": () => [h(BrownianBackground), h(FloatingTimerIcon)],
     });
