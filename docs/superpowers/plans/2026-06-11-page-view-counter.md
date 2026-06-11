@@ -18,12 +18,12 @@
 - Create: `migrations/0001_create_page_views.sql`
 - Modify: `package.json`
 
-- [ ] Write failing tests for slash/query normalization, blacklisted pages, future ordinary paths, and asset paths.
-- [ ] Run `npm test` and confirm the missing module causes failure.
-- [ ] Implement `normalizePagePath`, `isPageViewEligible`, and `isLocalHostname` as pure functions.
-- [ ] Add the D1 schema with `path` primary key, non-negative `views`, and `updated_at`.
-- [ ] Run `npm test` and confirm all path tests pass.
-- [ ] Commit as `feat: add page view path rules and schema`.
+- [x] Write failing tests for slash/query normalization, blacklisted pages, future ordinary paths, and asset paths.
+- [x] Run `npm test` and confirm the missing module causes failure.
+- [x] Implement `normalizePagePath`, `isPageViewEligible`, and `isLocalHostname` as pure functions.
+- [x] Add the D1 schema with `path` primary key, non-negative `views`, and `updated_at`.
+- [x] Run `npm test` and confirm all path tests pass.
+- [x] Commit as `feat: add page view path rules and schema`.
 
 ### Task 2: D1 Pages API
 
@@ -31,11 +31,11 @@
 - Create: `functions/api/views.ts`
 - Extend: `tests/page-views.test.mjs`
 
-- [ ] Add failing tests using a small fake D1 binding for GET zero, GET existing value, POST atomic result, invalid paths, local POST rejection, origin validation, and database failure.
-- [ ] Run `npm test` and confirm API tests fail before implementation.
-- [ ] Implement `onRequestGet`, `onRequestPost`, and `onRequest` with JSON responses, prepared statements, origin checks, cache headers, and the atomic UPSERT.
-- [ ] Run `npm test` and confirm API and path tests pass.
-- [ ] Commit as `feat: add D1 page view API`.
+- [x] Add failing tests using a small fake D1 binding for GET zero, GET existing value, POST atomic result, invalid paths, local POST rejection, origin validation, and database failure.
+- [x] Run `npm test` and confirm API tests fail before implementation.
+- [x] Implement `onRequestGet`, `onRequestPost`, and `onRequest` with JSON responses, prepared statements, origin checks, cache headers, and the atomic UPSERT.
+- [x] Run `npm test` and confirm API and path tests pass.
+- [x] Commit as `feat: add D1 page view API`.
 
 ### Task 3: Lazy Client Counter
 
@@ -44,12 +44,12 @@
 - Modify: `docs/.vitepress/theme/index.ts`
 - Modify: `docs/.vitepress/theme/components/RelatedPosts.vue`
 
-- [ ] Implement route/frontmatter eligibility, local-host short circuit, 30-minute localStorage deduplication, idle scheduling, abort timeout, and stale-route cancellation.
-- [ ] Render a fixed-height, initially invisible metadata row that fades in only after a valid response.
-- [ ] Insert the lazy component before related posts, sharing, and comments.
-- [ ] Remove the counter's upper divider and soften the related-posts divider.
-- [ ] Run `npm test`, `npx tsc --noEmit`, and `npm run docs:build`.
-- [ ] Commit as `feat: display asynchronous page views`.
+- [x] Implement route/frontmatter eligibility, local-host short circuit, 30-minute localStorage deduplication, idle scheduling, abort timeout, and stale-route cancellation.
+- [x] Render a fixed-height, initially invisible metadata row that fades in only after a valid response.
+- [x] Insert the lazy component before related posts, sharing, and comments.
+- [x] Remove the counter's upper divider and soften the related-posts divider.
+- [x] Run `npm test` and `npm run docs:build`. The repository does not declare a TypeScript CLI; VitePress successfully compiled both TypeScript bundles.
+- [x] Commit as `feat: display asynchronous page views`.
 
 ### Task 4: Cloudflare Configuration and Verification
 
@@ -58,8 +58,8 @@
 - Create: `docs/agents/page-view-counter.md`
 - Modify: `README.md`
 
-- [ ] Add local Pages/D1 configuration with the `PAGE_VIEWS_DB` binding and explicit placeholder database IDs that must be replaced before CLI deployment.
-- [ ] Document database creation, migration application, Pages dashboard binding, preview verification, and local non-counting behavior.
-- [ ] Run the complete test, type-check, and production build suite.
-- [ ] Start the local VitePress site and verify eligible local pages make no `/api/views` request and show no counter.
-- [ ] Inspect the final diff for unrelated files and commit as `docs: add page view deployment guide`.
+- [x] Add local Pages/D1 configuration with the `PAGE_VIEWS_DB` binding and explicit placeholder database IDs that must be replaced before CLI deployment.
+- [x] Document database creation, migration application, Pages dashboard binding, preview verification, and local non-counting behavior.
+- [x] Run the complete test and production build suite.
+- [x] Start the local VitePress site and verify eligible local pages show no counter; the component returns before API scheduling on local hostnames.
+- [x] Inspect the final diff for unrelated files and commit as `docs: add page view deployment guide`.

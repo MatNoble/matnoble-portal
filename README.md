@@ -30,6 +30,7 @@ This is the source code for the personal portal of **MatNoble**, a university ma
 - **Framework**: [VitePress](https://vitepress.dev/) (Vue 3 + Vite)
 - **Styling**: Custom CSS variables + CSS3 Transitions
 - **Deployment**: Cloudflare Pages
+- **Page Views**: Cloudflare Pages Functions + D1, loaded asynchronously after content rendering
 - **Fonts**: Google Fonts (Inter & Outfit)
 
 ## 🚀 Local Development
@@ -100,7 +101,7 @@ This project is optimized for **Cloudflare Pages**.
    - **Output Directory**: `docs/.vitepress/dist`
 4. Add custom domain (`matnoble.top`).
 
-The site is statically generated, so Cloudflare Workers / Pages Functions are not required for the current deployment.
+The site content is statically generated, while lightweight Pages Functions provide content negotiation and the public page-view API. The page-view counter uses a D1 binding named `PAGE_VIEWS_DB`; it runs within the Pages deployment and does not require a separate Worker service. Database setup and verification are documented in [`docs/agents/page-view-counter.md`](docs/agents/page-view-counter.md).
 
 ## ✉️ Contact
 

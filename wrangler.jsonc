@@ -1,0 +1,12 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "matnoble-portal",
+  "pages_build_output_dir": "docs/.vitepress/dist",
+  "d1_databases": [
+    {
+      "binding": "PAGE_VIEWS_DB",
+      "database_name": "matnoble-page-views",
+      "database_id": "REPLACE_WITH_PRODUCTION_D1_DATABASE_ID"
+    }
+  ]
+}

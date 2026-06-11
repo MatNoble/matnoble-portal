@@ -5,6 +5,7 @@ dist
 **/.vitepress/cache
 docs/dev-dist/
 docs/public/.well-known/markdown/
+.superpowers/
 
 # Vercel
 .vercel
