@@ -11,6 +11,7 @@ Add a public per-page view counter to MatNoble Portal without delaying content r
 - Count the same browser and normalized path at most once every 30 minutes.
 - Enable counting for ordinary pages by default, including `/about`, `/faq`, and `/roll-call-beacon/*`.
 - Exclude only technical, legal, and explicitly opted-out pages.
+- Disable the counter completely on `localhost`, `127.0.0.1`, and `::1`; local browsing must never increment page views.
 - Do not collect IP addresses, user identities, device fingerprints, or raw user-agent data.
 
 ## Page Eligibility
@@ -122,6 +123,7 @@ Success returns the value produced by the atomic UPSERT:
 
 - Only `GET` and `POST` are accepted.
 - `POST` requires `application/json` and a same-origin `Origin` header in production.
+- `POST` rejects requests whose request URL hostname is `localhost`, `127.0.0.1`, or `::1`, preventing local Pages Function testing from mutating any bound database.
 - Paths must be absolute site paths, contain no scheme or host, and remain below a conservative length limit.
 - The server normalizes duplicate slashes and trailing slashes, and removes query strings and fragments.
 - Ineligible paths return `404` so the endpoint does not disclose or create counters for them.
@@ -137,12 +139,13 @@ The component receives the current VitePress route and frontmatter. On every rou
 
 1. Cancels any request and idle callback belonging to the previous route.
 2. Resets its visible state while preserving fixed layout height.
-3. Checks page eligibility and `pageViews: false`.
-4. Waits for browser idle time, with an 800 ms `setTimeout` fallback when `requestIdleCallback` is unavailable.
-5. Reads a namespaced localStorage timestamp for the normalized path.
-6. Uses `GET` when the previous counted visit is less than 30 minutes old; otherwise uses `POST`.
-7. Records the timestamp only after a successful increment response.
-8. Fades in the formatted count after a successful response.
+3. Stops immediately on `localhost`, `127.0.0.1`, or `::1`, without reading storage or making an API request.
+4. Checks page eligibility and `pageViews: false`.
+5. Waits for browser idle time, with an 800 ms `setTimeout` fallback when `requestIdleCallback` is unavailable.
+6. Reads a namespaced localStorage timestamp for the normalized path.
+7. Uses `GET` when the previous counted visit is less than 30 minutes old; otherwise uses `POST`.
+8. Records the timestamp only after a successful increment response.
+9. Fades in the formatted count after a successful response.
 
 Requests use `AbortController` with a 2.5 second timeout. Errors, timeouts, unavailable storage, malformed responses, and missing D1 bindings leave the component hidden. They do not trigger retries or console noise in normal production use.
 
@@ -189,6 +192,7 @@ The component is registered as an async component so its code is split from the 
 - All SQL uses prepared statements with bound parameters.
 - The API accepts only normalized local paths.
 - Same-origin validation reduces drive-by cross-site increments.
+- Local-host checks exist in both the component and increment API so local browsing and direct local API tests cannot change counts.
 - D1 atomic updates preserve increments under normal concurrency.
 - The 30-minute browser rule reduces accidental refresh inflation but is not an anti-fraud system.
 - No fingerprinting or IP-based identity is introduced.
@@ -239,6 +243,7 @@ Build and runtime verification cover:
 - route navigation cancellation and state reset
 - 30-minute client deduplication
 - `pageViews: false`
+- no component request or D1 mutation on `localhost`, `127.0.0.1`, or `::1`
 - D1 unavailable or unbound behavior
 - no console errors in the normal flow
 - no visible loading error, spinner, or layout shift
