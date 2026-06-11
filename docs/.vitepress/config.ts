@@ -80,7 +80,8 @@ export default defineConfig({
 
   vite: {
     build: {
-      target: "esnext",
+      target: "es2019",
+      cssTarget: "chrome61",
       chunkSizeWarningLimit: 1000,
       rollupOptions: {
         output: {
@@ -135,36 +136,6 @@ export default defineConfig({
         },
         workbox: {
           globPatterns: ["**/*.{css,js,html,svg,png,ico,txt,woff2}"],
-          runtimeCaching: [
-            {
-              urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
-              handler: "CacheFirst",
-              options: {
-                cacheName: "google-fonts-cache",
-                expiration: {
-                  maxEntries: 10,
-                  maxAgeSeconds: 60 * 60 * 24 * 365, // <== 365 days
-                },
-                cacheableResponse: {
-                  statuses: [0, 200],
-                },
-              },
-            },
-            {
-              urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
-              handler: "CacheFirst",
-              options: {
-                cacheName: "gstatic-fonts-cache",
-                expiration: {
-                  maxEntries: 10,
-                  maxAgeSeconds: 60 * 60 * 24 * 365, // <== 365 days
-                },
-                cacheableResponse: {
-                  statuses: [0, 200],
-                },
-              },
-            },
-          ],
         },
       }),
     ],
@@ -496,15 +467,6 @@ export default defineConfig({
       {
         name: "google-site-verification",
         content: "OeFbtbYCwGN3Bnb3MSOm50bnnxInp9jj_bQT5vOIBPo",
-      },
-    ],
-    // Google AdSense 验证
-    [
-      "script",
-      {
-        async: "",
-        src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4221480300398103",
-        crossorigin: "anonymous",
       },
     ],
     // Bing Webmaster Tools 验证

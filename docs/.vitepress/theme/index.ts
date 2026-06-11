@@ -62,6 +62,25 @@ export default {
   },
   setup() {
     const route = useRoute();
+    const isLocalHost = () =>
+      ["localhost", "127.0.0.1", "::1"].includes(window.location.hostname);
+
+    const loadExternalScript = (id: string, src: string, timeoutMs = 8000) => {
+      if (document.getElementById(id)) return;
+
+      const script = document.createElement("script");
+      const timeout = window.setTimeout(() => script.remove(), timeoutMs);
+      script.id = id;
+      script.async = true;
+      script.src = src;
+      script.onload = () => window.clearTimeout(timeout);
+      script.onerror = () => {
+        window.clearTimeout(timeout);
+        script.remove();
+      };
+      document.head.appendChild(script);
+    };
+
     const initZoom = () => {
       // mediumZoom('[data-zoomable]')
       mediumZoom(".main img", { background: "var(--vp-c-bg)" });
@@ -69,15 +88,14 @@ export default {
 
     const initAnalytics = () => {
       if (typeof window === "undefined") return;
-      if (["localhost", "127.0.0.1", "::1"].includes(window.location.hostname)) return;
+      if (isLocalHost()) return;
 
       // 动态延迟加载 Google Analytics
       if (!document.getElementById('google-analytics-tag')) {
-        const script1 = document.createElement('script');
-        script1.id = 'google-analytics-tag';
-        script1.async = true;
-        script1.src = 'https://www.googletagmanager.com/gtag/js?id=G-491EPRZ1LY';
-        document.head.appendChild(script1);
+        loadExternalScript(
+          "google-analytics-tag",
+          "https://www.googletagmanager.com/gtag/js?id=G-491EPRZ1LY"
+        );
 
         const script2 = document.createElement('script');
         script2.id = 'google-analytics';
@@ -91,11 +109,20 @@ export default {
       }
     };
 
+    const initAds = () => {
+      if (typeof window === "undefined" || isLocalHost()) return;
+      loadExternalScript(
+        "google-adsense-tag",
+        "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4221480300398103"
+      );
+    };
+
     onMounted(() => {
       initZoom();
       // 延迟 4 秒，确保首屏网络与 CPU 闲置后加载分析统计
       setTimeout(() => {
         initAnalytics();
+        initAds();
       }, 4000);
 
       // WebMCP tool registration for agent discovery
