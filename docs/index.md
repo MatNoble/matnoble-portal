@@ -17,6 +17,14 @@ head:
       }
 ---
 
+<script setup>
+import { defineAsyncComponent } from 'vue'
+
+const HighFidelityHero = defineAsyncComponent(() => import('./.vitepress/theme/components/HighFidelityHero.vue'))
+const KnowledgeGraph = defineAsyncComponent(() => import('./.vitepress/theme/components/KnowledgeGraph.vue'))
+const FollowSection = defineAsyncComponent(() => import('./.vitepress/theme/components/FollowSection.vue'))
+</script>
+
 <HighFidelityHero 
   name="MatNoble"
   text="数学课程与教学工具"

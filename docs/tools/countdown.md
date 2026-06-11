@@ -12,6 +12,12 @@ structuredData:
     description: "用于课堂练习和教学展示的全屏倒计时工具。"
 ---
 
+<script setup>
+import { defineAsyncComponent } from 'vue'
+
+const MatCountdown = defineAsyncComponent(() => import('../.vitepress/theme/components/MatCountdown.vue'))
+</script>
+
 <div class="countdown-page-container">
   <h1 class="sr-only">课堂倒计时</h1>
   <ClientOnly>

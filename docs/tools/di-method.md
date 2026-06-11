@@ -14,6 +14,12 @@ structuredData:
     description: "An interactive tool to demonstrate and solve integration problems using the DI Table method."
 ---
 
+<script setup>
+import { defineAsyncComponent } from 'vue'
+
+const DISolver = defineAsyncComponent(() => import('../.vitepress/theme/components/DIMethod/DISolver.vue'))
+</script>
+
 # DI 表格法交互演示
 
 **DI Method (Differentiate & Integrate Method)** 是分部积分法的一种表格化写法。它把“求导”和“积分”分成两列，并用交替符号组织计算步骤，适合处理需要多次分部积分的题目。
