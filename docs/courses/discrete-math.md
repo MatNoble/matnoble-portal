@@ -194,9 +194,7 @@ const CDN_BASE = 'https://assets.matnoble.top/discrete'
       <td class="download-cell">
         <div class="dl-group">
           <a :href="CDN_BASE + '/final_review_handout_student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">学生版 📂</a>
-          <!-- 待授课完成后开放教师版： -->
-          <!-- <a :href="CDN_BASE + '/final_review_handout_teacher.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">教师版 📂</a> -->
-          <span class="btn-lock">教师版 🔒</span>
+          <a :href="CDN_BASE + '/final_review_handout_teacher.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">教师版 📂</a>
         </div>
       </td>
     </tr>

@@ -178,9 +178,7 @@ const CDN_BASE = 'https://assets.matnoble.top/calculus/II'
       <td class="download-cell">
         <div class="dl-group">
           <a :href="CDN_BASE + '/9/Chapter_9_Multivariable_Differentiation_Student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">学生版 📂</a>
-          <!-- 待授课完成后开放教师版： -->
-          <!-- <a :href="CDN_BASE + '/9/Chapter_9_Multivariable_Differentiation_Teacher.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">教师版 📂</a> -->
-          <span class="btn-lock">教师版 🔒</span>
+          <a :href="CDN_BASE + '/9/Chapter_9_Multivariable_Differentiation_Teacher.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">教师版 📂</a>
         </div>
       </td>
     </tr>
@@ -224,9 +222,7 @@ const CDN_BASE = 'https://assets.matnoble.top/calculus/II'
       <td class="download-cell">
         <div class="dl-group">
           <a :href="CDN_BASE + '/10/Chapter_10_Multiple_Integrals_Student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">学生版 📂</a>
-          <!-- 待授课完成后开放教师版： -->
-          <!-- <a :href="CDN_BASE + '/10/Chapter_10_Multiple_Integrals_Teacher.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">教师版 📂</a> -->
-          <span class="btn-lock">教师版 🔒</span>
+          <a :href="CDN_BASE + '/10/Chapter_10_Multiple_Integrals_Teacher.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">教师版 📂</a>
         </div>
       </td>
     </tr>
