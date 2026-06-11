@@ -6,7 +6,8 @@
     {
       "binding": "PAGE_VIEWS_DB",
       "database_name": "matnoble-page-views",
-      "database_id": "REPLACE_WITH_PRODUCTION_D1_DATABASE_ID"
+      "database_id": "7bbb066b-f474-4daf-9248-24f32a0ec454",
+      "remote": true
     }
   ]
 }
