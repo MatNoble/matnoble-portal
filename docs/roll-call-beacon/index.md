@@ -15,6 +15,11 @@ structuredData:
 
 该扩展遵循 <strong>“纯本地计算、零网络请求”</strong> 的设计原则，不向外部服务器发送学生名单或考勤数据。
 
+<figure class="product-demo">
+  <img src="/assets/images/roll-call-beacon/product-demo.png" alt="点名光标在虚构学生考勤名单中随机抽取并高亮学生的界面效果图" loading="lazy">
+  <figcaption>插件运行效果示意。图中课程、班级、学号和姓名均为虚构演示数据，不包含真实学生信息。</figcaption>
+</figure>
+
 ---
 
 ## 主要功能 (Core Features)
@@ -120,6 +125,26 @@ structuredData:
 - <strong>隐私声明</strong>: 详情请参阅我们的 [《点名光标隐私政策》](./privacy)。
 
 <style scoped>
+.product-demo {
+  margin: 28px 0 32px;
+}
+
+.product-demo img {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+  box-shadow: var(--shadow-sm);
+}
+
+.product-demo figcaption {
+  margin-top: 8px;
+  color: var(--vp-c-text-2);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
 .download-container {
   margin: 32px 0;
   display: flex;
