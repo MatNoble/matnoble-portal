@@ -11,10 +11,16 @@ export interface Post {
 declare const data: Post[]
 export { data }
 
+const excludedPrefixes = ['/agents/', '/audits/', '/public/', '/superpowers/']
+
 export default createContentLoader('**/*.md', {
   transform(raw): Post[] {
     return raw
-      .filter(({ url }) => url !== '/' && !url.includes('404'))
+      .filter(({ url }) =>
+        url !== '/' &&
+        !url.includes('404') &&
+        !excludedPrefixes.some(prefix => url.startsWith(prefix))
+      )
       .map(({ url, frontmatter }) => ({
         title: frontmatter.title,
         url,

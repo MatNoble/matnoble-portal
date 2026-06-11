@@ -4,6 +4,7 @@ import { Feed } from 'feed'
 import { createContentLoader, type SiteConfig } from 'vitepress'
 
 const baseUrl = 'https://matnoble.top'
+const excludedPrefixes = ['/agents/', '/audits/', '/public/', '/superpowers/']
 
 export async function genFeed(config: SiteConfig) {
   const feed = new Feed({
@@ -25,8 +26,13 @@ export async function genFeed(config: SiteConfig) {
     render: true
   }).load()
 
-  // 过滤掉索引页和 404
-  const filteredPosts = posts.filter(p => p.url !== '/' && !p.url.endsWith('/') && !p.url.includes('404'))
+  // 过滤索引页、404 和不属于公开站点内容的工程文档。
+  const filteredPosts = posts.filter(p =>
+    p.url !== '/' &&
+    !p.url.endsWith('/') &&
+    !p.url.includes('404') &&
+    !excludedPrefixes.some(prefix => p.url.startsWith(prefix))
+  )
 
   filteredPosts.sort((a, b) => {
     const dateA = new Date(a.frontmatter.date || Date.now())

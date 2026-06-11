@@ -80,7 +80,12 @@ export default defineConfig({
   },
 
   buildEnd: genFeed,
-  srcExclude: ["agents/**/*.md", "public/**/*.md"],
+  srcExclude: [
+    "agents/**/*.md",
+    "audits/**/*.md",
+    "public/**/*.md",
+    "superpowers/**/*.md",
+  ],
 
   vite: {
     build: {

@@ -7,9 +7,11 @@ const manifestPath = join(outputRoot, "manifest.json");
 const excludedDirs = new Set([
   ".vitepress",
   "agents",
+  "audits",
   "components",
   "dev-dist",
   "public",
+  "superpowers",
 ]);
 
 async function collectMarkdownFiles(dir) {
