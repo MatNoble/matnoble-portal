@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
-import { onRequest } from "../functions/assets/[[path]].ts";
+import { onRequest } from "../functions/downloads/[[path]].ts";
 
 const encoder = new TextEncoder();
 
@@ -44,7 +44,7 @@ function createBucket(objects = new Map()) {
 
 function assetRequest(path, init = {}, bucket = createBucket()) {
   return onRequest({
-    request: new Request(`https://preview.matnoble.pages.dev/assets/${path}`, init),
+    request: new Request(`https://preview.matnoble.pages.dev/downloads/${path}`, init),
     env: { DOWNLOADS_BUCKET: bucket },
     params: { path: path.split("/") },
   });
@@ -110,7 +110,8 @@ test("preview download pages use the same-origin R2 proxy", async () => {
 
   for (const file of files) {
     const source = await readFile(new URL(`../${file}`, import.meta.url), "utf8");
-    assert.match(source, /\/assets\//, file);
+    assert.match(source, /\/downloads\//, file);
+    assert.doesNotMatch(source, /CDN_BASE\s*=\s*['"]\/assets\//, file);
     assert.doesNotMatch(source, /\/assets-test\//, file);
     assert.doesNotMatch(source, /https:\/\/assets\.matnoble\.top\//, file);
   }
