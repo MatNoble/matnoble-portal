@@ -2,6 +2,12 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "matnoble-portal",
   "pages_build_output_dir": "docs/.vitepress/dist",
+  "r2_buckets": [
+    {
+      "binding": "DOWNLOADS_BUCKET",
+      "bucket_name": "matnoble-assets"
+    }
+  ],
   "d1_databases": [
     {
       "binding": "PAGE_VIEWS_DB",
