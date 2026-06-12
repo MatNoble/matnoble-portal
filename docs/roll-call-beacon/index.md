@@ -68,7 +68,7 @@ structuredData:
 如因网络环境无法访问 Edge 扩展市场，可使用离线安装包手动载入：
 
 <div class="download-container secondary-download">
-  <a href="https://assets.matnoble.top/roll-call-beacon-v1.0.0.zip" class="download-btn offline-btn" id="download-zip-btn">
+  <a href="/assets-test/roll-call-beacon-v1.0.0.zip" class="download-btn offline-btn" id="download-zip-btn">
     <span class="btn-icon">📦</span>
     <span class="btn-text">
       <strong>下载点名光标离线包 (v1.0.0)</strong>

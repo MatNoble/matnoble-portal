@@ -12,7 +12,7 @@ next: false
 ---
 
 <script setup>
-const CDN_BASE = 'https://assets.matnoble.top/linear_algebra/economics'
+const CDN_BASE = '/assets-test/linear_algebra/economics'
 </script>
 
 # 经济数学II

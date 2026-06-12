@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 
 import { onRequest } from "../functions/assets-test/[[path]].ts";
 
@@ -96,5 +97,20 @@ test("rejects malformed and multiple ranges", async () => {
     const response = await assetRequest("video.mp4", { headers: { Range: range } }, bucket);
     assert.equal(response.status, 416, range);
     assert.equal(response.headers.get("Content-Range"), "bytes */10");
+  }
+});
+
+test("preview download pages use the same-origin R2 proxy", async () => {
+  const files = [
+    "docs/courses/advanced-math-2.md",
+    "docs/courses/economic-math-2.md",
+    "docs/courses/discrete-math.md",
+    "docs/roll-call-beacon/index.md",
+  ];
+
+  for (const file of files) {
+    const source = await readFile(new URL(`../${file}`, import.meta.url), "utf8");
+    assert.match(source, /\/assets-test\//, file);
+    assert.doesNotMatch(source, /https:\/\/assets\.matnoble\.top\//, file);
   }
 });

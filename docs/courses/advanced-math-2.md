@@ -12,7 +12,7 @@ next: false
 ---
 
 <script setup>
-const CDN_BASE = 'https://assets.matnoble.top/calculus/II'
+const CDN_BASE = '/assets-test/calculus/II'
 </script>
 
 # 高等数学II
