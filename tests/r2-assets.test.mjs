@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
-import { onRequest } from "../functions/downloads/[[path]].ts";
+import { onRequest } from "../functions/r2-assets/[[path]].ts";
 
 const encoder = new TextEncoder();
 
@@ -44,7 +44,7 @@ function createBucket(objects = new Map()) {
 
 function assetRequest(path, init = {}, bucket = createBucket()) {
   return onRequest({
-    request: new Request(`https://preview.matnoble.pages.dev/downloads/${path}`, init),
+    request: new Request(`https://example.com/r2-assets/${path}`, init),
     env: { DOWNLOADS_BUCKET: bucket },
     params: { path: path.split("/") },
   });
@@ -100,7 +100,7 @@ test("rejects malformed and multiple ranges", async () => {
   }
 });
 
-test("preview download pages use the same-origin R2 proxy", async () => {
+test("download pages use the same-origin R2 proxy", async () => {
   const files = [
     "docs/courses/advanced-math-2.md",
     "docs/courses/economic-math-2.md",
@@ -110,9 +110,10 @@ test("preview download pages use the same-origin R2 proxy", async () => {
 
   for (const file of files) {
     const source = await readFile(new URL(`../${file}`, import.meta.url), "utf8");
-    assert.match(source, /\/downloads\//, file);
+    assert.match(source, /\/r2-assets\//, file);
     assert.doesNotMatch(source, /CDN_BASE\s*=\s*['"]\/assets\//, file);
     assert.doesNotMatch(source, /\/assets-test\//, file);
+    assert.doesNotMatch(source, /CDN_BASE\s*=\s*['"]\/downloads\//, file);
     assert.doesNotMatch(source, /https:\/\/assets\.matnoble\.top\//, file);
   }
 });
