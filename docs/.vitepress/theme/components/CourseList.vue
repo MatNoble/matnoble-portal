@@ -44,6 +44,16 @@ const courses = ref<Course[]>([
     semester: '2026 春季',
     description: '经管类专业核心工具课。课程以线性代数为主体，包含行列式、矩阵运算、线性方程组求解及向量组线性相关性，为经管决策分析构建代数基础。',
     link: '/courses/economic-math-2'
+  },
+  {
+    id: 'matlab-practice',
+    code: '工程计算',
+    title: 'MATLAB 编程与工程实践',
+    enTitle: 'MATLAB Programming & Engineering Practice',
+    category: 'stem',
+    semester: '2026 夏季',
+    description: '本课程以计算思维与算法实现为主线，深入学习 MATLAB 矩阵运算、自定义函数与编码规范、命令行计算器项目、GUI 设计以及特定目标识别应用，通过项目制学习培养工程实践能力。',
+    link: '/courses/matlab/'
   }
 ])
 </script>

@@ -18,6 +18,11 @@ const ROUTE_LABELS: Record<string, string> = {
   "teaching/linear-algebra/elementary-transformations": "初等变换",
   "teaching/linear-algebra/matrix-normal-form": "矩阵化简",
   "tools": "数学工具",
+  "courses/matlab": "MATLAB 编程与实践",
+  "courses/matlab/basics": "MATLAB 基础与矩阵操作",
+  "courses/matlab/conventions": "M 文件与函数规范",
+  "courses/matlab/project-calculator": "矩阵计算器项目",
+  "courses/matlab/project-gui": "GUI 矩阵计算器项目",
 };
 
 const DIRECTORY_ROUTES = new Set(["courses", "projects", "teaching", "tools"]);
