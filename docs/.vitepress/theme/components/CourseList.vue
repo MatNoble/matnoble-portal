@@ -11,6 +11,7 @@ interface Course {
   semester: string
   description: string
   link: string
+  status?: 'active' | 'completed'
 }
 
 // 核心数学课程
@@ -23,7 +24,8 @@ const courses = ref<Course[]>([
     category: 'stem',
     semester: '2026 春季',
     description: '理工科核心基础课。涵盖多元函数微积分学、重积分、常微分方程以及无穷级数，致力于重构空间几何直觉，提供严密精细的数理逻辑支撑。',
-    link: '/courses/advanced-math-2'
+    link: '/courses/advanced-math-2',
+    status: 'completed'
   },
   {
     id: 'discrete-math',
@@ -33,7 +35,8 @@ const courses = ref<Course[]>([
     category: 'stem',
     semester: '2026 春季',
     description: '计算机类各专业核心基础课。本课程深入探讨集合论、二元关系、等价与偏序、图论及代数结构，为算法结构设计与数理逻辑证明奠定基础。',
-    link: '/courses/discrete-math'
+    link: '/courses/discrete-math',
+    status: 'completed'
   },
   {
     id: 'economic-math-2',
@@ -43,7 +46,8 @@ const courses = ref<Course[]>([
     category: 'business',
     semester: '2026 春季',
     description: '经管类专业核心工具课。课程以线性代数为主体，包含行列式、矩阵运算、线性方程组求解及向量组线性相关性，为经管决策分析构建代数基础。',
-    link: '/courses/economic-math-2'
+    link: '/courses/economic-math-2',
+    status: 'completed'
   },
   {
     id: 'matlab-practice',
@@ -53,7 +57,8 @@ const courses = ref<Course[]>([
     category: 'stem',
     semester: '2026 夏季',
     description: '本课程以计算思维与算法实现为主线，深入学习 MATLAB 矩阵运算、自定义函数与编码规范、命令行计算器项目、GUI 设计以及特定目标识别应用，通过项目制学习培养工程实践能力。',
-    link: '/courses/matlab/'
+    link: '/courses/matlab/',
+    status: 'active'
   }
 ])
 </script>
@@ -81,7 +86,12 @@ const courses = ref<Course[]>([
         <!-- Card Header -->
         <div class="card-header">
           <span class="course-code">{{ course.code }}</span>
-          <span class="status-badge active-badge">当前开课</span>
+          <span 
+            class="status-badge" 
+            :class="course.status === 'completed' ? 'completed-badge' : 'active-badge'"
+          >
+            {{ course.status === 'completed' ? '已结课' : '当前开课' }}
+          </span>
         </div>
 
         <!-- Course Title -->
@@ -233,6 +243,11 @@ const courses = ref<Course[]>([
 .active-badge {
   background: rgba(16, 185, 129, 0.1);
   color: #10b981;
+}
+
+.completed-badge {
+  background: rgba(100, 116, 139, 0.1);
+  color: #64748b;
 }
 
 /* Card Body */
