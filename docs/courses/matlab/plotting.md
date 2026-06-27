@@ -1,0 +1,279 @@
+---
+layout: doc
+title: MATLAB 数据可视化与绘图
+breadcrumb: 数据可视化
+description: MATLAB 二维绘图基础、多条曲线对比、分块子图 (subplot)、散点图与柱状图。
+---
+
+# MATLAB 数据可视化与绘图
+
+在完成矩阵运算与数据处理后，通常需要将结果以直观的图形展现出来。MATLAB 拥有极其强大的数据可视化能力，本章将带你掌握最常用的工程绘图技巧。
+
+---
+
+## 1. 基础二维绘图 (plot)
+
+利用 `plot` 绘制自变量与因变量的关系图像是最直观的数据表现形式。
+
+### 1.1 绘图流程与基本语法
+绘制曲线通常包括以下步骤：
+1.  **定义自变量范围**：使用冒号算子或 `linspace` 生成行向量 $x$。
+2.  **定义因变量关系**：基于 $x$ 计算因变量向量 $y$（注意如果包含乘除幂计算，须使用 `.*` 或 `.^` 等点运算符）。
+3.  **调用绘图函数**：执行 `plot(x, y)` 渲染曲线。
+4.  **完善图表标注**：添加网格、坐标轴标签、图例及标题。
+
+### 1.2 颜色、线型与标记符号 (LineSpec)
+
+在使用 `plot` 时，我们可以通过传入一个格式字符串（如 `'r--o'`）来精确控制曲线的颜色、线型以及数据点的标记符号。这三个属性可以自由组合，顺序不限。
+
+**常用颜色代码：**
+| 代码 | 颜色 | 代码 | 颜色 |
+| :--- | :--- | :--- | :--- |
+| `r` | 红色 (Red) | `m` | 洋红 (Magenta) |
+| `g` | 绿色 (Green)| `y` | 黄色 (Yellow) |
+| `b` | 蓝色 (Blue) | `k` | 黑色 (Black) |
+| `c` | 青色 (Cyan) | `w` | 白色 (White) |
+
+**常用线型代码：**
+| 代码 | 线型说明 | 代码 | 线型说明 |
+| :--- | :--- | :--- | :--- |
+| `-` | 实线 (Solid, 默认) | `:` | 点线 (Dotted) |
+| `--` | 虚线 (Dashed) | `-.` | 点划线 (Dash-dot) |
+
+**常用标记符号：**
+| 代码 | 标记形状 | 代码 | 标记形状 |
+| :--- | :--- | :--- | :--- |
+| `o` | 圆圈 (Circle) | `s` | 正方形 (Square) |
+| `*` | 星号 (Asterisk)| `d` | 菱形 (Diamond) |
+| `.` | 实心点 (Point) | `^` | 向上三角形 (Upward triangle) |
+| `+` / `x` | 十字 / 叉号 | `p` / `h` | 五角星 / 六边形 |
+
+*示例：`plot(x, y, 'r--*')` 代表绘制一条 **红色** 的 **虚线**，并在每个真实的数据点位置标记一个 **星号**。除了内置字符，还可以通过 `'LineWidth'` 设置线宽。*
+
+### 1.3 初等函数绘图示例
+以绘制阻尼正弦波 $y = e^{-0.2x} \sin(x)$ 图像为例：
+```matlab
+% 1. 定义自变量：0 到 4*pi，生成 200 个数据点
+x = linspace(0, 4*pi, 200);
+
+% 2. 计算因变量（注意使用点运算符）
+y = exp(-0.2*x) .* sin(x);
+
+% 3. 绘制曲线（指定为蓝色实线，线宽为 1.5）
+plot(x, y, 'b-', 'LineWidth', 1.5);
+
+% 4. 添加图表修饰
+grid on;                      % 开启网格线
+xlabel('自变量 x');            % x 轴标签
+ylabel('函数值 y');            % y 轴标签
+title('y = e^{-0.2x} \cdot \sin(x) 图像'); % 标题
+legend('阻尼正弦波');          % 图例
+```
+
+### 🎯 闯关题目 1
+1. **线型与颜色**：在 `plot` 函数中，如何通过格式字符串将曲线设为“品红色的点划线，并使用方块作为数据点标记”？
+2. **点运算**：如果要绘制函数 $y = \frac{x^2}{x+1}$，自变量为 `x = 1:10`，在计算因变量 `y` 时应该如何书写代码？
+
+<details>
+<summary>查看答案</summary>
+
+1. **线型与颜色**：格式字符串可以写为 `'m-.s'`，其中 `m` 代表品红，`-.` 代表点划线，`s` 代表方块标记。
+2. **点运算**：必须使用点运算：`y = (x.^2) ./ (x + 1)`。因为 `x` 是一个向量，平方和除法都需要对每个元素独立进行。
+
+</details>
+
+---
+
+## 2. 进阶绘图技巧
+
+### 2.1 绘制多条曲线 (hold on)
+如果需要将多条曲线绘制在同一张图内进行对比，可在多次调用 `plot` 之间使用 `hold on` 和 `hold off` 控制：
+```matlab
+x = linspace(0, 2*pi, 100);
+y1 = sin(x);
+y2 = cos(x);
+
+plot(x, y1, 'r-', 'LineWidth', 1.5);  % 绘制红色实线
+hold on;                             % 保持当前图窗，允许在其上继续叠加新线
+plot(x, y2, 'b--', 'LineWidth', 1.5); % 绘制蓝色虚线
+hold off;                            % 释放图窗状态
+
+grid on;
+xlabel('x');
+ylabel('y');
+title('三角函数对比图像');
+legend('sin(x)', 'cos(x)');
+```
+
+### 2.2 分块子图 (subplot)
+如果你想在一个窗口中显示多个独立的坐标系，可以使用 `subplot(m, n, p)`，它会将窗口划分为 $m \times n$ 的网格，并在第 $p$ 个位置绘图：
+```matlab
+x = linspace(0, 2*pi, 100);
+
+subplot(2, 1, 1);       % 2行1列，第1个区域
+plot(x, sin(x), 'r');
+title('正弦函数');
+
+subplot(2, 1, 2);       % 2行1列，第2个区域
+plot(x, cos(x), 'b');
+title('余弦函数');
+```
+
+### 2.3 其他常用图表
+除了 `plot` 之外，MATLAB 还可以轻松绘制其他类型的图表：
+*   **散点图**：`scatter(x, y)`，用于表示离散数据点的分布情况。
+*   **柱状图**：`bar(x, y)`，常用于比较不同类别的数值大小。
+*   **直方图**：`histogram(data)`，用于统计数据在各个区间的频率分布。
+
+通过熟练组合这些基础绘图指令，你就能应对绝大多数二维平面工程报告的作图需求！
+
+### 🎯 闯关题目 2
+1. **多图叠加**：在使用 `hold on` 叠加多条曲线后，必须使用什么命令才能让后续的绘图重新覆盖（而不是继续叠加在当前图窗上）？
+2. **子图排布**：如果想要创建一个 3 行 2 列的图表排布，并在第 2 行第 1 列（即左边中间位置）绘制图形，`subplot` 的三个参数应该怎么填？
+
+<details>
+<summary>查看答案</summary>
+
+1. **多图叠加**：需要使用 `hold off` 命令来释放图窗状态。
+2. **子图排布**：使用 `subplot(3, 2, 3)`。因为在 3 行 2 列的网格中，子图是从左到右、从上到下按 1 到 6 编号的。第 2 行第 1 列对应第 3 个位置。
+
+</details>
+
+---
+
+## 3. 三维数据可视化 (3D Plotting)
+
+MATLAB 在三维空间数据的展示上同样非常出色，最常见的应用场景是绘制三维曲面图。
+
+### 3.1 核心概念：生成网格 (meshgrid)
+绘制三维曲面 $z = f(x, y)$ 的核心在于：我们需要先在 x-y 平面上铺设一张“坐标网格底板”。
+1. **生成一维坐标**：分别定义 $x$ 轴和 $y$ 轴的坐标向量。
+2. **生成二维网格**：利用 `[X, Y] = meshgrid(x, y)`，将这两个一维向量交叉展开为覆盖整个平面的二维矩阵坐标。
+3. **计算高度 Z**：通过点运算，根据底板矩阵 `X` 和 `Y` 计算出每个坐标点对应的高度矩阵 `Z`。
+4. **渲染曲面**：调用 `surf(X, Y, Z)`（实心渐变曲面）或 `mesh(X, Y, Z)`（网格线骨架）进行渲染。
+
+### 3.2 绘制“墨西哥帽”曲面示例
+我们以绘制经典的墨西哥帽曲面 (Sombrero) $z = \frac{\sin(r)}{r}$ 为例，其中 $r = \sqrt{x^2 + y^2}$：
+
+```matlab
+% 1. 定义 x 和 y 轴的采样范围
+x = linspace(-8, 8, 50);
+y = linspace(-8, 8, 50);
+
+% 2. 生成平面交叉网格 [X, Y]
+[X, Y] = meshgrid(x, y);
+
+% 3. 计算距离半径 R，以及对应高度 Z
+R = sqrt(X.^2 + Y.^2) + eps; % 加上 eps(极小数) 是为了防止 r=0 时出现除零错误
+Z = sin(R) ./ R;             % 计算高度（注意：必须使用点除 ./）
+
+% 4. 绘制三维表面图
+surf(X, Y, Z);
+
+% 5. 图表修饰
+shading interp;     % 平滑着色，隐藏表面的网格黑线
+colormap jet;       % 使用 jet 经典彩虹色映射
+colorbar;           % 在右侧显示颜色对照条
+title('三维墨西哥帽曲面 (Sombrero)');
+xlabel('X轴'); ylabel('Y轴'); zlabel('Z轴');
+```
+*(提示：绘制出三维图后，你可以在 MATLAB 图窗工具栏中点击“三维旋转”按钮，通过鼠标任意拖拽改变视角。)*
+
+除了曲面，如果你的数据是一条三维空间中连续运动的轨迹线，你可以直接使用 `plot3(x, y, z)` 进行绘制，其语法和二维的 `plot` 完全一致。
+
+### 🎯 闯关题目 3
+1. **网格生成**：绘制三维曲面图时，首先需要使用哪个核心函数将一维的 x 和 y 坐标转换为覆盖整个平面的二维坐标矩阵？
+2. **曲面渲染**：`surf(X,Y,Z)` 和 `mesh(X,Y,Z)` 在渲染效果上最主要的区别是什么？
+
+<details>
+<summary>查看答案</summary>
+
+1. **网格生成**：需要使用 `meshgrid` 函数。例如 `[X, Y] = meshgrid(x, y)`。
+2. **曲面渲染**：`surf` 绘制的是带颜色填充的实心三维曲面（Surface），而 `mesh` 绘制的是仅显示网格线骨架的空心网格曲面（Mesh）。
+
+</details>
+
+---
+
+## 4. 实践项目：初等函数画册
+
+为了巩固本章的绘图技巧，请你使用 MATLAB 绘制一个包含 4 个独立坐标系的“初等函数画册”。
+
+### 3.1 项目描述
+请使用 `subplot(2, 2, p)` 将图形窗口分为 2 行 2 列，并在 4 个子图中分别绘制以下初等函数：
+1. **左上角 (p=1)**：二次函数 $y = x^2$。自变量范围：$[-5, 5]$。线型要求：红色虚线 (`r--`)。
+2. **右上角 (p=2)**：指数函数 $y = e^x$。自变量范围：$[-3, 3]$。线型要求：蓝色实线 (`b-`)。
+3. **左下角 (p=3)**：自然对数函数 $y = \ln(x)$。自变量范围：$[0.1, 10]$。线型要求：黑色实线 (`k-`)。*(注意：由于 $\ln(x)$ 在 $x \le 0$ 时无意义，起点不能为 0)*
+4. **右下角 (p=4)**：正弦函数 $y = \sin(x)$。自变量范围：$[-2\pi, 2\pi]$。线型要求：绿色点划线 (`g-.`)。
+
+**附加要求**：为每个子图添加对应的标题（如 `'y = x^2'`）并开启网格线（`grid on`）。
+
+### 3.2 动手实践
+
+请先尝试自己在 MATLAB 中编写脚本运行并观察出图效果。本题参考代码已加密保护：
+
+<div v-if="!isUnlocked" style="padding: 1rem; border: 1px solid var(--vp-c-divider); border-radius: 8px; margin-top: 1rem; background-color: var(--vp-c-bg-soft);">
+  <p style="margin: 0 0 0.5rem 0; font-weight: bold;">🔒 输入密码解锁参考代码</p>
+  <div style="display: flex; gap: 0.5rem; align-items: center;">
+    <input type="password" v-model="pwd" @keyup.enter="checkPwd" placeholder="请输入助教提供的密码" style="padding: 0.3rem 0.6rem; border: 1px solid var(--vp-c-divider); border-radius: 4px; outline: none; background: var(--vp-c-bg); color: var(--vp-c-text-1); font-size: 0.9em; flex: 1; max-width: 200px;" />
+    <button @click="checkPwd" style="padding: 0.3rem 0.8rem; background-color: var(--vp-c-brand); color: white; border-radius: 4px; cursor: pointer; font-size: 0.9em; font-weight: bold; border: none;">解锁</button>
+  </div>
+  <p v-if="errorMsg" style="color: var(--vp-c-danger-1, #e33); margin: 0.5rem 0 0 0; font-size: 0.9em;">{{ errorMsg }}</p>
+</div>
+
+<div v-if="isUnlocked">
+
+```matlab
+% --- 1. 二次函数 y = x^2 ---
+subplot(2, 2, 1);
+x1 = linspace(-5, 5, 100);
+y1 = x1.^2;                  % 必须使用点乘方
+plot(x1, y1, 'r--', 'LineWidth', 1.5);
+title('y = x^2');
+grid on;
+
+% --- 2. 指数函数 y = e^x ---
+subplot(2, 2, 2);
+x2 = linspace(-3, 3, 100);
+y2 = exp(x2);
+plot(x2, y2, 'b-', 'LineWidth', 1.5);
+title('y = e^x');
+grid on;
+
+% --- 3. 对数函数 y = ln(x) ---
+subplot(2, 2, 3);
+x3 = linspace(0.1, 10, 100); % x 必须大于 0
+y3 = log(x3);                % MATLAB 中 log() 即代表自然对数 ln()
+plot(x3, y3, 'k-', 'LineWidth', 1.5);
+title('y = ln(x)');
+grid on;
+
+% --- 4. 正弦函数 y = sin(x) ---
+subplot(2, 2, 4);
+x4 = linspace(-2*pi, 2*pi, 100);
+y4 = sin(x4);
+plot(x4, y4, 'g-.', 'LineWidth', 1.5);
+title('y = sin(x)');
+grid on;
+```
+
+</div>
+
+通过这个实践，你已经能够熟练使用 `subplot` 排布图形，并掌握了不同基本初等函数的绘制方法与点运算符 `.^` 的应用场景了！
+
+<script setup>
+import { ref } from 'vue'
+
+const pwd = ref('')
+const isUnlocked = ref(false)
+const errorMsg = ref('')
+
+function checkPwd() {
+  if (pwd.value === 'matlab2026') {
+    isUnlocked.value = true
+    errorMsg.value = ''
+  } else {
+    errorMsg.value = '密码错误！'
+  }
+}
+</script>

@@ -3,24 +3,31 @@ import { withBase, useData } from 'vitepress'
 import { computed } from 'vue'
 
 const { page } = useData()
+const path = computed(() => page.value.relativePath)
+
+const isMatlabSubPage = computed(() => {
+  return path.value.startsWith('courses/matlab/') && !path.value.endsWith('index.md')
+})
 
 const isCoursePage = computed(() => {
-  return page.value.relativePath.startsWith('courses/')
+  return path.value.startsWith('courses/')
 })
 
 const backUrl = computed(() => {
+  if (isMatlabSubPage.value) return '/courses/matlab/'
   if (isCoursePage.value) return '/courses/'
   
-  const path = page.value.relativePath
+  const p = path.value
   const anchor = '#knowledge-graph'
   // 根据路径自动匹配图谱节点并加上锚点
-  if (path.includes('linear-algebra/')) return `/?node=algebra${anchor}`
-  if (path.includes('calculus/')) return `/?node=calculus${anchor}`
-  if (path.includes('tools/')) return `/?node=tools${anchor}`
+  if (p.includes('linear-algebra/')) return `/?node=algebra${anchor}`
+  if (p.includes('calculus/')) return `/?node=calculus${anchor}`
+  if (p.includes('tools/')) return `/?node=tools${anchor}`
   return `/${anchor}`
 })
 
 const labelText = computed(() => {
+  if (isMatlabSubPage.value) return '返回 MATLAB 课程'
   return isCoursePage.value ? '返回课程中心' : '返回知识图谱'
 })
 </script>
