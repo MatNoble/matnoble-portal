@@ -255,14 +255,23 @@ body {
 .vp-doc svg,
 .vp-doc video,
 .vp-doc canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 仅对 Markdown 独立段落中的图片，以及根级的自定义 img 标签应用居中和高级阴影 */
+.vp-doc p > img:only-child,
+.vp-doc > div > div > img,
+.vp-doc img[src^="/p/"] {
   max-width: 85%;
   margin: 2rem auto;
   display: block;
   border-radius: var(--radius-sm);
-  height: auto;
 }
 
-html:not(.dark) .vp-doc img {
+html:not(.dark) .vp-doc p > img:only-child,
+html:not(.dark) .vp-doc > div > div > img,
+html:not(.dark) .vp-doc img[src^="/p/"] {
   box-shadow: var(--shadow-sm);
 }
 
