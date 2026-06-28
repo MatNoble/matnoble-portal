@@ -23,6 +23,7 @@ const ROUTE_LABELS: Record<string, string> = {
   "courses/matlab/conventions": "M 文件与函数规范",
   "courses/matlab/project-calculator": "矩阵计算器项目",
   "courses/matlab/project-gui": "GUI 矩阵计算器项目",
+  "courses/matlab/project-cv": "电子时钟数码管识别",
 };
 
 const DIRECTORY_ROUTES = new Set(["courses", "projects", "teaching", "tools"]);
