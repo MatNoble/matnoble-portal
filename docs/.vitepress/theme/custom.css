@@ -845,14 +845,21 @@ mjx-container:not([display]) {
 
 .immersive-mode .VPSidebar,
 .immersive-mode .VPNav,
-.immersive-mode .VPDocAside,
 .immersive-mode .VPDocFooter,
 .immersive-mode .VPFooter,
 .immersive-mode .VPLocalNav,
-.immersive-mode .VPDoc .outline-link,
 .immersive-mode .doc-after-content,
 .immersive-mode .reading-progress-container {
   display: none !important;
+}
+
+.immersive-mode .VPDocAside {
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+.immersive-mode .VPDocAside:hover {
+  opacity: 1;
 }
 
 .immersive-mode .VPContent {
