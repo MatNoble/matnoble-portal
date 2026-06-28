@@ -1,5 +1,5 @@
 <template>
-  <div class="immersive-toggle-wrapper">
+  <div v-if="isCoursePage" class="immersive-toggle-wrapper">
     <button @click="toggleMode" class="toggle-btn" :class="{ active: isActive }" :title="isActive ? '退出沉浸模式 (Esc)' : '进入沉浸模式'">
       <span v-if="!isActive">🔍 沉浸讲课</span>
       <span v-else>❌ 退出沉浸</span>
@@ -8,11 +8,13 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, watch } from 'vue';
+import { ref, onMounted, onUnmounted, watch, computed } from 'vue';
 import { useRoute } from 'vitepress';
 
 const isActive = ref(false);
 const route = useRoute();
+
+const isCoursePage = computed(() => route.path.includes('/courses/'));
 
 const toggleMode = () => {
   isActive.value = !isActive.value;
