@@ -224,6 +224,12 @@ exportgraphics(gcf, 'my_plot.png', 'Resolution', 300);
 exportgraphics(gcf, 'my_plot.pdf', 'ContentType', 'vector');
 ```
 
+> 💡 **名词解释：什么是 `gcf`？**
+> 
+> `gcf` 是 **G**et **C**urrent **F**igure 的缩写。它是 MATLAB 的一个内置函数，用于自动“获取当前正在活跃的图窗句柄”。
+> * 只要你刚刚画完一张图，不需要提前去定义它，`gcf` 就会自动指代刚刚画好的那张图窗。
+> * 另外，如果你在创建窗口时自己定义了变量名（比如我们在前面的对比图里用的 `fig = figure(...)`），那么也可以不写 `gcf`，直接写 `exportgraphics(fig, ...)`。
+
 **为什么推荐用代码导出？**
 * **分辨率可控**：通过 `Resolution` 参数可以设定任意 DPI（如 300 或 600），满足顶级期刊的要求。
 * **自动裁剪白边**：导出的图片会自动贴合图表的紧凑边界，不会带有 MATLAB 默认图窗周围那一大圈多余的灰色或白色边距。
