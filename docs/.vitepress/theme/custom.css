@@ -816,3 +816,9 @@ mjx-container:not([display]) {
 }
 
 /* End of file */
+
+/* --- Medium Zoom Z-Index Fix --- */
+.medium-zoom-overlay,
+.medium-zoom-image--opened {
+  z-index: 9999 !important;
+}
