@@ -255,8 +255,15 @@ body {
 .vp-doc svg,
 .vp-doc video,
 .vp-doc canvas {
-  max-width: 100%;
+  max-width: 85%;
+  margin: 2rem auto;
+  display: block;
+  border-radius: var(--radius-sm);
   height: auto;
+}
+
+html:not(.dark) .vp-doc img {
+  box-shadow: var(--shadow-sm);
 }
 
 .vp-doc table,

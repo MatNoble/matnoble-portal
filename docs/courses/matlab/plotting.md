@@ -9,7 +9,7 @@ description: MATLAB 二维绘图基础、多条曲线对比、分块子图 (subp
 
 在完成矩阵运算与数据处理后，通常需要将结果以直观的图形展现出来。MATLAB 拥有极其强大的数据可视化能力，本章将带你掌握最常用的工程绘图技巧。
 
-<img :src="'/p/Integration_Geometry_Color_SCI.png'" alt="Integration Geometry" style="max-width: 85%; margin: 2rem auto; display: block; border-radius: 8px; box-shadow: var(--shadow-md);" />
+<img :src="'/p/Integration_Geometry_Color_SCI.png'" alt="Integration Geometry" />
 
 ---
 
