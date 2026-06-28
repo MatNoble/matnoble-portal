@@ -227,9 +227,12 @@ function SolveButtonPushed(app, event)
             error('输入数据栈为空或格式无法被核心引擎解析。');
         end
         
-        % 2. 空间维度合规性检查
+        % 2. 空间维度合规性检查 (严谨版)
+        if size(A, 1) ~= size(A, 2)
+            error('系数矩阵 A 必须是方阵 (行数与列数相等)。');
+        end
         if size(A, 1) ~= size(B, 1)
-            error('矩阵 A 的行向量尺度必须严格对应 B 的尺度。');
+            error('矩阵 A 的行数必须与矩阵 B 的行数严格相等。');
         end
         
         % 3. 核心计算 (调用系统高精算子)
