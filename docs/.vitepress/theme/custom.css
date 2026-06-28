@@ -850,7 +850,8 @@ mjx-container:not([display]) {
 .immersive-mode .VPFooter,
 .immersive-mode .VPLocalNav,
 .immersive-mode .VPDoc .outline-link,
-.immersive-mode .doc-after-content {
+.immersive-mode .doc-after-content,
+.immersive-mode .reading-progress-container {
   display: none !important;
 }
 
