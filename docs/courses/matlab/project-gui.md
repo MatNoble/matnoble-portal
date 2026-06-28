@@ -166,7 +166,7 @@ app.CalculateButton.BackgroundColor = [1 0 0];
 *   **输入框 A**：`TextArea` 组件，`Name` 设为 `MatrixAEditField`。
 *   **输入框 B**：`TextArea` 组件，`Name` 设为 `MatrixBEditField`。
 *   **执行按钮**：`Button` 组件，`Name` 设为 `SolveButton`。
-*   **输出显示区**：`TextArea` 组件，`Name` 设为 `ResultTextArea`，并务必在属性栏中勾选 `ReadOnly`（开启只读模式以防止终端用户恶意篡改计算结果）。
+*   **输出显示区**：`TextArea` 组件，`Name` 设为 `ResultTextArea`，并务必在属性栏中**取消勾选 `Editable`**（关闭可编辑状态，进入只读模式，以防止终端用户恶意篡改计算结果）。
 
 ## 4. 数据层：跨界面的数据提取与清洗解析
 
