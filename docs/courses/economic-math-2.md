@@ -12,7 +12,7 @@ next: false
 ---
 
 <script setup>
-const CDN_BASE = '/r2-assets/linear_algebra/economics'
+const CDN_BASE = '/pdf/linear_algebra/economics'
 </script>
 
 # 经济数学II

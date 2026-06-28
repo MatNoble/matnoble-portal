@@ -95,7 +95,7 @@ export default defineConfig({
   vite: {
     server: {
       proxy: {
-        "/r2-assets": {
+        "^/(r2-assets|p|pdf)/.*": {
           target: "https://matnoble.top",
           changeOrigin: true,
         },

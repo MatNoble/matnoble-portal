@@ -12,7 +12,7 @@ next: false
 ---
 
 <script setup>
-const CDN_BASE = '/r2-assets/calculus/II'
+const CDN_BASE = '/pdf/calculus/II'
 </script>
 
 # 高等数学II

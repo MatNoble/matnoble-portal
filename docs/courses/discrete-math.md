@@ -12,7 +12,7 @@ next: false
 ---
 
 <script setup>
-const CDN_BASE = '/r2-assets/discrete'
+const CDN_BASE = '/pdf/discrete'
 </script>
 
 # 离散数学
