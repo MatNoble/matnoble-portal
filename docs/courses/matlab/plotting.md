@@ -356,73 +356,8 @@ grid on;
 
 ### 3.2 动手实践
 
-请先尝试自己在 MATLAB 中编写脚本运行并观察出图效果。本题参考代码已加密保护：
+请先尝试自己在 MATLAB 中编写脚本运行，并不断调整你的代码，直到使你的出图效果与下方参考图完全一致（注意留意图表总标题上的防抄袭水印要求）：
 
-<div v-if="!isUnlocked" style="padding: 1rem; border: 1px solid var(--vp-c-divider); border-radius: 8px; margin-top: 1rem; background-color: var(--vp-c-bg-soft);">
-  <p style="margin: 0 0 0.5rem 0; font-weight: bold;">🔒 输入密码解锁参考代码</p>
-  <div style="display: flex; gap: 0.5rem; align-items: center;">
-    <input type="password" v-model="pwd" @keyup.enter="checkPwd" placeholder="请输入助教提供的密码" style="padding: 0.3rem 0.6rem; border: 1px solid var(--vp-c-divider); border-radius: 4px; outline: none; background: var(--vp-c-bg); color: var(--vp-c-text-1); font-size: 0.9em; flex: 1; max-width: 200px;" />
-    <button @click="checkPwd" style="padding: 0.3rem 0.8rem; background-color: var(--vp-c-brand); color: white; border-radius: 4px; cursor: pointer; font-size: 0.9em; font-weight: bold; border: none;">解锁</button>
-  </div>
-  <p v-if="errorMsg" style="color: var(--vp-c-danger-1, #e33); margin: 0.5rem 0 0 0; font-size: 0.9em;">{{ errorMsg }}</p>
-</div>
+<img :src="'/p/basic_funtion_plot.png'" alt="初等函数画册效果图" />
 
-<div v-if="isUnlocked">
-
-```matlab
-% --- 1. 二次函数 y = x^2 ---
-subplot(2, 2, 1);
-x1 = linspace(-5, 5, 100);
-y1 = x1.^2;                  % 必须使用点乘方
-plot(x1, y1, 'r--', 'LineWidth', 1.5);
-title('y = x^2');
-grid on;
-
-% --- 2. 指数函数 y = e^x ---
-subplot(2, 2, 2);
-x2 = linspace(-3, 3, 100);
-y2 = exp(x2);
-plot(x2, y2, 'b-', 'LineWidth', 1.5);
-title('y = e^x');
-grid on;
-
-% --- 3. 对数函数 y = ln(x) ---
-subplot(2, 2, 3);
-x3 = linspace(0.1, 10, 100); % x 必须大于 0
-y3 = log(x3);                % MATLAB 中 log() 即代表自然对数 ln()
-plot(x3, y3, 'k-', 'LineWidth', 1.5);
-title('y = ln(x)');
-grid on;
-
-% --- 4. 正弦函数 y = sin(x) ---
-subplot(2, 2, 4);
-x4 = linspace(-2*pi, 2*pi, 100);
-y4 = sin(x4);
-plot(x4, y4, 'g-.', 'LineWidth', 1.5);
-title('y = sin(x)');
-grid on;
-
-% --- 5. 添加全局防抄袭标题 ---
-sgtitle('初等函数画册 - 张三 (20240101)');
-```
-
-</div>
-
-通过这个实践，你已经能够熟练使用 `subplot` 排布图形，并掌握了不同基本初等函数的绘制方法与点运算符 `.^` 的应用场景了！
-
-<script setup>
-import { ref } from 'vue'
-
-const pwd = ref('')
-const isUnlocked = ref(false)
-const errorMsg = ref('')
-
-function checkPwd() {
-  if (pwd.value === 'matlab2026') {
-    isUnlocked.value = true
-    errorMsg.value = ''
-  } else {
-    errorMsg.value = '密码错误！'
-  }
-}
-</script>
+通过这个实践，你将能够熟练使用 `subplot` 排布图形，并真正掌握不同基本初等函数的绘制方法与点运算符 `.^` 的应用场景！
