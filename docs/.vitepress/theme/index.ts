@@ -23,6 +23,7 @@ const LearningPathHeader = defineAsyncComponent(() => import("./components/Learn
 const ScrollTelling = defineAsyncComponent(() => import("./components/ScrollTelling.vue"));
 const ThreeOneQuote = defineAsyncComponent(() => import("./components/ThreeOneQuote.vue"));
 const PageViews = defineAsyncComponent(() => import("./components/PageViews.vue"));
+const ImmersiveMode = defineAsyncComponent(() => import("./components/ImmersiveMode.vue"));
 
 import BackToGraph from "./components/BackToGraph.vue";
 import CourseList from "./components/CourseList.vue";
@@ -48,7 +49,7 @@ export default {
       // 在正文之后依次插入浏览量、推荐、分享和评论。
       "doc-after": () => [h(PageViews), h(RelatedPosts), h(Share), h(Comment)],
       "layout-top": () => h(ReadingProgressBar),
-      "layout-bottom": () => [h(BrownianBackground), h(FloatingTimerIcon)],
+      "layout-bottom": () => [h(BrownianBackground), h(FloatingTimerIcon), h(ImmersiveMode)],
     });
   },
   setup() {
@@ -163,6 +164,7 @@ export default {
     app.component("ThreeOneQuote", ThreeOneQuote);
     app.component("CramerRuleVisualizer", CramerRuleVisualizer);
     app.component("CourseList", CourseList);
+    app.component("ImmersiveMode", ImmersiveMode);
     if (typeof window !== "undefined") {
       // Browser-only enhancements are initialized from setup().
     }
