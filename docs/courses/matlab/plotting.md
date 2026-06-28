@@ -328,10 +328,12 @@ grid on;
 2. **曲面渲染**：`surf(X,Y,Z)` 和 `mesh(X,Y,Z)` 在渲染效果上最主要的区别是什么？
 
 <details>
-<summary>查看答案</summary>
+<summary>▶ 查看答案</summary>
 
 1. **网格生成**：需要使用 `meshgrid` 函数。例如 `[X, Y] = meshgrid(x, y)`。
 2. **曲面渲染**：`surf` 绘制的是带颜色填充的实心三维曲面（Surface），而 `mesh` 绘制的是仅显示网格线骨架的空心网格曲面（Mesh）。
+   
+   <img :src="'/p/plot_3d_mesh.png'" alt="mesh 网格曲面" />
 
 </details>
 
