@@ -93,6 +93,14 @@ export default defineConfig({
   ],
 
   vite: {
+    server: {
+      proxy: {
+        "/r2-assets": {
+          target: "https://matnoble.top",
+          changeOrigin: true,
+        },
+      },
+    },
     build: {
       target: "es2019",
       cssTarget: "chrome61",
