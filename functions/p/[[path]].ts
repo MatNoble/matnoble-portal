@@ -1,1 +1,1 @@
-export { onRequest } from "../../lib/r2-handler";
+export { onRequest } from "../lib/r2-handler";
