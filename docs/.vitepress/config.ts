@@ -95,7 +95,7 @@ export default defineConfig({
   vite: {
     server: {
       proxy: {
-        "^/(r2-assets|p|pdf)/.*": {
+        "^/(r2-assets)/.*": {
           target: "https://matnoble.top",
           changeOrigin: true,
         },
@@ -127,6 +127,24 @@ export default defineConfig({
       }
     },
     plugins: [
+      {
+        name: "local-redirects",
+        configureServer(server) {
+          server.middlewares.use((req, res, next) => {
+            if (req.url?.startsWith("/p/")) {
+              res.writeHead(302, { Location: "https://matnoble.top/r2-assets/images" + req.url.slice(2) });
+              res.end();
+              return;
+            }
+            if (req.url?.startsWith("/pdf/")) {
+              res.writeHead(302, { Location: "https://matnoble.top/r2-assets" + req.url.slice(4) });
+              res.end();
+              return;
+            }
+            next();
+          });
+        }
+      },
       webfontDl([
         "https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap",
       ]),
