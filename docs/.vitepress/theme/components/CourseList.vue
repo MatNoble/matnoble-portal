@@ -76,7 +76,7 @@ const courses = ref<Course[]>([
     <!-- Courses Grid - Dual Card Premium Layout -->
     <div class="courses-grid">
       <div 
-        v-for="course in courses" 
+        v-for="course in courses.slice().reverse()" 
         :key="course.id" 
         class="course-card"
       >
