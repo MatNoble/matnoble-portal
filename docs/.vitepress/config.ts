@@ -106,6 +106,11 @@ export default defineConfig({
       cssTarget: "chrome61",
       chunkSizeWarningLimit: 1000,
       rollupOptions: {
+        external: [
+          /^\/p\/.*/,
+          /^\/pdf\/.*/,
+          /^\/r2-assets\/.*/
+        ],
         output: {
           manualChunks(id) {
             if (id.includes("node_modules/three")) {
