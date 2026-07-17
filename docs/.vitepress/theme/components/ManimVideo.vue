@@ -20,7 +20,7 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 // Centralized CDN Base URL
-const CDN_BASE = 'https://assets.matnoble.top'
+const CDN_BASE = '/v'
 
 const isPlaying = ref(false)
 const showVideo = ref(!!props.src || !!props.bvid)

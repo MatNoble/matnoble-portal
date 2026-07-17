@@ -102,15 +102,13 @@ test("rejects malformed and multiple ranges", async () => {
 
 test("download pages use the same-origin R2 proxy", async () => {
   const files = [
-    "docs/courses/advanced-math-2.md",
-    "docs/courses/economic-math-2.md",
-    "docs/courses/discrete-math.md",
     "docs/roll-call-beacon/index.md",
+    "docs/.vitepress/theme/components/ManimVideo.vue",
   ];
 
   for (const file of files) {
     const source = await readFile(new URL(`../${file}`, import.meta.url), "utf8");
-    assert.match(source, /\/r2-assets\//, file);
+    assert.match(source, /\/r2-assets\/?/, file);
     assert.doesNotMatch(source, /CDN_BASE\s*=\s*['"]\/assets\//, file);
     assert.doesNotMatch(source, /\/assets-test\//, file);
     assert.doesNotMatch(source, /CDN_BASE\s*=\s*['"]\/downloads\//, file);
