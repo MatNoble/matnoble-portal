@@ -70,12 +70,4 @@ head:
 面向高校课堂的浏览器点名辅助扩展。它在本地读取考勤页面中的学生名单，支持随机抽样和高亮显示。
 - [详细介绍与下载](/roll-call-beacon/) | [隐私政策](/roll-call-beacon/privacy)
 
----
 
-## 更多尝试
-
-你可以在我的 [GitHub (matnoble)](https://github.com/matnoble) 上看到更多正在进行中的项目，包括：
-- **MatEditor**: 一个专为数学内容创作者设计的编辑器组件（开发中）。
-- **Rss-to-Telegram**: 个人知识获取流的自动化处理脚本。
-
-如果你对这些项目有建议，欢迎通过邮箱 [me@matnoble.top](mailto:me@matnoble.top) 联系我。
