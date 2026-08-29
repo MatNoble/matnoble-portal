@@ -1,12 +1,12 @@
 ---
 layout: doc
-title: 高等数学II
-breadcrumb: 高等数学II
-description: 理工科基础必修课《高等数学II》教学大纲、章节课件与复习专题讲义。内容涵盖常微分方程、空间解析几何、多元微分学、多元积分学及无穷级数。
+title: 高等数学(A)II
+breadcrumb: 高等数学(A)II
+description: 理工科基础必修课《高等数学(A)II》教学大纲与章节课件。内容涵盖常微分方程、空间解析几何、多元微分学、多元积分学及无穷级数。
 head:
   - - meta
     - name: keywords
-      content: 高等数学II, 多元微分学, 多元积分学, 无穷级数, 空间解析几何, 常微分方程, 课件下载, 复习讲义
+      content: 高等数学(A)II, 多元微分学, 多元积分学, 无穷级数, 空间解析几何, 常微分方程, 课件下载
 prev: false
 next: false
 ---
@@ -15,9 +15,9 @@ next: false
 const CDN_BASE = '/pdf/calculus/II'
 </script>
 
-# 高等数学II
+# 高等数学(A)II
 
-《高等数学II》是理工科专业常见的基础课程。本页面提供章节课件与复习讲义下载。
+《高等数学(A)II》是理工科专业常见的基础课程。本页面提供章节课件下载。
 
 <p class="mobile-desktop-hint">建议使用电脑桌面端访问，以获得更佳的课件浏览与下载体验。</p>
 
@@ -32,7 +32,7 @@ const CDN_BASE = '/pdf/calculus/II'
     <tr>
       <th style="width: 12%">章节</th>
       <th style="width: 73%">知识要点</th>
-      <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
+      <th style="width: 15%; text-align: center;">授课课件</th>
     </tr>
   </thead>
   <tbody>
@@ -66,15 +66,6 @@ const CDN_BASE = '/pdf/calculus/II'
       <td class="chap-title">二阶常系数非齐次线性微分方程</td>
       <td class="download-cell"><a :href="CDN_BASE + '/7/7-6_second_order_nonhomogeneous_linear_differential_equations_with_constant_coefficients.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
     </tr>
-    <tr class="review-row">
-      <td class="chap-num">复习</td>
-      <td class="chap-title font-review">本章专题复习与计算方法讲义</td>
-      <td class="download-cell">
-        <div class="dl-group">
-          <a :href="CDN_BASE + '/7/Chapter_7_Differential_Equations_Student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">学生版 📂</a>
-        </div>
-      </td>
-    </tr>
   </tbody>
 </table>
 
@@ -85,7 +76,7 @@ const CDN_BASE = '/pdf/calculus/II'
     <tr>
       <th style="width: 12%">章节</th>
       <th style="width: 73%">知识要点</th>
-      <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
+      <th style="width: 15%; text-align: center;">授课课件</th>
     </tr>
   </thead>
   <tbody>
@@ -119,15 +110,6 @@ const CDN_BASE = '/pdf/calculus/II'
       <td class="chap-title">空间直线及其方程与夹角</td>
       <td class="download-cell"><a :href="CDN_BASE + '/8/8-6_lines_in_space_and_their_equations.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
     </tr>
-    <tr class="review-row">
-      <td class="chap-num">复习</td>
-      <td class="chap-title font-review">本章专题复习与空间解析几何几何法讲义</td>
-      <td class="download-cell">
-        <div class="dl-group">
-          <a :href="CDN_BASE + '/8/Chapter_8_Spatial_Analytic_Geometry_Student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">学生版 📂</a>
-        </div>
-      </td>
-    </tr>
   </tbody>
 </table>
 
@@ -138,7 +120,7 @@ const CDN_BASE = '/pdf/calculus/II'
     <tr>
       <th style="width: 12%">章节</th>
       <th style="width: 73%">知识要点</th>
-      <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
+      <th style="width: 15%; text-align: center;">授课课件</th>
     </tr>
   </thead>
   <tbody>
@@ -172,15 +154,6 @@ const CDN_BASE = '/pdf/calculus/II'
       <td class="chap-title">多元函数的极值及其求法</td>
       <td class="download-cell"><a :href="CDN_BASE + '/9/9-6_extrema.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
     </tr>
-    <tr class="review-row">
-      <td class="chap-num">复习</td>
-      <td class="chap-title font-review">微积分期末“保命”公式定理速查与计算专题</td>
-      <td class="download-cell">
-        <div class="dl-group">
-          <a :href="CDN_BASE + '/9/Chapter_9_Multivariable_Differentiation_Student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">学生版 📂</a>
-        </div>
-      </td>
-    </tr>
   </tbody>
 </table>
 
@@ -191,7 +164,7 @@ const CDN_BASE = '/pdf/calculus/II'
     <tr>
       <th style="width: 12%">章节</th>
       <th style="width: 73%">知识要点</th>
-      <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
+      <th style="width: 15%; text-align: center;">授课课件</th>
     </tr>
   </thead>
   <tbody>
@@ -215,15 +188,6 @@ const CDN_BASE = '/pdf/calculus/II'
       <td class="chap-title">重积分的几何与物理应用</td>
       <td class="download-cell"><a :href="CDN_BASE + '/10/10-4_integral_applications.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
     </tr>
-    <tr class="review-row">
-      <td class="chap-num">复习</td>
-      <td class="chap-title font-review">本章专题复习与重积分几何/物理计算讲义</td>
-      <td class="download-cell">
-        <div class="dl-group">
-          <a :href="CDN_BASE + '/10/Chapter_10_Multiple_Integrals_Student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">学生版 📂</a>
-        </div>
-      </td>
-    </tr>
   </tbody>
 </table>
 
@@ -234,7 +198,7 @@ const CDN_BASE = '/pdf/calculus/II'
     <tr>
       <th style="width: 12%">章节</th>
       <th style="width: 73%">知识要点</th>
-      <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
+      <th style="width: 15%; text-align: center;">授课课件</th>
     </tr>
   </thead>
   <tbody>
@@ -262,15 +226,6 @@ const CDN_BASE = '/pdf/calculus/II'
       <td class="chap-num">12.5</td>
       <td class="chap-title">傅里叶级数展开及正交函数系</td>
       <td class="download-cell"><a :href="CDN_BASE + '/12/12-5_fourier_series_review.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
-    </tr>
-    <tr class="review-row">
-      <td class="chap-num">复习</td>
-      <td class="chap-title font-review">本章专题复习与无穷级数收敛性判定/展开式大题讲义</td>
-      <td class="download-cell">
-        <div class="dl-group">
-          <a :href="CDN_BASE + '/12/Chapter_12_Infinite_Series_Student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">学生版 📂</a>
-        </div>
-      </td>
     </tr>
   </tbody>
 </table>

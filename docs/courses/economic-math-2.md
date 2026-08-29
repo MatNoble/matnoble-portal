@@ -17,7 +17,7 @@ const CDN_BASE = '/pdf/linear_algebra/economics'
 
 # 经济数学II
 
-《经济数学II》面向经济管理类专业，授课主体内容为**线性代数**。本页面提供章节课件与复习讲义下载。
+《经济数学II》面向经济管理类专业，授课主体内容为**线性代数**。本页面提供章节课件下载。
 
 <p class="mobile-desktop-hint">建议使用电脑桌面端访问，以获得更佳的课件浏览与下载体验。</p>
 
@@ -32,7 +32,7 @@ const CDN_BASE = '/pdf/linear_algebra/economics'
     <tr>
       <th style="width: 12%">章节</th>
       <th style="width: 73%">知识要点</th>
-      <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
+      <th style="width: 15%; text-align: center;">授课课件</th>
     </tr>
   </thead>
   <tbody>
@@ -61,15 +61,6 @@ const CDN_BASE = '/pdf/linear_algebra/economics'
       <td class="chap-title">克拉默法则与矩阵概念</td>
       <td class="download-cell"><a :href="CDN_BASE + '/1-4_Cramers_Rule_and_Matrix_Concept.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
     </tr>
-    <tr class="review-row">
-      <td class="chap-num">复习</td>
-      <td class="chap-title font-review">本章专题复习与行列式计算方法讲义</td>
-      <td class="download-cell">
-        <div class="dl-group">
-          <a :href="CDN_BASE + '/handout_ch1_determinants_student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">学生版 📂</a>
-        </div>
-      </td>
-    </tr>
   </tbody>
 </table>
 
@@ -80,7 +71,7 @@ const CDN_BASE = '/pdf/linear_algebra/economics'
     <tr>
       <th style="width: 12%">章节</th>
       <th style="width: 73%">知识要点</th>
-      <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
+      <th style="width: 15%; text-align: center;">授课课件</th>
     </tr>
   </thead>
   <tbody>
@@ -99,15 +90,6 @@ const CDN_BASE = '/pdf/linear_algebra/economics'
       <td class="chap-title">分块矩阵</td>
       <td class="download-cell"><a :href="CDN_BASE + '/2-3_Block_Matrix.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
     </tr>
-    <tr class="review-row">
-      <td class="chap-num">复习</td>
-      <td class="chap-title font-review">本章专题复习与矩阵代数经典计算讲义</td>
-      <td class="download-cell">
-        <div class="dl-group">
-          <a :href="CDN_BASE + '/handout_ch2_matrix_operations_student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">学生版 📂</a>
-        </div>
-      </td>
-    </tr>
   </tbody>
 </table>
 
@@ -118,7 +100,7 @@ const CDN_BASE = '/pdf/linear_algebra/economics'
     <tr>
       <th style="width: 12%">章节</th>
       <th style="width: 73%">知识要点</th>
-      <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
+      <th style="width: 15%; text-align: center;">授课课件</th>
     </tr>
   </thead>
   <tbody>
@@ -136,15 +118,6 @@ const CDN_BASE = '/pdf/linear_algebra/economics'
       <td class="chap-num">3.3</td>
       <td class="chap-title">线性方程组消元法</td>
       <td class="download-cell"><a :href="CDN_BASE + '/3-3_Elimination_Method.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
-    </tr>
-    <tr class="review-row">
-      <td class="chap-num">复习</td>
-      <td class="chap-title font-review">本章专题复习与线性方程组消元求解大题讲义</td>
-      <td class="download-cell">
-        <div class="dl-group">
-          <a :href="CDN_BASE + '/handout_ch3_elimination_systems_student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">学生版 📂</a>
-        </div>
-      </td>
     </tr>
   </tbody>
 </table>
@@ -164,7 +137,7 @@ const CDN_BASE = '/pdf/linear_algebra/economics'
     <tr>
       <th style="width: 12%">章节</th>
       <th style="width: 73%">知识要点</th>
-      <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
+      <th style="width: 15%; text-align: center;">授课课件</th>
     </tr>
   </thead>
   <tbody>
@@ -182,15 +155,6 @@ const CDN_BASE = '/pdf/linear_algebra/economics'
       <td class="chap-num">4.3</td>
       <td class="chap-title">线性方程组解的结构</td>
       <td class="download-cell"><a :href="CDN_BASE + '/4-3_Solution_Structure.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
-    </tr>
-    <tr class="review-row">
-      <td class="chap-num">复习</td>
-      <td class="chap-title font-review">本章专题复习与线性方程组解的结构讲义</td>
-      <td class="download-cell">
-        <div class="dl-group">
-          <a :href="CDN_BASE + '/handout_ch4_vector_dependence_student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">学生版 📂</a>
-        </div>
-      </td>
     </tr>
   </tbody>
 </table>

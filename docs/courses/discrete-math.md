@@ -17,7 +17,7 @@ const CDN_BASE = '/pdf/discrete'
 
 # 离散数学
 
-《离散数学》是计算机类专业常见的基础课程，内容包括命题逻辑、一阶逻辑、二元关系和图论基础等。本页面提供章节课件与专题习题讲义下载。
+《离散数学》是计算机类专业常见的基础课程，内容包括命题逻辑、一阶逻辑、二元关系和图论基础等。本页面提供章节课件下载。
 
 <p class="mobile-desktop-hint">建议使用电脑桌面端访问，以获得更佳的课件浏览与下载体验。</p>
 
@@ -32,7 +32,7 @@ const CDN_BASE = '/pdf/discrete'
     <tr>
       <th style="width: 12%">章节</th>
       <th style="width: 73%">知识要点</th>
-      <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
+      <th style="width: 15%; text-align: center;">授课课件</th>
     </tr>
   </thead>
   <tbody>
@@ -71,7 +71,7 @@ const CDN_BASE = '/pdf/discrete'
     <tr>
       <th style="width: 12%">章节</th>
       <th style="width: 73%">知识要点</th>
-      <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
+      <th style="width: 15%; text-align: center;">授课课件</th>
     </tr>
   </thead>
   <tbody>
@@ -105,7 +105,7 @@ const CDN_BASE = '/pdf/discrete'
     <tr>
       <th style="width: 12%">章节</th>
       <th style="width: 73%">知识要点</th>
-      <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
+      <th style="width: 15%; text-align: center;">授课课件</th>
     </tr>
   </thead>
   <tbody>
@@ -124,11 +124,6 @@ const CDN_BASE = '/pdf/discrete'
       <td class="chap-title">等价关系与偏序关系</td>
       <td class="download-cell"><a :href="CDN_BASE + '/4-3_Equivalence_Partial_Order.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
     </tr>
-    <tr class="review-row">
-      <td class="chap-num">复习</td>
-      <td class="chap-title font-review">第四章习题课与实践专题</td>
-      <td class="download-cell"><a :href="CDN_BASE + '/4-4_Chapter4_Practice_Session.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">复习 PDF 📂</a></td>
-    </tr>
   </tbody>
 </table>
 
@@ -139,7 +134,7 @@ const CDN_BASE = '/pdf/discrete'
     <tr>
       <th style="width: 12%">章节</th>
       <th style="width: 73%">知识要点</th>
-      <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
+      <th style="width: 15%; text-align: center;">授课课件</th>
     </tr>
   </thead>
   <tbody>
@@ -167,38 +162,6 @@ const CDN_BASE = '/pdf/discrete'
       <td class="chap-num">5.5</td>
       <td class="chap-title">图的着色问题</td>
       <td class="download-cell"><a :href="CDN_BASE + '/5-5_Graph_Coloring.pdf'" target="_blank" rel="noopener" class="btn-dl">PDF 📂</a></td>
-    </tr>
-  </tbody>
-</table>
-
----
-
-## 期末复习
-
-
-<table class="academic-table">
-  <thead>
-    <tr>
-      <th style="width: 12%">类型</th>
-      <th style="width: 73%">资料名称</th>
-      <th style="width: 15%; text-align: center;">授课课件 / 复习讲义</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr class="review-row">
-      <td class="chap-num">样卷</td>
-      <td class="chap-title font-review">期末复习参考样卷（学生自测版）</td>
-      <td class="download-cell"><a :href="CDN_BASE + '/student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">下载 PDF 📂</a></td>
-    </tr>
-    <tr class="review-row">
-      <td class="chap-num">复习</td>
-      <td class="chap-title font-review">期末专题复习讲义</td>
-      <td class="download-cell">
-        <div class="dl-group">
-          <a :href="CDN_BASE + '/final_review_handout_student.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">学生版 📂</a>
-          <a :href="CDN_BASE + '/final_review_handout_teacher.pdf'" target="_blank" rel="noopener" class="btn-dl btn-review">教师版 📂</a>
-        </div>
-      </td>
     </tr>
   </tbody>
 </table>
