@@ -11,6 +11,7 @@ const ROUTE_LABELS: Record<string, string> = {
   "about": "关于 MatNoble",
   "courses": "课程中心",
   "projects": "开源项目",
+  "projects/tts": "MatNoble-TTS 语音平台",
   "teaching": "教学目录",
   "teaching/calculus": "微积分",
   "teaching/linear-algebra": "线性代数",
