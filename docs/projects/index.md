@@ -70,14 +70,6 @@ head:
 面向高校课堂的浏览器点名辅助扩展。它在本地读取考勤页面中的学生名单，支持随机抽样和高亮显示。
 - [详细介绍与下载](/roll-call-beacon/) | [隐私政策](/roll-call-beacon/privacy)
 
-### [Memorize 记忆助手](https://memorize.matnoble.top)
-基于 SM-2 间隔重复算法的记忆辅助工具，支持 KaTeX 数学公式渲染。
-- [工具演示](/tools/memorize) | [在线访问](https://memorize.matnoble.top)
-
-### [DI Method 交互演示](/tools/di-method)
-用于演示分部积分 DI 表格法的交互工具，展示求导列、积分列和对角线求和过程。
-- [详细说明](/teaching/cheatsheet#_2-di-method-表格积分法) | [交互体验](/tools/di-method)
-
 ---
 
 ## 更多尝试
