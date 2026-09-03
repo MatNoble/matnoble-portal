@@ -40,26 +40,31 @@ head:
 - **技术工具**: 使用 **Python/Matlab** 做数值实验，使用 **Vue/TypeScript** 开发交互式教学工具，使用 **LaTeX** 排版课程材料。
 - **研究背景**: 数学系硕士，研究方向包含偏微分方程 (PDE) 数值求解。
 
-## 联系与合作
+## 站点矩阵与工程
 
-- **开源项目**: [GitHub (matnoble)](https://github.com/matnoble) —— 获取教学脚本与工具。
-- **个人博客**: [blog.matnoble.top](https://blog.matnoble.top) —— 记录技术与教学相关笔记。
-- **社交媒体**: 
-  - 邮箱: [me@matnoble.top](mailto:me@matnoble.top)
-  - 知乎: [MatNoble](https://www.zhihu.com/people/matnoble)
-  - Telegram: [HUSTMatNoble](https://t.me/HUSTMatNoble)
-  - YouTube: [@RossMatNoble](https://www.youtube.com/@RossMatNoble)
-  - 公众号: **数学思维探究社**
+- **教学中心**: [teach.matnoble.top](https://teach.matnoble.top) —— 大学数学（离散数学、高等数学、线性代数）课程大纲、课件下载与 3D 空间几何实验室。
+- **开源项目**: [matnoble.top/projects](/projects/) —— MatNoble-TTS 语音平台与工程工具。
+- **技术博客**: [blog.matnoble.top](https://blog.matnoble.top) —— 偏微分方程数值解法与计算科学手记。
+- **光影定格**: [album.matnoble.top](https://album.matnoble.top) —— 个人摄影与视觉纪实。
+- **代码仓库**: [GitHub (matnoble)](https://github.com/matnoble) —— 获取开源脚本与工具。
+
+## 联系方式
+
+- 邮箱: [me@matnoble.top](mailto:me@matnoble.top)
+- 知乎: [MatNoble](https://www.zhihu.com/people/matnoble)
+- Telegram: [HUSTMatNoble](https://t.me/HUSTMatNoble)
+- YouTube: [@RossMatNoble](https://www.youtube.com/@RossMatNoble)
+- 公众号: **数学思维探究社**
 
 ---
 
 ## 常见问题 (FAQ)
 
 **Q: MatNoble 的教学特色是什么？**  
-**A:** 主要是把计算步骤标准化，并用图形或交互演示辅助说明。例如微分计算、DI 表格法和空间几何演示等内容。
+**A:** 主要是把计算步骤标准化，并用图形或交互演示辅助说明。例如微分万能公式、DI 表格积分法和空间解析几何 3D 演示等。
 
 **Q: 为什么这里不仅有数学，还有技术内容？**  
-**A:** 因为很多教学材料可以通过程序生成、验证或交互展示。本站会同时记录数学内容和相关工具开发。
+**A:** 因为很多教学材料可以通过程序生成、验证或交互展示。本站兼具数学教学与独立全栈开发两重属性。
 
-**Q: 如何获取本站提到的复习资料？**  
-**A:** 复习资料和 CheatSheet 放在 **[教学目录](/teaching/)**，在线工具放在 **[工具箱](/tools/)**。
+**Q: 如何获取本站提到的课件与复习资料？**  
+**A:** 课程大纲、期末复习讲义、3D 互动演示与在线工具现已全面独立部署至 **[MatNoble 教学中心 (teach.matnoble.top)](https://teach.matnoble.top/)**，支持章节化 PDF 课件直接下载。

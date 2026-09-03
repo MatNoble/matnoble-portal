@@ -232,7 +232,7 @@ export default defineConfig({
     socialLinks: [],
 
     footer: {
-      message: '以数学构建逻辑，用技术驱动学习。<br><a href="/privacy">隐私政策</a> | <a href="/terms">服务条款</a><br>Copyright © 2025-2026 MatNoble',
+      message: '<a href="https://teach.matnoble.top/">教学中心</a> · <a href="/projects/">开源项目</a> · <a href="https://blog.matnoble.top">技术博客</a> · <a href="https://album.matnoble.top/">光影定格</a><br>以数学构建逻辑，用技术驱动学习。<br><a href="/privacy">隐私政策</a> | <a href="/terms">服务条款</a><br>Copyright © 2025-2026 MatNoble',
       copyright: "",
     },
 
@@ -600,8 +600,10 @@ export default defineConfig({
               "大学数学教师与独立开发者，主要整理微积分、线性代数等课程内容，并开发交互式教学工具。",
             image: "https://matnoble.top/logo.svg",
             sameAs: [
+              "https://teach.matnoble.top",
               "https://github.com/matnoble",
               "https://blog.matnoble.top",
+              "https://album.matnoble.top",
               "https://www.zhihu.com/people/matnoble",
               "https://www.youtube.com/@RossMatNoble"
             ],
@@ -627,8 +629,10 @@ export default defineConfig({
               "name": "MatNoble"
             },
             "sameAs": [
+              "https://teach.matnoble.top",
               "https://github.com/matnoble",
-              "https://blog.matnoble.top"
+              "https://blog.matnoble.top",
+              "https://album.matnoble.top"
             ]
           },
           {
