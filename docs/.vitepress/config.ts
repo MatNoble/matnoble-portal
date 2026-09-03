@@ -220,10 +220,7 @@ export default defineConfig({
     // 顶部导航
     nav: [
       { text: "关于我", link: "/about" },
-      { text: "教学中心", link: "https://teach.matnoble.top/" },
-      { text: "语音工坊", link: "https://speak.matnoble.top" },
-      { text: "技术博客", link: "https://blog.matnoble.top" },
-      { text: "光影定格", link: "https://album.matnoble.top/" },
+      { text: "开源项目", link: "/projects/" },
     ],
 
     // 移除侧边栏，实现全屏沉浸式阅读
