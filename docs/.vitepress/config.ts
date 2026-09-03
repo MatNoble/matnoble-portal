@@ -232,7 +232,7 @@ export default defineConfig({
     socialLinks: [],
 
     footer: {
-      message: '<a href="https://teach.matnoble.top/">教学中心</a> · <a href="/projects/">开源项目</a> · <a href="https://blog.matnoble.top">技术博客</a> · <a href="https://album.matnoble.top/">光影定格</a><br>以数学构建逻辑，用技术驱动学习。<br><a href="/privacy">隐私政策</a> | <a href="/terms">服务条款</a><br>Copyright © 2025-2026 MatNoble',
+      message: '<a href="https://teach.matnoble.top/">教学中心</a> · <a href="https://speak.matnoble.top">语音工坊</a> · <a href="https://blog.matnoble.top">技术博客</a> · <a href="https://album.matnoble.top/">光影定格</a><br>以数学构建逻辑，用技术驱动学习。<br><a href="/privacy">隐私政策</a> | <a href="/terms">服务条款</a><br>Copyright © 2025-2026 MatNoble',
       copyright: "",
     },
 
@@ -601,6 +601,7 @@ export default defineConfig({
             image: "https://matnoble.top/logo.svg",
             sameAs: [
               "https://teach.matnoble.top",
+              "https://speak.matnoble.top",
               "https://github.com/matnoble",
               "https://blog.matnoble.top",
               "https://album.matnoble.top",
@@ -630,6 +631,7 @@ export default defineConfig({
             },
             "sameAs": [
               "https://teach.matnoble.top",
+              "https://speak.matnoble.top",
               "https://github.com/matnoble",
               "https://blog.matnoble.top",
               "https://album.matnoble.top"

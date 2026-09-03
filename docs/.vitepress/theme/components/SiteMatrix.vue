@@ -22,12 +22,13 @@ const matrixList: MatrixItem[] = [
     isPrimary: true
   },
   {
-    title: '开源项目',
-    desc: 'MatNoble-TTS 语音合成工作流、华中科技大学矢量视觉标志等实用工具与开放源码项目。',
-    link: '/projects/',
-    domain: 'matnoble.top/projects',
-    icon: '💻',
-    badge: '工程成果'
+    title: '语音工坊',
+    desc: '基于深度学习神经语音合成的 TTS 创作平台，支持高质量、自然流利的多音色文本朗读。',
+    link: 'https://speak.matnoble.top',
+    domain: 'speak.matnoble.top',
+    icon: '🎙️',
+    badge: 'AI 语音',
+    isExternal: true
   },
   {
     title: '技术博客',

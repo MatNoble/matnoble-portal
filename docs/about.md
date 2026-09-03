@@ -43,10 +43,11 @@ head:
 ## 站点矩阵与工程
 
 - **教学中心**: [teach.matnoble.top](https://teach.matnoble.top) —— 大学数学（离散数学、高等数学、线性代数）课程大纲、课件下载与 3D 空间几何实验室。
-- **开源项目**: [matnoble.top/projects](/projects/) —— MatNoble-TTS 语音平台与工程工具。
+- **语音工坊**: [speak.matnoble.top](https://speak.matnoble.top) —— 基于深度学习的神经语音合成 TTS 创作平台。
 - **技术博客**: [blog.matnoble.top](https://blog.matnoble.top) —— 偏微分方程数值解法与计算科学手记。
 - **光影定格**: [album.matnoble.top](https://album.matnoble.top) —— 个人摄影与视觉纪实。
-- **代码仓库**: [GitHub (matnoble)](https://github.com/matnoble) —— 获取开源脚本与工具。
+- **开源项目**: [matnoble.top/projects](/projects/) —— 实用工程工具与设计资产。
+- **代码仓库**: [GitHub (matnoble)](https://github.com/matnoble) —— 开源脚本与项目仓库。
 
 ## 联系方式
 

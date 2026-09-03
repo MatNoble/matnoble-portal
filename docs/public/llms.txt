@@ -9,7 +9,7 @@
 - Maintainer: MatNoble
 - Subdomain Matrix:
   - Teaching Platform: https://teach.matnoble.top (undergraduate mathematics, courseware, syllabi, interactive 3D math labs, pedagogical tools)
-  - Open Source Projects: https://matnoble.top/projects/ (MatNoble-TTS voice platform, vector design assets)
+  - Speech Synthesis Platform: https://speak.matnoble.top (neural text-to-speech TTS platform)
   - Technical Blog: https://blog.matnoble.top (numerical computing, PDE, algorithms)
   - Photography Album: https://album.matnoble.top (fine-art visual documentary)
 
