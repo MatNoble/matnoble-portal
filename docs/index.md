@@ -22,7 +22,6 @@ import { defineAsyncComponent } from 'vue'
 
 const HighFidelityHero = defineAsyncComponent(() => import('./.vitepress/theme/components/HighFidelityHero.vue'))
 const SiteMatrix = defineAsyncComponent(() => import('./.vitepress/theme/components/SiteMatrix.vue'))
-const KnowledgeGraph = defineAsyncComponent(() => import('./.vitepress/theme/components/KnowledgeGraph.vue'))
 const FollowSection = defineAsyncComponent(() => import('./.vitepress/theme/components/FollowSection.vue'))
 </script>
 
@@ -45,15 +44,6 @@ const FollowSection = defineAsyncComponent(() => import('./.vitepress/theme/comp
   </h2>
   
   <SiteMatrix />
-</section>
-
-<section id="knowledge-graph" class="gateway-section">
-  <h2 class="section-title">
-    内容地图
-    <span class="section-subtitle">Site Map</span>
-  </h2>
-  
-  <KnowledgeGraph />
 </section>
 
 <!-- Section 3: Contact / CTA -->
