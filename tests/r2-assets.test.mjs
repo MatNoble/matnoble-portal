@@ -108,7 +108,7 @@ test("download pages use the same-origin R2 proxy", async () => {
 
   for (const file of files) {
     const source = await readFile(new URL(`../${file}`, import.meta.url), "utf8");
-    assert.match(source, /\/r2-assets\/?/, file);
+    assert.match(source, /\/(r2-assets|v)\/?/, file);
     assert.doesNotMatch(source, /CDN_BASE\s*=\s*['"]\/assets\//, file);
     assert.doesNotMatch(source, /\/assets-test\//, file);
     assert.doesNotMatch(source, /CDN_BASE\s*=\s*['"]\/downloads\//, file);

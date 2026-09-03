@@ -1,3 +1,7 @@
-/courses/discrete-math /courses/discrete-math-2026-fall 302
-/courses/advanced-math-2 /courses/advanced-math-2-2026-spring 302
-/courses/economic-math-2 /courses/economic-math-2-2026-spring 302
+/courses    https://teach.matnoble.top/courses/        301
+/courses/*  https://teach.matnoble.top/courses/:splat  301
+/teaching   https://teach.matnoble.top/teaching/       301
+/teaching/* https://teach.matnoble.top/teaching/:splat 301
+/tools      https://teach.matnoble.top/tools/          301
+/tools/*    https://teach.matnoble.top/tools/:splat    301
+/pdf/*      https://teach.matnoble.top/pdf/:splat      301
