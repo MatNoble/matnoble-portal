@@ -78,29 +78,6 @@ export default {
       mediumZoom(".main img", { background: "var(--vp-c-bg)" });
     };
 
-    const initAnalytics = () => {
-      if (typeof window === "undefined") return;
-      if (isLocalHost()) return;
-
-      // 动态延迟加载 Google Analytics
-      if (!document.getElementById('google-analytics-tag')) {
-        loadExternalScript(
-          "google-analytics-tag",
-          "https://www.googletagmanager.com/gtag/js?id=G-491EPRZ1LY"
-        );
-
-        const script2 = document.createElement('script');
-        script2.id = 'google-analytics';
-        script2.innerHTML = `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-491EPRZ1LY');
-        `;
-        document.head.appendChild(script2);
-      }
-    };
-
     const initAds = () => {
       if (typeof window === "undefined" || isLocalHost()) return;
       loadExternalScript(
@@ -111,9 +88,8 @@ export default {
 
     onMounted(() => {
       initZoom();
-      // 延迟 4 秒，确保首屏网络与 CPU 闲置后加载分析统计
+      // 延迟 4 秒加载外部辅助脚本（GA4 统计已托管至 Cloudflare Zaraz 统一边缘注入）
       setTimeout(() => {
-        initAnalytics();
         initAds();
       }, 4000);
 
