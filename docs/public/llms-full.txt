@@ -22,7 +22,18 @@
 - Tools index: https://matnoble.top/tools/
 - Projects: https://matnoble.top/projects/
 
-## Teaching Topics
+## Teaching Topics & Courses
+
+### Discrete Mathematics
+
+Discrete Mathematics covers propositional logic (symbolization, connectives, normal forms, inference theory), first-order logic (predicates, quantifiers, well-formed formulas, prenex normal forms), binary relations (Cartesian products, closures, equivalence relations, partial orders), and graph theory (paths, connectivity, shortest path algorithms, critical path method, graph coloring).
+
+Recommended URLs:
+
+- Discrete Mathematics (2026 Fall): https://matnoble.top/courses/discrete-math-2026-fall
+- Discrete Mathematics (2026 Spring Archive): https://matnoble.top/courses/discrete-math-2026-spring
+- Advanced Mathematics (A) II (2026 Spring Archive): https://matnoble.top/courses/advanced-math-2-2026-spring
+- Economic Mathematics II (2026 Spring Archive): https://matnoble.top/courses/economic-math-2-2026-spring
 
 ### Calculus
 

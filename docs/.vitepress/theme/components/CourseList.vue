@@ -29,7 +29,7 @@ const semesterGroups = ref<SemesterGroup[]>([
     tag: '当前学期',
     courses: [
       {
-        id: 'advanced-math-1',
+        id: 'advanced-math-1-2026-fall',
         code: '理工数学',
         title: '高等数学(A)I',
         enTitle: 'Advanced Mathematics (A) I',
@@ -47,11 +47,11 @@ const semesterGroups = ref<SemesterGroup[]>([
         category: 'stem',
         semester: '2026 秋季',
         description: '计算机类各专业核心基础课。本课程深入探讨命题逻辑、一阶逻辑、二元关系、等价与偏序、图论及代数结构，为算法结构设计与数理逻辑证明奠定基础。',
-        link: '',
+        link: '/courses/discrete-math-2026-fall',
         status: 'active'
       },
       {
-        id: 'java-programming',
+        id: 'java-programming-2026-fall',
         code: '工程计算',
         title: 'Java程序设计',
         enTitle: 'Java Programming',
@@ -62,7 +62,7 @@ const semesterGroups = ref<SemesterGroup[]>([
         status: 'active'
       },
       {
-        id: 'linear-algebra-b',
+        id: 'linear-algebra-b-2026-fall',
         code: '理工数学',
         title: '线性代数(B)',
         enTitle: 'Linear Algebra (B)',
@@ -80,7 +80,7 @@ const semesterGroups = ref<SemesterGroup[]>([
     tag: '小学期',
     courses: [
       {
-        id: 'matlab-practice',
+        id: 'matlab-practice-2026-summer',
         code: '工程计算',
         title: 'MATLAB 编程与工程实践',
         enTitle: 'MATLAB Programming & Engineering Practice',
@@ -98,14 +98,14 @@ const semesterGroups = ref<SemesterGroup[]>([
     tag: '已结课',
     courses: [
       {
-        id: 'advanced-math-2',
+        id: 'advanced-math-2-2026-spring',
         code: '理工数学',
         title: '高等数学(A)II',
         enTitle: 'Advanced Mathematics (A) II',
         category: 'stem',
         semester: '2026 春季',
         description: '理工科核心基础课。涵盖多元函数微积分学、重积分、常微分方程以及无穷级数，致力于重构空间几何直觉，提供严密精细的数理逻辑支撑。',
-        link: '/courses/advanced-math-2',
+        link: '/courses/advanced-math-2-2026-spring',
         status: 'completed'
       },
       {
@@ -116,18 +116,18 @@ const semesterGroups = ref<SemesterGroup[]>([
         category: 'stem',
         semester: '2026 春季',
         description: '计算机类各专业核心基础课。本课程深入探讨集合论、二元关系、等价与偏序、图论及代数结构，为算法结构设计与数理逻辑证明奠定基础。',
-        link: '/courses/discrete-math',
+        link: '/courses/discrete-math-2026-spring',
         status: 'completed'
       },
       {
-        id: 'economic-math-2',
+        id: 'economic-math-2-2026-spring',
         code: '经管数学',
         title: '经济数学II',
         enTitle: 'Economic Mathematics II',
         category: 'business',
         semester: '2026 春季',
         description: '经管类专业核心工具课。课程以线性代数为主体，包含行列式、矩阵运算、线性方程组求解及向量组线性相关性，为经管决策分析构建代数基础。',
-        link: '/courses/economic-math-2',
+        link: '/courses/economic-math-2-2026-spring',
         status: 'completed'
       }
     ]

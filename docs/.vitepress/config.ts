@@ -10,6 +10,10 @@ const SITE_DESCRIPTION =
 const ROUTE_LABELS: Record<string, string> = {
   "about": "关于 MatNoble",
   "courses": "课程中心",
+  "courses/discrete-math-2026-fall": "离散数学 (2026秋季)",
+  "courses/discrete-math-2026-spring": "离散数学 (2026春季)",
+  "courses/advanced-math-2-2026-spring": "高等数学(A)II (2026春季)",
+  "courses/economic-math-2-2026-spring": "经济数学II (2026春季)",
   "projects": "开源项目",
   "projects/tts": "MatNoble-TTS 语音平台",
   "teaching": "教学目录",
@@ -26,6 +30,12 @@ const ROUTE_LABELS: Record<string, string> = {
   "courses/matlab/project-gui": "GUI 矩阵计算器项目",
   "courses/matlab/project-cv": "电子时钟数码管识别",
 };
+
+const REDIRECT_ROUTES = new Set([
+  "/courses/discrete-math",
+  "/courses/advanced-math-2",
+  "/courses/economic-math-2",
+]);
 
 const DIRECTORY_ROUTES = new Set(["courses", "projects", "teaching", "tools"]);
 
@@ -45,6 +55,7 @@ function isIndexableUrl(url: string): boolean {
   return !(
     pathname === "/404" ||
     pathname === "/404.html" ||
+    REDIRECT_ROUTES.has(pathname) ||
     pathname.startsWith("/agents/") ||
     pathname.startsWith("/public/") ||
     pathname.startsWith("/.well-known/")
@@ -386,6 +397,30 @@ export default defineConfig({
           "sameAs": "https://matnoble.top"
         }
       });
+    } else if (
+      pageData.relativePath.startsWith("courses/") &&
+      pageData.relativePath !== "courses/index.md" &&
+      !REDIRECT_ROUTES.has("/" + pageData.relativePath.replace(/\.md$/, ""))
+    ) {
+      schemas.push({
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": pageTitle || title,
+        "description": description,
+        "url": url,
+        "inLanguage": "zh-CN",
+        "provider": {
+          "@type": "Person",
+          "@id": "https://matnoble.top/#person",
+          "name": "MatNoble",
+          "sameAs": "https://matnoble.top"
+        },
+        "hasCourseInstance": {
+          "@type": "CourseInstance",
+          "courseMode": "blended",
+          "inLanguage": "zh-CN"
+        }
+      });
     }
 
     // 5. SoftwareApplication Schema
@@ -430,13 +465,14 @@ export default defineConfig({
       });
     }
 
-    // 8. Dynamic Keywords handling
+    // 8. Dynamic Keywords & Robots handling
     const keywords = pageData.frontmatter.keywords || "计算数学, 算法思维, 微积分, 线性代数, MatNoble";
+    const robots = pageData.frontmatter.robots || "index, follow, max-image-preview:large";
 
     return [
       ["link", { rel: "canonical", href: url }],
       ["link", { rel: "alternate", type: "text/markdown", href: markdownMirrorUrl(pageData.relativePath) }],
-      ["meta", { name: "robots", content: "index, follow, max-image-preview:large" }],
+      ["meta", { name: "robots", content: robots }],
       ["meta", { name: "author", content: "MatNoble" }],
       ["meta", { name: "keywords", content: keywords }],
       // Open Graph
