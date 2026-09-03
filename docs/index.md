@@ -1,9 +1,9 @@
 ---
 layout: page
-title: 大学数学课程、开源工程与数字空间
+title: 大学讲师 · 独立开发者
 breadcrumb: 首页
 titleTemplate: false
-description: MatNoble 是大学数学教师与独立开发者的数字空间，包含教学中心（离散数学、高等数学、3D空间解析几何实验室）、开源工具、技术博客与光影定格。
+description: MatNoble 是大学数学讲师与独立开发者的个人门户与数字空间，连接高等数学教学、前沿工程实践与算法思考。
 head:
   - - script
     - type: application/ld+json
@@ -13,7 +13,7 @@ head:
         "@type": "WebSite",
         "name": "MatNoble",
         "url": "https://matnoble.top",
-        "description": "大学数学教师与独立开发者 MatNoble 的个人主页与数字空间矩阵。"
+        "description": "大学数学讲师与独立开发者 MatNoble 的个人主页与数字空间矩阵。"
       }
 ---
 
@@ -27,11 +27,11 @@ const FollowSection = defineAsyncComponent(() => import('./.vitepress/theme/comp
 
 <HighFidelityHero 
   name="MatNoble"
-  text="大学数学与开源工程"
-  tagline="以数学直觉为引领，用代码与算力重塑科学认知与实践。"
+  text="大学讲师 · 独立开发者"
+  tagline="连接高等数学教学、前沿工程实践与算法思考的数字空间。"
   :actions="[
     { theme: 'brand', text: '访问教学中心 ↗', link: 'https://teach.matnoble.top/' },
-    { theme: 'alt', text: '关于 MatNoble', link: '/about' }
+    { theme: 'alt', text: '关于作者', link: '/about' }
   ]"
 />
 
