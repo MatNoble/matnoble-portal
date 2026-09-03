@@ -219,8 +219,8 @@ export default defineConfig({
     siteTitle: false,
     // 顶部导航
     nav: [
-      { text: "关于我", link: "/about" },
       { text: "开源项目", link: "/projects/" },
+      { text: "关于我", link: "/about" },
     ],
 
     // 移除侧边栏，实现全屏沉浸式阅读
