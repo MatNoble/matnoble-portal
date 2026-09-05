@@ -166,36 +166,93 @@ export default defineConfig({
       VitePWA({
         outDir: ".vitepress/dist",
         registerType: "autoUpdate",
-        includeAssets: ["favicon.ico", "logo.svg", "apple-touch-icon.png"],
+        includeAssets: ["favicon.ico", "logo.svg", "apple-touch-icon.png", "icon-192.png", "icon-512.png"],
         manifest: {
-          name: "MatNoble",
+          name: "MatNoble 个人门户",
           short_name: "MatNoble",
-          description: "大学数学教师 MatNoble 的个人门户",
+          description: "大学数学教师 MatNoble 的个人门户，整理微积分、线性代数等课程内容与交互式教学工具。",
           theme_color: "#ffffff",
+          background_color: "#ffffff",
+          display: "standalone",
+          start_url: "/",
           icons: [
             {
-              src: "/favicon.png",
-              sizes: "32x32",
+              src: "/icon-192.png",
+              sizes: "192x192",
               type: "image/png",
+            },
+            {
+              src: "/icon-512.png",
+              sizes: "512x512",
+              type: "image/png",
+            },
+            {
+              src: "/icon-512.png",
+              sizes: "512x512",
+              type: "image/png",
+              purpose: "any maskable",
             },
             {
               src: "/logo.svg",
               sizes: "any",
               type: "image/svg+xml",
+              purpose: "any",
+            },
+          ],
+          shortcuts: [
+            {
+              name: "开源项目",
+              short_name: "项目",
+              url: "/projects/",
+              icons: [{ src: "/icon-192.png", sizes: "192x192" }],
             },
             {
-              src: "/logo.svg",
-              sizes: "512x512",
-              type: "image/svg+xml",
-              purpose: "any maskable",
+              name: "关于 MatNoble",
+              short_name: "关于",
+              url: "/about",
+              icons: [{ src: "/icon-192.png", sizes: "192x192" }],
             },
           ],
         },
         devOptions: {
-          enabled: true,
+          enabled: false,
         },
         workbox: {
           globPatterns: ["**/*.{css,js,html,svg,png,ico,txt,woff2}"],
+          runtimeCaching: [
+            {
+              urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
+              handler: "StaleWhileRevalidate",
+              options: {
+                cacheName: "google-fonts-stylesheets",
+                cacheableResponse: { statuses: [0, 200] },
+              },
+            },
+            {
+              urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
+              handler: "CacheFirst",
+              options: {
+                cacheName: "google-fonts-webfonts",
+                cacheableResponse: { statuses: [0, 200] },
+                expiration: {
+                  maxEntries: 30,
+                  maxAgeSeconds: 60 * 60 * 24 * 365, // 1 年
+                },
+              },
+            },
+            {
+              urlPattern: /^https:\/\/lf6-cdn-tos\.bytecdntp\.com\/.*/i,
+              handler: "StaleWhileRevalidate",
+              options: {
+                cacheName: "cdn-assets",
+                cacheableResponse: { statuses: [0, 200] },
+                expiration: {
+                  maxEntries: 20,
+                  maxAgeSeconds: 60 * 60 * 24 * 30, // 30 天
+                },
+              },
+            },
+          ],
         },
       }),
     ],
@@ -557,7 +614,8 @@ export default defineConfig({
       { name: "msvalidate.01", content: "1267ABE5F71B3CA9AF5AF169FD89E296" },
     ],
     ["link", { rel: "manifest", href: "/manifest.webmanifest" }],
-    ["meta", { name: "theme-color", content: "#ffffff" }],
+    ["meta", { name: "theme-color", media: "(prefers-color-scheme: light)", content: "#ffffff" }],
+    ["meta", { name: "theme-color", media: "(prefers-color-scheme: dark)", content: "#121214" }],
     ["meta", { name: "mobile-web-app-capable", content: "yes" }],
     ["meta", { name: "apple-mobile-web-app-status-bar-style", content: "default" }],
     // Security Headers
