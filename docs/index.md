@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 大学讲师 · 独立开发者
+title: MatNoble - 大学讲师 · 独立开发者
 breadcrumb: 首页
 titleTemplate: false
 description: MatNoble 是大学数学讲师与独立开发者的个人门户与数字空间，连接高等数学教学、前沿工程实践与算法思考。

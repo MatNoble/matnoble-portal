@@ -595,8 +595,8 @@ export default defineConfig({
         href: "/feed.xml",
       },
     ],
-    ["link", { rel: "icon", href: "/favicon.ico", sizes: "any" }],
     ["link", { rel: "icon", href: "/logo.svg", type: "image/svg+xml" }],
+    ["link", { rel: "alternate icon", href: "/favicon.ico" }],
     ["link", { rel: "apple-touch-icon", href: "/apple-touch-icon.png" }],
     // IndexNow 验证
     ["meta", { name: "indexnow-key", content: "7c6a9686414144409395982823617300" },],
