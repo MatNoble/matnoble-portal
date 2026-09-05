@@ -58,7 +58,7 @@ const semesterGroups = ref<SemesterGroup[]>([
         category: 'stem',
         semester: '2026 秋季',
         description: '计算机与软件工程核心实践课。深入讲解面向对象编程思想、类与对象、继承多态、异常处理、集合框架与 I/O 操作，通过项目实战培养工程编码能力。',
-        link: '',
+        link: '/courses/java-programming-2026-fall',
         status: 'active'
       },
       {

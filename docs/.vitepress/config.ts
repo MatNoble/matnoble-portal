@@ -12,6 +12,7 @@ const ROUTE_LABELS: Record<string, string> = {
   "courses": "课程中心",
   "courses/discrete-math-2026-fall": "离散数学 (2026秋季)",
   "courses/discrete-math-2026-spring": "离散数学 (2026春季)",
+  "courses/java-programming-2026-fall": "Java程序设计 (2026秋季)",
   "courses/advanced-math-2-2026-spring": "高等数学(A)II (2026春季)",
   "courses/economic-math-2-2026-spring": "经济数学II (2026春季)",
   "projects": "开源项目",
@@ -33,6 +34,7 @@ const ROUTE_LABELS: Record<string, string> = {
 
 const REDIRECT_ROUTES = new Set([
   "/courses/discrete-math",
+  "/courses/java-programming",
   "/courses/advanced-math-2",
   "/courses/economic-math-2",
 ]);
