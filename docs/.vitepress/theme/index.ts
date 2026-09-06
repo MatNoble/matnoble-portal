@@ -60,8 +60,18 @@ export default {
       );
     };
 
+    const initClarity = (projectId: string) => {
+      if (typeof window === "undefined" || isLocalHost() || (window as any).clarity) return;
+      (function(c: any, l: any, a: any, r: any, i: any, t?: any, y?: any){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", projectId);
+    };
+
     onMounted(() => {
       initZoom();
+      initClarity("um97n882rl");
       // 延迟 4 秒加载外部辅助脚本（GA4 统计已托管至 Cloudflare Zaraz 统一边缘注入）
       setTimeout(() => {
         initAds();
