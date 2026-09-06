@@ -11,45 +11,19 @@ import "./custom.css";
 import mediumZoom from "medium-zoom";
 
 import type { EnhanceAppContext } from "vitepress";
-const ArticleHero = defineAsyncComponent(() => import("./components/ArticleHero.vue"));
-const CheatSheetFooter = defineAsyncComponent(() => import("./components/CheatSheetFooter.vue"));
-const ChapterNavigation = defineAsyncComponent(() => import("./components/ChapterNavigation.vue"));
-const DownloadCard = defineAsyncComponent(() => import("./components/DownloadCard.vue"));
-import FloatingTimerIcon from "./components/FloatingTimerIcon.vue";
 const ManimVideo = defineAsyncComponent(() => import("./components/ManimVideo.vue"));
-const ComparisonGrid = defineAsyncComponent(() => import("./components/ComparisonGrid.vue"));
-const CramerRuleVisualizer = defineAsyncComponent(() => import("../../components/math/CramerRuleVisualizer.vue"));
-const LearningPathHeader = defineAsyncComponent(() => import("./components/LearningPathHeader.vue"));
-const ScrollTelling = defineAsyncComponent(() => import("./components/ScrollTelling.vue"));
-const ThreeOneQuote = defineAsyncComponent(() => import("./components/ThreeOneQuote.vue"));
 const PageViews = defineAsyncComponent(() => import("./components/PageViews.vue"));
-const ImmersiveMode = defineAsyncComponent(() => import("./components/ImmersiveMode.vue"));
-
-import BackToGraph from "./components/BackToGraph.vue";
-import CourseList from "./components/CourseList.vue";
-import { useData } from "vitepress";
 
 export default {
   extends: DefaultTheme,
   Layout: () => {
-    const { page } = useData();
-    const showBackLink = () => {
-      const relativePath = page.value.relativePath;
-      return (
-        relativePath.startsWith("courses/") ||
-        relativePath.startsWith("teaching/") ||
-        relativePath.startsWith("tools/")
-      );
-    };
     return h(DefaultTheme.Layout, null, {
-      // 只在课程、教学与工具内容页插入返回入口，避免隐私政策等普通页面出现错位导航。
-      "doc-before": () => showBackLink() ? h(BackToGraph) : null,
       // 使用 nav-bar-title-before 插槽插入自定义 Logo
       "nav-bar-title-before": () => h(Logo),
       // 在正文之后依次插入浏览量、推荐、分享和评论。
       "doc-after": () => [h(PageViews), h(RelatedPosts), h(Share), h(Comment)],
       "layout-top": () => h(ReadingProgressBar),
-      "layout-bottom": () => [h(BrownianBackground), h(FloatingTimerIcon), h(ImmersiveMode)],
+      "layout-bottom": () => [h(BrownianBackground)],
     });
   },
   setup() {
@@ -100,7 +74,7 @@ export default {
             tools: [
               {
                 name: "search-courses",
-                description: "Search for mathematics and computer science courses available on the portal.",
+                description: "Search for mathematics and computer science courses available on the teaching platform.",
                 inputSchema: {
                   type: "object",
                   properties: {
@@ -109,8 +83,8 @@ export default {
                   required: ["query"]
                 },
                 execute: async ({ query }: { query: string }) => {
-                  window.location.href = `/courses/?q=${encodeURIComponent(query)}`;
-                  return { success: true, message: `Navigating to search for: ${query}` };
+                  window.location.href = `https://teach.matnoble.top/courses/?q=${encodeURIComponent(query)}`;
+                  return { success: true, message: `Navigating to teaching platform search for: ${query}` };
                 }
               }
             ]
@@ -128,19 +102,7 @@ export default {
   },
   enhanceApp(ctx: EnhanceAppContext) {
     const { app } = ctx;
-    app.component("DownloadCard", DownloadCard);
-    app.component("CheatSheetFooter", CheatSheetFooter);
-    app.component("ArticleHero", ArticleHero);
-    app.component("ScrollTelling", ScrollTelling);
-    app.component("FloatingTimerIcon", FloatingTimerIcon);
-    app.component("ChapterNavigation", ChapterNavigation);
-    app.component("LearningPathHeader", LearningPathHeader);
     app.component("ManimVideo", ManimVideo);
-    app.component("ComparisonGrid", ComparisonGrid);
-    app.component("ThreeOneQuote", ThreeOneQuote);
-    app.component("CramerRuleVisualizer", CramerRuleVisualizer);
-    app.component("CourseList", CourseList);
-    app.component("ImmersiveMode", ImmersiveMode);
     if (typeof window !== "undefined") {
       // Browser-only enhancements are initialized from setup().
     }

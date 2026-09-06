@@ -9,37 +9,13 @@ const SITE_DESCRIPTION =
 
 const ROUTE_LABELS: Record<string, string> = {
   "about": "关于 MatNoble",
-  "courses": "课程中心",
-  "courses/discrete-math-2026-fall": "离散数学 (2026秋季)",
-  "courses/discrete-math-2026-spring": "离散数学 (2026春季)",
-  "courses/java-programming-2026-fall": "Java程序设计 (2026秋季)",
-  "courses/advanced-math-2-2026-spring": "高等数学(A)II (2026春季)",
-  "courses/economic-math-2-2026-spring": "经济数学II (2026春季)",
   "projects": "开源项目",
   "projects/tts": "MatNoble-TTS 语音平台",
-  "teaching": "教学目录",
-  "teaching/calculus": "微积分",
-  "teaching/linear-algebra": "线性代数",
-  "teaching/linear-algebra/cramers-rule": "克拉默法则",
-  "teaching/linear-algebra/elementary-transformations": "初等变换",
-  "teaching/linear-algebra/matrix-normal-form": "矩阵化简",
-  "tools": "数学工具",
-  "courses/matlab": "MATLAB 编程与实践",
-  "courses/matlab/basics": "MATLAB 基础与矩阵操作",
-  "courses/matlab/conventions": "M 文件与函数规范",
-  "courses/matlab/project-calculator": "矩阵计算器项目",
-  "courses/matlab/project-gui": "GUI 矩阵计算器项目",
-  "courses/matlab/project-cv": "电子时钟数码管识别",
 };
 
-const REDIRECT_ROUTES = new Set([
-  "/courses/discrete-math",
-  "/courses/java-programming",
-  "/courses/advanced-math-2",
-  "/courses/economic-math-2",
-]);
+const REDIRECT_ROUTES = new Set<string>();
 
-const DIRECTORY_ROUTES = new Set(["courses", "projects", "teaching", "tools"]);
+const DIRECTORY_ROUTES = new Set(["projects"]);
 
 function canonicalUrl(relativePath: string): string {
   if (relativePath === "index.md") return `${SITE_ORIGIN}/`;
@@ -439,47 +415,7 @@ export default defineConfig({
       });
     }
 
-    // 4. Course Schema
-    if (pageData.frontmatter.structuredData?.course) {
-      const course = pageData.frontmatter.structuredData.course;
-      schemas.push({
-        "@context": "https://schema.org",
-        "@type": "Course",
-        "name": course.name,
-        "description": course.description,
-        "provider": {
-          "@type": "Organization",
-          "name": course.provider,
-          "sameAs": "https://matnoble.top"
-        }
-      });
-    } else if (
-      pageData.relativePath.startsWith("courses/") &&
-      pageData.relativePath !== "courses/index.md" &&
-      !REDIRECT_ROUTES.has("/" + pageData.relativePath.replace(/\.md$/, ""))
-    ) {
-      schemas.push({
-        "@context": "https://schema.org",
-        "@type": "Course",
-        "name": pageTitle || title,
-        "description": description,
-        "url": url,
-        "inLanguage": "zh-CN",
-        "provider": {
-          "@type": "Person",
-          "@id": "https://matnoble.top/#person",
-          "name": "MatNoble",
-          "sameAs": "https://matnoble.top"
-        },
-        "hasCourseInstance": {
-          "@type": "CourseInstance",
-          "courseMode": "blended",
-          "inLanguage": "zh-CN"
-        }
-      });
-    }
-
-    // 5. SoftwareApplication Schema
+    // 4. SoftwareApplication Schema
     if (pageData.frontmatter.structuredData?.softwareApp) {
       const app = pageData.frontmatter.structuredData.softwareApp;
       schemas.push({
@@ -493,31 +429,12 @@ export default defineConfig({
       });
     }
 
-    // 6. ProfilePage Schema
+    // 5. ProfilePage Schema
     if (pageData.frontmatter.structuredData?.profile) {
       schemas.push({
         "@context": "https://schema.org",
         "@type": "ProfilePage",
         "mainEntity": { "@id": "https://matnoble.top/#person" }
-      });
-    }
-
-    // 7. Article Schema (for teaching content)
-    if (pageData.relativePath.startsWith('teaching/') && pageData.relativePath !== 'teaching/index.md') {
-      schemas.push({
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": title,
-        "description": description,
-        "image": imageUrl,
-        "author": { "@id": "https://matnoble.top/#person" },
-        "publisher": { "@id": "https://matnoble.top/#person" },
-        "datePublished": new Date(pageData.lastUpdated || Date.now()).toISOString(),
-        "dateModified": new Date(pageData.lastUpdated || Date.now()).toISOString(),
-        "mainEntityOfPage": {
-          "@type": "WebPage",
-          "@id": url
-        }
       });
     }
 
@@ -693,50 +610,6 @@ export default defineConfig({
               "https://blog.matnoble.top",
               "https://album.matnoble.top"
             ]
-          },
-          {
-            "@type": "DefinedTermSet",
-            "@id": "https://matnoble.top/#methods",
-            "name": "大学数学常用计算方法",
-            "hasDefinedTerm": [
-              {
-                "@type": "DefinedTerm",
-                "name": "Universal Formula for Differentials (微分万能公式)",
-                "description": "利用一阶微分形式不变性，将链式法则写成逐层微分操作：dy = d(f(□)) = f'(□) d(□)。",
-                "url": "https://matnoble.top/teaching/derivative-method",
-                "sameAs": [
-                  "https://en.wikipedia.org/wiki/Differential_(mathematics)",
-                  "https://en.wikipedia.org/wiki/Chain_rule"
-                ]
-              },
-              {
-                "@type": "DefinedTerm",
-                "name": "DI Method (表格积分法)",
-                "description": "分部积分法的一种表格化写法，通过 D (求导) 和 I (积分) 两列组织计算，遵循 LIATE 优先级法则。",
-                "url": "https://matnoble.top/teaching/cheatsheet",
-                "sameAs": [
-                  "https://en.wikipedia.org/wiki/Integration_by_parts"
-                ]
-              }
-            ]
-          },
-          {
-            "@type": "CreativeWork",
-            name: "Universal Formula for Differentials (微分万能公式)",
-            author: { "@id": "https://matnoble.top/#person" },
-            description:
-              "一种用于整理复合函数微分计算步骤的写法：\\mathrm{d}y = \\mathrm{d}(f(□)) = f'(□)\\mathrm{d}(□)。",
-            inLanguage: "zh-CN",
-          },
-          {
-            "@type": "SoftwareApplication",
-            name: "Memorize",
-            applicationCategory: "EducationalApplication",
-            operatingSystem: "Web",
-            author: { "@id": "https://matnoble.top/#person" },
-            description:
-              "支持 LaTeX 公式录入的间隔重复记忆工具。",
-            url: "https://matnoble.top/tools/memorize",
           },
         ],
       }),

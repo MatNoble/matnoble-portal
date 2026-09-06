@@ -64,7 +64,7 @@ head:
 ## 学习建议
 
 ### Q: 如何记忆数学公式？
-**A:** 可以结合本站提供的 [Memorize 记忆助手](/tools/memorize) 工具。该工具使用间隔重复（Spaced Repetition）算法，并支持 LaTeX 公式渲染。
+**A:** 可以结合教学平台提供的 [Memorize 记忆助手](https://teach.matnoble.top/tools/memorize) 工具。该工具使用间隔重复（Spaced Repetition）算法，并支持 LaTeX 公式渲染。
 
 ### Q: 这里的教学大纲适合哪些学生？
 **A:** 主要针对中国高校本科生的“微积分/高等数学”与“线性代数”课程，同时兼顾考研数学的思维训练。
