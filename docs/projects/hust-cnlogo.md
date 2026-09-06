@@ -1,6 +1,6 @@
 ---
-title: HUST-cnlogo (华中科技大学徽标 LaTeX 版)
-description: 华中科技大学 LaTeX 版徽标分享，修复官方配色、清晰度及排版对齐问题。
+title: HUST-cnlogo - 华中科技大学矢量校徽 LaTeX 宏包与排版修正
+description: 华中科技大学矢量校徽 LaTeX 宏包项目。针对官方标准色偏差、高分辨率边缘锯齿及校名字样对齐问题进行全面修复，支持在 LaTeX 论文、报告与 Beamer 幻灯片中无损嵌入高质量矢量校徽。
 image: https://raw.githubusercontent.com/MatNoble/hust-cnlogo/master/images/svg/hustcwhole.svg
 ---
 

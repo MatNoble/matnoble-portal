@@ -1,6 +1,6 @@
 ---
-title: 常见问题 (FAQ) - MatNoble
-description: 汇总关于微分万能公式、DI Method (表格积分法)、线性代数学习和公式记忆工具的常见问题。
+title: 常见问题解答 (FAQ) - 微积分、DI表格积分法与教学工具指南
+description: MatNoble 常见问题解答 (FAQ) 汇总。深入解答微分万能公式原理、DI Method (表格积分法) 计算技巧、线性代数矩阵化简心得，以及课堂互动辅助工具的使用指南。
 head:
   - - script
     - type: application/ld+json

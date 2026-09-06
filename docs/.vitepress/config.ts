@@ -449,6 +449,7 @@ export default defineConfig({
       ["meta", { name: "author", content: "MatNoble" }],
       ["meta", { name: "keywords", content: keywords }],
       // Open Graph
+      ["meta", { property: "og:locale", content: "zh_CN" }],
       ["meta", { property: "og:url", content: url }],
       ["meta", { property: "og:title", content: title }],
       ["meta", { property: "og:description", content: description }],
@@ -601,8 +602,17 @@ export default defineConfig({
             "logo": "https://matnoble.top/logo.svg",
             "founder": {
               "@type": "Person",
+              "@id": "https://matnoble.top/#person",
               "name": "MatNoble"
             },
+            "subOrganization": [
+              {
+                "@type": "EducationalOrganization",
+                "@id": "https://teach.matnoble.top/#organization",
+                "name": "MatNoble 教学中心",
+                "url": "https://teach.matnoble.top"
+              }
+            ],
             "sameAs": [
               "https://teach.matnoble.top",
               "https://speak.matnoble.top",

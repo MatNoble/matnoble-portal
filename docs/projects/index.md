@@ -1,6 +1,6 @@
 ---
-title: 开源项目 - MatNoble Portal
-description: MatNoble 个人开源项目展示。内容包括 AI 语音平台、LaTeX 排版、数学教学工具与自动化脚本。
+title: 精选开源项目与学术工具列表 - MatNoble Portal
+description: MatNoble 个人开源项目精选与技术实践展示。涵盖基于 Cloudflare Workers 的全栈 AI 语音合成平台 (TTS)、LaTeX 科技排版工具、高校考勤点名辅助插件以及交互式数学教学演示套件。
 head:
   - - script
     - type: application/ld+json

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- 1. 个人门户主站 -->
+  <sitemap>
+    <loc>https://matnoble.top/sitemap.xml</loc>
+  </sitemap>
+  <!-- 2. 教学中心 (课程大纲、课件与教学工具) -->
+  <sitemap>
+    <loc>https://teach.matnoble.top/sitemap.xml</loc>
+  </sitemap>
+  <!-- 3. 技术博客 (偏微分方程、数值计算与算法手记) -->
+  <sitemap>
+    <loc>https://blog.matnoble.top/sitemap.xml</loc>
+  </sitemap>
+  <!-- 4. 语音工坊 (神经语音合成 TTS 创作平台) -->
+  <sitemap>
+    <loc>https://speak.matnoble.top/sitemap.xml</loc>
+  </sitemap>
+  <!-- 5. 光影定格 (摄影画廊与视觉纪实) -->
+  <sitemap>
+    <loc>https://album.matnoble.top/sitemap.xml</loc>
+  </sitemap>
+</sitemapindex>

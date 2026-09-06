@@ -1,6 +1,6 @@
 ---
 title: 关于 MatNoble - 大学数学教师与独立开发者
-description: MatNoble 的个人简介与联系方式。内容包括数学教学、交互式课件开发和相关开源项目。
+description: 了解大学数学教师与独立开发者 MatNoble 的个人背景、学术经历与技术栈。专注于微积分、离散数学等高校课程体系建设，主导开发 MatNoble-TTS 语音平台、Beamer 课件工具链与交互式数学实验项目。
 head:
   - - script
     - type: application/ld+json

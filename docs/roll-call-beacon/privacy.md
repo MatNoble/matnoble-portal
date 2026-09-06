@@ -1,6 +1,6 @@
 ---
-title: 点名光标隐私政策
-description: 点名光标 roll-call-beacon 浏览器扩展的隐私政策，说明扩展如何在本地处理考勤页面中的学生条目。
+title: 点名光标隐私政策与本地数据安全说明 - Roll Call Beacon
+description: 点名光标 (roll-call-beacon) 浏览器扩展隐私政策。详细说明扩展如何在用户主动操作时在本地处理考勤页面学生条目，杜绝任何外部数据上传与网络通信行为。
 breadcrumb: 点名光标隐私政策
 ---
 

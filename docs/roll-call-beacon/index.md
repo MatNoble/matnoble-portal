@@ -1,6 +1,6 @@
 ---
 title: 点名光标 (Roll Call Beacon) - 浏览器点名辅助扩展
-description: 结合高校教务系统考勤页面的浏览器扩展。支持在本地解析学生名单、随机抽样并高亮显示。纯本地计算，不上传教务数据。
+description: 面向高校教务系统考勤页面的浏览器点名辅助扩展。支持在本地解析学生名单、按固定人数或比例随机抽样并高亮显示。坚持纯本地计算、零网络请求与数据隐私安全。
 breadcrumb: 点名光标
 structuredData:
   softwareApp:
