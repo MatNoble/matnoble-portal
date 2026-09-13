@@ -264,7 +264,7 @@ export default defineConfig({
     socialLinks: [],
 
     footer: {
-      message: '<a href="https://teach.matnoble.top/">教学中心</a> · <a href="https://speak.matnoble.top">语音工坊</a> · <a href="https://blog.matnoble.top">技术博客</a> · <a href="https://album.matnoble.top/">光影定格</a><br>以数学构建逻辑，用技术驱动学习。<br><a href="/privacy">隐私政策</a> | <a href="/terms">服务条款</a><br>Copyright © 2025-2026 MatNoble',
+      message: '<a href="https://teach.matnoble.top/">教学中心</a> · <a href="https://speak.matnoble.top">语音工坊</a> · <a href="https://blog.matnoble.top">技术博客</a> · <a href="https://album.matnoble.top/">光影定格</a> · <a href="https://t.me/geekai_daily" target="_blank" rel="noopener">极客智算</a><br>以数学构建逻辑，用技术驱动学习。<br><a href="/privacy">隐私政策</a> | <a href="/terms">服务条款</a><br>Copyright © 2025-2026 MatNoble',
       copyright: "",
     },
 

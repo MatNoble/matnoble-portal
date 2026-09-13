@@ -47,6 +47,15 @@ const matrixList: MatrixItem[] = [
     icon: '📷',
     badge: '视觉纪实',
     isExternal: true
+  },
+  {
+    title: '极客智算',
+    desc: '双云大模型驱动的 Telegram 高信噪比资讯脱水频道，过滤冗长公关水文，精炼 AI、开源与科技股动态。',
+    link: 'https://t.me/geekai_daily',
+    domain: 't.me/geekai_daily',
+    icon: '⚡',
+    badge: 'AI 快讯',
+    isExternal: true
   }
 ]
 </script>
@@ -78,7 +87,7 @@ const matrixList: MatrixItem[] = [
 <style scoped>
 .matrix-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
   gap: 1.25rem;
   width: 100%;
   margin-bottom: 1rem;

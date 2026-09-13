@@ -17,6 +17,7 @@ head:
             "https://github.com/matnoble",
             "https://www.zhihu.com/people/matnoble",
             "https://t.me/HUSTMatNoble",
+            "https://t.me/geekai_daily",
             "https://www.youtube.com/@RossMatNoble"
           ],
           "description": "高校数学讲师，主要讲授微积分、线性代数等课程，并开发配套教学工具。"
@@ -46,6 +47,7 @@ head:
 - **语音工坊**: [speak.matnoble.top](https://speak.matnoble.top) —— 基于深度学习的神经语音合成 TTS 创作平台。
 - **技术博客**: [blog.matnoble.top](https://blog.matnoble.top) —— 偏微分方程数值解法与计算科学手记。
 - **光影定格**: [album.matnoble.top](https://album.matnoble.top) —— 个人摄影与视觉纪实。
+- **极客智算**: [t.me/geekai_daily](https://t.me/geekai_daily) —— 基于双云大模型的 Telegram 每日高信噪比科技资讯脱水频道与播发机器人（[源码仓库](https://github.com/MatNoble/geekai-bot)）。
 - **开源项目**: [matnoble.top/projects](/projects/) —— 实用工程工具与设计资产。
 - **代码仓库**: [GitHub (matnoble)](https://github.com/matnoble) —— 开源脚本与项目仓库。
 
@@ -53,7 +55,7 @@ head:
 
 - 邮箱: [me@matnoble.top](mailto:me@matnoble.top)
 - 知乎: [MatNoble](https://www.zhihu.com/people/matnoble)
-- Telegram: [HUSTMatNoble](https://t.me/HUSTMatNoble)
+- Telegram: 个人私聊 [@HUSTMatNoble](https://t.me/HUSTMatNoble) · 资讯频道 [@geekai_daily](https://t.me/geekai_daily)
 - YouTube: [@RossMatNoble](https://www.youtube.com/@RossMatNoble)
 - 公众号: **数学思维探究社**
 

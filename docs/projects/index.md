@@ -19,6 +19,12 @@ head:
             "url": "https://speak.matnoble.top"
           },
           {
+            "@type": "SoftwareApplication",
+            "name": "极客智算 (GeekAI-Bot)",
+            "description": "基于双云大模型的 Telegram 每日高信噪比科技资讯脱水智能播发系统。",
+            "url": "https://t.me/geekai_daily"
+          },
+          {
             "@type": "CreativeWork",
             "name": "HUST-cnlogo",
             "description": "华中科技大学徽标的 LaTeX 精确修正版。"
@@ -49,6 +55,11 @@ head:
 基于 Cloudflare Workers 的全栈 AI 语音处理平台，集成高拟真文字转语音（TTS）、语音转文字（STT）、D1 边缘额度流控与 **AI 配音导演智能体（Audio Director Skill 2.0）**。
 - [详细介绍](/projects/tts) | [🌐 在线体验](https://speak.matnoble.top) | [⚡ 配套 Skill 仓库](https://github.com/MatNoble/matnoble-tts-skill)
 - **Agent 一键集成**：`npx skills add MatNoble/matnoble-tts-skill`
+
+### [极客智算 GeekAI-Bot](https://t.me/geekai_daily)
+专为极客与开发者打造的 Telegram 高信噪比资讯智能播发系统。定时聚合多源科技资讯与 GitHub Trending，基于 Groq (Qwen) 与 Google Gemini 双云容灾大模型进行 3 句话极简脱水提炼，杜绝公关水文。
+- [📢 订阅频道](https://t.me/geekai_daily) | [💬 读者交流群](https://t.me/geekai_chat) | [✍️ 深度解读文章](https://blog.matnoble.top/tech/ai/geekai-daily-intro/) | [💻 GitHub 仓库](https://github.com/MatNoble/geekai-bot)
+- **核心特性**：强制 3 句话脱水结构 · A股/美股与科技七巨头智能晨报 · 节假日休市自适应 · 夜间智能免打扰
 
 ---
 

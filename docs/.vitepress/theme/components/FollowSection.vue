@@ -2,6 +2,7 @@
 const socialLinks = [
   { icon: 'youtube', link: 'https://www.youtube.com/@RossMatNoble', label: 'YouTube' },
   { icon: 'github', link: 'https://github.com/matnoble', label: 'GitHub' },
+  { icon: 'telegram', link: 'https://t.me/geekai_daily', label: '极客智算' },
   { icon: 'telegram', link: 'https://t.me/HUSTMatNoble', label: 'Telegram' },
   { icon: 'mail', link: 'mailto:me@matnoble.top', label: 'Email' },
   { icon: 'rss', link: '/atom.xml', label: 'RSS' }
