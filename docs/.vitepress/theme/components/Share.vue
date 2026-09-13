@@ -76,81 +76,19 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, nextTick } from "vue";
-import { useData } from "vitepress";
-import QRCode from "qrcode";
+import { useShare } from "../composables/useShare";
 
-const { page, frontmatter } = useData();
-
-// Get current URL (runs only on client side)
-const currentUrl = computed(() => {
-  if (typeof window !== "undefined") {
-    return window.location.href;
-  }
-  return "";
-});
-
-const title = computed(
-  () => frontmatter.value.title || page.value.title || "MatNoble Portal"
-);
-
-// X (Twitter) Share URL
-const xShareUrl = computed(() => {
-  const url = encodeURIComponent(currentUrl.value);
-  const text = encodeURIComponent(title.value);
-  return `https://twitter.com/intent/tweet?url=${url}&text=${text}`;
-});
-
-// Facebook Share URL
-const fbShareUrl = computed(() => {
-  const url = encodeURIComponent(currentUrl.value);
-  return `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-});
-
-// LinkedIn Share URL
-const linkedinShareUrl = computed(() => {
-  const url = encodeURIComponent(currentUrl.value);
-  return `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
-});
-
-// Copy Link Logic
-const showCopied = ref(false);
-const copyLink = async () => {
-  try {
-    await navigator.clipboard.writeText(currentUrl.value);
-    showCopied.value = true;
-    setTimeout(() => {
-      showCopied.value = false;
-    }, 2000);
-  } catch (err) {
-    console.error('Failed to copy:', err);
-  }
-};
-
-// WeChat QR Code Logic
-const showWeChat = ref(false);
-const qrCanvas = ref<HTMLCanvasElement | null>(null);
-
-const toggleWeChat = async () => {
-  showWeChat.value = !showWeChat.value;
-  if (showWeChat.value) {
-    await nextTick();
-    if (qrCanvas.value) {
-      QRCode.toCanvas(
-        qrCanvas.value,
-        currentUrl.value,
-        { width: 200, margin: 2 },
-        (error) => {
-          if (error) console.error(error);
-        }
-      );
-    }
-  }
-};
-
-const closeWeChat = () => {
-  showWeChat.value = false;
-};
+const {
+  xShareUrl,
+  fbShareUrl,
+  linkedinShareUrl,
+  showCopied,
+  copyLink,
+  showWeChat,
+  qrCanvas,
+  toggleWeChat,
+  closeWeChat,
+} = useShare();
 </script>
 
 <style scoped>

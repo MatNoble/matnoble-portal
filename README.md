@@ -2,12 +2,13 @@
 
 ![VitePress](https://img.shields.io/badge/VitePress-1.0-646CFF?style=flat&logo=vite&logoColor=white)
 ![Cloudflare Pages](https://img.shields.io/badge/Deployment-Cloudflare%20Pages-F38020?style=flat&logo=cloudflare&logoColor=white)
+![Tests](https://img.shields.io/badge/Tests-Passing-success?style=flat&logo=node.js&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 
 > **Mathematics as the Core. Technology as the Extension.**
 > 以数学为原点，构建可解释的技术世界。
 
-This is the source code for the personal portal of **MatNoble**, a university mathematics teacher and independent developer. It serves as an authoritative entry point for academic content, teaching philosophies, and educational tools.
+This is the source code for the personal portal of **MatNoble**, a university mathematics teacher and independent developer. It serves as an authoritative entry point for academic content, teaching philosophies, independent projects, and educational tools.
 
 ## ✨ Features
 
@@ -17,11 +18,17 @@ This is the source code for the personal portal of **MatNoble**, a university ma
 - **Typography**:
   - Headings: **Outfit** (Geometric Sans).
   - Body: **Inter** (Highly readable UI font).
-- **Micro-interactions**: "Floating" feature cards with spectral glow, breathing buttons, and smooth underline animations.
+- **Micro-interactions**: "Floating" feature cards with spectral glow, breathing buttons, QR code modal previews, and smooth underline animations.
+
+### 🔄 Reactive Engagement & Sharing
+- **Dynamic Social Sharing**: Unified `useShare` composable with full reactivity for SPA client-side route changes, generating accurate share URLs across X (Twitter), Telegram, and QR codes.
+- **Waline Comments**: Seamlessly integrated discussion and comment system with automatic path watchers across SPA page transitions.
+- **Cross-Repository Theme Synchronization**: Tooling (`scripts/sync-shared-theme.mjs`) ensuring seamless consistency and drift prevention between this portal and `matnoble-teach`.
 
 ### 🔍 SEO & AIO (AI Optimization)
 - **AI-Ready**: Includes `llms.txt` and `robots.txt` specifically configured to welcome AI crawlers (ChatGPT, Perplexity, etc.).
-- **Structured Data**: Injected **JSON-LD** (Schema.org) for rich results and knowledge graph integration.
+- **Structured Data**: Injected **JSON-LD** (Schema.org) for rich results, author credentials, and knowledge graph integration.
+- **RSS Feeds**: Auto-generated `feed.xml` / `atom.xml` upon build, with zero-config local dev server middleware fallback.
 - **Canonical URLs**: Auto-generated canonical tags to prevent duplicate content issues.
 - **Performance**: High Lighthouse scores via VitePress static generation and Cloudflare edge caching.
 
@@ -30,10 +37,10 @@ This is the source code for the personal portal of **MatNoble**, a university ma
 - **Framework**: [VitePress](https://vitepress.dev/) (Vue 3 + Vite)
 - **Styling**: Custom CSS variables + CSS3 Transitions
 - **Deployment**: Cloudflare Pages
-- **Page Views**: Cloudflare Pages Functions + D1, loaded asynchronously after content rendering
+- **Page Views**: Cloudflare Pages Functions + Cloudflare D1 database, loaded asynchronously after content rendering
 - **Fonts**: Google Fonts (Inter & Outfit)
 
-## 🚀 Local Development
+## 🚀 Local Development & Scripts
 
 1. **Install dependencies**:
    ```bash
@@ -44,9 +51,24 @@ This is the source code for the personal portal of **MatNoble**, a university ma
    ```bash
    npm run docs:dev
    ```
-   Access at `http://localhost:5173`.
+   Access at `http://localhost:5173`. Local dev includes middleware for instant `/feed.xml` preview.
 
-3. **Build for production**:
+3. **Run automated tests**:
+   ```bash
+   npm test
+   ```
+   Runs unit tests for Pages Functions D1 view counter and validates shared theme synchronization with `matnoble-teach`.
+
+4. **Theme synchronization**:
+   ```bash
+   # Check if shared theme components match matnoble-teach
+   npm run check:theme
+
+   # Bi-directionally synchronize newer theme files
+   npm run sync:theme
+   ```
+
+5. **Build for production**:
    ```bash
    npm run docs:build
    ```
@@ -57,16 +79,25 @@ This is the source code for the personal portal of **MatNoble**, a university ma
 matnoble-portal/
 ├── docs/
 │   ├── .vitepress/
-│   │   ├── config.ts       # Main configuration (SEO, Head, Nav)
+│   │   ├── config.ts       # Main configuration (SEO, Head, Nav, dev middleware)
+│   │   ├── genFeed.ts      # RSS & Atom feed generator
 │   │   └── theme/          # Custom theme customization
-│   │       ├── components/ # Vue components (e.g., Logo.vue)
-│   │       └── custom.css  # Global styles & variables
-│   ├── public/             # Static assets (logo.svg, robots.txt, llms.txt)
-│   ├── teaching/           # Academic content
+│   │       ├── components/ # Vue components (Logo, Share, Comment, FollowSection, SiteMatrix)
+│   │       ├── composables/# Shared composables (useShare.ts)
+│   │       └── styles/     # Global styles & variables (base.css, custom.css)
+│   ├── public/             # Static assets (logo.svg, robots.txt, llms.txt, headers)
+│   ├── projects/           # Independent projects & products showcase
+│   ├── teaching/           # Academic teaching philosophies & course overviews
 │   ├── tools/              # Tools showcase
+│   ├── about.md            # About & personal profile
+│   ├── faq.md              # Frequently Asked Questions
 │   └── index.md            # Home page
-├── docs/public/_headers    # Cloudflare Pages headers and cache rules
-└── package.json
+├── functions/              # Cloudflare Pages Functions (D1 page view counter API)
+├── scripts/                # Development, sync & SEO automation scripts
+├── tests/                  # Automated tests (D1 API tests, theme sync tests)
+├── AGENTS.md               # AI coding assistant guidelines & workflows
+├── package.json
+└── wrangler.jsonc          # Cloudflare Pages & D1 binding configuration
 ```
 
 ## 📄 Page Overview
@@ -75,13 +106,19 @@ The portal is organized into several key sections:
 
 ### 🏠 Core Pages
 - **[Home](docs/index.md)** (`/`): Introduction to MatNoble and core teaching philosophy.
-- **[About](docs/about.md)** (`/about`): Biography, academic background, and social links.
+- **[About](docs/about.md)** (`/about`): Biography, academic background, matrix links, and social channels.
 - **[FAQ](docs/faq.md)** (`/faq`): Frequently asked questions about teaching methods and tools.
+
+### 🚀 Projects
+- **[Projects Hub](docs/projects/index.md)** (`/projects`): Independent open-source projects, apps, and developer tools:
+  - **GeekAI-Bot (极客智算)**: AI daily news crawler and Telegram channel ([@geekai_daily](https://t.me/geekai_daily)).
+  - **D1 Page Views Counter**: Serverless privacy-friendly visitor analytics.
+  - **Study Vault & Memorize Assistant**: Formula memorization and spaced-repetition tools.
 
 ### 📚 Teaching & Courses
 - **Calculus (微积分)**:
   - **[Curriculum Overview](docs/teaching/calculus.md)** (`/teaching/calculus`): The "Calculus Trio" teaching system.
-  - **[Universal Formula for Differentials](docs/teaching/derivative-method.md)** (`/teaching/derivative-method`): A simplified framework for differentiation.
+  - **[Universal Formula for Differentials](docs/teaching/derivative-method.md)** (`/teaching/derivative-method`): Simplified algebraic differentiation.
   - **[Core CheatSheet](docs/teaching/cheatsheet.md)** (`/teaching/cheatsheet`): Essential formulas and techniques.
 - **Linear Algebra (线性代数)**:
   - **[Course Content](docs/teaching/linear-algebra.md)** (`/teaching/linear-algebra`): Syllabus and key concepts.
@@ -108,6 +145,7 @@ The site content is statically generated, while lightweight Pages Functions prov
 - **Email**: [me@matnoble.top](mailto:me@matnoble.top)
 - **GitHub**: [matnoble](https://github.com/matnoble)
 - **Website**: [matnoble.top](https://matnoble.top)
+- **Telegram Channel**: [@geekai_daily](https://t.me/geekai_daily)
 
 ## 📄 License
 

@@ -42,18 +42,20 @@
 </template>
 
 <script setup>
-import { onMounted, onUnmounted } from "vue";
-import { useData } from "vitepress";
+import { onMounted, onUnmounted, watch } from "vue";
+import { useData, useRoute } from "vitepress";
 import "@waline/client/style";
 
 const { isDark } = useData();
+const route = useRoute();
 
 let walineInstance = null;
+let observer = null;
 
 onMounted(() => {
   const serverURL = "https://matnoble-comment.vercel.app";
 
-  const observer = new IntersectionObserver(
+  observer = new IntersectionObserver(
     async (entries) => {
       if (entries[0].isIntersecting) {
         // 动态导入 Waline 客户端核心库
@@ -62,6 +64,7 @@ onMounted(() => {
         walineInstance = init({
           el: "#waline",
           serverURL: serverURL,
+          path: route.path,
           dark: "html.dark", // 自动适配暗黑模式
           emoji: [
             "//unpkg.com/@waline/emojis@1.2.0/weibo",
@@ -75,7 +78,8 @@ onMounted(() => {
           },
         });
         // 初始化后停止观察
-        observer.disconnect();
+        observer?.disconnect();
+        observer = null;
       }
     },
     { rootMargin: "80px" }
@@ -85,9 +89,26 @@ onMounted(() => {
   if (el) observer.observe(el);
 });
 
+// 监听路由变化：若 Waline 实例已初始化，同步更新评论 path，避免切页后评论串台
+watch(
+  () => route.path,
+  (newPath) => {
+    if (walineInstance && typeof walineInstance.update === "function") {
+      walineInstance.update({
+        path: newPath,
+      });
+    }
+  }
+);
+
 onUnmounted(() => {
+  if (observer) {
+    observer.disconnect();
+    observer = null;
+  }
   if (walineInstance) {
     walineInstance.destroy();
+    walineInstance = null;
   }
 });
 </script>

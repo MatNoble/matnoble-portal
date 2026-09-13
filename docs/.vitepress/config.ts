@@ -2,6 +2,8 @@ import { defineConfig } from "vitepress";
 import webfontDl from "vite-plugin-webfont-dl";
 import { genFeed } from "./genFeed";
 import { VitePWA } from "vite-plugin-pwa";
+import { existsSync, readFileSync } from "node:fs";
+import { resolve } from "node:path";
 
 const SITE_ORIGIN = "https://matnoble.top";
 const SITE_DESCRIPTION =
@@ -129,6 +131,17 @@ export default defineConfig({
             }
             if (req.url?.startsWith("/pdf/")) {
               res.writeHead(302, { Location: "https://matnoble.top/r2-assets" + req.url.slice(4) });
+              res.end();
+              return;
+            }
+            if (req.url === "/feed.xml" || req.url === "/atom.xml") {
+              const distFile = resolve("docs/.vitepress/dist", req.url.slice(1));
+              if (existsSync(distFile)) {
+                res.setHeader("Content-Type", "application/xml; charset=utf-8");
+                res.end(readFileSync(distFile));
+                return;
+              }
+              res.writeHead(302, { Location: "https://matnoble.top" + req.url });
               res.end();
               return;
             }
