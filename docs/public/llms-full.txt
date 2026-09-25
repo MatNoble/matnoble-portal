@@ -21,6 +21,7 @@
 - Teaching index: https://matnoble.top/teaching/
 - Tools index: https://matnoble.top/tools/
 - Projects: https://matnoble.top/projects/
+- Manifold 3D Lab: https://matnoble.top/manifold/
 
 ## Teaching Topics & Courses
 

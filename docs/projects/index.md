@@ -15,7 +15,7 @@ head:
           {
             "@type": "SoftwareApplication",
             "name": "MatNoble-TTS",
-            "description": "基于 Cloudflare Workers 的全栈 AI 语音处理平台与 AI 配音导演智能体。",
+            "description": "基于 Cloudflare Workers 的全栈 AI 语音处理平台与 AI 配音导演技能 (Audio Director Skill)。",
             "url": "https://speak.matnoble.top"
           },
           {
@@ -38,21 +38,27 @@ head:
             "@type": "SoftwareApplication",
             "name": "点名光标 (Roll Call Beacon)",
             "description": "结合高校教务系统考勤页面的浏览器点名辅助扩展。"
+          },
+          {
+            "@type": "WebApplication",
+            "name": "MANIFOLD (流形空间)",
+            "description": "基于 Three.js 与纯程序化几何的沉浸式数学曲面与拓扑流形实验场。",
+            "url": "https://matnoble.top/manifold/"
           }
         ]
       }
 ---
 
-# 开源项目 (Open Source Projects)
+# 开源项目
 
-这里记录我在 AI 语音智能体、数学教学、LaTeX 排版和工具开发方面的一些开源实践。
+这里记录我在 AI 语音工程、数学教学、LaTeX 排版和工具开发方面的一些开源实践。
 
 ---
 
-## AI 与全栈开发 (AI & Full-Stack Applications)
+## AI 与全栈开发
 
 ### [MatNoble-TTS](https://speak.matnoble.top)
-基于 Cloudflare Workers 的全栈 AI 语音处理平台，集成高拟真文字转语音（TTS）、语音转文字（STT）、D1 边缘额度流控与 **AI 配音导演智能体（Audio Director Skill 2.0）**。
+基于 Cloudflare Workers 的全栈 AI 语音处理平台，集成高拟真文字转语音（TTS）、语音转文字（STT）、D1 边缘额度流控与 **AI 配音导演技能 (Audio Director Skill)**。
 - [详细介绍](/projects/tts) | [🌐 在线体验](https://speak.matnoble.top) | [⚡ 配套 Skill 仓库](https://github.com/MatNoble/matnoble-tts-skill)
 - **Agent 一键集成**：`npx skills add MatNoble/matnoble-tts-skill`
 
@@ -63,7 +69,7 @@ head:
 
 ---
 
-## LaTeX 与学术排版 (Academic Typesetting)
+## LaTeX 与学术排版
 
 ### [HUST-cnlogo](https://github.com/MatNoble/hust-cnlogo)
 华中科技大学徽标的 LaTeX 精确修正版。修复了原始 `cnlogo` 的配色、清晰度及拼写错误。
@@ -75,7 +81,15 @@ head:
 
 ---
 
-## 教学辅助与交互工具 (Educational Tools)
+## 创意编程与数学视觉
+
+### [流形空间 MANIFOLD](/manifold/)
+基于 Three.js 与纯参数方程构建的沉浸式拓扑曲面画廊。涵盖莫比乌斯带、克莱因瓶、Enneper 极小曲面、Dini 伪球面与洛伦兹混沌吸引子，支持实时参数形变与深空光影交互。
+- [🌌 沉浸体验](/manifold/)
+
+---
+
+## 教学辅助工具
 
 ### [点名光标 Roll Call Beacon](/roll-call-beacon/)
 面向高校课堂的浏览器点名辅助扩展。它在本地读取考勤页面中的学生名单，支持随机抽样和高亮显示。

@@ -13,11 +13,12 @@ const ROUTE_LABELS: Record<string, string> = {
   "about": "关于 MatNoble",
   "projects": "开源项目",
   "projects/tts": "MatNoble-TTS 语音平台",
+  "manifold": "MANIFOLD — Procedural Surfaces",
 };
 
 const REDIRECT_ROUTES = new Set<string>();
 
-const DIRECTORY_ROUTES = new Set(["projects"]);
+const DIRECTORY_ROUTES = new Set(["projects", "manifold"]);
 
 function canonicalUrl(relativePath: string): string {
   if (relativePath === "index.md") return `${SITE_ORIGIN}/`;

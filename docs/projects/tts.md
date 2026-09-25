@@ -1,6 +1,6 @@
 ---
 title: MatNoble-TTS (全栈 AI 语音处理平台与配音导演 Skill)
-description: 基于 Cloudflare Workers 的全栈 AI 语音处理平台，集成文字转语音（TTS）、语音转文字（STT）、D1 额度流控与 AI 配音导演智能体（Audio Director Skill 2.0）。
+description: 基于 Cloudflare Workers 的全栈 AI 语音处理平台，集成文字转语音（TTS）、语音转文字（STT）、D1 额度流控与 AI 配音导演技能 (Audio Director Skill)。
 breadcrumb: MatNoble-TTS
 head:
   - - meta
@@ -10,7 +10,7 @@ head:
 
 # 🎙️ MatNoble-TTS
 
-> 基于 Cloudflare Workers 的全栈 AI 语音处理平台，集成文字转语音（TTS）、语音转文字（STT）、D1 额度鉴权与 **AI 配音导演智能体（Audio Director Skill 2.0）**。
+> 基于 Cloudflare Workers 的全栈 AI 语音处理平台，集成文字转语音（TTS）、语音转文字（STT）、D1 额度鉴权与 **AI 配音导演技能 (Audio Director Skill)**。
 
 - 🌐 **在线体验**：[https://speak.matnoble.top](https://speak.matnoble.top)
 - ⚡ **开源 Skill 仓库**：[MatNoble/matnoble-tts-skill](https://github.com/MatNoble/matnoble-tts-skill)
@@ -25,7 +25,7 @@ head:
   - 支持语速 (`0.5x ~ 2.0x`)、音调、音量及多种情绪风格（新闻、客服、助理、聊天等）。
   - 支持原生 SSML 直通与轻量级**行内语音指令**（如 `[pause:500ms]`、`[emphasis:strong]`、`[say-as]`、`[sub]`）。
 
-- 🎬 **AI 配音导演与发音防护 (Director 2.0)**
+- 🎬 **AI 配音导演与发音防护 (Director)**
   - **7 步决策引擎**：体裁识别 $\rightarrow$ 角色参数矩阵 $\rightarrow$ 文本预处理 $\rightarrow$ 导演语义润色 $\rightarrow$ SSML 编排 $\rightarrow$ 质量门禁 $\rightarrow$ 合成交付。
   - **文本规范化 (NSW)**：电话、400 热线、工号数字串、日期、货币与英文缩写自动规范化。
   - **多音字防翻车**：内置 70+ 组中文高频易错词（重新/重量/行业/说服/西藏等）自动注音。
@@ -40,7 +40,7 @@ head:
 
 ---
 
-## 🤖 AI Agent 技能集成 (Skill 2.0)
+## 🤖 AI Agent 技能集成 (Skill)
 
 本项目配套开源了独立的 AI 配音导演技能，赋予 Coding Agent **“专业配音导演”**的能力：
 

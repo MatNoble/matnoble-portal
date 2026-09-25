@@ -19,6 +19,7 @@
 - About MatNoble: https://matnoble.top/about
 - Open Source Projects: https://matnoble.top/projects/
 - MatNoble-TTS Platform: https://matnoble.top/projects/tts
+- MANIFOLD 3D Lab: https://matnoble.top/manifold/
 - Teaching Hub: https://teach.matnoble.top/
 - Discrete Mathematics (2026 Fall): https://teach.matnoble.top/courses/discrete-math-2026-fall
 - Discrete Mathematics (2026 Spring Archive): https://teach.matnoble.top/courses/discrete-math-2026-spring
