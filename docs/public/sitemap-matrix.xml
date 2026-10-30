@@ -8,6 +8,10 @@
   <sitemap>
     <loc>https://teach.matnoble.top/sitemap.xml</loc>
   </sitemap>
+  <!-- 2b. 教学中心课件 PDF (sitemap-pdf.xml，构建时自动生成) -->
+  <sitemap>
+    <loc>https://teach.matnoble.top/sitemap-pdf.xml</loc>
+  </sitemap>
   <!-- 3. 技术博客 (偏微分方程、数值计算与算法手记) -->
   <sitemap>
     <loc>https://blog.matnoble.top/sitemap.xml</loc>
