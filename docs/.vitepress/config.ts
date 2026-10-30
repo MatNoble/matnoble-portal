@@ -344,6 +344,10 @@ export default defineConfig({
     const siteTitle = "MatNoble";
     const pageTitle = pageData.title;
     const title = pageTitle ? `${pageTitle} | ${siteTitle}` : siteTitle;
+    // 首页标题本身即完整的品牌标题（frontmatter 已含站名与定位），
+    // 再拼 " | MatNoble" 会让 og:title / twitter:title 出现冗余站名，故首页不拼后缀。
+    const socialTitle =
+      pageData.relativePath === "index.md" ? pageTitle || siteTitle : title;
 
     const description = pageData.description || SITE_DESCRIPTION;
 
@@ -465,7 +469,7 @@ export default defineConfig({
       // Open Graph
       ["meta", { property: "og:locale", content: "zh_CN" }],
       ["meta", { property: "og:url", content: url }],
-      ["meta", { property: "og:title", content: title }],
+      ["meta", { property: "og:title", content: socialTitle }],
       ["meta", { property: "og:description", content: description }],
       ["meta", { property: "og:image", content: imageUrl }],
       ["meta", { property: "og:image:width", content: "1200" }],
@@ -473,7 +477,7 @@ export default defineConfig({
       ["meta", { property: "og:image:type", content: "image/png" }],
       // Twitter Card
       ["meta", { name: "twitter:url", content: url }],
-      ["meta", { name: "twitter:title", content: title }],
+      ["meta", { name: "twitter:title", content: socialTitle }],
       ["meta", { name: "twitter:description", content: description }],
       ["meta", { name: "twitter:image", content: imageUrl }],
       ["meta", { name: "twitter:card", content: "summary_large_image" }],
